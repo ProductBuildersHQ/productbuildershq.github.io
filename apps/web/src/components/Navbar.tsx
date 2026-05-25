@@ -1,19 +1,50 @@
 import { useState, useRef, useEffect } from 'react'
 import { Link, NavLink } from 'react-router'
+import navConfig from '@/config/nav-config.json'
 
 interface DropdownItem {
+  id: string
   label: string
   href: string
   description?: string
   external?: boolean
 }
 
-interface DropdownProps {
+interface DropdownMenu {
+  id: string
   label: string
   items: DropdownItem[]
 }
 
-function Dropdown({ label, items }: DropdownProps) {
+interface NavLink {
+  id: string
+  label: string
+  href: string
+}
+
+interface NavAction {
+  id: string
+  label: string
+  href: string
+  icon?: string
+  external?: boolean
+}
+
+interface NavConfig {
+  brand: { name: string; href: string }
+  baseUrl: string
+  links: NavLink[]
+  dropdowns: DropdownMenu[]
+  actions: NavAction[]
+}
+
+const config = navConfig as NavConfig
+
+interface DropdownProps {
+  menu: DropdownMenu
+}
+
+function Dropdown({ menu }: DropdownProps) {
   const [isOpen, setIsOpen] = useState(false)
   const dropdownRef = useRef<HTMLDivElement>(null)
 
@@ -33,7 +64,7 @@ function Dropdown({ label, items }: DropdownProps) {
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center gap-1 text-sm font-medium text-[var(--color-frame-text-muted)] hover:text-[var(--color-frame-text)] transition-colors bg-transparent border-none cursor-pointer"
       >
-        {label}
+        {menu.label}
         <svg
           className={`w-4 h-4 transition-transform ${isOpen ? 'rotate-180' : ''}`}
           fill="none"
@@ -46,10 +77,10 @@ function Dropdown({ label, items }: DropdownProps) {
 
       {isOpen && (
         <div className="absolute top-full left-0 mt-2 w-64 bg-[var(--color-frame-bg)] border border-[rgba(255,255,255,0.15)] rounded-lg shadow-lg py-2 z-50">
-          {items.map((item) => (
+          {menu.items.map((item) => (
             item.external ? (
               <a
-                key={item.label}
+                key={item.id}
                 href={item.href}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -63,7 +94,7 @@ function Dropdown({ label, items }: DropdownProps) {
               </a>
             ) : (
               <Link
-                key={item.label}
+                key={item.id}
                 to={item.href}
                 className="block px-4 py-2 text-sm text-[var(--color-frame-text-muted)] hover:text-[var(--color-frame-text)] hover:bg-[rgba(255,255,255,0.05)] no-underline"
                 onClick={() => setIsOpen(false)}
@@ -92,20 +123,6 @@ function GitHubIcon() {
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
-  const productsItems: DropdownItem[] = [
-    {
-      label: 'VisionSpec',
-      href: '/visionspec/',
-      description: 'Multi-domain specification orchestration',
-      external: true
-    }
-  ]
-
-  const resourcesItems: DropdownItem[] = [
-    { label: 'Papers', href: '/papers' },
-    { label: 'About', href: '/about' }
-  ]
-
   return (
     <nav className="sticky top-0 z-50 bg-[var(--color-frame-bg)]">
       <div className="max-w-7xl mx-auto px-5 md:px-8">
@@ -113,47 +130,42 @@ export default function Navbar() {
           {/* Brand */}
           <Link to="/" className="flex items-center gap-2 no-underline">
             <span className="text-xl font-bold text-[var(--color-frame-text)]">
-              ProductBuildersHQ
+              {config.brand.name}
             </span>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-6">
-            <NavLink
-              to="/frameworks"
-              className={({ isActive }) =>
-                `text-sm font-medium no-underline transition-colors ${
-                  isActive
-                    ? 'text-[var(--color-frame-accent)]'
-                    : 'text-[var(--color-frame-text-muted)] hover:text-[var(--color-frame-text)]'
-                }`
-              }
-            >
-              Frameworks
-            </NavLink>
-            <NavLink
-              to="/case-studies"
-              className={({ isActive }) =>
-                `text-sm font-medium no-underline transition-colors ${
-                  isActive
-                    ? 'text-[var(--color-frame-accent)]'
-                    : 'text-[var(--color-frame-text-muted)] hover:text-[var(--color-frame-text)]'
-                }`
-              }
-            >
-              Case Studies
-            </NavLink>
-            <Dropdown label="Products" items={productsItems} />
-            <Dropdown label="Resources" items={resourcesItems} />
-            <a
-              href="https://github.com/ProductBuildersHQ"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[var(--color-frame-text-muted)] hover:text-[var(--color-frame-text)] transition-colors"
-              title="GitHub"
-            >
-              <GitHubIcon />
-            </a>
+            {config.links.map((link) => (
+              <NavLink
+                key={link.id}
+                to={link.href}
+                className={({ isActive }) =>
+                  `text-sm font-medium no-underline transition-colors ${
+                    isActive
+                      ? 'text-[var(--color-frame-accent)]'
+                      : 'text-[var(--color-frame-text-muted)] hover:text-[var(--color-frame-text)]'
+                  }`
+                }
+              >
+                {link.label}
+              </NavLink>
+            ))}
+            {config.dropdowns.map((dropdown) => (
+              <Dropdown key={dropdown.id} menu={dropdown} />
+            ))}
+            {config.actions.map((action) => (
+              <a
+                key={action.id}
+                href={action.href}
+                target={action.external ? '_blank' : undefined}
+                rel={action.external ? 'noopener noreferrer' : undefined}
+                className="text-[var(--color-frame-text-muted)] hover:text-[var(--color-frame-text)] transition-colors"
+                title={action.label}
+              >
+                {action.icon === 'github' ? <GitHubIcon /> : action.label}
+              </a>
+            ))}
           </div>
 
           {/* Mobile menu button */}
@@ -175,64 +187,61 @@ export default function Navbar() {
         {mobileMenuOpen && (
           <div className="md:hidden py-4 border-t border-[rgba(255,255,255,0.1)]">
             <div className="flex flex-col gap-4">
-              <NavLink
-                to="/frameworks"
-                className={({ isActive }) =>
-                  `text-sm font-medium no-underline ${
-                    isActive ? 'text-[var(--color-frame-accent)]' : 'text-[var(--color-frame-text-muted)]'
-                  }`
-                }
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Frameworks
-              </NavLink>
-              <NavLink
-                to="/case-studies"
-                className={({ isActive }) =>
-                  `text-sm font-medium no-underline ${
-                    isActive ? 'text-[var(--color-frame-accent)]' : 'text-[var(--color-frame-text-muted)]'
-                  }`
-                }
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Case Studies
-              </NavLink>
+              {config.links.map((link) => (
+                <NavLink
+                  key={link.id}
+                  to={link.href}
+                  className={({ isActive }) =>
+                    `text-sm font-medium no-underline ${
+                      isActive ? 'text-[var(--color-frame-accent)]' : 'text-[var(--color-frame-text-muted)]'
+                    }`
+                  }
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {link.label}
+                </NavLink>
+              ))}
+              {config.dropdowns.map((dropdown) => (
+                <div key={dropdown.id} className="border-t border-[rgba(255,255,255,0.1)] pt-4">
+                  <div className="text-xs text-[var(--color-frame-text-muted)] uppercase tracking-wide mb-2">
+                    {dropdown.label}
+                  </div>
+                  {dropdown.items.map((item) => (
+                    item.external ? (
+                      <a
+                        key={item.id}
+                        href={item.href}
+                        className="block py-2 text-sm text-[var(--color-frame-text-muted)] no-underline"
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        {item.label}
+                      </a>
+                    ) : (
+                      <Link
+                        key={item.id}
+                        to={item.href}
+                        className="block py-2 text-sm text-[var(--color-frame-text-muted)] no-underline"
+                        onClick={() => setMobileMenuOpen(false)}
+                      >
+                        {item.label}
+                      </Link>
+                    )
+                  ))}
+                </div>
+              ))}
               <div className="border-t border-[rgba(255,255,255,0.1)] pt-4">
-                <div className="text-xs text-[var(--color-frame-text-muted)] uppercase tracking-wide mb-2">Products</div>
-                {productsItems.map((item) => (
+                {config.actions.map((action) => (
                   <a
-                    key={item.label}
-                    href={item.href}
-                    className="block py-2 text-sm text-[var(--color-frame-text-muted)] no-underline"
-                    onClick={() => setMobileMenuOpen(false)}
+                    key={action.id}
+                    href={action.href}
+                    target={action.external ? '_blank' : undefined}
+                    rel={action.external ? 'noopener noreferrer' : undefined}
+                    className="flex items-center gap-2 text-sm text-[var(--color-frame-text-muted)] no-underline"
                   >
-                    {item.label}
+                    {action.icon === 'github' && <GitHubIcon />}
+                    {action.label}
                   </a>
                 ))}
-              </div>
-              <div className="border-t border-[rgba(255,255,255,0.1)] pt-4">
-                <div className="text-xs text-[var(--color-frame-text-muted)] uppercase tracking-wide mb-2">Resources</div>
-                {resourcesItems.map((item) => (
-                  <Link
-                    key={item.label}
-                    to={item.href}
-                    className="block py-2 text-sm text-[var(--color-frame-text-muted)] no-underline"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-              <div className="border-t border-[rgba(255,255,255,0.1)] pt-4">
-                <a
-                  href="https://github.com/ProductBuildersHQ"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm text-[var(--color-frame-text-muted)] no-underline"
-                >
-                  <GitHubIcon />
-                  GitHub
-                </a>
               </div>
             </div>
           </div>

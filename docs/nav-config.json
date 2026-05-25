@@ -1,0 +1,42 @@
+{
+  "brand": {
+    "name": "ProductBuildersHQ",
+    "href": "https://productbuildershq.com"
+  },
+  "baseUrl": "https://productbuildershq.com",
+  "links": [
+    { "id": "frameworks", "label": "Frameworks", "href": "/frameworks" },
+    { "id": "case-studies", "label": "Case Studies", "href": "/case-studies" }
+  ],
+  "dropdowns": [
+    {
+      "id": "products",
+      "label": "Products",
+      "items": [
+        {
+          "id": "visionspec",
+          "label": "VisionSpec",
+          "href": "/visionspec/",
+          "description": "Multi-domain specification orchestration"
+        }
+      ]
+    },
+    {
+      "id": "resources",
+      "label": "Resources",
+      "items": [
+        { "id": "papers", "label": "Papers", "href": "/papers" },
+        { "id": "about", "label": "About", "href": "/about" }
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "id": "github",
+      "label": "GitHub",
+      "href": "https://github.com/ProductBuildersHQ",
+      "icon": "github",
+      "external": true
+    }
+  ]
+}

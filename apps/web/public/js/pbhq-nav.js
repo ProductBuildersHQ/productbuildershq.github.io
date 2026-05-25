@@ -1,6 +1,8 @@
 /**
  * ProductBuildersHQ Navigation Initializer
- * Version: 1.0.0
+ * Version: 2.0.0
+ *
+ * Loads navigation config from /nav-config.json and initializes wt-navbar.
  *
  * Usage:
  *   <div id="pbhq-navbar-container"></div>
@@ -10,6 +12,9 @@
 
 (function() {
   'use strict';
+
+  // Base URL
+  var BASE_URL = 'https://productbuildershq.com';
 
   // Theme CSS for ProductBuildersHQ colors - overrides design system variables
   var themeCSS = `
@@ -48,57 +53,28 @@
     }
   `;
 
-  // GitHub icon
+  // GitHub icon SVG
   var githubIcon = '<svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>';
 
-  // Base URL
-  var BASE_URL = 'https://productbuildershq.com';
-  var GITHUB_URL = 'https://github.com/ProductBuildersHQ';
+  /**
+   * Transform config to add icons and resolve relative URLs
+   */
+  function transformConfig(config) {
+    // Add GitHub icon to actions
+    if (config.actions) {
+      config.actions = config.actions.map(function(action) {
+        if (action.icon === 'github') {
+          action.icon = githubIcon;
+        }
+        return action;
+      });
+    }
+    return config;
+  }
 
-  // Navigation configuration
-  var navbarConfig = {
-    brand: {
-      name: 'ProductBuildersHQ',
-      href: BASE_URL
-    },
-    baseUrl: BASE_URL,
-    links: [
-      { id: 'frameworks', label: 'Frameworks', href: '/frameworks' },
-      { id: 'case-studies', label: 'Case Studies', href: '/case-studies' }
-    ],
-    dropdowns: [
-      {
-        id: 'products',
-        label: 'Products',
-        items: [
-          {
-            id: 'visionspec',
-            label: 'VisionSpec',
-            href: '/visionspec/',
-            description: 'Multi-domain specification orchestration'
-          }
-        ]
-      },
-      {
-        id: 'resources',
-        label: 'Resources',
-        items: [
-          { id: 'papers', label: 'Papers', href: '/papers/' },
-          { id: 'about', label: 'About', href: '/about' }
-        ]
-      }
-    ],
-    actions: [
-      {
-        id: 'github',
-        label: 'GitHub',
-        href: GITHUB_URL,
-        icon: githubIcon,
-        external: true
-      }
-    ]
-  };
-
+  /**
+   * Fetch nav config and initialize navbar
+   */
   function init() {
     var containerId = 'pbhq-navbar-container';
     var container = document.getElementById(containerId);
@@ -122,11 +98,77 @@
       document.head.appendChild(style);
     }
 
-    // Create navbar
+    // Fetch config from shared JSON
+    fetch(BASE_URL + '/nav-config.json')
+      .then(function(response) {
+        if (!response.ok) {
+          throw new Error('Failed to fetch nav config');
+        }
+        return response.json();
+      })
+      .then(function(config) {
+        var navbar = document.createElement('wt-navbar');
+        navbar.setAttribute('theme', 'dark');
+        navbar.config = transformConfig(config);
+        container.appendChild(navbar);
+      })
+      .catch(function(error) {
+        console.error('ProductBuildersHQ Nav: Error loading config', error);
+        // Fallback to inline config if fetch fails
+        initWithFallback(container);
+      });
+  }
+
+  /**
+   * Fallback initialization with inline config
+   */
+  function initWithFallback(container) {
+    var fallbackConfig = {
+      brand: {
+        name: 'ProductBuildersHQ',
+        href: BASE_URL
+      },
+      baseUrl: BASE_URL,
+      links: [
+        { id: 'frameworks', label: 'Frameworks', href: '/frameworks' },
+        { id: 'case-studies', label: 'Case Studies', href: '/case-studies' }
+      ],
+      dropdowns: [
+        {
+          id: 'products',
+          label: 'Products',
+          items: [
+            {
+              id: 'visionspec',
+              label: 'VisionSpec',
+              href: '/visionspec/',
+              description: 'Multi-domain specification orchestration'
+            }
+          ]
+        },
+        {
+          id: 'resources',
+          label: 'Resources',
+          items: [
+            { id: 'papers', label: 'Papers', href: '/papers' },
+            { id: 'about', label: 'About', href: '/about' }
+          ]
+        }
+      ],
+      actions: [
+        {
+          id: 'github',
+          label: 'GitHub',
+          href: 'https://github.com/ProductBuildersHQ',
+          icon: githubIcon,
+          external: true
+        }
+      ]
+    };
+
     var navbar = document.createElement('wt-navbar');
     navbar.setAttribute('theme', 'dark');
-    navbar.config = navbarConfig;
-
+    navbar.config = fallbackConfig;
     container.appendChild(navbar);
   }
 
@@ -140,6 +182,6 @@
   // Export for manual initialization
   window.PbhqNav = {
     init: init,
-    config: navbarConfig
+    BASE_URL: BASE_URL
   };
 })();
