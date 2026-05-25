@@ -113,36 +113,66 @@ tags: ["maturity-model", "product-management", "engineering"]
 - Automatic sitemap and RSS generation
 - Table of contents auto-generated from headings
 
-### Content Sync Workflow
+### Build Pipeline Options
 
-Since markdown source lives in `productbuildershq-content-internal/`:
+Markdown source lives in `productbuildershq-content-internal/`. Two approaches:
 
-**Option A: Manual copy** (simple)
-```bash
-# Copy markdown to website
-cp content-internal/product-builder_maturity-model/article.md \
-   website/src/content/frameworks/product-builder-mm.md
+**Option A: Dual build from content repo** (recommended)
 
-# Copy PDF
-cp content-internal/product-builder_maturity-model/article.pdf \
-   website/public/papers/product-builder-mm.pdf
+```
+productbuildershq-content-internal/
+└── product-builder_maturity-model/
+    ├── article.md          # Single source of truth
+    ├── article.pdf         # Pandoc → PDF (for download)
+    └── article.html        # Pandoc → HTML (for website)
 ```
 
-**Option B: Build script** (automated)
 ```bash
-# scripts/sync-content.sh
-for dir in ../productbuildershq-content-internal/*/; do
-  name=$(basename "$dir")
-  cp "$dir/article.md" "src/content/frameworks/$name.md"
-  cp "$dir/article.pdf" "public/papers/$name.pdf" 2>/dev/null || true
-done
+# In content-internal: build both outputs
+pandoc article.md -o article.pdf --pdf-engine=xelatex  # Branded PDF
+pandoc article.md -o article.html --standalone          # Clean HTML
+
+# Copy to website
+cp article.pdf  ../website/public/papers/
+cp article.html ../website/src/content/   # Or embed directly
 ```
 
-**Option C: Git submodule** (single source)
-```bash
-git submodule add ../productbuildershq-content-internal content
-# Astro reads directly from content/*/article.md
+**Option B: Website builds HTML at deploy time**
+
 ```
+productbuildershq-content-internal/
+└── product-builder_maturity-model/
+    ├── article.md          # Source
+    └── article.pdf         # Pre-built PDF only
+
+productbuildershq.github.io/
+└── astro.config.mjs
+    # Reads markdown from content-internal via symlink or submodule
+    # Astro/MDX renders HTML at build time
+```
+
+```bash
+# Symlink content repo
+ln -s ../productbuildershq-content-internal content
+
+# Astro config
+export default defineConfig({
+  content: {
+    collections: {
+      frameworks: defineCollection({
+        source: './content/*/article.md'
+      })
+    }
+  }
+});
+```
+
+**Recommendation: Option A (dual build)**
+
+- PDF and HTML stay in sync (same build moment)
+- Content repo is self-contained
+- Website just copies pre-built artifacts
+- Easier to preview both outputs before publishing
 
 ### Estimated Effort
 
