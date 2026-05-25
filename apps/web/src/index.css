@@ -8,8 +8,8 @@
   --color-primary: #047857;
   --color-primary-dark: #064e3b;
   --color-primary-light: #059669;
-  --color-accent: #facc15;
-  --color-accent-light: #fde047;
+  --color-accent: #eab308;
+  --color-accent-light: #facc15;
 
   /* Frame colors - for navbar/footer (dark green frame) */
   --color-frame-bg: #064e3b;
@@ -20,7 +20,7 @@
 
   /* Backgrounds - Light body content */
   --color-bg: #ffffff;
-  --color-bg-secondary: #f0fdf4;
+  --color-bg-secondary: #f8fdf9;
   --color-bg-card: #ffffff;
   --color-bg-elevated: #f3f4f6;
 
