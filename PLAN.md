@@ -31,18 +31,124 @@ The current React + Vite setup works but has SEO limitations for a content-focus
 4. **Keep PDF generation** - Pandoc workflow remains unchanged
 5. **Update build** - Astro outputs to `docs/` for GitHub Pages
 
+### Article Content as HTML (Key Change)
+
+**Current approach**: Embed PDF in iframe
+**New approach**: Render markdown as native HTML, offer PDF as download
+
+| Aspect | PDF Embed | HTML Render |
+|--------|-----------|-------------|
+| SEO | Not indexed | Fully indexed |
+| Mobile | Poor UX | Native responsive |
+| Loading | Slower (PDF viewer) | Instant |
+| Accessibility | Limited | Full a11y |
+| Styling | Fixed | Matches site theme |
+
+**Content flow with Astro:**
+
+```
+productbuildershq-content-internal/
+└── product-builder_maturity-model/
+    └── article.md                    # Source of truth
+
+      ↓ Copy to website              ↓ Pandoc
+
+productbuildershq.github.io/
+├── src/content/frameworks/
+│   └── product-builder-mm.md         # → HTML render
+└── public/papers/
+    └── product-builder-mm.pdf        # → Download link
+```
+
+**Frontmatter schema:**
+
+```yaml
+---
+title: "Product Builder Maturity Model"
+subtitle: "Two Paths to End-to-End Product Ownership"
+version: "v1.0"
+date: 2026-05-01
+pdfUrl: "/papers/product-builder-maturity-model.pdf"
+levels: 7
+tags: ["maturity-model", "product-management", "engineering"]
+---
+```
+
+**Article page layout:**
+
+```
+┌─────────────────────────────────────┐
+│ ← Back to Frameworks                │
+├─────────────────────────────────────┤
+│ Product Builder Maturity Model      │
+│ Two Paths to End-to-End Ownership   │
+│                                     │
+│ [7 Levels] [v1.0] [May 2026]       │
+│                                     │
+│ [Download PDF]  [Copy Link]         │
+├─────────────────────────────────────┤
+│ Table of Contents (sticky sidebar)  │
+│ ─────────────────                   │
+│ • The Convergence Model             │
+│ • Maturity Dimensions               │
+│ • Shared Foundation: Levels 0-2     │
+│ • ...                               │
+├─────────────────────────────────────┤
+│                                     │
+│ [Full article content rendered      │
+│  as styled HTML with proper         │
+│  typography, tables, diagrams]      │
+│                                     │
+└─────────────────────────────────────┘
+```
+
 ### Benefits for Content Workflow
 
 - Drop a markdown file in `src/content/` to add new article
 - Frontmatter defines metadata (title, date, tags, pdfUrl)
+- **Article renders as native HTML** - fully searchable, accessible
+- **PDF available for download** - print, offline, sharing
 - Full-text search indexing possible
 - Better lighthouse scores
 - Automatic sitemap and RSS generation
+- Table of contents auto-generated from headings
+
+### Content Sync Workflow
+
+Since markdown source lives in `productbuildershq-content-internal/`:
+
+**Option A: Manual copy** (simple)
+```bash
+# Copy markdown to website
+cp content-internal/product-builder_maturity-model/article.md \
+   website/src/content/frameworks/product-builder-mm.md
+
+# Copy PDF
+cp content-internal/product-builder_maturity-model/article.pdf \
+   website/public/papers/product-builder-mm.pdf
+```
+
+**Option B: Build script** (automated)
+```bash
+# scripts/sync-content.sh
+for dir in ../productbuildershq-content-internal/*/; do
+  name=$(basename "$dir")
+  cp "$dir/article.md" "src/content/frameworks/$name.md"
+  cp "$dir/article.pdf" "public/papers/$name.pdf" 2>/dev/null || true
+done
+```
+
+**Option C: Git submodule** (single source)
+```bash
+git submodule add ../productbuildershq-content-internal content
+# Astro reads directly from content/*/article.md
+```
 
 ### Estimated Effort
 
 - Initial migration: 2-3 hours
 - Component porting: 1-2 hours
+- Content sync setup: 30 minutes
 - Testing and polish: 1 hour
 
 ---
