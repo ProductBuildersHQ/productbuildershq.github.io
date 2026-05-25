@@ -1,0 +1,15 @@
+{
+  "name": "productbuildershq.github.io",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev -w @productbuildershq/web",
+    "build": "npm run build -w @productbuildershq/web",
+    "preview": "npm run preview -w @productbuildershq/web"
+  }
+}
