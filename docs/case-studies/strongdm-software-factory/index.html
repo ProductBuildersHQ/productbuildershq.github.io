@@ -1,0 +1,175 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="How StrongDM's Software Factory removes humans from coding and code review, replacing review with scenario-based validation and Digital Twin testing."><meta property="og:title" content="StrongDM Software Factory | ProductBuildersHQ"><meta property="og:description" content="How StrongDM's Software Factory removes humans from coding and code review, replacing review with scenario-based validation and Digital Twin testing."><meta property="og:type" content="website"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><title>StrongDM Software Factory | ProductBuildersHQ</title><link rel="stylesheet" href="/_astro/BaseLayout.qYAHBnzB.css"></head> <body> <div class="min-h-screen flex flex-col"> <nav class="sticky top-0 z-50 bg-[var(--color-frame-bg)]"> <div class="max-w-7xl mx-auto px-5 md:px-8"> <div class="flex items-center justify-between h-16"> <a href="/" class="flex items-center gap-2 no-underline"> <span class="text-xl font-bold text-[var(--color-frame-text)]">ProductBuildersHQ</span> </a> <div class="hidden md:flex items-center gap-6"> <a href="/frameworks" class="text-sm font-medium no-underline transition-colors text-[var(--color-frame-text-muted)] hover:text-[var(--color-frame-text)]"> Frameworks </a><a href="/case-studies" class="text-sm font-medium no-underline transition-colors text-[var(--color-frame-accent)]"> Case Studies </a> <div class="relative group"> <button class="flex items-center gap-1 text-sm font-medium text-[var(--color-frame-text-muted)] group-hover:text-[var(--color-frame-text)] transition-colors bg-transparent border-none cursor-pointer"> Products <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path> </svg> </button> <div class="absolute top-full left-0 mt-2 w-64 bg-[var(--color-frame-bg)] border border-[rgba(255,255,255,0.15)] rounded-lg shadow-lg py-2 z-50 hidden group-hover:block group-focus-within:block"> <a href="/visionspec/" class="block px-4 py-2 text-sm text-[var(--color-frame-text-muted)] hover:text-[var(--color-frame-text)] hover:bg-[rgba(255,255,255,0.05)] no-underline"> <div class="font-medium">VisionSpec</div> <div class="text-xs text-[var(--color-frame-text-muted)] mt-0.5">Multi-domain specification orchestration</div> </a> </div> </div><div class="relative group"> <button class="flex items-center gap-1 text-sm font-medium text-[var(--color-frame-text-muted)] group-hover:text-[var(--color-frame-text)] transition-colors bg-transparent border-none cursor-pointer"> Resources <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path> </svg> </button> <div class="absolute top-full left-0 mt-2 w-64 bg-[var(--color-frame-bg)] border border-[rgba(255,255,255,0.15)] rounded-lg shadow-lg py-2 z-50 hidden group-hover:block group-focus-within:block"> <a href="/papers" class="block px-4 py-2 text-sm text-[var(--color-frame-text-muted)] hover:text-[var(--color-frame-text)] hover:bg-[rgba(255,255,255,0.05)] no-underline"> <div class="font-medium">Papers</div>  </a><a href="/about" class="block px-4 py-2 text-sm text-[var(--color-frame-text-muted)] hover:text-[var(--color-frame-text)] hover:bg-[rgba(255,255,255,0.05)] no-underline"> <div class="font-medium">About</div>  </a> </div> </div> <a href="https://github.com/ProductBuildersHQ" target="_blank" rel="noopener noreferrer" class="text-[var(--color-frame-text-muted)] hover:text-[var(--color-frame-text)] transition-colors" title="GitHub" aria-label="GitHub"> <svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor" aria-hidden="true"> <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"></path> </svg> </a> </div> <details class="md:hidden relative"> <summary class="list-none text-[var(--color-frame-text)] cursor-pointer p-2" aria-label="Open navigation"> <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path> </svg> </summary> <div class="absolute right-0 top-full mt-3 w-72 bg-[var(--color-frame-bg)] border border-[rgba(255,255,255,0.15)] rounded-lg shadow-lg p-4"> <div class="flex flex-col gap-4"> <a href="/frameworks" class="text-sm font-medium no-underline text-[var(--color-frame-text-muted)]"> Frameworks </a><a href="/case-studies" class="text-sm font-medium no-underline text-[var(--color-frame-accent)]"> Case Studies </a> <div class="border-t border-[rgba(255,255,255,0.1)] pt-4"> <div class="text-xs text-[var(--color-frame-text-muted)] uppercase tracking-wide mb-2">Products</div> <a href="/visionspec/" class="block py-2 text-sm text-[var(--color-frame-text-muted)] no-underline">VisionSpec</a> </div><div class="border-t border-[rgba(255,255,255,0.1)] pt-4"> <div class="text-xs text-[var(--color-frame-text-muted)] uppercase tracking-wide mb-2">Resources</div> <a href="/papers" class="block py-2 text-sm text-[var(--color-frame-text-muted)] no-underline">Papers</a><a href="/about" class="block py-2 text-sm text-[var(--color-frame-text-muted)] no-underline">About</a> </div> </div> </div> </details> </div> </div> </nav> <main class="flex-1">  <div class="py-8 md:py-12"> <div class="max-w-6xl mx-auto px-5 md:px-8"> <a href="/case-studies" class="inline-flex items-center text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline mb-6"> <svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"> <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path> </svg>
+Back to Case Studies
+</a> <div class="mb-8"> <h1 class="text-3xl md:text-4xl font-bold mb-2">StrongDM Software Factory</h1> <p class="text-xl text-[var(--color-primary)] mb-4">ASDM Level 6: Autonomous Coding &amp; Review</p> <p class="text-[var(--color-text-muted)] mb-6 max-w-3xl">How StrongDM&#39;s Software Factory removes humans from coding and code review, replacing review with scenario-based validation and Digital Twin testing.</p> <div class="flex flex-wrap items-center gap-4 mb-6"> <span class="inline-flex items-center text-sm font-medium px-3 py-1.5 bg-[var(--color-accent)] text-[var(--color-primary-dark)] rounded-full">Level 6</span> <span class="text-sm font-medium text-[var(--color-text)]">StrongDM</span> <span class="text-sm text-[var(--color-text-muted)]">Infrastructure Software</span> <span class="text-sm text-[var(--color-text-subtle)]">February 2026</span> </div> <div class="flex flex-wrap gap-3"> <a href="/papers/strongdm-software-factory.pdf" download class="inline-flex items-center justify-center px-5 py-2.5 bg-[var(--color-primary-dark)] text-white font-medium rounded-lg no-underline hover:bg-[var(--color-primary)] transition-colors">Download PDF</a> <a href="/papers/strongdm-software-factory.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-5 py-2.5 border border-[var(--color-border)] text-[var(--color-text)] font-medium rounded-lg no-underline hover:bg-[var(--color-bg-secondary)] transition-colors">Open PDF</a> </div> </div> <div class="flex flex-wrap gap-2 mb-8"> <span class="text-sm px-3 py-1 bg-[var(--color-bg-secondary)] text-[var(--color-text-muted)] rounded-full">strongdm</span><span class="text-sm px-3 py-1 bg-[var(--color-bg-secondary)] text-[var(--color-text-muted)] rounded-full">level-6</span><span class="text-sm px-3 py-1 bg-[var(--color-bg-secondary)] text-[var(--color-text-muted)] rounded-full">asdm</span><span class="text-sm px-3 py-1 bg-[var(--color-bg-secondary)] text-[var(--color-text-muted)] rounded-full">autonomous-coding</span><span class="text-sm px-3 py-1 bg-[var(--color-bg-secondary)] text-[var(--color-text-muted)] rounded-full">case-study</span> </div> <section class="mb-8" aria-labelledby="key-metrics"> <div class="flex items-end justify-between gap-4 mb-4"> <div> <h2 id="key-metrics" class="text-2xl font-bold mb-1">Key Metrics</h2> <p class="text-sm text-[var(--color-text-muted)]">Reported outcomes and operating signals from this case study.</p> </div> </div> <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"> <div class="border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-card)] p-5"> <div class="text-3xl font-bold text-[var(--color-primary-dark)] mb-2">0%</div> <div class="text-sm font-semibold text-[var(--color-text)] mb-2">Human-written code target</div> <p class="text-sm text-[var(--color-text-muted)] leading-relaxed mb-3">StrongDM&#39;s published rule says code must not be written by humans.</p> <div class="text-xs text-[var(--color-text-subtle)]"> <span class="uppercase tracking-wide">reported</span> <span> · </span> <span>StrongDM Software Factory</span> </div> </div><div class="border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-card)] p-5"> <div class="text-3xl font-bold text-[var(--color-primary-dark)] mb-2">0%</div> <div class="text-sm font-semibold text-[var(--color-text)] mb-2">Human code-review target</div> <p class="text-sm text-[var(--color-text-muted)] leading-relaxed mb-3">StrongDM&#39;s published rule says code must not be reviewed by humans.</p> <div class="text-xs text-[var(--color-text-subtle)]"> <span class="uppercase tracking-wide">reported</span> <span> · </span> <span>StrongDM Software Factory</span> </div> </div><div class="border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-card)] p-5"> <div class="text-3xl font-bold text-[var(--color-primary-dark)] mb-2">$1k/day</div> <div class="text-sm font-semibold text-[var(--color-text)] mb-2">Token spend benchmark</div> <p class="text-sm text-[var(--color-text-muted)] leading-relaxed mb-3">StrongDM frames at least $1,000/day per human engineer as a practical factory benchmark.</p> <div class="text-xs text-[var(--color-text-subtle)]"> <span class="uppercase tracking-wide">reported</span> <span> · </span> <span>StrongDM Software Factory</span> </div> </div><div class="border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-card)] p-5"> <div class="text-3xl font-bold text-[var(--color-primary-dark)] mb-2">1,000s/hr</div> <div class="text-sm font-semibold text-[var(--color-text)] mb-2">Scenario throughput</div> <p class="text-sm text-[var(--color-text-muted)] leading-relaxed mb-3">The Digital Twin Universe can run thousands of scenarios per hour without production API limits.</p> <div class="text-xs text-[var(--color-text-subtle)]"> <span class="uppercase tracking-wide">reported</span> <span> · </span> <span>StrongDM Software Factory</span> </div> </div> </div> </section> <section class="mb-10 border-y border-[var(--color-border-light)] bg-[var(--color-bg-secondary)]"> <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[var(--color-border-light)]"> <div class="p-5"> <h2 class="text-sm font-semibold uppercase tracking-wide text-[var(--color-primary-dark)] mb-2">Challenge</h2> <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">AI-generated code still creates a human review bottleneck when humans must read every change before it is trusted.</p> </div> <div class="p-5"> <h2 class="text-sm font-semibold uppercase tracking-wide text-[var(--color-primary-dark)] mb-2">Approach</h2> <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">StrongDM moved humans upstream to intent, scenarios, and constraints while agents generate and iterate code against scenario satisfaction.</p> </div> <div class="p-5"> <h2 class="text-sm font-semibold uppercase tracking-wide text-[var(--color-primary-dark)] mb-2">Outcome</h2> <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">The public model demonstrates ASDM Level 6: autonomous coding and review, but not yet autonomous production operations.</p> </div> </div> </section> <div class="grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-10"> <aside class="hidden lg:block"> <div class="sticky top-24 border-l border-[var(--color-border-light)] pl-4"> <div class="text-xs font-semibold uppercase tracking-wide text-[var(--color-text-subtle)] mb-3">Contents</div> <nav class="space-y-2"> <a href="#the-core-shift" class="block text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline">The Core Shift</a><a href="#how-the-factory-works" class="block text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline">How the Factory Works</a><a href="#what-strongdm-changed" class="block text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline">What StrongDM Changed</a><a href="#metrics-and-signals" class="block text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline">Metrics and Signals</a><a href="#case-study-classification" class="block text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline">Case Study Classification</a><a href="#asdm-practice-mapping" class="block text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline">ASDM Practice Mapping</a><a href="#level-boundary-analysis" class="block text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline">Level Boundary Analysis</a><a href="#transferable-lessons" class="block text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline">Transferable Lessons</a><a href="#open-questions" class="block text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline">Open Questions</a><a href="#sources" class="block text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline">Sources</a> </nav> </div> </aside> <article class="article-content min-w-0"> <h1 id="strongdm-software-factory-asdm-level-6-case-study">StrongDM Software Factory: ASDM Level 6 Case Study<a class="heading-anchor" href="#strongdm-software-factory-asdm-level-6-case-study"><span class="icon icon-link"></span></a></h1>
+<p>StrongDM’s Software Factory is one of the clearest public examples of <strong>ASDM Level 6: Autonomous Coding &#x26; Review</strong>. The system removes humans from the normal coding and code-review loop. Humans define intent, scenarios, and constraints; agents generate code, run validation harnesses, and iterate until the system converges.</p>
+<p>The case is important because it shows a concrete operating model beyond AI-assisted coding. It also shows the boundary of the evidence: StrongDM demonstrates autonomous coding and review, but the public material does not establish full autonomous production operations. Under ASDM, that places StrongDM at Level 6, not Level 7.</p>
+<h2 id="the-core-shift">The Core Shift<a class="heading-anchor" href="#the-core-shift"><span class="icon icon-link"></span></a></h2>
+<p>Most AI coding adoption starts with a familiar pattern: humans write prompts, agents produce code, and humans review the result. The workflow gets faster, but the accountability model stays the same. A person still reads the code before it is trusted.</p>
+<p>StrongDM’s Software Factory changes that model. Its published rule set is explicit:</p>
+<ul>
+<li>Code must not be written by humans.</li>
+<li>Code must not be reviewed by humans.</li>
+</ul>
+<p>That does not mean humans disappear. It means humans move upstream. Their job becomes defining the desired behavior, writing scenarios, setting constraints, and maintaining the validation environment. The agent’s job is to produce code and keep iterating until the system satisfies those scenarios.</p>
+<p>This is the Level 5 to Level 6 transition in ASDM: human review stops being the quality gate. Scenario satisfaction becomes the quality gate.</p>
+<h2 id="how-the-factory-works">How the Factory Works<a class="heading-anchor" href="#how-the-factory-works"><span class="icon icon-link"></span></a></h2>
+<p>The factory starts with specifications and scenarios. Humans describe what the software should accomplish, not how the code should be structured. Those scenarios are stored outside the implementation path, which matters because the implementation agents should not be able to rewrite the tests that judge them.</p>
+<p>Agents then generate code, run validation harnesses, observe failures, and revise. The goal is not a perfect first pass. The goal is convergence: repeated implementation attempts that move the system toward scenario satisfaction.</p>
+<p>The most important infrastructure is StrongDM’s <strong>Digital Twin Universe</strong>. StrongDM builds behavioral clones of third-party services such as Okta, Jira, Slack, Google Docs, Google Drive, and Google Sheets. These twins allow agents to run high-volume validation without hitting production API limits, creating real customer-side effects, or paying external API costs for every test run.</p>
+<p>In ASDM terms, this is not merely “AI writes code.” It is a validation architecture designed to make human code review unnecessary.</p>
+<h2 id="what-strongdm-changed">What StrongDM Changed<a class="heading-anchor" href="#what-strongdm-changed"><span class="icon icon-link"></span></a></h2>
+<h3 id="from-code-review-to-scenario-satisfaction">From Code Review to Scenario Satisfaction<a class="heading-anchor" href="#from-code-review-to-scenario-satisfaction"><span class="icon icon-link"></span></a></h3>
+<p>Traditional software delivery relies on humans reading code before merge. StrongDM replaces that step with scenario-based validation. Scenarios are end-to-end user stories stored outside the implementation path.</p>
+<p>This matters because AI-generated tests can be reward-hacked. If implementation agents can see or rewrite the tests, they can produce code that satisfies narrow checks without satisfying user intent. StrongDM’s scenario model creates an external evaluation layer.</p>
+<h3 id="from-production-apis-to-digital-twins">From Production APIs to Digital Twins<a class="heading-anchor" href="#from-production-apis-to-digital-twins"><span class="icon icon-link"></span></a></h3>
+<p>StrongDM’s Software Factory depends on systems that interact with external SaaS services. Testing against real Okta, Jira, Slack, or Google Workspace environments creates rate limits, cost constraints, fragility, and limited failure-mode coverage.</p>
+<p>The Digital Twin Universe addresses this by creating behavioral clones of those services. The DTU allows agents and simulated users to exercise scenarios at volumes that would be impractical or unsafe against production APIs.</p>
+<h3 id="from-human-iteration-to-agentic-convergence">From Human Iteration to Agentic Convergence<a class="heading-anchor" href="#from-human-iteration-to-agentic-convergence"><span class="icon icon-link"></span></a></h3>
+<p>The factory model is iterative. Agents generate code, run harnesses, observe failures, revise, and repeat. StrongDM links this possibility to a late-2024 model inflection, when long-horizon coding workflows started compounding correctness rather than compounding error.</p>
+<h2 id="metrics-and-signals">Metrics and Signals<a class="heading-anchor" href="#metrics-and-signals"><span class="icon icon-link"></span></a></h2>
+<p>The strongest public metrics are structural rather than conventional productivity measures:</p>
+<ul>
+<li><strong>0% human-written code target.</strong> StrongDM’s published rule says code must not be written by humans.</li>
+<li><strong>0% human code-review target.</strong> StrongDM’s published rule says code must not be reviewed by humans.</li>
+<li><strong>At least $1,000/day token-spend benchmark per human engineer.</strong> StrongDM frames token spend as a practical sign that the factory is using enough agent runtime.</li>
+<li><strong>Thousands of scenarios per hour.</strong> StrongDM reports that the DTU can run validation at volumes unavailable against production APIs.</li>
+<li><strong>Six named Digital Twins.</strong> StrongDM publicly names Okta, Jira, Slack, Google Docs, Google Drive, and Google Sheets.</li>
+<li><strong>Three-person AI team signal.</strong> Simon Willison describes visiting StrongDM’s three-person AI team in October 2025.</li>
+<li><strong>Public codebase-size signal.</strong> Simon Willison reports StrongDM’s <code>cxdb</code> repository as roughly 16,000 Rust LOC, 9,500 Go LOC, and 6,700 TypeScript LOC.</li>
+</ul>
+<p>These numbers do not prove lower defect rates or faster cycle time by themselves. They prove something different: StrongDM has designed a system where the normal human coding and review activities are no longer part of the delivery loop.</p>
+<h2 id="case-study-classification">Case Study Classification<a class="heading-anchor" href="#case-study-classification"><span class="icon icon-link"></span></a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Dimension</th><th>Assessment</th></tr></thead><tbody><tr><td><strong>ASDM level</strong></td><td>Level 6: Autonomous Coding &#x26; Review</td></tr><tr><td><strong>Primary evidence</strong></td><td>StrongDM Software Factory site, StrongDM blog, Simon Willison analysis</td></tr><tr><td><strong>Human role</strong></td><td>Specification owner and scenario designer</td></tr><tr><td><strong>AI role</strong></td><td>Code generation, validation-loop execution, convergence</td></tr><tr><td><strong>Validation model</strong></td><td>Scenario-based validation, satisfaction metrics, Digital Twin Universe</td></tr><tr><td><strong>Operational status</strong></td><td>Autonomous coding/review demonstrated; autonomous production operations not established publicly</td></tr><tr><td><strong>Level 7 evidence?</strong></td><td>Insufficient</td></tr></tbody></table>
+<h2 id="asdm-practice-mapping">ASDM Practice Mapping<a class="heading-anchor" href="#asdm-practice-mapping"><span class="icon icon-link"></span></a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>ASDM practice</th><th>StrongDM evidence</th><th>Maturity</th></tr></thead><tbody><tr><td>Specification-first development</td><td>Humans define intent and constraints before agents execute.</td><td>Strong</td></tr><tr><td>Scenario-based validation</td><td>End-to-end user stories are stored outside the codebase and used as holdout validation.</td><td>Strong</td></tr><tr><td>Probabilistic satisfaction metrics</td><td>StrongDM uses satisfaction to measure what fraction of observed scenario trajectories likely satisfy the user.</td><td>Strong</td></tr><tr><td>Digital Twin testing</td><td>DTU clones third-party services and allows high-volume validation.</td><td>Strong</td></tr><tr><td>Zero human code review</td><td>StrongDM’s rule explicitly prohibits human code review.</td><td>Strong</td></tr><tr><td>Governance-by-policy</td><td>StrongDM defines rules and constraints, but public material is lighter on production policy governance.</td><td>Partial</td></tr><tr><td>Full provenance</td><td><code>cxdb</code> suggests investment in conversation/tool-output history, but public material does not fully describe audit controls.</td><td>Partial</td></tr><tr><td>Autonomous operations</td><td>Public evidence does not establish autonomous production deployment, remediation, or incident response.</td><td>Not established</td></tr></tbody></table>
+<p>The practice mapping shows why StrongDM is such a strong Level 6 case. It has strong evidence for the practices that remove human coding and code review, but weaker public evidence for the governance and production operations practices needed for Level 7.</p>
+<h2 id="level-boundary-analysis">Level Boundary Analysis<a class="heading-anchor" href="#level-boundary-analysis"><span class="icon icon-link"></span></a></h2>
+<h3 id="why-this-qualifies-for-level-6">Why This Qualifies for Level 6<a class="heading-anchor" href="#why-this-qualifies-for-level-6"><span class="icon icon-link"></span></a></h3>
+<p>StrongDM’s public material is strong evidence for Level 6:</p>
+<ul>
+<li>Humans do not write code.</li>
+<li>Humans do not review code.</li>
+<li>Validation is scenario-based.</li>
+<li>Digital Twins enable high-volume behavioral validation.</li>
+<li>Agents run end-to-end once work is specified.</li>
+<li>Satisfaction metrics replace binary pass/fail testing as the primary validation lens.</li>
+</ul>
+<h3 id="why-this-does-not-yet-qualify-for-level-7">Why This Does Not Yet Qualify for Level 7<a class="heading-anchor" href="#why-this-does-not-yet-qualify-for-level-7"><span class="icon icon-link"></span></a></h3>
+<p>The public material is not enough to classify StrongDM as Level 7:</p>
+<ul>
+<li>It does not establish autonomous deployment into production customer environments.</li>
+<li>It does not establish autonomous rollback, remediation, or incident response.</li>
+<li>It does not establish that enterprise offerings such as StrongDM’s PAM product are operated without routine human gates.</li>
+<li>It does not describe production SLO governance, policy-based operational authority, or compliance evidence for autonomous operations.</li>
+</ul>
+<p>Under ASDM, Level 7 requires autonomous operations, not just autonomous coding and review.</p>
+<h2 id="transferable-lessons">Transferable Lessons<a class="heading-anchor" href="#transferable-lessons"><span class="icon icon-link"></span></a></h2>
+<p><strong>Validation must become independent from implementation.</strong> If agents can edit the tests that judge them, the system can converge on test-passing behavior rather than user-satisfying behavior.</p>
+<p><strong>Digital Twins turn validation into infrastructure.</strong> StrongDM’s DTU is not a side project. It is the enabling substrate for removing human code review.</p>
+<p><strong>The human role moves upstream.</strong> Humans still matter, but their work shifts from implementation and review to intent definition, scenario design, constraints, and factory governance.</p>
+<p><strong>Level 6 is expensive before it is cheap.</strong> StrongDM’s $1,000/day per engineer token benchmark is a useful warning. Autonomous coding at this level consumes significant model runtime, simulation, and validation capacity.</p>
+<p><strong>Level 6 does not imply Level 7.</strong> A team can remove human coding and code review while still relying on humans for production exposure, operations, and incident response.</p>
+<h2 id="open-questions">Open Questions<a class="heading-anchor" href="#open-questions"><span class="icon icon-link"></span></a></h2>
+<ul>
+<li>What percentage of StrongDM’s internal and customer-facing software is built with this factory model?</li>
+<li>Are the strongest examples open-source, internal tooling, test software, or production product code?</li>
+<li>What defect rates, rollback rates, or escaped issue rates does the factory produce?</li>
+<li>How are scenario libraries reviewed, versioned, and audited?</li>
+<li>How does StrongDM prevent architectural drift when humans do not read code?</li>
+<li>What operational gates remain before software reaches enterprise customers?</li>
+</ul>
+<h2 id="sources">Sources<a class="heading-anchor" href="#sources"><span class="icon icon-link"></span></a></h2>
+<ul>
+<li>StrongDM AI. “Software Factories And The Agentic Moment.” February 6, 2026. <a href="https://factory.strongdm.ai/">https://factory.strongdm.ai/</a></li>
+<li>StrongDM. “The StrongDM Software Factory: Building Software with AI.” February 19, 2026. <a href="https://www.strongdm.com/blog/the-strongdm-software-factory-building-software-with-ai">https://www.strongdm.com/blog/the-strongdm-software-factory-building-software-with-ai</a></li>
+<li>Willison, Simon. “How StrongDM’s AI team build serious software without even looking at the code.” February 7, 2026. <a href="https://simonwillison.net/2026/Feb/7/software-factory/">https://simonwillison.net/2026/Feb/7/software-factory/</a></li>
+</ul> </article> </div> </div> </div>  </main> <footer class="bg-[var(--color-frame-bg)] text-[var(--color-frame-text)] py-12"> <div class="max-w-7xl mx-auto px-5 md:px-8"> <div class="grid grid-cols-1 md:grid-cols-3 gap-8"> <div> <h3 class="text-lg font-bold mb-4">ProductBuildersHQ</h3> <p class="text-[var(--color-frame-text-muted)] text-sm">Frameworks and case studies for the evolution of product development.</p> </div> <div> <h4 class="text-sm font-semibold uppercase tracking-wider mb-4 text-[var(--color-frame-accent)]">Research</h4> <ul class="space-y-2"> <li><a href="/frameworks" class="text-[var(--color-frame-text-muted)] hover:text-[var(--color-frame-text)] text-sm no-underline">Frameworks</a></li> <li><a href="/case-studies" class="text-[var(--color-frame-text-muted)] hover:text-[var(--color-frame-text)] text-sm no-underline">Case Studies</a></li> </ul> </div> <div> <h4 class="text-sm font-semibold uppercase tracking-wider mb-4 text-[var(--color-frame-accent)]">Company</h4> <ul class="space-y-2"> <li><a href="/about" class="text-[var(--color-frame-text-muted)] hover:text-[var(--color-frame-text)] text-sm no-underline">About</a></li> <li><a href="https://github.com/ProductBuildersHQ" target="_blank" rel="noopener noreferrer" class="text-[var(--color-frame-text-muted)] hover:text-[var(--color-frame-text)] text-sm no-underline">GitHub</a></li> </ul> </div> </div> <div class="mt-12 pt-8 border-t border-[var(--color-frame-border)] text-center text-[var(--color-frame-text-muted)] text-sm"> <span class="text-[var(--color-frame-accent)]">productbuildershq.com</span> <span class="mx-2">&middot;</span>
+&copy; 2026 ProductBuildersHQ
+</div> </div> </footer> </div> </body></html>
