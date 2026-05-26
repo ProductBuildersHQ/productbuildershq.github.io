@@ -170,7 +170,7 @@ Level 5 breaks this constraint.
 
 ### AWS Project Mantle: Overnight Autonomous Coding
 
-Project Mantle offers one of the most detailed public accounts of Level 5 development. In January 2026, Joe Magherimov—VP and Distinguished Engineer at AWS—described how a team of approximately nine senior engineers built a new inference engine for Amazon Bedrock using AI-first development, claiming 10x commit velocity.
+[Project Mantle](/case-studies/aws-project-mantle) offers one of the most detailed public accounts of Level 5 development. In January 2026, Joe Magherimov—VP and Distinguished Engineer at AWS—described how a team of approximately nine senior engineers built a new inference engine for Amazon Bedrock using AI-first development, claiming 10x commit velocity.
 
 The team composition matters: one Distinguished Engineer plus eight Principal Engineers, all from EC2 with decades of collective experience. This was not junior developers experimenting with AI. This was senior engineers deliberately restructuring how they work.
 
@@ -248,7 +248,7 @@ But this constraint also creates a bottleneck. As agent throughput increases, hu
 
 ### The StrongDM Software Factory
 
-StrongDM's Software Factory represents the most aggressive public implementation of autonomous coding and review. Their operating principles are explicit:
+[StrongDM's Software Factory](/case-studies/strongdm-software-factory) represents the most aggressive public implementation of autonomous coding and review. Their operating principles are explicit:
 
 > "Code **must not be** written by humans."
 > "Code **must not be** reviewed by humans."

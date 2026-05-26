@@ -37,7 +37,7 @@ summary:
 
 # StrongDM Software Factory: ASDM Level 6 Case Study
 
-StrongDM's Software Factory is one of the clearest public examples of **ASDM Level 6: Autonomous Coding & Review**. The system removes humans from the normal coding and code-review loop. Humans define intent, scenarios, and constraints; agents generate code, run validation harnesses, and iterate until the system converges.
+StrongDM's Software Factory is one of the clearest public examples of [**ASDM Level 6: Autonomous Coding & Review**](/frameworks/software-delivery-autonomy). The system removes humans from the normal coding and code-review loop. Humans define intent, scenarios, and constraints; agents generate code, run validation harnesses, and iterate until the system converges.
 
 The case is important because it shows a concrete operating model beyond AI-assisted coding. It also shows the boundary of the evidence: StrongDM demonstrates autonomous coding and review, but the public material does not establish full autonomous production operations. Under ASDM, that places StrongDM at Level 6, not Level 7.
 

@@ -58,6 +58,8 @@ In January 2026, Joe Magherimov, VP and Distinguished Engineer at AWS, sat down 
 
 This case study examines the Mantle project through Magherimov's firsthand account, exploring the techniques, team dynamics, and hard-won lessons that made it possible. It also incorporates perspectives from other Amazon employees who provided additional context in public discussions.
 
+In the [Software Delivery Autonomy Levels](/frameworks/software-delivery-autonomy), Project Mantle maps to **Level 5: Agentic Engineering**: agents execute for extended sessions, while humans still own review, merge decisions, and accountability for the resulting code.
+
 ## Background: The Engineer Behind Mantle
 
 Joe Magherimov brings an unusual depth of experience to the conversation. Over twenty years at Amazon, his career divides neatly into two halves. The first decade was spent building the systems behind amazon.com—shipping, payments, and marketplace infrastructure. The second decade moved into AWS, where he worked on foundational services: VPC, load balancers, NAT gateways, and later the container and serverless stack including ECS, Lambda, and EKS.
