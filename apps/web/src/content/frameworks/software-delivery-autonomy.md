@@ -1,11 +1,11 @@
 ---
 title: "Software Delivery Autonomy Levels"
 subtitle: "From AI-Assisted to AI-Operated"
-description: "A six-level progression from traditional Agile teams to fully autonomous software production, introducing ASDM (Autonomous Software Delivery Model) for Level 6."
-version: "v1.0"
+description: "A seven-level progression from traditional Agile teams to autonomous software delivery and operations, introducing ASDM for autonomous coding, review, validation, and operations."
+version: "v1.1"
 date: "May 2026"
 pdfUrl: "/papers/software-delivery-autonomy.pdf"
-levels: 6
+levels: 7
 tags: ["maturity-model", "asdm", "autonomous", "ai-native", "devops"]
 ---
 
@@ -13,9 +13,9 @@ Most organizations using AI for software development are stuck at the same place
 
 The real transformation begins when AI stops being a faster typewriter and starts changing how software delivery operates.
 
-This article introduces the **Software Delivery Autonomy Levels**—a six-level progression from traditional Agile teams to fully autonomous software production. We focus specifically on Levels 4 through 6, where the process itself transforms, examining real-world implementations at AWS, Spotify, and StrongDM.
+This article introduces the **Software Delivery Autonomy Levels**—a seven-level progression from traditional Agile teams to fully autonomous software delivery and operations. We focus specifically on Levels 4 through 7, where the process itself transforms, examining real-world implementations at AWS, Spotify, StrongDM, and the emerging frontier beyond them.
 
-At Level 6, we introduce **ASDM (Autonomous Software Delivery Model)**—a methodology with specific practices and artifacts for achieving autonomous production. Teams can adopt ASDM practices incrementally as they progress through the levels.
+At Levels 6 and 7, we introduce **ASDM (Autonomous Software Delivery Model)**—a methodology with specific practices and artifacts for achieving autonomous coding, review, validation, and operations. Teams can adopt ASDM practices incrementally as they progress through the levels.
 
 The shift from "AI-assisted" to "AI-operated" is not incremental improvement. It is a fundamental change in how software gets built, validated, and shipped.
 
@@ -23,7 +23,7 @@ The shift from "AI-assisted" to "AI-operated" is not incremental improvement. It
 
 ## Software Delivery Autonomy Levels: The Model
 
-The six levels describe a progression in who—or what—executes software delivery work, and how humans participate in the process.
+The seven levels describe a progression in who—or what—executes software delivery work, and how humans participate in the process.
 
 | Level | Name | Human Role | Defining Characteristic |
 |-------|------|------------|------------------------|
@@ -32,16 +32,18 @@ The six levels describe a progression in who—or what—executes software deliv
 | 3 | AI-Assisted | Primary implementer | AI augments existing process |
 | 4 | AI-Native Workflows | Orchestrator | Process redesigned around AI |
 | 5 | Agentic Engineering | Batch reviewer | Extended autonomous sessions |
-| 6 | Autonomous Production | Governor | Scenario-based validation, no code review |
+| 6 | Autonomous Coding & Review | Specification owner | No human coding or code review |
+| 7 | Autonomous Operations | Governor | Autonomous production operations, exceptions only |
 
 A useful lens is the **loop position** of human involvement:
 
 - **Levels 1-3**: Human-in-the-loop (interactive, every step)
 - **Level 4**: Human-in-the-loop (but process is AI-native)
 - **Level 5**: Human-on-the-loop (batch review after autonomous sessions)
-- **Level 6**: Human-over-the-loop (governance and exceptions only)
+- **Level 6**: Human-over-the-code-loop (humans define intent and scenarios, not code)
+- **Level 7**: Human-over-the-operations-loop (governance, incidents, and exceptions only)
 
-### Why We Focus on Levels 4-6
+### Why We Focus on Levels 4-7
 
 Levels 1 and 2 represent pre-AI organizational maturity. Agile optimized team coordination. DevOps automated delivery pipelines. These are established baselines that most software organizations have adopted in some form.
 
@@ -49,7 +51,7 @@ Level 3—AI-Assisted development—is where most organizations operate today. D
 
 The inflection point occurs between Level 3 and Level 4. This is where AI stops augmenting existing processes and starts requiring new ones. The tooling changes. The team dynamics change. The validation systems change. Everything downstream of "how we build software" must be reconsidered.
 
-Levels 4 through 6 represent this transformation—from AI as tool to AI as operator.
+Levels 4 through 7 represent this transformation—from AI as tool to AI as operator.
 
 ### Validation Methods by Level
 
@@ -60,9 +62,10 @@ As autonomy increases, validation methods must evolve. Human judgment gives way 
 | 3 | Human code review | Unit tests, CI checks | Every PR |
 | 4 | Human code review | Unit tests, CI checks, prompt benchmarks | Every PR |
 | 5 | Human batch review | Unit tests, CI checks, LLM-as-a-Judge for style/security | Before merge |
-| 6 | Scenario satisfaction | Scenarios, DTU, LLM-as-a-Judge, probabilistic metrics | Exceptions only |
+| 6 | Scenario satisfaction | Scenarios, DTU, LLM-as-a-Judge, probabilistic metrics | Before production |
+| 7 | Operational satisfaction | Production telemetry, SLOs, canaries, rollback/remediation agents | Exceptions only |
 
-**LLM-as-a-Judge** emerges at Level 5 as a bridge technology. AI models evaluate code for style consistency, security vulnerabilities, and architectural compliance—tasks previously requiring human reviewers. At Level 6, LLM-as-a-Judge becomes one component of a broader autonomous validation stack.
+**LLM-as-a-Judge** emerges at Level 5 as a bridge technology. AI models evaluate code for style consistency, security vulnerabilities, and architectural compliance—tasks previously requiring human reviewers. At Level 6, LLM-as-a-Judge becomes one component of a broader autonomous validation stack. At Level 7, validation expands beyond code correctness into operational health: deployment safety, live telemetry, incident response, rollback, and continuous policy compliance.
 
 ### Artifacts and Rituals by Level
 
@@ -73,8 +76,23 @@ Each level introduces new artifacts (documents, infrastructure) and rituals (pra
 | 4 | Steering files (AGENTS.md), prompt libraries, context specs | Mob Elaboration, Mob Construction, prompt reviews |
 | 5 | Overnight execution logs, batch review queues, agent traces | Queue-before-sleep, morning review sessions, high-bandwidth standups |
 | 6 | Scenario libraries, Digital Twins, satisfaction dashboards, provenance records | Scenario authoring, DTU maintenance, policy governance, convergence monitoring |
+| 7 | Operational policy engines, production guardrails, automated remediation playbooks | SLO governance, incident simulation, exception review, autonomous operations review |
 
-These artifacts and rituals accumulate—Level 6 organizations maintain everything from earlier levels while adding new capabilities.
+These artifacts and rituals accumulate—Level 7 organizations maintain everything from earlier levels while adding new capabilities.
+
+### Level Operating Profiles
+
+The levels are easiest to distinguish by looking at what changes in behavior, output, metrics, and limitation:
+
+| Level | Behaviors | Primary Output | Useful Metrics | Key Shift | Limitation |
+|-------|-----------|----------------|----------------|-----------|------------|
+| 1 — Agile/Scrum | Humans coordinate work through ceremonies, tickets, and planning rituals | Shipped increments from human teams | Sprint predictability, throughput, cycle time | Work becomes coordinated | Delivery remains human-executed |
+| 2 — DevOps | Teams automate build, test, release, and operations workflows | Reliable delivery pipeline | Deployment frequency, lead time, MTTR, change failure rate | Delivery becomes automated | Implementation remains human-executed |
+| 3 — AI-Assisted | Developers use copilots and chat tools inside existing workflows | Faster human-authored code | AI-assisted commits, time saved, PR throughput | AI accelerates individuals | Process and review model remain unchanged |
+| 4 — AI-Native Workflows | Teams redesign planning, construction, context, and feedback around AI participation | AI-native delivery workflow | Prompt reuse, context quality, prompt benchmark pass rates, PR quality | AI becomes part of the process | Humans still orchestrate every significant step |
+| 5 — Agentic Engineering | Agents execute for hours; humans review completed batches | Agent-generated PRs or features | Autonomous session duration, batch review volume, generated PRs, review rejection rate | Humans move from interactive driver to batch reviewer | Human review remains the bottleneck |
+| 6 — Autonomous Coding & Review | Agents write and validate code without human code review | Scenario-satisfied software candidate | Human-written code %, human code-review %, scenario volume, satisfaction rate, token spend | Validation replaces code review | Production operations still retain human gates |
+| 7 — Autonomous Operations | Systems deploy, monitor, remediate, and escalate under policy | Operating production system | Autonomous deployment %, rollback/remediation success, SLO adherence, exception rate | Policy-governed systems operate software | Requires exceptional trust, observability, and compliance controls |
 
 ---
 
@@ -166,7 +184,7 @@ This represents the defining shift of Level 5: **extended autonomous sessions**.
 
 > "At the end of the day, any line of code committed into the repository has a human name attached to it. A human is ultimately responsible for the quality of the code."
 
-This distinguishes Level 5 from Level 6. Agents execute autonomously, but humans review everything before merge. The workflow is "fire, then review" rather than "review each step."
+This distinguishes Level 5 from Level 6. Agents execute autonomously, but humans still review everything before merge. The workflow is "fire, then review" rather than "review each step."
 
 **The magnification effect.** Magherimov's colleague offered a key insight:
 
@@ -220,22 +238,24 @@ But this constraint also creates a bottleneck. As agent throughput increases, hu
 
 ---
 
-## Level 6: Autonomous Production
+## Level 6: Autonomous Coding & Review
 
-**Defining characteristic**: Human code review is eliminated. Validation shifts to scenario-based testing and probabilistic satisfaction metrics.
+**Defining characteristic**: Humans no longer write or review code. Validation shifts to scenario-based testing and probabilistic satisfaction metrics, but production operations still retain human gates or conventional operational controls.
 
-**Human role**: Governor—humans define specifications, constraints, and policies. They do not review code.
+**Human role**: Specification owner—humans define intent, scenarios, constraints, and acceptance thresholds. They do not write or review code.
 
 **Example**: StrongDM Software Factory
 
 ### The StrongDM Software Factory
 
-StrongDM's Software Factory represents the most aggressive public implementation of autonomous software production. Their operating principles are explicit:
+StrongDM's Software Factory represents the most aggressive public implementation of autonomous coding and review. Their operating principles are explicit:
 
 > "Code **must not be** written by humans."
 > "Code **must not be** reviewed by humans."
 
-This is not "humans review less" or "humans review only high-risk changes." This is a categorical exclusion of human code review from the development process.
+This is not "humans review less" or "humans review only high-risk changes." This is a categorical exclusion of human coding and code review from the development process.
+
+That is why StrongDM fits Level 6 rather than Level 7 in this model. The public material demonstrates non-interactive development: specifications and scenarios drive agents that write code, run harnesses, and converge without human review. It also describes Digital Twin clones of services such as Okta, Jira, Slack, Google Docs, Google Drive, and Google Sheets for high-volume validation. It does not, however, establish that StrongDM has delegated production operations for its enterprise offerings to autonomous systems without human operational gates. Level 6 is therefore the right classification: autonomous coding and review, not yet fully autonomous operations.
 
 How does software get validated without human review?
 
@@ -245,13 +265,13 @@ StrongDM uses "scenarios"—end-to-end user stories stored outside the codebase.
 
 **Probabilistic satisfaction replaces binary pass/fail.** Instead of "did all tests pass?" the factory measures: "Of all the observed trajectories through all the scenarios, what fraction of them likely satisfy the user?"
 
-This probabilistic framing acknowledges that software correctness is not binary. A system can satisfy 99% of user journeys while failing edge cases. Level 6 makes this tradeoff explicit and measurable.
+This probabilistic framing acknowledges that software correctness is not binary. A system can satisfy 99% of user journeys while failing edge cases. Level 6 makes this tradeoff explicit and measurable before humans accept the system for operational use.
 
 **Digital Twin Universe (DTU) enables unlimited testing.** Software rarely operates in isolation. Modern applications integrate with Okta, Jira, Slack, Google Workspace, and dozens of other services. Testing against production APIs has limits: rate limiting, API costs, inability to test failure modes.
 
 StrongDM's DTU creates behavioral clones of third-party services. This enables testing at volumes exceeding production limits, safe failure mode testing, and running thousands of scenarios per hour without rate limiting or API costs. The DTU makes validation possible that would be impossible against real services.
 
-The DTU is perhaps the most significant infrastructure investment required for Level 6. Without it, scenario-based validation cannot achieve the coverage necessary to replace human review.
+The DTU is perhaps the most significant infrastructure investment required for Level 6. Without it, scenario-based validation cannot achieve the coverage necessary to replace human code review.
 
 ### The Convergence Model
 
@@ -275,7 +295,7 @@ Simon Willison, in his analysis of the Software Factory, raises the obvious conc
 
 > "If these patterns really do add $20,000/month per engineer to your budget they're far less interesting to me."
 
-The economics only work if the productivity gains exceed the costs. StrongDM's implicit claim is that autonomous production delivers enough value to justify the investment. But this remains unproven at scale across industries.
+The economics only work if the productivity gains exceed the costs. StrongDM's implicit claim is that autonomous coding and review delivers enough value to justify the investment. But this remains unproven at scale across industries.
 
 ### What Level 6 Requires
 
@@ -287,15 +307,47 @@ Level 6 is not achievable by simply removing human review from Level 5. It requi
 
 **Satisfaction metrics.** Systems for measuring probabilistic user satisfaction across scenario trajectories. This requires instrumentation, measurement frameworks, and thresholds that define "good enough."
 
-**Governance policies.** Clear rules for what requires human escalation. Even Level 6 systems need escape hatches for truly novel situations, security incidents, or regulatory requirements.
+**Governance policies.** Clear rules for what requires human escalation before production exposure. Even Level 6 systems need escape hatches for truly novel situations, security incidents, or regulatory requirements.
 
 **Provenance and auditability.** When no human reviews code, you need perfect records of which agent made which change, which prompt caused it, which model version was used, and why. Compliance and debugging both depend on this.
 
 ---
 
-## Introducing ASDM: The Methodology for Level 6
+## Level 7: Autonomous Operations
 
-**ASDM (Autonomous Software Delivery Model)** is the methodology for achieving and operating at Level 6. Just as Scrum provides artifacts and practices for Agile teams, and DevOps provides practices for automated delivery, ASDM provides the framework for autonomous production.
+**Defining characteristic**: Autonomous systems not only generate and validate code, but also operate software in production: deployment, monitoring, rollback, remediation, incident response, and policy enforcement run without routine human gates.
+
+**Human role**: Governor—humans define business objectives, risk policies, escalation thresholds, and regulatory constraints. Humans handle exceptions rather than normal delivery or operations.
+
+**Example**: Emerging frontier; no broadly documented enterprise example yet.
+
+Level 7 is the true endpoint of software delivery autonomy. It is what people often mean when they use the "dark factory" metaphor: a production system where software moves from intent to implementation to operation without humans in the normal execution path. We avoid that term here because it carries unnecessary negative connotations and centers the absence of humans rather than the governance model that makes autonomy acceptable.
+
+The important distinction is operational responsibility. Level 6 can produce code without human coding or code review, but humans may still decide when it is exposed to customers, monitor production behavior, approve remediations, and own incident response. Level 7 moves those operational gates into policy-governed autonomous systems.
+
+### What Level 7 Adds Beyond Level 6
+
+**Autonomous deployment.** Changes that satisfy scenario and policy thresholds can progress through environments, canaries, and rollout stages without human approval.
+
+**Production telemetry as validation.** Scenario satisfaction is necessary but not sufficient. Level 7 systems continuously compare live behavior against SLOs, user outcomes, security signals, cost budgets, and policy constraints.
+
+**Autonomous rollback and remediation.** When telemetry degrades, systems can pause rollout, revert, generate a fix, validate it, and redeploy without waiting for an operator.
+
+**Incident simulation and preparedness.** Digital Twins expand from third-party service validation into operational rehearsal: outage scenarios, degraded dependencies, permission failures, regional failures, abuse patterns, and cost spikes.
+
+**Policy-governed escalation.** Humans are paged for exceptions, not routine decisions. Escalation policies define what the system may do alone, what requires notification, and what requires human approval.
+
+### Why Level 7 Is Rare
+
+Autonomous operations requires trust across a wider surface than autonomous coding. Code correctness is only one part of production safety. Level 7 also needs observability maturity, deployment isolation, rollback confidence, incident playbooks, security policy automation, compliance evidence, cost controls, and organizational willingness to let systems act.
+
+This is why StrongDM's Software Factory is an important Level 6 signal without being sufficient evidence of Level 7. It shows that code creation and review can move out of the human loop. The next frontier is whether production operation can do the same.
+
+---
+
+## Introducing ASDM: The Methodology for Levels 6 and 7
+
+**ASDM (Autonomous Software Delivery Model)** is the methodology for achieving and operating at Levels 6 and 7. Just as Scrum provides artifacts and practices for Agile teams, and DevOps provides practices for automated delivery, ASDM provides the framework for autonomous coding, review, validation, and operations.
 
 ### Core ASDM Practices
 
@@ -307,40 +359,43 @@ Level 6 is not achievable by simply removing human review from Level 5. It requi
 
 **Digital Twin testing.** External services are cloned for unlimited, safe validation. Production APIs are never the bottleneck.
 
-**Zero human code review.** Code is never read by humans before deployment. Validation systems replace human judgment.
+**Zero human code review.** Code is not read by humans as a required approval step. Validation systems replace human code review.
 
-**Governance-by-policy.** Human oversight operates through policy definition, not code review. Policies define escalation triggers, risk thresholds, and prohibited patterns.
+**Governance-by-policy.** Human oversight operates through policy definition, not code review. Policies define escalation triggers, risk thresholds, prohibited patterns, and operational authority.
 
 **Full provenance.** Every change is traceable to its originating specification, prompt, agent, and model version.
+
+**Autonomous operations.** At Level 7, deployment, monitoring, rollback, remediation, and incident response are governed by policy and telemetry rather than routine human approval.
 
 ### ASDM Practices at Earlier Levels
 
 Not all ASDM practices require Level 6. Teams can adopt components incrementally:
 
-| Practice | Level 4 | Level 5 | Level 6 |
-|----------|---------|---------|---------|
-| Steering files (AGENTS.md) | Introduce | Mature | Required |
-| Extended autonomous sessions | — | Core practice | Core practice |
-| Scenario-based validation | Experiment | Partial adoption | Required |
-| Digital Twin infrastructure | — | Experiment | Required |
-| Probabilistic satisfaction | — | — | Required |
-| Zero human code review | — | — | Required |
-| Governance-by-policy | Introduce | Develop | Required |
-| Full provenance | Good practice | Important | Required |
+| Practice | Level 4 | Level 5 | Level 6 | Level 7 |
+|----------|---------|---------|---------|---------|
+| Steering files (AGENTS.md) | Introduce | Mature | Required | Required |
+| Extended autonomous sessions | — | Core practice | Core practice | Core practice |
+| Scenario-based validation | Experiment | Partial adoption | Required | Required |
+| Digital Twin infrastructure | — | Experiment | Required | Required |
+| Probabilistic satisfaction | — | — | Required | Required |
+| Zero human code review | — | — | Required | Required |
+| Governance-by-policy | Introduce | Develop | Required | Required |
+| Full provenance | Good practice | Important | Required | Required |
+| Autonomous operations | — | — | Experiment | Required |
 
-This incremental adoption path allows teams to build toward Level 6 without committing to the full transformation immediately.
+This incremental adoption path allows teams to build toward Levels 6 and 7 without committing to the full transformation immediately.
 
 ### The ASDM Mindset Shift
 
 Adopting ASDM requires more than new tools and processes. It requires a fundamental shift in how teams think about software quality and accountability.
 
-**From "Did a human verify this?" to "Do the scenarios pass?"** Traditional quality assurance relies on human judgment. Someone reads the code, considers edge cases, and attests that it meets requirements. ASDM replaces this with systematic scenario coverage. If scenarios are comprehensive and satisfaction metrics are met, the code ships—regardless of whether any human read it.
+**From "Did a human verify this?" to "Do the scenarios and policies pass?"** Traditional quality assurance relies on human judgment. Someone reads the code, considers edge cases, and attests that it meets requirements. ASDM replaces this with systematic scenario coverage and explicit policy gates. At Level 6, this determines whether code can be accepted without human review. At Level 7, it also determines whether software can operate, remediate, and evolve in production without routine human approval.
 
 **From implementation ownership to specification ownership.** Engineers stop owning code and start owning specifications and scenarios. The quality of your work is measured by how well you defined what the software should do, not how elegantly you implemented it.
 
 **From debugging code to debugging scenarios.** When production fails, the first question is not "what's wrong with the code?" but "what scenario did we miss?" Failures indicate gaps in scenario coverage, not gaps in human review.
 
-This mindset shift is perhaps the hardest part of Level 6 adoption. Many engineers derive professional identity from code craftsmanship. ASDM asks them to derive identity from specification craftsmanship instead.
+This mindset shift is perhaps the hardest part of Level 6 and Level 7 adoption. Many engineers derive professional identity from code craftsmanship. ASDM asks them to derive identity from specification, scenario, and operational policy craftsmanship instead.
 
 ---
 
@@ -360,30 +415,36 @@ Moving from interactive orchestration to overnight autonomous sessions requires 
 
 This transition also requires infrastructure for extended agent execution—checkpointing, failure recovery, and reliable long-running processes that most organizations haven't built.
 
-### Level 5 → Level 6: Eliminating Human Review
+### Level 5 → Level 6: Eliminating Human Code Review
 
-The most significant transition. Removing human code review feels like removing a safety net—because it is. Teams must build confidence that scenario-based validation catches what human review would catch, and accepts the cases where it doesn't.
+Removing human code review feels like removing a safety net—because it is. Teams must build confidence that scenario-based validation catches what human review would catch, and accepts the cases where it doesn't.
 
-This transition is not for every organization. Many will find Level 5 the appropriate equilibrium—significant productivity gains with maintained human oversight. Level 6 is for organizations where the economics and risk tolerance align with fully autonomous production.
+This transition is not for every organization. Many will find Level 5 the appropriate equilibrium—significant productivity gains with maintained human oversight. Level 6 is for organizations where the economics and risk tolerance align with fully autonomous coding and review.
+
+### Level 6 → Level 7: Removing Routine Operational Gates
+
+Level 7 is a different kind of trust boundary. A team may accept no human code review while still requiring human approval for deployment, rollout, rollback, customer exposure, and incident response. Moving to Level 7 requires confidence that operational policies, telemetry, SLOs, canaries, and remediation systems can make routine production decisions.
+
+This transition is likely to lag Level 6 adoption. The blast radius is larger, the compliance questions are harder, and the failure modes are more visible to customers.
 
 ---
 
 ## What Each Level Requires
 
-The infrastructure and organizational requirements escalate significantly across Levels 4-6. Each level builds on the previous—Level 6 organizations need everything from Levels 4 and 5, plus additional capabilities.
+The infrastructure and organizational requirements escalate significantly across Levels 4-7. Each level builds on the previous—Level 7 organizations need everything from Levels 4, 5, and 6, plus additional operational capabilities.
 
-| Requirement Category | Level 4 | Level 5 | Level 6 |
-|---------------------|---------|---------|---------|
-| **Tooling** | AI-native IDE, prompt management | Extended execution infrastructure | Convergence orchestration |
-| **Documentation** | Steering files (AGENTS.md) | Agent execution logs, traces | Scenario libraries, provenance records |
-| **Testing** | CI/CD optimized for velocity | Local integration tests, 25% effort allocation | Digital Twin Universe, satisfaction metrics |
-| **Validation** | Prompt benchmarks | LLM-as-a-Judge, batch review tooling | Probabilistic satisfaction measurement |
-| **Communication** | Context specs, ADRs | High-bandwidth standups, co-location | Policy governance forums |
-| **Skills** | Prompt calibration, context management | Trust in async execution, batch review | Scenario authoring, specification ownership |
-| **Governance** | Prompt review practices | Escalation policies | Full governance-by-policy engine |
-| **Budget** | Standard AI tooling costs | Moderate token increase | $1,000+/day per engineer in tokens |
+| Requirement Category | Level 4 | Level 5 | Level 6 | Level 7 |
+|---------------------|---------|---------|---------|---------|
+| **Tooling** | AI-native IDE, prompt management | Extended execution infrastructure | Convergence orchestration | Autonomous deployment and remediation |
+| **Documentation** | Steering files (AGENTS.md) | Agent execution logs, traces | Scenario libraries, provenance records | Operational policies and incident playbooks |
+| **Testing** | CI/CD optimized for velocity | Local integration tests, 25% effort allocation | Digital Twin Universe, satisfaction metrics | Incident simulation and production canaries |
+| **Validation** | Prompt benchmarks | LLM-as-a-Judge, batch review tooling | Probabilistic satisfaction measurement | SLO and telemetry-based operational validation |
+| **Communication** | Context specs, ADRs | High-bandwidth standups, co-location | Policy governance forums | Exception review and operational risk forums |
+| **Skills** | Prompt calibration, context management | Trust in async execution, batch review | Scenario authoring, specification ownership | Operational policy design and systems governance |
+| **Governance** | Prompt review practices | Escalation policies | Full governance-by-policy engine | Production authority and automated compliance evidence |
+| **Budget** | Standard AI tooling costs | Moderate token increase | $1,000+/day per engineer in tokens | Level 6 plus continuous operations and simulation costs |
 
-The investment required for Level 6 is substantial. Organizations should honestly assess whether the productivity gains justify the infrastructure, tooling, and token costs before committing.
+The investment required for Level 6 is substantial. Level 7 adds production operations risk and cost on top. Organizations should honestly assess whether the productivity gains justify the infrastructure, tooling, token costs, and operational risk before committing.
 
 ---
 
@@ -393,7 +454,7 @@ Higher autonomy is not universally better. Each level introduces new risks and m
 
 ### Cost Concerns
 
-Level 6 token costs are an order of magnitude higher than Level 3-5. The $1,000/day per engineer baseline suggested by StrongDM represents $240,000/year in tokens alone per engineer—potentially exceeding salary costs.
+Level 6 token costs are an order of magnitude higher than Level 3-5. The $1,000/day per engineer baseline suggested by StrongDM represents $240,000/year in tokens alone per engineer—potentially exceeding salary costs. Level 7 may add continuous simulation, telemetry analysis, remediation, and incident rehearsal costs.
 
 The economics only work if productivity gains justify the investment. Organizations should model expected throughput against token costs before committing.
 
@@ -403,7 +464,7 @@ Simon Willison raises a strategic concern:
 
 > "Could competitors clone your newest features with a few hours of coding agent work?"
 
-If autonomous production commoditizes implementation, competitive advantage shifts to other factors: specifications, scenarios, Digital Twin quality, data, and go-to-market. Organizations relying on implementation complexity as a moat should consider this carefully.
+If autonomous coding commoditizes implementation, competitive advantage shifts to other factors: specifications, scenarios, Digital Twin quality, data, and go-to-market. Organizations relying on implementation complexity as a moat should consider this carefully.
 
 ### Regulatory and Compliance Constraints
 
@@ -414,30 +475,50 @@ Some industries require human review for compliance reasons:
 - Defense and government contracting
 - Any domain with legal liability for software failures
 
-For these contexts, Level 5 may be the maximum achievable autonomy. Governance-by-policy can document intent, but regulators may require human attestation.
+For these contexts, Level 5 or Level 6 may be the maximum achievable autonomy. Governance-by-policy can document intent, but regulators may require human attestation before deployment or during production operations.
 
 ### Quality and Maintainability Risks
 
 AI-generated code can accumulate technical debt invisibly. Systems optimized for scenario satisfaction may degrade in maintainability over time. Without human reading code, architectural drift goes unnoticed until it manifests as system failures.
 
-Level 6 requires exceptional observability and architectural governance to catch degradation that human reviewers would otherwise flag.
+Level 6 requires exceptional observability and architectural governance to catch degradation that human reviewers would otherwise flag. Level 7 raises the bar further because the system must detect, decide, and act while software is already serving users.
 
-### Choosing Between Level 5 and Level 6
+### Choosing Between Levels 5, 6, and 7
 
-Many organizations will find Level 5 the optimal target. Level 6 requires substantial additional investment and tradeoffs that not every context justifies.
+Many organizations will find Level 5 the optimal target. Some will adopt Level 6 for constrained domains where scenario coverage is strong. Level 7 requires substantial additional investment and tradeoffs that few contexts will justify early.
 
-| Factor | Level 5 Optimal | Level 6 Optimal |
-|--------|----------------|-----------------|
-| **Productivity goal** | Significant gains sufficient | Maximum throughput required |
-| **Error tolerance** | Human review catches subtle bugs | Scenario coverage sufficient |
-| **Infrastructure budget** | Moderate investment | High investment (DTU, scenarios, provenance) |
-| **Regulatory context** | Compliance requires human attestation | No human review mandate |
-| **Codebase understanding** | Team wants to maintain code literacy | Acceptable tradeoff for velocity |
-| **Token budget** | Standard AI tooling costs | $1,000+/day per engineer |
-| **Domain characteristics** | Complex, ambiguous requirements | High-volume, well-specified domains |
-| **Risk tolerance** | Conservative, proven patterns | Willing to pioneer new approaches |
+| Factor | Level 5 Optimal | Level 6 Optimal | Level 7 Optimal |
+|--------|----------------|-----------------|-----------------|
+| **Productivity goal** | Significant gains sufficient | Maximum coding/review throughput | Maximum delivery and operations throughput |
+| **Error tolerance** | Human review catches subtle bugs | Scenario coverage sufficient before production | Telemetry and rollback sufficient in production |
+| **Infrastructure budget** | Moderate investment | High investment (DTU, scenarios, provenance) | Level 6 plus autonomous ops infrastructure |
+| **Regulatory context** | Compliance requires human code attestation | No human review mandate | No human operational approval mandate |
+| **Codebase understanding** | Team wants to maintain code literacy | Acceptable tradeoff for velocity | Acceptable tradeoff for operational speed |
+| **Token budget** | Standard AI tooling costs | $1,000+/day per engineer | Level 6 plus continuous operations spend |
+| **Domain characteristics** | Complex, ambiguous requirements | High-volume, well-specified domains | High automation tolerance and strong rollback paths |
+| **Risk tolerance** | Conservative, proven patterns | Willing to remove code review | Willing to remove routine production gates |
 
-Most organizations should target Level 5 first and evaluate Level 6 only after operating successfully at Level 5 for an extended period. The infrastructure, skills, and organizational trust required for Level 6 build naturally from Level 5 experience.
+Most organizations should target Level 5 first and evaluate Level 6 only after operating successfully at Level 5 for an extended period. Level 7 should come later, after Level 6 validation infrastructure has proven itself and the organization has operational guardrails strong enough to tolerate autonomous production decisions.
+
+---
+
+## How ASDM Compares to Dan Shapiro's Five Levels
+
+Dan Shapiro's "Five Levels: from Spicy Autocomplete to the Dark Factory" is one of the clearest public framings of the same general shift. His model starts with an individual developer experience: from manual coding, to autocomplete, to pairing with AI, to managing coding agents, to a black-box system that turns specifications into software.
+
+ASDM uses a different unit of analysis. It is an organizational software delivery model, not primarily an individual developer adoption ladder. That is why ASDM starts with Agile and DevOps as pre-AI organizational baselines, then separates AI-native workflows, agentic engineering, autonomous coding and review, and autonomous operations.
+
+The two models rhyme, but they answer different questions:
+
+| Question | Shapiro's Five Levels | ASDM's Seven Levels |
+|----------|-----------------------|---------------------|
+| **Primary lens** | Individual developer workflow | Organizational delivery capability |
+| **Starting point** | Manual coding and AI assistance | Agile and DevOps baselines |
+| **Middle transition** | Developer becomes manager/PM of agents | Organization redesigns process, validation, governance |
+| **Factory endpoint** | Specs turn into software without normal developer involvement | Intent flows through coding, validation, deployment, and operations under policy |
+| **Key distinction** | How a person works with AI | What an organization can safely delegate to AI |
+
+Both models end near the same frontier: software production with humans outside the normal implementation path. ASDM splits that frontier into two levels because code generation and production operation are different trust boundaries. StrongDM is strong evidence for Level 6: no human coding or code review, scenario validation, and Digital Twin testing. Level 7 requires a further claim: autonomous systems operate production software without routine human gates.
 
 ---
 
@@ -445,17 +526,18 @@ Most organizations should target Level 5 first and evaluate Level 6 only after o
 
 Software delivery is evolving from human-executed to machine-operated. This is not speculation—it is observable in the practices of teams at AWS, Spotify, StrongDM, and others.
 
-The six Software Delivery Autonomy Levels provide a framework for understanding this progression:
+The seven Software Delivery Autonomy Levels provide a framework for understanding this progression:
 
 - **Levels 1-2** established pre-AI baselines: team coordination and pipeline automation.
 - **Level 3** augmented existing processes with AI tooling.
 - **Level 4** redesigns processes around AI participation.
 - **Level 5** enables extended autonomous execution with batch human review.
-- **Level 6** eliminates human code review entirely, replacing it with scenario-based validation.
+- **Level 6** eliminates human coding and code review, replacing it with scenario-based validation.
+- **Level 7** removes routine operational gates, replacing them with policy-governed autonomous operations.
 
-Most organizations today operate between Levels 3 and 4. Leaders are reaching Level 5. A few pioneers are experimenting with Level 6.
+Most organizations today operate between Levels 3 and 4. Leaders are reaching Level 5. A few pioneers are experimenting with Level 6. Level 7 remains the frontier.
 
-**ASDM** provides the methodology for Level 6—the practices, artifacts, and infrastructure required for autonomous production. Teams can adopt ASDM components incrementally as they progress through the levels.
+**ASDM** provides the methodology for Levels 6 and 7—the practices, artifacts, and infrastructure required for autonomous coding, review, validation, and operations. Teams can adopt ASDM components incrementally as they progress through the levels.
 
 The implications for product builders are significant. As implementation becomes increasingly automated, value shifts to:
 
@@ -463,7 +545,20 @@ The implications for product builders are significant. As implementation becomes
 - Comprehensive scenario definition
 - Validation infrastructure
 - Governance and policy design
+- Operational telemetry and remediation design
 
 The builders who thrive in this environment will be those who master not just AI tooling, but the organizational and infrastructural transformations that enable autonomous software delivery.
 
 The factory is coming online. The question is not whether to engage with it, but at what level, and how fast.
+
+---
+
+## References
+
+- Magherimov, Joe. "Amazon Bedrock Mantle and Developing at the Speed of AI." *AWS Podcast*. Episode 753. AWS. January 2026. podcasts.apple.com/us/podcast/753-amazon-bedrock-mantle-and-developing-at-the-speed-of-ai/id1122785133
+- AWS. "AI-Driven Development Life Cycle." Amazon Web Services. January 2026. aws.amazon.com/blogs/devops/ai-driven-development-life-cycle
+- StrongDM. Software Factory. factory.strongdm.ai
+- Willison, Simon. "The Software Factory." *Simon Willison's Weblog*. February 2026. simonwillison.net/2026/Feb/7/software-factory
+- Shapiro, Dan. "The Five Levels: From Spicy Autocomplete to the Dark Factory." January 2026. www.danshapiro.com/blog/2026/01/the-five-levels-from-spicy-autocomplete-to-the-software-factory
+- Spotify Engineering. "Honk: Spotify's Path to Agentic AI Coding." *Spotify Engineering Blog*. February 2026. engineering.atspotify.com/2026/02/honk-spotifys-path-to-agentic-ai-coding
+- TechCrunch. "Spotify's best developers haven't written a line of code since December, thanks to AI." *TechCrunch*. February 2026. techcrunch.com/2026/02/spotify-developers-ai-coding
