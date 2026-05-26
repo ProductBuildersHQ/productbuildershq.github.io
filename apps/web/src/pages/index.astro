@@ -59,18 +59,25 @@ const caseStudies = await getCollection('caseStudies')
         <a href="/case-studies" class="hidden sm:inline-flex text-[var(--color-primary)] hover:underline no-underline text-sm font-medium">View all &rarr;</a>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {caseStudies.map((study) => (
-          <div class:list={['p-6 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-xl', study.data.comingSoon ? 'opacity-60' : '']}>
-            <div class="flex items-start justify-between mb-3">
-              <span class="text-xs font-medium px-2 py-1 bg-[var(--color-accent)] text-[var(--color-primary-dark)] rounded">Level {study.data.level}</span>
-              {study.data.comingSoon && <span class="text-xs font-medium px-2 py-1 bg-[var(--color-text-muted)]/20 text-[var(--color-text-muted)] rounded">Coming Soon</span>}
-            </div>
-            <h3 class="text-xl font-semibold mb-1 text-[var(--color-text)]">{study.data.title}</h3>
-            <p class="text-sm text-[var(--color-primary)] mb-3">{study.data.company}</p>
-            <p class="text-sm text-[var(--color-text-muted)] mb-4">{study.data.description}</p>
-            {!study.data.comingSoon && <a href={`/case-studies/${study.id}`} class="text-sm font-medium text-[var(--color-primary)] no-underline hover:underline">Read case study &rarr;</a>}
-          </div>
-        ))}
+        {caseStudies.map((study) => {
+          const content = (
+            <>
+              <div class="flex items-start justify-between mb-3">
+                <span class="text-xs font-medium px-2 py-1 bg-[var(--color-accent)] text-[var(--color-primary-dark)] rounded">Level {study.data.level}</span>
+                {study.data.comingSoon && <span class="text-xs font-medium px-2 py-1 bg-[var(--color-text-muted)]/20 text-[var(--color-text-muted)] rounded">Coming Soon</span>}
+              </div>
+              <h3 class:list={['text-xl font-semibold mb-1 text-[var(--color-text)]', !study.data.comingSoon && 'group-hover:text-[var(--color-primary)]']}>{study.data.title}</h3>
+              <p class="text-sm text-[var(--color-primary)] mb-3">{study.data.company}</p>
+              <p class="text-sm text-[var(--color-text-muted)] mb-4">{study.data.description}</p>
+            </>
+          )
+
+          return study.data.comingSoon ? (
+            <div class="p-6 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-xl opacity-60">{content}</div>
+          ) : (
+            <a href={`/case-studies/${study.id}`} class="group block p-6 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-xl no-underline hover:border-[var(--color-primary)] hover:shadow-lg transition-all">{content}</a>
+          )
+        })}
       </div>
     </div>
   </section>
