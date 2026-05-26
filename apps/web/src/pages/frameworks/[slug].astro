@@ -1,0 +1,66 @@
+---
+import { getCollection, render } from 'astro:content'
+import BaseLayout from '../../layouts/BaseLayout.astro'
+
+export async function getStaticPaths() {
+  const frameworks = await getCollection('frameworks')
+  return frameworks.map((entry) => ({ params: { slug: entry.id }, props: { entry } }))
+}
+
+const { entry } = Astro.props
+const { Content, headings } = await render(entry)
+---
+
+<BaseLayout title={entry.data.title} description={entry.data.description}>
+  <div class="py-8 md:py-12">
+    <div class="max-w-6xl mx-auto px-5 md:px-8">
+      <a href="/frameworks" class="inline-flex items-center text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline mb-6">
+        <svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
+        </svg>
+        Back to Frameworks
+      </a>
+
+      <div class="mb-8">
+        <h1 class="text-3xl md:text-4xl font-bold mb-2">{entry.data.title}</h1>
+        <p class="text-xl text-[var(--color-primary)] mb-4">{entry.data.subtitle}</p>
+        <p class="text-[var(--color-text-muted)] mb-6 max-w-3xl">{entry.data.description}</p>
+        <div class="flex flex-wrap items-center gap-4 mb-6">
+          <span class="inline-flex items-center text-sm font-medium px-3 py-1.5 bg-[var(--color-primary)] text-white rounded-full">{entry.data.levels} Levels</span>
+          <span class="text-sm text-[var(--color-text-muted)]">{entry.data.version}</span>
+          <span class="text-sm text-[var(--color-text-subtle)]">Last updated {entry.data.date}</span>
+        </div>
+        <div class="flex flex-wrap gap-3">
+          <a href={entry.data.pdfUrl} download class="inline-flex items-center justify-center px-5 py-2.5 bg-[var(--color-primary-dark)] text-white font-medium rounded-lg no-underline hover:bg-[var(--color-primary)] transition-colors">
+            Download PDF
+          </a>
+          <a href={entry.data.pdfUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-5 py-2.5 border border-[var(--color-border)] text-[var(--color-text)] font-medium rounded-lg no-underline hover:bg-[var(--color-bg-secondary)] transition-colors">
+            Open PDF
+          </a>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap gap-2 mb-8">
+        {entry.data.tags.map((tag) => (
+          <span class="text-sm px-3 py-1 bg-[var(--color-bg-secondary)] text-[var(--color-text-muted)] rounded-full">{tag}</span>
+        ))}
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-10">
+        <aside class="hidden lg:block">
+          <div class="sticky top-24 border-l border-[var(--color-border-light)] pl-4">
+            <div class="text-xs font-semibold uppercase tracking-wide text-[var(--color-text-subtle)] mb-3">Contents</div>
+            <nav class="space-y-2">
+              {headings.filter((heading) => heading.depth === 2).map((heading) => (
+                <a href={`#${heading.slug}`} class="block text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline">{heading.text}</a>
+              ))}
+            </nav>
+          </div>
+        </aside>
+        <article class="article-content min-w-0">
+          <Content />
+        </article>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

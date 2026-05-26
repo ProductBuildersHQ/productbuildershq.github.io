@@ -1,0 +1,48 @@
+---
+import { getCollection } from 'astro:content'
+import BaseLayout from '../../layouts/BaseLayout.astro'
+
+const frameworks = await getCollection('frameworks')
+---
+
+<BaseLayout title="Frameworks" description="Maturity models and methodologies for product builders.">
+  <div class="py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-5 md:px-8">
+      <div class="mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Frameworks</h1>
+        <p class="text-xl text-[var(--color-text-muted)] max-w-3xl">
+          Maturity models and methodologies for product builders. Each framework provides a structured path for growth with tools, metrics, and practices.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 gap-8">
+        {frameworks.map((framework) => (
+          <a href={`/frameworks/${framework.id}`} class="group block p-8 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-xl no-underline hover:border-[var(--color-primary)] hover:shadow-lg transition-all">
+            <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+              <div class="flex-1">
+                <div class="flex flex-wrap items-center gap-3 mb-3">
+                  <span class="text-sm font-medium px-3 py-1 bg-[var(--color-primary)]/10 text-[var(--color-primary)] rounded-full">{framework.data.levels} Levels</span>
+                  <span class="text-sm text-[var(--color-text-subtle)]">{framework.data.version} &middot; {framework.data.date}</span>
+                </div>
+                <h2 class="text-2xl font-bold mb-2 text-[var(--color-text)] group-hover:text-[var(--color-primary)]">{framework.data.title}</h2>
+                <p class="text-base text-[var(--color-text-muted)] mb-4">{framework.data.subtitle}</p>
+                <p class="text-sm text-[var(--color-text-muted)]">{framework.data.description}</p>
+              </div>
+              <div class="flex-shrink-0">
+                <span class="inline-flex items-center justify-center w-12 h-12 bg-[var(--color-primary)]/10 rounded-lg text-[var(--color-primary)] group-hover:bg-[var(--color-primary)] group-hover:text-white transition-colors">
+                  <svg class="w-6 h-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                  </svg>
+                </span>
+              </div>
+            </div>
+            <div class="mt-6 flex flex-wrap gap-2">
+              {framework.data.tags.map((tag) => (
+                <span class="text-xs px-2 py-1 bg-[var(--color-bg-secondary)] text-[var(--color-text-muted)] rounded">{tag}</span>
+              ))}
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</BaseLayout>

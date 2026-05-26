@@ -1,0 +1,32 @@
+---
+import { getCollection } from 'astro:content'
+import BaseLayout from '../layouts/BaseLayout.astro'
+
+const frameworks = await getCollection('frameworks')
+const caseStudies = await getCollection('caseStudies')
+const papers = [
+  ...frameworks.map((entry) => ({ ...entry.data, href: `/frameworks/${entry.id}`, label: 'View Framework' })),
+  ...caseStudies.filter((entry) => !entry.data.comingSoon).map((entry) => ({ ...entry.data, href: `/case-studies/${entry.id}`, label: 'View Case Study' })),
+]
+---
+
+<BaseLayout title="Papers" description="Research papers and frameworks for product builders.">
+  <div class="min-h-screen bg-[var(--color-bg)]">
+    <div class="max-w-4xl mx-auto px-5 md:px-8 py-16">
+      <h1 class="text-3xl font-bold text-[var(--color-text)] mb-4">Papers</h1>
+      <p class="text-[var(--color-text-muted)] mb-12">Research papers and frameworks for product builders.</p>
+      <div class="space-y-6">
+        {papers.map((paper) => (
+          <div class="bg-white border border-[var(--color-border)] rounded-lg p-6 hover:border-[var(--color-primary)] transition-colors">
+            <h2 class="text-xl font-semibold text-[var(--color-text)] mb-2">{paper.title}</h2>
+            <p class="text-[var(--color-text-muted)] mb-4">{paper.description}</p>
+            <div class="flex items-center gap-4">
+              <a href={paper.pdfUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 bg-[var(--color-primary-dark)] text-white rounded-lg text-sm font-medium no-underline hover:bg-[var(--color-primary)] transition-colors">Download PDF</a>
+              <a href={paper.href} class="text-sm text-[var(--color-primary)] no-underline hover:underline">{paper.label}</a>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</BaseLayout>

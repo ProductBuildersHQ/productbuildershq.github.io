@@ -1,0 +1,85 @@
+---
+import { getCollection } from 'astro:content'
+import BaseLayout from '../layouts/BaseLayout.astro'
+
+const frameworks = await getCollection('frameworks')
+const caseStudies = await getCollection('caseStudies')
+---
+
+<BaseLayout>
+  <section class="py-20 md:py-32 bg-[var(--color-bg-secondary)]">
+    <div class="max-w-7xl mx-auto px-5 md:px-8 text-center">
+      <h1 class="text-4xl md:text-6xl font-bold mb-6 text-[var(--color-primary-dark)]">ProductBuildersHQ</h1>
+      <p class="text-xl md:text-2xl text-[var(--color-text-muted)] max-w-3xl mx-auto mb-8">
+        Frameworks and case studies for the evolution of product development. From AI-assisted to AI-operated.
+      </p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="/frameworks" class="inline-flex items-center justify-center px-6 py-3 bg-[var(--color-primary-dark)] text-white font-medium rounded-lg no-underline hover:bg-[var(--color-primary)] transition-colors">Explore Frameworks</a>
+        <a href="/case-studies" class="inline-flex items-center justify-center px-6 py-3 bg-[var(--color-accent)] text-[var(--color-primary-dark)] font-medium rounded-lg no-underline hover:bg-[var(--color-accent-light)] transition-colors">View Case Studies</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-5 md:px-8">
+      <div class="flex items-end justify-between mb-8">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-bold mb-2">Frameworks</h2>
+          <p class="text-[var(--color-text-muted)] text-lg">Maturity models for product builders</p>
+        </div>
+        <a href="/frameworks" class="hidden sm:inline-flex text-[var(--color-primary)] hover:underline no-underline text-sm font-medium">View all &rarr;</a>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {frameworks.map((framework) => (
+          <a href={`/frameworks/${framework.id}`} class="group block p-6 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-xl no-underline hover:border-[var(--color-primary)] hover:shadow-lg transition-all">
+            <div class="flex items-start justify-between mb-3">
+              <span class="text-xs font-medium px-2 py-1 bg-[var(--color-primary)]/10 text-[var(--color-primary)] rounded">{framework.data.levels} Levels</span>
+              <span class="text-xs text-[var(--color-text-subtle)]">{framework.data.version}</span>
+            </div>
+            <h3 class="text-xl font-semibold mb-2 text-[var(--color-text)] group-hover:text-[var(--color-primary)]">{framework.data.title}</h3>
+            <p class="text-sm text-[var(--color-text-muted)] mb-4">{framework.data.description}</p>
+            <div class="flex flex-wrap gap-2">
+              {framework.data.tags.slice(0, 3).map((tag) => (
+                <span class="text-xs px-2 py-1 bg-[var(--color-bg-secondary)] text-[var(--color-text-muted)] rounded">{tag}</span>
+              ))}
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-24 bg-[var(--color-bg-secondary)]">
+    <div class="max-w-7xl mx-auto px-5 md:px-8">
+      <div class="flex items-end justify-between mb-8">
+        <div>
+          <h2 class="text-3xl md:text-4xl font-bold mb-2">Case Studies</h2>
+          <p class="text-[var(--color-text-muted)] text-lg">Real-world implementations of AI-native development</p>
+        </div>
+        <a href="/case-studies" class="hidden sm:inline-flex text-[var(--color-primary)] hover:underline no-underline text-sm font-medium">View all &rarr;</a>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {caseStudies.map((study) => (
+          <div class:list={['p-6 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-xl', study.data.comingSoon ? 'opacity-60' : '']}>
+            <div class="flex items-start justify-between mb-3">
+              <span class="text-xs font-medium px-2 py-1 bg-[var(--color-accent)] text-[var(--color-primary-dark)] rounded">Level {study.data.level}</span>
+              {study.data.comingSoon && <span class="text-xs font-medium px-2 py-1 bg-[var(--color-text-muted)]/20 text-[var(--color-text-muted)] rounded">Coming Soon</span>}
+            </div>
+            <h3 class="text-xl font-semibold mb-1 text-[var(--color-text)]">{study.data.title}</h3>
+            <p class="text-sm text-[var(--color-primary)] mb-3">{study.data.company}</p>
+            <p class="text-sm text-[var(--color-text-muted)] mb-4">{study.data.description}</p>
+            {!study.data.comingSoon && <a href={`/case-studies/${study.id}`} class="text-sm font-medium text-[var(--color-primary)] no-underline hover:underline">Read case study &rarr;</a>}
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-24">
+    <div class="max-w-3xl mx-auto px-5 md:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to evolve your product development?</h2>
+      <p class="text-lg text-[var(--color-text-muted)] mb-8">Download our frameworks and start your journey from AI-assisted to AI-operated.</p>
+      <a href="/frameworks" class="inline-flex items-center justify-center px-6 py-3 bg-[var(--color-primary)] text-white font-medium rounded-lg no-underline hover:bg-[var(--color-primary-light)] transition-colors">Get Started</a>
+    </div>
+  </section>
+</BaseLayout>

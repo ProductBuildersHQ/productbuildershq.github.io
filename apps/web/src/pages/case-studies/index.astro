@@ -1,0 +1,48 @@
+---
+import { getCollection } from 'astro:content'
+import BaseLayout from '../../layouts/BaseLayout.astro'
+
+const caseStudies = await getCollection('caseStudies')
+---
+
+<BaseLayout title="Case Studies" description="Real-world implementations of AI-native development practices.">
+  <div class="py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-5 md:px-8">
+      <div class="mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Case Studies</h1>
+        <p class="text-xl text-[var(--color-text-muted)] max-w-3xl">
+          Real-world implementations of AI-native development practices. Learn how leading teams are achieving higher autonomy levels.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 gap-8">
+        {caseStudies.map((study) => {
+          const inner = (
+            <>
+              <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+                <div class="flex-1">
+                  <div class="flex flex-wrap items-center gap-3 mb-3">
+                    <span class="text-sm font-medium px-3 py-1 bg-[var(--color-accent)] text-[var(--color-primary-dark)] rounded-full">Level {study.data.level}</span>
+                    <span class="text-sm text-[var(--color-text-subtle)]">{study.data.company} &middot; {study.data.date}</span>
+                    {study.data.comingSoon && <span class="text-sm font-medium px-3 py-1 bg-[var(--color-text-muted)]/20 text-[var(--color-text-muted)] rounded-full">Coming Soon</span>}
+                  </div>
+                  <h2 class:list={['text-2xl font-bold mb-2 text-[var(--color-text)]', !study.data.comingSoon && 'group-hover:text-[var(--color-primary)]']}>{study.data.title}</h2>
+                  <p class="text-base text-[var(--color-text-muted)] mb-4">{study.data.subtitle}</p>
+                  <p class="text-sm text-[var(--color-text-muted)]">{study.data.description}</p>
+                </div>
+              </div>
+              <div class="mt-6 flex flex-wrap gap-2">
+                {study.data.tags.map((tag) => <span class="text-xs px-2 py-1 bg-[var(--color-bg-secondary)] text-[var(--color-text-muted)] rounded">{tag}</span>)}
+              </div>
+            </>
+          )
+
+          return study.data.comingSoon ? (
+            <div class="p-8 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-xl opacity-60">{inner}</div>
+          ) : (
+            <a href={`/case-studies/${study.id}`} class="group block p-8 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-xl no-underline hover:border-[var(--color-primary)] hover:shadow-lg transition-all">{inner}</a>
+          )
+        })}
+      </div>
+    </div>
+  </div>
+</BaseLayout>

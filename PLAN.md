@@ -1,6 +1,8 @@
 # ProductBuildersHQ Website - Future Plans
 
-## v0.2.0 - Astro Migration (Recommended)
+## v0.2.0 - Astro Migration (Implemented)
+
+Status: implemented in `apps/web/`. The site now builds with Astro, renders framework and case study Markdown as static HTML, and keeps PDFs available as downloads.
 
 ### Why Migrate to Astro?
 
@@ -197,16 +199,16 @@ export default defineConfig({
 
 ---
 
-## Current Architecture (v0.1.0)
+## Current Architecture (v0.2.0)
 
 ```
 productbuildershq.github.io/
-├── apps/web/           # React + Vite + Tailwind
+├── apps/web/           # Astro + Tailwind
 │   ├── src/
-│   │   ├── components/ # Layout, Navbar, Footer
-│   │   ├── data/       # JSON content (frameworks, case-studies)
-│   │   ├── pages/      # Route components
-│   │   └── lib/        # Types
+│   │   ├── content/    # Markdown content collections
+│   │   ├── layouts/    # Shared Astro layouts
+│   │   ├── pages/      # Static and dynamic routes
+│   │   └── styles/     # Global styles
 │   └── public/
 │       └── papers/     # PDF files (source)
 ├── docs/               # Build output (GitHub Pages)
@@ -217,6 +219,6 @@ productbuildershq.github.io/
 
 1. Write markdown in `productbuildershq-content-internal/`
 2. Generate PDF with Pandoc + custom backgrounds
-3. Copy PDF to `apps/web/public/papers/`
-4. Add entry to JSON data file
+3. Copy markdown to `apps/web/src/content/`
+4. Copy PDF to `apps/web/public/papers/`
 5. Build and deploy

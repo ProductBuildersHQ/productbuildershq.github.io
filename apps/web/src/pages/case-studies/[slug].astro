@@ -1,0 +1,109 @@
+---
+import { getCollection, render } from 'astro:content'
+import BaseLayout from '../../layouts/BaseLayout.astro'
+
+export async function getStaticPaths() {
+  const caseStudies = await getCollection('caseStudies', ({ data }) => !data.comingSoon)
+  return caseStudies.map((entry) => ({ params: { slug: entry.id }, props: { entry } }))
+}
+
+const { entry } = Astro.props
+const { Content, headings } = await render(entry)
+const metrics = entry.data.metrics ?? []
+const summary = entry.data.summary
+---
+
+<BaseLayout title={entry.data.title} description={entry.data.description}>
+  <div class="py-8 md:py-12">
+    <div class="max-w-6xl mx-auto px-5 md:px-8">
+      <a href="/case-studies" class="inline-flex items-center text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline mb-6">
+        <svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
+        </svg>
+        Back to Case Studies
+      </a>
+
+      <div class="mb-8">
+        <h1 class="text-3xl md:text-4xl font-bold mb-2">{entry.data.title}</h1>
+        <p class="text-xl text-[var(--color-primary)] mb-4">{entry.data.subtitle}</p>
+        <p class="text-[var(--color-text-muted)] mb-6 max-w-3xl">{entry.data.description}</p>
+        <div class="flex flex-wrap items-center gap-4 mb-6">
+          <span class="inline-flex items-center text-sm font-medium px-3 py-1.5 bg-[var(--color-accent)] text-[var(--color-primary-dark)] rounded-full">Level {entry.data.level}</span>
+          <span class="text-sm font-medium text-[var(--color-text)]">{entry.data.company}</span>
+          {entry.data.industry && <span class="text-sm text-[var(--color-text-muted)]">{entry.data.industry}</span>}
+          <span class="text-sm text-[var(--color-text-subtle)]">{entry.data.date}</span>
+        </div>
+        <div class="flex flex-wrap gap-3">
+          <a href={entry.data.pdfUrl} download class="inline-flex items-center justify-center px-5 py-2.5 bg-[var(--color-primary-dark)] text-white font-medium rounded-lg no-underline hover:bg-[var(--color-primary)] transition-colors">Download PDF</a>
+          <a href={entry.data.pdfUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-5 py-2.5 border border-[var(--color-border)] text-[var(--color-text)] font-medium rounded-lg no-underline hover:bg-[var(--color-bg-secondary)] transition-colors">Open PDF</a>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap gap-2 mb-8">
+        {entry.data.tags.map((tag) => <span class="text-sm px-3 py-1 bg-[var(--color-bg-secondary)] text-[var(--color-text-muted)] rounded-full">{tag}</span>)}
+      </div>
+
+      {metrics.length > 0 && (
+        <section class="mb-8" aria-labelledby="key-metrics">
+          <div class="flex items-end justify-between gap-4 mb-4">
+            <div>
+              <h2 id="key-metrics" class="text-2xl font-bold mb-1">Key Metrics</h2>
+              <p class="text-sm text-[var(--color-text-muted)]">Reported outcomes and operating signals from this case study.</p>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {metrics.map((metric) => (
+              <div class="border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-card)] p-5">
+                <div class="text-3xl font-bold text-[var(--color-primary-dark)] mb-2">{metric.value}</div>
+                <div class="text-sm font-semibold text-[var(--color-text)] mb-2">{metric.label}</div>
+                <p class="text-sm text-[var(--color-text-muted)] leading-relaxed mb-3">{metric.detail}</p>
+                {(metric.source || metric.confidence) && (
+                  <div class="text-xs text-[var(--color-text-subtle)]">
+                    {metric.confidence && <span class="uppercase tracking-wide">{metric.confidence}</span>}
+                    {metric.confidence && metric.source && <span> · </span>}
+                    {metric.source && <span>{metric.source}</span>}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {summary && (
+        <section class="mb-10 border-y border-[var(--color-border-light)] bg-[var(--color-bg-secondary)]">
+          <div class="grid grid-cols-1 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x divide-[var(--color-border-light)]">
+            <div class="p-5">
+              <h2 class="text-sm font-semibold uppercase tracking-wide text-[var(--color-primary-dark)] mb-2">Challenge</h2>
+              <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">{summary.challenge}</p>
+            </div>
+            <div class="p-5">
+              <h2 class="text-sm font-semibold uppercase tracking-wide text-[var(--color-primary-dark)] mb-2">Approach</h2>
+              <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">{summary.approach}</p>
+            </div>
+            <div class="p-5">
+              <h2 class="text-sm font-semibold uppercase tracking-wide text-[var(--color-primary-dark)] mb-2">Outcome</h2>
+              <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">{summary.outcome}</p>
+            </div>
+          </div>
+        </section>
+      )}
+
+      <div class="grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-10">
+        <aside class="hidden lg:block">
+          <div class="sticky top-24 border-l border-[var(--color-border-light)] pl-4">
+            <div class="text-xs font-semibold uppercase tracking-wide text-[var(--color-text-subtle)] mb-3">Contents</div>
+            <nav class="space-y-2">
+              {headings.filter((heading) => heading.depth === 2).map((heading) => (
+                <a href={`#${heading.slug}`} class="block text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline">{heading.text}</a>
+              ))}
+            </nav>
+          </div>
+        </aside>
+        <article class="article-content min-w-0">
+          <Content />
+        </article>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
