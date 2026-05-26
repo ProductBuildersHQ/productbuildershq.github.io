@@ -86,6 +86,17 @@ details > summary::-webkit-details-marker {
   margin: 1rem 0;
 }
 
+.article-content a {
+  color: var(--color-primary);
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 0.18em;
+}
+
+.article-content a:hover {
+  color: var(--color-primary-dark);
+}
+
 .article-content ul,
 .article-content ol {
   margin: 1rem 0 1.25rem;
