@@ -1,0 +1,108 @@
+{
+  "irVersion": "1.0",
+  "project": "productbuildershq.github.io",
+  "repository": "https://github.com/ProductBuildersHQ/productbuildershq.github.io",
+  "versioning": "semver",
+  "commitConvention": "conventional",
+  "maintainers": ["ProductBuildersHQ", "johncwang@gmail.com"],
+  "releases": [
+    {
+      "version": "v0.3.0",
+      "date": "2026-06-29",
+      "highlights": [
+        { "description": "Astro migration with content collections for markdown-based articles" },
+        { "description": "Four new framework articles: Loop Engineering, Spec-Driven Development, LLM-as-a-Judge, DORA and SPACE in the AI Age" },
+        { "description": "Three new case studies: Spotify Honk, Cursor/Anysphere, GitHub Copilot Workspace" }
+      ],
+      "added": [
+        { "description": "Loop Engineering framework covering Claude Code /goal and /loop, Codex CLI /goal, and REAL/VEAL loop patterns", "commit": "d4710d8" },
+        { "description": "Spec-Driven Development framework comparing GitHub SpecKit, AWS Kiro, AI-DLC, OpenSpec, and VisionSpec", "commit": "b62b3d7" },
+        { "description": "LLM-as-a-Judge framework for automated code review at scale with multi-judge aggregation", "commit": "87715f8" },
+        { "description": "DORA and SPACE in the AI Age framework with AI-native metrics", "commit": "d4710d8" },
+        { "description": "Spotify Honk case study: background agents at enterprise scale", "commit": "87715f8" },
+        { "description": "Cursor/Anysphere case study: vibe coding at scale", "commit": "87715f8" },
+        { "description": "GitHub Copilot Workspace case study: spec-driven workflows", "commit": "87715f8" },
+        { "description": "StrongDM Software Factory case study for ASDM Level 6", "commit": "9ffb2ab" },
+        { "description": "GitHub Actions workflow for docs deployment", "commit": "1e98063" },
+        { "description": "Products section to about page", "commit": "aa43870" },
+        { "description": "ROADMAP.md for tracking framework development progress", "commit": "b62b3d7" }
+      ],
+      "changed": [
+        { "description": "Migrate site from React/Vite to Astro with content collections", "commit": "4d99dce" },
+        { "description": "Software Delivery Autonomy Model updated to seven levels", "commit": "4fe331f" },
+        { "description": "Content cards made fully clickable", "commit": "c7f324d" },
+        { "description": "Cross-reference links between all frameworks and case studies", "commit": "5d3c90a" }
+      ],
+      "fixed": [
+        { "description": "Article links now visible with proper styling", "commit": "29fffa9" },
+        { "description": "Footer uses branded domain casing", "commit": "1975947" }
+      ],
+      "infrastructure": [
+        { "description": "Shiki github-dark theme for code block syntax highlighting", "commit": "d4710d8" },
+        { "description": "Improved code block and inline code CSS styling", "commit": "d4710d8" },
+        { "description": "Gitignore pattern for ideation chat files", "commit": "6efcefe" }
+      ]
+    },
+    {
+      "version": "v0.2.0",
+      "date": "2026-05-25",
+      "commit": "3db139c",
+      "highlights": [
+        { "description": "Unified navbar with Products and Resources dropdown menus" },
+        { "description": "Shared nav-config.json for consistent navigation across React SPA and MkDocs sites" }
+      ],
+      "added": [
+        { "description": "Unified navbar with Products dropdown (VisionSpec) and Resources dropdown (Papers, About)", "commit": "cf9876e" },
+        { "description": "GitHub icon link in navbar", "commit": "cf9876e" },
+        { "description": "Mobile responsive hamburger menu", "commit": "cf9876e" },
+        { "description": "Papers page listing available PDFs", "commit": "cf9876e" }
+      ],
+      "changed": [
+        { "description": "nav-config.json as single source of truth for navigation across all sites", "commit": "3db139c" },
+        { "description": "Accent gold color updated from #facc15 to #eab308 to match PDF brand guidelines", "commit": "6068685" },
+        { "description": "Secondary background color updated from #f0fdf4 to #f8fdf9 to match PDF mint", "commit": "6068685" }
+      ],
+      "fixed": [
+        { "description": "CNAME file restored for custom domain (was deleted by Vite emptyOutDir)", "commit": "d6e0712" },
+        { "description": ".nojekyll added for GitHub Pages compatibility with Vite-built assets", "commit": "bbd49a5" }
+      ],
+      "documentation": [
+        { "description": "Dual-build pipeline for PDF and HTML clarified in PLAN.md", "commit": "a61b250" },
+        { "description": "HTML article rendering plan for Astro migration", "commit": "4aca336" }
+      ]
+    },
+    {
+      "version": "v0.1.0",
+      "date": "2026-05-25",
+      "commit": "60af73b",
+      "highlights": [
+        { "description": "Initial release of ProductBuildersHQ website with React, Vite, and Tailwind CSS" },
+        { "description": "Frameworks and case studies pages with PDF embedding" }
+      ],
+      "added": [
+        { "description": "Web application with Vite, React 19, and Tailwind CSS v4", "commit": "0e5a830" },
+        { "description": "Layout components with dark green navbar/footer framing", "commit": "83ebeaa" },
+        { "description": "Theme styling with CSS variables for emerald green and gold brand colors", "commit": "b1e2c8b" },
+        { "description": "Content data and TypeScript type definitions for frameworks and case studies", "commit": "dce1cd5" },
+        { "description": "Application routing with HashRouter for GitHub Pages SPA support", "commit": "b746523" },
+        { "description": "Home page with hero, frameworks, and case studies sections", "commit": "b746523" },
+        { "description": "About page with mission and contact information", "commit": "b746523" },
+        { "description": "Frameworks listing and detail pages with PDF viewer", "commit": "648332f" },
+        { "description": "Case studies listing and detail pages with level badges", "commit": "9198f6a" },
+        { "description": "favicon.svg with P logo on emerald background", "commit": "f703d94" },
+        { "description": "404.html with SPA redirect script for GitHub Pages", "commit": "f703d94" },
+        { "description": "PDF papers: Product Builder Maturity Model, Software Delivery Autonomy Levels, AWS Project Mantle", "commit": "1f8e9b1" }
+      ],
+      "documentation": [
+        { "description": "README with setup, development, and deployment instructions", "commit": "e84d036" },
+        { "description": "CLAUDE.md with AI assistant context and conventions", "commit": "e84d036" },
+        { "description": "PLAN.md with Astro migration roadmap for v0.2.0", "commit": "e84d036" }
+      ],
+      "infrastructure": [
+        { "description": "npm workspace configuration for monorepo structure", "commit": "b0f4ed0" },
+        { "description": "Build output to docs/ directory for GitHub Pages deployment", "commit": "5d4f1ab" },
+        { "description": "CNAME file for productbuildershq.com custom domain", "commit": "60af73b" }
+      ]
+    }
+  ]
+}
