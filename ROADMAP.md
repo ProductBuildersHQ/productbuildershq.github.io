@@ -17,6 +17,12 @@
   - PRD vs. specifications for AI agents
   - Integration with ASDM framework
 
+- [x] LLM-as-a-Judge (v1.0)
+  - Replacing human code review (Level 6 enabler)
+  - Categorical scoring, multi-judge aggregation
+  - VEAL loop integration for automated fix cycles
+  - CI/CD integration patterns and cost-benefit analysis
+
 ### Planned
 
 - [ ] MCP and A2A: The Infrastructure of Agentic AI
@@ -24,12 +30,6 @@
   - Agent-to-Agent protocol (Google)
   - Security considerations and best practices
   - Enterprise integration patterns
-
-- [ ] LLM-as-a-Judge: Automated Code Review at Scale
-  - Replacing human code review (Level 6 enabler)
-  - Bias mitigation strategies
-  - CI/CD integration patterns
-  - Cost-benefit analysis
 
 - [ ] The AI Product Manager in 2026
   - Four working roles: copilot PM, platform PM, ML feature PM, AI ops PM
@@ -55,12 +55,9 @@
 
 - [x] AWS Project Mantle
 - [x] StrongDM Software Factory
-
-### Planned
-
-- [ ] Spotify Honk (background agents at scale)
-- [ ] Cursor/Anysphere (vibe coding to spec-driven)
-- [ ] GitHub Copilot Workspace evolution
+- [x] Spotify Honk (background agents at scale)
+- [x] Cursor/Anysphere (vibe coding at scale)
+- [x] GitHub Copilot Workspace (spec-driven workflows)
 
 ## Infrastructure
 
