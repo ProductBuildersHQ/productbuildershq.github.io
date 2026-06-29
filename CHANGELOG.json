@@ -31,7 +31,9 @@
         { "description": "Migrate site from React/Vite to Astro with content collections", "commit": "4d99dce" },
         { "description": "Software Delivery Autonomy Model updated to seven levels", "commit": "4fe331f" },
         { "description": "Content cards made fully clickable", "commit": "c7f324d" },
-        { "description": "Cross-reference links between all frameworks and case studies", "commit": "5d3c90a" }
+        { "description": "Cross-reference links between all frameworks and case studies", "commit": "5d3c90a" },
+        { "description": "Level pills in case study headers now link to ASDM framework", "commit": "904e2f9" },
+        { "description": "ASDM level links added to case study headers", "commit": "622d2ce" }
       ],
       "fixed": [
         { "description": "Article links now visible with proper styling", "commit": "29fffa9" },
