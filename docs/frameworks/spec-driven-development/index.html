@@ -1,0 +1,637 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="A comprehensive guide to spec-driven development (SDD) methodologies and tools for AI coding agents, including GitHub SpecKit, AWS Kiro, AI-DLC Workflows, OpenSpec, and VisionSpec."><meta property="og:title" content="Spec-Driven Development | ProductBuildersHQ"><meta property="og:description" content="A comprehensive guide to spec-driven development (SDD) methodologies and tools for AI coding agents, including GitHub SpecKit, AWS Kiro, AI-DLC Workflows, OpenSpec, and VisionSpec."><meta property="og:type" content="website"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><title>Spec-Driven Development | ProductBuildersHQ</title><link rel="stylesheet" href="/_astro/BaseLayout.Cu815-2f.css"></head> <body> <div class="min-h-screen flex flex-col"> <nav class="sticky top-0 z-50 bg-[var(--color-frame-bg)]"> <div class="max-w-7xl mx-auto px-5 md:px-8"> <div class="flex items-center justify-between h-16"> <a href="/" class="flex items-center gap-2 no-underline"> <span class="text-xl font-bold text-[var(--color-frame-text)]">ProductBuildersHQ</span> </a> <div class="hidden md:flex items-center gap-6"> <a href="/frameworks" class="text-sm font-medium no-underline transition-colors text-[var(--color-frame-accent)]"> Frameworks </a><a href="/case-studies" class="text-sm font-medium no-underline transition-colors text-[var(--color-frame-text-muted)] hover:text-[var(--color-frame-text)]"> Case Studies </a> <div class="relative group"> <button class="flex items-center gap-1 text-sm font-medium text-[var(--color-frame-text-muted)] group-hover:text-[var(--color-frame-text)] transition-colors bg-transparent border-none cursor-pointer"> Products <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path> </svg> </button> <div class="absolute top-full left-0 mt-2 w-64 bg-[var(--color-frame-bg)] border border-[rgba(255,255,255,0.15)] rounded-lg shadow-lg py-2 z-50 hidden group-hover:block group-focus-within:block"> <a href="/visionspec/" class="block px-4 py-2 text-sm text-[var(--color-frame-text-muted)] hover:text-[var(--color-frame-text)] hover:bg-[rgba(255,255,255,0.05)] no-underline"> <div class="font-medium">VisionSpec</div> <div class="text-xs text-[var(--color-frame-text-muted)] mt-0.5">Multi-domain specification orchestration</div> </a> </div> </div><div class="relative group"> <button class="flex items-center gap-1 text-sm font-medium text-[var(--color-frame-text-muted)] group-hover:text-[var(--color-frame-text)] transition-colors bg-transparent border-none cursor-pointer"> Resources <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path> </svg> </button> <div class="absolute top-full left-0 mt-2 w-64 bg-[var(--color-frame-bg)] border border-[rgba(255,255,255,0.15)] rounded-lg shadow-lg py-2 z-50 hidden group-hover:block group-focus-within:block"> <a href="/papers" class="block px-4 py-2 text-sm text-[var(--color-frame-text-muted)] hover:text-[var(--color-frame-text)] hover:bg-[rgba(255,255,255,0.05)] no-underline"> <div class="font-medium">Papers</div>  </a><a href="/about" class="block px-4 py-2 text-sm text-[var(--color-frame-text-muted)] hover:text-[var(--color-frame-text)] hover:bg-[rgba(255,255,255,0.05)] no-underline"> <div class="font-medium">About</div>  </a> </div> </div> <a href="https://github.com/ProductBuildersHQ" target="_blank" rel="noopener noreferrer" class="text-[var(--color-frame-text-muted)] hover:text-[var(--color-frame-text)] transition-colors" title="GitHub" aria-label="GitHub"> <svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor" aria-hidden="true"> <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"></path> </svg> </a> </div> <details class="md:hidden relative"> <summary class="list-none text-[var(--color-frame-text)] cursor-pointer p-2" aria-label="Open navigation"> <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path> </svg> </summary> <div class="absolute right-0 top-full mt-3 w-72 bg-[var(--color-frame-bg)] border border-[rgba(255,255,255,0.15)] rounded-lg shadow-lg p-4"> <div class="flex flex-col gap-4"> <a href="/frameworks" class="text-sm font-medium no-underline text-[var(--color-frame-accent)]"> Frameworks </a><a href="/case-studies" class="text-sm font-medium no-underline text-[var(--color-frame-text-muted)]"> Case Studies </a> <div class="border-t border-[rgba(255,255,255,0.1)] pt-4"> <div class="text-xs text-[var(--color-frame-text-muted)] uppercase tracking-wide mb-2">Products</div> <a href="/visionspec/" class="block py-2 text-sm text-[var(--color-frame-text-muted)] no-underline">VisionSpec</a> </div><div class="border-t border-[rgba(255,255,255,0.1)] pt-4"> <div class="text-xs text-[var(--color-frame-text-muted)] uppercase tracking-wide mb-2">Resources</div> <a href="/papers" class="block py-2 text-sm text-[var(--color-frame-text-muted)] no-underline">Papers</a><a href="/about" class="block py-2 text-sm text-[var(--color-frame-text-muted)] no-underline">About</a> </div> </div> </div> </details> </div> </div> </nav> <main class="flex-1">  <div class="py-8 md:py-12"> <div class="max-w-6xl mx-auto px-5 md:px-8"> <a href="/frameworks" class="inline-flex items-center text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline mb-6"> <svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"> <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path> </svg>
+Back to Frameworks
+</a> <div class="mb-8"> <h1 class="text-3xl md:text-4xl font-bold mb-2">Spec-Driven Development</h1> <p class="text-xl text-[var(--color-primary)] mb-4">From Vibe Coding to Structured AI Execution</p> <p class="text-[var(--color-text-muted)] mb-6 max-w-3xl">A comprehensive guide to spec-driven development (SDD) methodologies and tools for AI coding agents, including GitHub SpecKit, AWS Kiro, AI-DLC Workflows, OpenSpec, and VisionSpec.</p> <div class="flex flex-wrap items-center gap-4 mb-6"> <span class="inline-flex items-center text-sm font-medium px-3 py-1.5 bg-[var(--color-primary)] text-white rounded-full">5 Levels</span> <span class="text-sm text-[var(--color-text-muted)]">v1.0</span> <span class="text-sm text-[var(--color-text-subtle)]">Last updated June 2026</span> </div> <div class="flex flex-wrap gap-3"> <a href="/papers/spec-driven-development.pdf" download class="inline-flex items-center justify-center px-5 py-2.5 bg-[var(--color-primary-dark)] text-white font-medium rounded-lg no-underline hover:bg-[var(--color-primary)] transition-colors">
+Download PDF
+</a> <a href="/papers/spec-driven-development.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-5 py-2.5 border border-[var(--color-border)] text-[var(--color-text)] font-medium rounded-lg no-underline hover:bg-[var(--color-bg-secondary)] transition-colors">
+Open PDF
+</a> </div> </div> <div class="flex flex-wrap gap-2 mb-8"> <span class="text-sm px-3 py-1 bg-[var(--color-bg-secondary)] text-[var(--color-text-muted)] rounded-full">spec-driven</span><span class="text-sm px-3 py-1 bg-[var(--color-bg-secondary)] text-[var(--color-text-muted)] rounded-full">sdd</span><span class="text-sm px-3 py-1 bg-[var(--color-bg-secondary)] text-[var(--color-text-muted)] rounded-full">agents</span><span class="text-sm px-3 py-1 bg-[var(--color-bg-secondary)] text-[var(--color-text-muted)] rounded-full">specifications</span><span class="text-sm px-3 py-1 bg-[var(--color-bg-secondary)] text-[var(--color-text-muted)] rounded-full">ai-native</span><span class="text-sm px-3 py-1 bg-[var(--color-bg-secondary)] text-[var(--color-text-muted)] rounded-full">methodology</span> </div> <div class="grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-10"> <aside class="hidden lg:block"> <div class="sticky top-24 border-l border-[var(--color-border-light)] pl-4"> <div class="text-xs font-semibold uppercase tracking-wide text-[var(--color-text-subtle)] mb-3">Contents</div> <nav class="space-y-2"> <a href="#what-is-spec-driven-development" class="block text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline">What Is Spec-Driven Development?</a><a href="#core-sdd-concepts" class="block text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline">Core SDD Concepts</a><a href="#sdd-tool-landscape" class="block text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline">SDD Tool Landscape</a><a href="#tool-comparison-matrix" class="block text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline">Tool Comparison Matrix</a><a href="#choosing-an-sdd-tool" class="block text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline">Choosing an SDD Tool</a><a href="#sdd-and-the-autonomy-levels" class="block text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline">SDD and the Autonomy Levels</a><a href="#practical-sdd-workflow" class="block text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline">Practical SDD Workflow</a><a href="#anti-patterns-to-avoid" class="block text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline">Anti-Patterns to Avoid</a><a href="#the-future-of-sdd" class="block text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline">The Future of SDD</a><a href="#conclusion" class="block text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline">Conclusion</a><a href="#references" class="block text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline">References</a> </nav> </div> </aside> <article class="article-content min-w-0"> <p>In February 2025, Andrej Karpathy coined the term “vibe coding”—describing software development where you prompt an AI with rough intentions and it generates code. By early 2026, vibe coding had become mainstream: 92% of US developers use AI tools daily, and 41% of global code is AI-generated.</p>
+<p>But something went wrong.</p>
+<p>A December 2025 CodeRabbit analysis found that AI co-authored code contained 1.7x more major issues compared to human-written code, with security vulnerabilities 2.74x higher. In early 2026, a vibe-coded app suffered a major data breach exposing 1.5 million API keys. Engineers began warning of a “vibe slop” crisis—companies trading near-term productivity for longer-term problems.</p>
+<p>Even Karpathy, who coined the term, acknowledged the shift: “This era is ending and we are entering the age of agentic engineering—orchestrating agents against detailed specifications with human oversight.”</p>
+<p>This article introduces <strong>Spec-Driven Development (SDD)</strong>—the methodology replacing vibe coding for production software. We examine the core concepts, compare five major tools (GitHub SpecKit, AWS Kiro, AI-DLC Workflows, OpenSpec, and VisionSpec), and show how SDD connects to the <a href="/frameworks/software-delivery-autonomy">Software Delivery Autonomy Levels</a> and <a href="/frameworks/loop-engineering">Loop Engineering</a> frameworks.</p>
+<hr>
+<h2 id="what-is-spec-driven-development">What Is Spec-Driven Development?<a class="heading-anchor" href="#what-is-spec-driven-development"><span class="icon icon-link"></span></a></h2>
+<p><strong>Spec-Driven Development (SDD)</strong> is a software development methodology where an executable, version-controlled specification—not the code—is the single source of truth.</p>
+<p>The team (or an AI coding agent) first writes a detailed spec describing what the system should do, then derives an implementation plan, breaks it into atomic tasks, and only then generates the code.</p>
+<h3 id="the-sdd-inversion">The SDD Inversion<a class="heading-anchor" href="#the-sdd-inversion"><span class="icon icon-link"></span></a></h3>
+<p>Traditional development treats specifications as secondary guidance documents that quickly become outdated. SDD inverts this hierarchy:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Traditional Development</th><th>Spec-Driven Development</th></tr></thead><tbody><tr><td>Code is primary</td><td>Specification is primary</td></tr><tr><td>Specs describe code</td><td>Code implements specs</td></tr><tr><td>Requirements drift from implementation</td><td>Requirements drive implementation</td></tr><tr><td>Documentation is afterthought</td><td>Documentation is executable</td></tr><tr><td>AI generates from prompts</td><td>AI generates from specifications</td></tr></tbody></table>
+<h3 id="why-sdd-matters-now">Why SDD Matters Now<a class="heading-anchor" href="#why-sdd-matters-now"><span class="icon icon-link"></span></a></h3>
+<p>SDD emerged as a direct response to the failure modes of vibe coding:</p>
+<p><strong>Problem 1: Agents drift from intent.</strong> Without explicit scope, agents make assumptions and head in the wrong direction fast. A spec anchors the agent to defined behavior.</p>
+<p><strong>Problem 2: No traceability.</strong> When requirements live only in chat history, there’s no way to verify that implementation matches intent. Specs create an auditable trail.</p>
+<p><strong>Problem 3: AI “games” narrow tests.</strong> Traditional unit tests can be gamed with hardcoded return values. SDD uses acceptance criteria and scenarios that describe observable behavior, not implementation details.</p>
+<p><strong>Problem 4: Brownfield complexity.</strong> Most development happens in existing codebases. SDD tools use delta-based specifications that describe only what’s changing, not the entire system.</p>
+<p>Early adopter reports from GitHub and AWS show <strong>3-10x higher first-pass success rate</strong> from AI agents on non-trivial tasks when using SDD versus vibe coding.</p>
+<hr>
+<h2 id="core-sdd-concepts">Core SDD Concepts<a class="heading-anchor" href="#core-sdd-concepts"><span class="icon icon-link"></span></a></h2>
+<p>All SDD tools share common patterns, though implementations vary.</p>
+<h3 id="1-specification-as-source-of-truth">1. Specification as Source of Truth<a class="heading-anchor" href="#1-specification-as-source-of-truth"><span class="icon icon-link"></span></a></h3>
+<p>Specifications define <strong>what</strong> and <strong>why</strong>, not <strong>how</strong>. They use requirements language (SHALL, MUST, SHOULD, MAY) and acceptance criteria in Given/When/Then format:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="markdown"><code><span class="line"><span style="color:#79B8FF;font-weight:bold">### Requirement: Session Expiration</span></span>
+<span class="line"><span style="color:#E1E4E8">The system MUST expire sessions after 30 minutes of inactivity.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">#### Scenario: Idle timeout</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> GIVEN an authenticated session</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> WHEN 30 minutes pass without activity</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> THEN the session is invalidated</span></span></code></pre>
+<h3 id="2-multi-phase-workflow">2. Multi-Phase Workflow<a class="heading-anchor" href="#2-multi-phase-workflow"><span class="icon icon-link"></span></a></h3>
+<p>SDD workflows separate concerns into phases:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Phase</th><th>Purpose</th><th>Artifacts</th></tr></thead><tbody><tr><td><strong>Specification</strong></td><td>Define what to build</td><td>Requirements, user stories, scenarios</td></tr><tr><td><strong>Design</strong></td><td>Define how to build</td><td>Architecture, data models, APIs</td></tr><tr><td><strong>Planning</strong></td><td>Define tasks</td><td>Implementation checklist</td></tr><tr><td><strong>Execution</strong></td><td>Build it</td><td>Code, tests, documentation</td></tr><tr><td><strong>Verification</strong></td><td>Confirm correctness</td><td>Acceptance tests, quality gates</td></tr></tbody></table>
+<h3 id="3-structured-artifacts">3. Structured Artifacts<a class="heading-anchor" href="#3-structured-artifacts"><span class="icon icon-link"></span></a></h3>
+<p>SDD tools generate standardized artifacts rather than freeform documents:</p>
+<ul>
+<li><strong>PRD</strong> (Product Requirements Document) — What users need</li>
+<li><strong>TRD</strong> (Technical Requirements Document) — How to implement</li>
+<li><strong>Acceptance Criteria</strong> — Observable behavior to verify</li>
+<li><strong>Task Lists</strong> — Atomic implementation steps with checkboxes</li>
+<li><strong>Design Documents</strong> — Architecture decisions and rationales</li>
+</ul>
+<h3 id="4-quality-gates">4. Quality Gates<a class="heading-anchor" href="#4-quality-gates"><span class="icon icon-link"></span></a></h3>
+<p>Each phase includes evaluation and approval:</p>
+<ul>
+<li><strong>Rubric-based evaluation</strong> — AI judges score specs against criteria</li>
+<li><strong>Conflict detection</strong> — Automatic identification of contradictions</li>
+<li><strong>Human approval</strong> — Explicit sign-off before proceeding</li>
+<li><strong>Constitution compliance</strong> — Enforcement of architectural principles</li>
+</ul>
+<h3 id="5-delta-based-changes">5. Delta-Based Changes<a class="heading-anchor" href="#5-delta-based-changes"><span class="icon icon-link"></span></a></h3>
+<p>For brownfield development, SDD tools describe only what’s changing:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="markdown"><code><span class="line"><span style="color:#79B8FF;font-weight:bold">## ADDED Requirements</span></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">### Session Timeout Configuration</span></span>
+<span class="line"><span style="color:#E1E4E8">The system SHALL allow administrators to configure session timeout.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">## MODIFIED Requirements</span></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">### Session Expiration</span></span>
+<span class="line"><span style="color:#E1E4E8">The system MUST expire sessions after the configured timeout (default: 30 minutes).</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">## REMOVED Requirements</span></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">### Hard-coded Timeout</span></span>
+<span class="line"><span style="color:#E1E4E8">(Replaced by configurable timeout above)</span></span></code></pre>
+<p>This enables specification of changes to large codebases without documenting the entire system first.</p>
+<hr>
+<h2 id="sdd-tool-landscape">SDD Tool Landscape<a class="heading-anchor" href="#sdd-tool-landscape"><span class="icon icon-link"></span></a></h2>
+<p>Five major tools have emerged for spec-driven development with AI coding agents. Each takes a different approach while sharing core SDD principles.</p>
+<h3 id="github-speckit">GitHub SpecKit<a class="heading-anchor" href="#github-speckit"><span class="icon icon-link"></span></a></h3>
+<p><strong>Philosophy:</strong> Constitution-governed, multi-agent orchestration with extensive customization.</p>
+<p><strong>Key Innovation:</strong> A “Constitution” layer defines architectural principles (Articles I-IX) that constrain all generated implementations. Templates act as sophisticated prompts that prevent premature implementation and enforce test-first thinking.</p>
+<p><strong>Structure:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>.specify/</span></span>
+<span class="line"><span>├── memory/constitution.md    # Architectural principles</span></span>
+<span class="line"><span>├── templates/                # Spec templates</span></span>
+<span class="line"><span>├── extensions/               # Added capabilities</span></span>
+<span class="line"><span>└── presets/                  # Organizational customizations</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>specs/</span></span>
+<span class="line"><span>└── 001-feature-name/</span></span>
+<span class="line"><span>    ├── spec.md               # Requirements (WHAT + WHY)</span></span>
+<span class="line"><span>    ├── plan.md               # Technical design (HOW)</span></span>
+<span class="line"><span>    ├── tasks.md              # Implementation checklist</span></span>
+<span class="line"><span>    └── research.md           # Technical investigation</span></span></code></pre>
+<p><strong>Workflow Commands:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>/speckit.constitution  → Establish project principles</span></span>
+<span class="line"><span>/speckit.specify       → Define feature requirements</span></span>
+<span class="line"><span>/speckit.clarify       → Resolve ambiguities</span></span>
+<span class="line"><span>/speckit.plan          → Create technical design</span></span>
+<span class="line"><span>/speckit.tasks         → Generate task breakdown</span></span>
+<span class="line"><span>/speckit.implement     → Execute tasks</span></span>
+<span class="line"><span>/speckit.converge      → Verify completion</span></span></code></pre>
+<p><strong>Integrations:</strong> 30+ AI agents including Claude Code, Cursor, Copilot, Codex, Gemini CLI, Windsurf, and Kiro.</p>
+<p><strong>Best For:</strong> Teams wanting maximum governance and customization. Enterprise organizations with established architectural standards.</p>
+<hr>
+<h3 id="aws-kiro">AWS Kiro<a class="heading-anchor" href="#aws-kiro"><span class="icon icon-link"></span></a></h3>
+<p><strong>Philosophy:</strong> Structured specs with EARS notation and three workflow types (feature, bugfix, quick plan).</p>
+<p><strong>Key Innovation:</strong> Uses EARS (Easy Approach to Requirements Syntax) notation: “WHEN [condition/event] THE SYSTEM SHALL [expected behavior]”. Bugfix specs explicitly capture unchanged behavior for regression prevention.</p>
+<p><strong>Feature Spec Structure:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>.kiro/specs/feature-name/</span></span>
+<span class="line"><span>├── requirements.md    # EARS-notation requirements</span></span>
+<span class="line"><span>├── design.md          # Technical architecture</span></span>
+<span class="line"><span>└── tasks/             # Implementation tasks</span></span></code></pre>
+<p><strong>Bugfix Spec Structure:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="markdown"><code><span class="line"><span style="color:#79B8FF;font-weight:bold">## Current Behavior (Defect)</span></span>
+<span class="line"><span style="color:#E1E4E8">WHEN [</span><span style="color:#DBEDFF;text-decoration:underline">condition</span><span style="color:#E1E4E8">] THEN the system [incorrect behavior]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">## Expected Behavior (Correct)</span></span>
+<span class="line"><span style="color:#E1E4E8">WHEN [</span><span style="color:#DBEDFF;text-decoration:underline">condition</span><span style="color:#E1E4E8">] THEN the system SHALL [correct behavior]</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">## Unchanged Behavior (Regression Prevention)</span></span>
+<span class="line"><span style="color:#E1E4E8">WHEN [</span><span style="color:#DBEDFF;text-decoration:underline">condition</span><span style="color:#E1E4E8">] THEN the system SHALL CONTINUE TO [existing behavior]</span></span></code></pre>
+<p><strong>Workflow Variants:</strong></p>
+<ul>
+<li><strong>Requirements-First</strong> — Start with behavior, derive design</li>
+<li><strong>Design-First</strong> — Start with architecture, derive requirements</li>
+<li><strong>Quick Plan</strong> — Auto-generate all phases without approval gates</li>
+</ul>
+<p><strong>Best For:</strong> Teams wanting structured requirements without extensive setup. Projects with strict compliance or audit requirements.</p>
+<hr>
+<h3 id="aws-ai-dlc-workflows">AWS AI-DLC Workflows<a class="heading-anchor" href="#aws-ai-dlc-workflows"><span class="icon icon-link"></span></a></h3>
+<p><strong>Philosophy:</strong> Adaptive three-phase methodology that executes only stages that add value.</p>
+<p><strong>Key Innovation:</strong> Stages are conditional—the workflow adapts to project type (greenfield vs brownfield), complexity level (minimal/standard/comprehensive), and work type (feature vs bug fix). Includes reverse engineering phase for existing codebases.</p>
+<p><strong>Three-Phase Structure:</strong></p>
+<p><strong>Phase 1 — INCEPTION (Planning):</strong></p>
+<ul>
+<li>Workspace Detection (always)</li>
+<li>Reverse Engineering (brownfield only)</li>
+<li>Requirements Analysis (adaptive depth)</li>
+<li>User Stories (user-facing changes)</li>
+<li>Application Design (complex changes)</li>
+<li>Units Generation (system decomposition)</li>
+</ul>
+<p><strong>Phase 2 — CONSTRUCTION (Implementation):</strong></p>
+<ul>
+<li>Functional Design (per unit)</li>
+<li>NFR Requirements (performance, security)</li>
+<li>Infrastructure Design (cloud mapping)</li>
+<li>Code Generation (planning + execution)</li>
+<li>Build and Test (comprehensive testing)</li>
+</ul>
+<p><strong>Phase 3 — OPERATIONS (Deployment):</strong></p>
+<ul>
+<li>Deployment automation</li>
+<li>Monitoring and observability</li>
+<li>Incident response</li>
+</ul>
+<p><strong>Artifact Structure:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>aidlc-docs/</span></span>
+<span class="line"><span>├── aidlc-state.md           # Workflow progress</span></span>
+<span class="line"><span>├── audit.md                 # Complete audit trail</span></span>
+<span class="line"><span>├── inception/</span></span>
+<span class="line"><span>│   ├── requirements/</span></span>
+<span class="line"><span>│   ├── user-stories/</span></span>
+<span class="line"><span>│   └── application-design/</span></span>
+<span class="line"><span>└── construction/</span></span>
+<span class="line"><span>    ├── {unit-name}/</span></span>
+<span class="line"><span>    │   ├── functional-design/</span></span>
+<span class="line"><span>    │   └── code/</span></span>
+<span class="line"><span>    └── build-and-test/</span></span></code></pre>
+<p><strong>Question-File Pattern:</strong> Questions are never asked inline. AI creates question files with answer tags that users fill in, ensuring durable records for team collaboration.</p>
+<p><strong>Best For:</strong> Large enterprise projects. AWS-native development. Teams wanting comprehensive lifecycle coverage.</p>
+<hr>
+<h3 id="openspec">OpenSpec<a class="heading-anchor" href="#openspec"><span class="icon icon-link"></span></a></h3>
+<p><strong>Philosophy:</strong> Fluid, brownfield-first workflow with delta-based specifications.</p>
+<p><strong>Key Innovation:</strong> Separates <code>specs/</code> (current system behavior) from <code>changes/</code> (proposed modifications). Delta specs describe only ADDED/MODIFIED/REMOVED requirements, making it practical to specify changes to large existing codebases.</p>
+<p><strong>Structure:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>openspec/</span></span>
+<span class="line"><span>├── specs/                   # Source of truth (current behavior)</span></span>
+<span class="line"><span>│   ├── auth/spec.md</span></span>
+<span class="line"><span>│   ├── payments/spec.md</span></span>
+<span class="line"><span>│   └── ui/spec.md</span></span>
+<span class="line"><span>├── changes/                 # Proposed modifications</span></span>
+<span class="line"><span>│   └── add-dark-mode/</span></span>
+<span class="line"><span>│       ├── proposal.md      # Why this change</span></span>
+<span class="line"><span>│       ├── design.md        # Technical approach</span></span>
+<span class="line"><span>│       ├── tasks.md         # Implementation checklist</span></span>
+<span class="line"><span>│       └── specs/           # Delta specs (changes only)</span></span>
+<span class="line"><span>│           └── ui/spec.md</span></span>
+<span class="line"><span>└── config.yaml              # Project configuration</span></span></code></pre>
+<p><strong>Delta Spec Format:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="markdown"><code><span class="line"><span style="color:#79B8FF;font-weight:bold">## ADDED Requirements</span></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">### Dark Mode Toggle</span></span>
+<span class="line"><span style="color:#E1E4E8">The system SHALL provide a toggle in user settings.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">## MODIFIED Requirements</span></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">### Theme Application</span></span>
+<span class="line"><span style="color:#E1E4E8">The system SHALL apply the selected theme to all UI components.</span></span>
+<span class="line"><span style="color:#E1E4E8">(Previously: fixed light theme)</span></span></code></pre>
+<p><strong>Workflow Commands:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>/opsx:explore   → Think through options (no artifacts)</span></span>
+<span class="line"><span>/opsx:propose   → Create change with all artifacts</span></span>
+<span class="line"><span>/opsx:apply     → Implement tasks</span></span>
+<span class="line"><span>/opsx:archive   → Merge delta specs into main specs</span></span></code></pre>
+<p><strong>Archive Behavior:</strong> When a change is archived, delta specs are merged into main specs—ADDED requirements append, MODIFIED requirements replace, REMOVED requirements delete.</p>
+<p><strong>Integrations:</strong> 25+ AI tools including Claude Code, Cursor, Windsurf, Copilot, Cline, and Continue.</p>
+<p><strong>Best For:</strong> Brownfield development. Teams wanting lightweight workflow. Projects where existing codebase documentation is sparse.</p>
+<hr>
+<h3 id="visionspec">VisionSpec<a class="heading-anchor" href="#visionspec"><span class="icon icon-link"></span></a></h3>
+<p><strong>Philosophy:</strong> Multi-domain orchestration implementing Amazon’s Working Backwards methodology.</p>
+<p><strong>Key Innovation:</strong> Bridges organizational strategy with AI execution through a structured flow: Market Requirements → Press Release (vision) → FAQ (scope) → Product Requirements → Technical Requirements → Unified Execution Spec. Includes post-ship alignment to keep specs synchronized with reality.</p>
+<p><strong>Working Backwards Flow:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>MRD (Market)</span></span>
+<span class="line"><span>    ↓</span></span>
+<span class="line"><span>Press Release (vision)  →  FAQ (scope challenges)</span></span>
+<span class="line"><span>    ↓</span></span>
+<span class="line"><span>PRD (Product Requirements)</span></span>
+<span class="line"><span>    ↓</span></span>
+<span class="line"><span>UXD (User Experience)</span></span>
+<span class="line"><span>    ↓</span></span>
+<span class="line"><span>TRD (Technical)  →  TPD (Test Plan)  →  IRD (Infrastructure)</span></span>
+<span class="line"><span>    ↓</span></span>
+<span class="line"><span>spec.md (Unified Execution Spec)</span></span>
+<span class="line"><span>    ↓</span></span>
+<span class="line"><span>Export to: SpecKit | AI-DLC | OpenSpec | GitHub Issues | Jira</span></span>
+<span class="line"><span>    ↓</span></span>
+<span class="line"><span>current-truth.md (Post-Ship Alignment)</span></span></code></pre>
+<p><strong>Directory Structure:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>docs/specs/{project}/</span></span>
+<span class="line"><span>├── source/                  # Human-authored specs</span></span>
+<span class="line"><span>│   ├── mrd.md              # Market Requirements</span></span>
+<span class="line"><span>│   ├── prd.md              # Product Requirements</span></span>
+<span class="line"><span>│   └── uxd.md              # User Experience</span></span>
+<span class="line"><span>├── gtm/                     # LLM-generated GTM docs</span></span>
+<span class="line"><span>│   ├── press.md            # Press Release</span></span>
+<span class="line"><span>│   ├── faq.md              # FAQ</span></span>
+<span class="line"><span>│   └── narrative-6p.md     # AWS-style narrative</span></span>
+<span class="line"><span>├── technical/               # LLM-generated technical</span></span>
+<span class="line"><span>│   ├── trd.md              # Technical Requirements</span></span>
+<span class="line"><span>│   ├── tpd.md              # Test Plan</span></span>
+<span class="line"><span>│   └── ird.md              # Infrastructure</span></span>
+<span class="line"><span>├── eval/                    # Evaluations (JSON)</span></span>
+<span class="line"><span>├── spec.md                  # Unified execution spec</span></span>
+<span class="line"><span>└── current-truth.md         # Post-ship reality</span></span></code></pre>
+<p><strong>Methodology Profiles (12 total):</strong></p>
+<ul>
+<li><strong>aws-product</strong> — Working Backwards for new products</li>
+<li><strong>google</strong> — Design Docs + RFC (engineering-heavy)</li>
+<li><strong>stripe</strong> — API-First (platform products)</li>
+<li><strong>lean-startup</strong> — Build-Measure-Learn</li>
+<li><strong>design-thinking</strong> — Stanford d.school</li>
+<li><strong>jtbd</strong> — Jobs to be Done</li>
+<li><strong>continuous-discovery</strong> — Teresa Torres opportunity tree</li>
+<li><strong>shapeup</strong> — Basecamp 6-week cycles</li>
+</ul>
+<p><strong>MCP Server:</strong> First-class Model Context Protocol integration with 28+ tools for spec operations, synthesis, reconciliation, and export.</p>
+<p><strong>Export Targets:</strong> SpecKit, AI-DLC, OpenSpec, GitHub Issues, Jira, and custom formats.</p>
+<p><strong>Best For:</strong> Organizations implementing Working Backwards methodology. Multi-team coordination. Enterprises needing traceability from strategy to execution.</p>
+<hr>
+<h2 id="tool-comparison-matrix">Tool Comparison Matrix<a class="heading-anchor" href="#tool-comparison-matrix"><span class="icon icon-link"></span></a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Capability</th><th>SpecKit</th><th>Kiro</th><th>AI-DLC</th><th>OpenSpec</th><th>VisionSpec</th></tr></thead><tbody><tr><td><strong>Philosophy</strong></td><td>Constitution-governed</td><td>EARS notation</td><td>Adaptive phases</td><td>Delta-based</td><td>Working Backwards</td></tr><tr><td><strong>Primary Use</strong></td><td>Greenfield features</td><td>Features + bugfixes</td><td>Full lifecycle</td><td>Brownfield changes</td><td>Strategy → execution</td></tr><tr><td><strong>Spec Format</strong></td><td>Markdown templates</td><td>EARS requirements</td><td>Adaptive depth</td><td>Delta specs</td><td>Multi-domain</td></tr><tr><td><strong>Artifact Count</strong></td><td>4 core + extensions</td><td>3 per spec type</td><td>15+ per phase</td><td>4 per change</td><td>12 spec types</td></tr><tr><td><strong>Agent Integrations</strong></td><td>30+</td><td>Kiro + Q Developer</td><td>7+ IDE/agents</td><td>25+</td><td>MCP server + skills</td></tr><tr><td><strong>Evaluation</strong></td><td>Checklist-based</td><td>Implicit in workflow</td><td>Evaluator tool</td><td>Validation CLI</td><td>Rubric-based LLM</td></tr><tr><td><strong>Customization</strong></td><td>Extensions + presets</td><td>Settings</td><td>Rule details</td><td>Schemas</td><td>Profiles + ChainLoader</td></tr><tr><td><strong>Learning Curve</strong></td><td>Medium-high</td><td>Low-medium</td><td>High</td><td>Low</td><td>Medium</td></tr><tr><td><strong>Best For</strong></td><td>Governed enterprise</td><td>Structured requirements</td><td>AWS/enterprise</td><td>Brownfield</td><td>Strategy alignment</td></tr></tbody></table>
+<hr>
+<h2 id="choosing-an-sdd-tool">Choosing an SDD Tool<a class="heading-anchor" href="#choosing-an-sdd-tool"><span class="icon icon-link"></span></a></h2>
+<h3 id="decision-framework">Decision Framework<a class="heading-anchor" href="#decision-framework"><span class="icon icon-link"></span></a></h3>
+<p><strong>Start with VisionSpec if:</strong></p>
+<ul>
+<li>You need alignment from business strategy to technical execution</li>
+<li>Multiple teams must coordinate on shared requirements</li>
+<li>You’re implementing Working Backwards or similar methodology</li>
+<li>You want to export to multiple execution systems</li>
+</ul>
+<p><strong>Start with SpecKit if:</strong></p>
+<ul>
+<li>You want maximum customization and governance</li>
+<li>You have established architectural principles to enforce</li>
+<li>You need integration with many different AI agents</li>
+<li>You’re building a new codebase from scratch</li>
+</ul>
+<p><strong>Start with Kiro if:</strong></p>
+<ul>
+<li>You want structured specs with minimal setup</li>
+<li>You need both feature and bugfix workflows</li>
+<li>You’re already using AWS Q Developer</li>
+<li>You prefer EARS notation for requirements</li>
+</ul>
+<p><strong>Start with AI-DLC if:</strong></p>
+<ul>
+<li>You’re building on AWS infrastructure</li>
+<li>You need comprehensive lifecycle coverage</li>
+<li>You want adaptive depth based on complexity</li>
+<li>You have both greenfield and brownfield projects</li>
+</ul>
+<p><strong>Start with OpenSpec if:</strong></p>
+<ul>
+<li>You’re primarily doing brownfield development</li>
+<li>You want a lightweight, fluid workflow</li>
+<li>You don’t need extensive governance</li>
+<li>You want to track specs as source of truth</li>
+</ul>
+<h3 id="combining-tools">Combining Tools<a class="heading-anchor" href="#combining-tools"><span class="icon icon-link"></span></a></h3>
+<p>These tools are not mutually exclusive. A common pattern:</p>
+<ol>
+<li><strong>VisionSpec</strong> for strategy-to-spec (MRD → PRD → TRD)</li>
+<li><strong>Export</strong> to SpecKit, AI-DLC, or OpenSpec</li>
+<li><strong>Execute</strong> with tool-specific workflows</li>
+<li><strong>Align</strong> post-ship with VisionSpec current-truth</li>
+</ol>
+<p>VisionSpec’s export targets include SpecKit, AI-DLC, and OpenSpec formats, enabling this orchestration.</p>
+<hr>
+<h2 id="sdd-and-the-autonomy-levels">SDD and the Autonomy Levels<a class="heading-anchor" href="#sdd-and-the-autonomy-levels"><span class="icon icon-link"></span></a></h2>
+<p>Spec-Driven Development enables progression through the <a href="/frameworks/software-delivery-autonomy">Software Delivery Autonomy Levels</a>:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Level</th><th>SDD Role</th></tr></thead><tbody><tr><td><strong>Level 4: AI-Native Workflows</strong></td><td>Specs replace ad-hoc prompts as AI input</td></tr><tr><td><strong>Level 5: Agentic Engineering</strong></td><td>Specs enable overnight autonomous sessions</td></tr><tr><td><strong>Level 6: Autonomous Coding &#x26; Review</strong></td><td>Specs + scenarios replace human code review</td></tr><tr><td><strong>Level 7: Autonomous Operations</strong></td><td>Specs define operational policies</td></tr></tbody></table>
+<p>At Level 5, the combination of SDD with <a href="/frameworks/loop-engineering">Loop Engineering</a> creates a powerful pattern:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>REAL Loop (Mission-Driven):</span></span>
+<span class="line"><span>  Read: spec.md + current implementation state</span></span>
+<span class="line"><span>  Evaluate: progress against requirements</span></span>
+<span class="line"><span>  Act: implement next requirement</span></span>
+<span class="line"><span>  Loop: until all scenarios pass</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>VEAL Loop (Validation-Driven):</span></span>
+<span class="line"><span>  Validate: run acceptance scenarios</span></span>
+<span class="line"><span>  Evaluate: GO/NO-GO against spec</span></span>
+<span class="line"><span>  Act: fix failing scenarios</span></span>
+<span class="line"><span>  Loop: until all pass or escalate</span></span></code></pre>
+<p>The spec becomes the <strong>mission</strong> for REAL loops and the <strong>validation criteria</strong> for VEAL loops.</p>
+<p>At Level 6, specs enable <strong>scenario-based validation</strong> that replaces human code review:</p>
+<blockquote>
+<p>“Of all the observed trajectories through all the scenarios, what fraction of them likely satisfy the user?”</p>
+</blockquote>
+<p>This probabilistic framing—enabled by well-specified acceptance criteria—is what makes autonomous coding without human review possible.</p>
+<hr>
+<h2 id="practical-sdd-workflow">Practical SDD Workflow<a class="heading-anchor" href="#practical-sdd-workflow"><span class="icon icon-link"></span></a></h2>
+<p>Here’s a minimal SDD workflow that works with any tool:</p>
+<h3 id="1-capture-intent-not-implementation">1. Capture Intent (Not Implementation)<a class="heading-anchor" href="#1-capture-intent-not-implementation"><span class="icon icon-link"></span></a></h3>
+<p>Start with what users need, not how to build it:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="markdown"><code><span class="line"><span style="color:#79B8FF;font-weight:bold">## User Story</span></span>
+<span class="line"><span style="color:#E1E4E8">As a team administrator, I want to set session timeout duration</span></span>
+<span class="line"><span style="color:#E1E4E8">so that I can balance security and convenience for my organization.</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">## Acceptance Criteria</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> GIVEN I am a team administrator</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> WHEN I navigate to security settings</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> THEN I see a session timeout configuration option</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> GIVEN I set timeout to 60 minutes</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> WHEN a user's session exceeds 60 minutes of inactivity</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> THEN the session is automatically terminated</span></span></code></pre>
+<h3 id="2-clarify-ambiguities">2. Clarify Ambiguities<a class="heading-anchor" href="#2-clarify-ambiguities"><span class="icon icon-link"></span></a></h3>
+<p>Before design, identify and resolve unclear requirements:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="markdown"><code><span class="line"><span style="color:#79B8FF;font-weight:bold">## Questions</span></span>
+<span class="line"><span style="color:#FFAB70">1.</span><span style="color:#E1E4E8"> What is the valid range for timeout values? [Answer: 5-480 minutes]</span></span>
+<span class="line"><span style="color:#FFAB70">2.</span><span style="color:#E1E4E8"> Should timeout apply to API sessions? [Answer: No, only web sessions]</span></span>
+<span class="line"><span style="color:#FFAB70">3.</span><span style="color:#E1E4E8"> What happens to unsaved work? [Answer: Show warning at 5 minutes before]</span></span></code></pre>
+<h3 id="3-design-with-constraints">3. Design with Constraints<a class="heading-anchor" href="#3-design-with-constraints"><span class="icon icon-link"></span></a></h3>
+<p>Technical design should reference requirements:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="markdown"><code><span class="line"><span style="color:#79B8FF;font-weight:bold">## Technical Design</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">### Implements: Session Timeout Configuration</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8;font-weight:bold">**Approach:**</span><span style="color:#E1E4E8"> Add </span><span style="color:#79B8FF">`session_timeout_minutes`</span><span style="color:#E1E4E8"> column to </span><span style="color:#79B8FF">`team_settings`</span><span style="color:#E1E4E8"> table.</span></span>
+<span class="line"><span style="color:#E1E4E8">Default value: 30 (matches current hard-coded behavior).</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8;font-weight:bold">**Data Model:**</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> teams.session_timeout_minutes: INTEGER, NOT NULL, DEFAULT 30</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> Constraint: CHECK (session_timeout_minutes BETWEEN 5 AND 480)</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#E1E4E8;font-weight:bold">**API Changes:**</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> GET/PATCH /api/teams/{id}/settings — Add timeout field</span></span></code></pre>
+<h3 id="4-generate-tasks">4. Generate Tasks<a class="heading-anchor" href="#4-generate-tasks"><span class="icon icon-link"></span></a></h3>
+<p>Break design into atomic, testable tasks:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="markdown"><code><span class="line"><span style="color:#79B8FF;font-weight:bold">## Tasks</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">### Phase 1: Database</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> [ ] Add migration for session_timeout_minutes column</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> [ ] Add model validation for range constraint</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">### Phase 2: API</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> [ ] Add timeout field to team settings serializer</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> [ ] Add PATCH endpoint for updating timeout</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> [ ] Add integration tests for timeout validation</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">### Phase 3: Frontend</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> [ ] Add timeout input to security settings page</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> [ ] Add client-side validation for range</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> [ ] Add confirmation dialog for changes</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#79B8FF;font-weight:bold">### Phase 4: Session Management</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> [ ] Update session expiration logic to use team setting</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> [ ] Add warning notification at 5 minutes before expiry</span></span>
+<span class="line"><span style="color:#FFAB70">-</span><span style="color:#E1E4E8"> [ ] Add tests for custom timeout behavior</span></span></code></pre>
+<h3 id="5-execute-with-tracking">5. Execute with Tracking<a class="heading-anchor" href="#5-execute-with-tracking"><span class="icon icon-link"></span></a></h3>
+<p>Use AI agents to implement tasks while tracking progress:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>/speckit.implement</span></span>
+<span class="line"><span>or</span></span>
+<span class="line"><span>/opsx:apply</span></span>
+<span class="line"><span>or</span></span>
+<span class="line"><span>claude "Implement the next unchecked task in tasks.md"</span></span></code></pre>
+<h3 id="6-verify-against-spec">6. Verify Against Spec<a class="heading-anchor" href="#6-verify-against-spec"><span class="icon icon-link"></span></a></h3>
+<p>Run acceptance scenarios, not just unit tests:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#6A737D"># Scenario: Custom timeout</span></span>
+<span class="line"><span style="color:#B392F0">Given:</span><span style="color:#9ECBFF"> Team</span><span style="color:#9ECBFF"> admin</span><span style="color:#9ECBFF"> sets</span><span style="color:#9ECBFF"> timeout</span><span style="color:#9ECBFF"> to</span><span style="color:#79B8FF"> 60</span><span style="color:#9ECBFF"> minutes</span></span>
+<span class="line"><span style="color:#B392F0">When:</span><span style="color:#9ECBFF"> User</span><span style="color:#9ECBFF"> session</span><span style="color:#9ECBFF"> inactive</span><span style="color:#9ECBFF"> for</span><span style="color:#79B8FF"> 61</span><span style="color:#9ECBFF"> minutes</span></span>
+<span class="line"><span style="color:#B392F0">Then:</span><span style="color:#9ECBFF"> Session</span><span style="color:#9ECBFF"> terminated</span><span style="color:#9ECBFF"> ✓</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#6A737D"># Scenario: Warning notification</span></span>
+<span class="line"><span style="color:#B392F0">Given:</span><span style="color:#9ECBFF"> Team</span><span style="color:#9ECBFF"> admin</span><span style="color:#9ECBFF"> sets</span><span style="color:#9ECBFF"> timeout</span><span style="color:#9ECBFF"> to</span><span style="color:#79B8FF"> 60</span><span style="color:#9ECBFF"> minutes</span></span>
+<span class="line"><span style="color:#B392F0">When:</span><span style="color:#9ECBFF"> User</span><span style="color:#9ECBFF"> session</span><span style="color:#9ECBFF"> inactive</span><span style="color:#9ECBFF"> for</span><span style="color:#79B8FF"> 55</span><span style="color:#9ECBFF"> minutes</span></span>
+<span class="line"><span style="color:#B392F0">Then:</span><span style="color:#9ECBFF"> Warning</span><span style="color:#9ECBFF"> notification</span><span style="color:#9ECBFF"> displayed</span><span style="color:#9ECBFF"> ✓</span></span></code></pre>
+<hr>
+<h2 id="anti-patterns-to-avoid">Anti-Patterns to Avoid<a class="heading-anchor" href="#anti-patterns-to-avoid"><span class="icon icon-link"></span></a></h2>
+<h3 id="1-spec-as-afterthought">1. Spec as Afterthought<a class="heading-anchor" href="#1-spec-as-afterthought"><span class="icon icon-link"></span></a></h3>
+<p><strong>Wrong:</strong> Write code, then document what you built.
+<strong>Right:</strong> Write spec, get approval, then implement.</p>
+<p>The spec is a contract, not documentation.</p>
+<h3 id="2-implementation-details-in-specs">2. Implementation Details in Specs<a class="heading-anchor" href="#2-implementation-details-in-specs"><span class="icon icon-link"></span></a></h3>
+<p><strong>Wrong:</strong> “Use React useState hook for form state management.”
+<strong>Right:</strong> “Form SHALL preserve user input during validation errors.”</p>
+<p>Specs describe observable behavior, not implementation choices.</p>
+<h3 id="3-skipping-clarification">3. Skipping Clarification<a class="heading-anchor" href="#3-skipping-clarification"><span class="icon icon-link"></span></a></h3>
+<p><strong>Wrong:</strong> Make assumptions about unclear requirements.
+<strong>Right:</strong> Document questions and get explicit answers.</p>
+<p>AI agents confidently implement wrong interpretations of ambiguous specs.</p>
+<h3 id="4-monolithic-specs">4. Monolithic Specs<a class="heading-anchor" href="#4-monolithic-specs"><span class="icon icon-link"></span></a></h3>
+<p><strong>Wrong:</strong> One massive spec file for the entire feature.
+<strong>Right:</strong> Modular specs organized by domain or capability.</p>
+<p>Large specs exceed context windows and reduce coherence.</p>
+<h3 id="5-ignoring-delta-specs-for-brownfield">5. Ignoring Delta Specs for Brownfield<a class="heading-anchor" href="#5-ignoring-delta-specs-for-brownfield"><span class="icon icon-link"></span></a></h3>
+<p><strong>Wrong:</strong> Document entire system before making changes.
+<strong>Right:</strong> Use ADDED/MODIFIED/REMOVED format for changes.</p>
+<p>Delta specs make brownfield development practical.</p>
+<hr>
+<h2 id="the-future-of-sdd">The Future of SDD<a class="heading-anchor" href="#the-future-of-sdd"><span class="icon icon-link"></span></a></h2>
+<p>Spec-Driven Development is evolving rapidly:</p>
+<p><strong>Executable Specifications.</strong> Tools are moving toward specs that directly generate implementations—change a requirement, automatically regenerate affected code.</p>
+<p><strong>Continuous Spec-Reality Alignment.</strong> Post-ship alignment (pioneered by VisionSpec) will become standard—specs automatically updated to reflect production behavior.</p>
+<p><strong>Multi-Agent Orchestration.</strong> Specialized agents (requirements analyst, architect, developer, tester) will collaborate on specs, each contributing their expertise.</p>
+<p><strong>Specification as API.</strong> Specs will become machine-readable contracts that AI systems consume directly, not just guidance documents.</p>
+<p>The trajectory is clear: <strong>specifications become the primary artifact, and code becomes a generated output serving the specification.</strong></p>
+<p>This is not a minor process improvement. It is a fundamental inversion of how software gets built.</p>
+<hr>
+<h2 id="conclusion">Conclusion<a class="heading-anchor" href="#conclusion"><span class="icon icon-link"></span></a></h2>
+<p>Vibe coding was the first generation of AI-assisted development—powerful but unpredictable. Spec-Driven Development is the second generation: structured, auditable, and production-ready.</p>
+<p>The five tools we examined represent different approaches to the same insight:</p>
+<blockquote>
+<p>AI agents are dramatically more effective when they operate against explicit, version-controlled specifications rather than freeform prompts.</p>
+</blockquote>
+<p><strong>GitHub SpecKit</strong> provides maximum governance through constitutions and templates. <strong>AWS Kiro</strong> offers structured EARS-notation requirements. <strong>AI-DLC Workflows</strong> delivers comprehensive lifecycle coverage. <strong>OpenSpec</strong> enables practical brownfield development through delta specs. <strong>VisionSpec</strong> bridges organizational strategy with AI execution.</p>
+<p>The engineers who thrive in this environment will be those who master not just AI tooling, but the discipline of specification—defining what to build before building it.</p>
+<p>As the Software Delivery Autonomy Levels progress from Level 4 (AI-Native Workflows) through Level 6 (Autonomous Coding &#x26; Review), SDD provides the foundation. Without structured specifications, autonomous coding is merely faster chaos. With them, it becomes reliable production software.</p>
+<p>The vibe era is ending. The spec era has begun.</p>
+<hr>
+<h2 id="references">References<a class="heading-anchor" href="#references"><span class="icon icon-link"></span></a></h2>
+<ul>
+<li>Thoughtworks. “Spec-driven development: Unpacking one of 2025’s key new AI-assisted engineering practices.” 2025.</li>
+<li>GitHub. Spec Kit Documentation. github.com/github/spec-kit</li>
+<li>AWS. Kiro Documentation. kiro.dev/docs/specs/</li>
+<li>AWS Labs. AI-DLC Workflows. github.com/awslabs/aidlc-workflows</li>
+<li>Fission AI. OpenSpec Documentation. github.com/Fission-AI/openspec</li>
+<li>ProductBuildersHQ. VisionSpec. github.com/ProductBuildersHQ/visionspec</li>
+<li>Karpathy, Andrej. “Vibe Coding.” February 2025.</li>
+<li>CodeRabbit. “AI Code Quality Analysis.” December 2025.</li>
+<li>DeepLearning.AI. “Spec-Driven Development with Coding Agents.” 2026.</li>
+<li>ProductBuildersHQ. “Software Delivery Autonomy Levels.” productbuildershq.com/frameworks/software-delivery-autonomy</li>
+<li>ProductBuildersHQ. “Loop Engineering.” productbuildershq.com/frameworks/loop-engineering</li>
+</ul> </article> </div> </div> </div>  </main> <footer class="bg-[var(--color-frame-bg)] text-[var(--color-frame-text)] py-12"> <div class="max-w-7xl mx-auto px-5 md:px-8"> <div class="grid grid-cols-1 md:grid-cols-3 gap-8"> <div> <h3 class="text-lg font-bold mb-4">ProductBuildersHQ</h3> <p class="text-[var(--color-frame-text-muted)] text-sm">Frameworks and case studies for the evolution of product development.</p> </div> <div> <h4 class="text-sm font-semibold uppercase tracking-wider mb-4 text-[var(--color-frame-accent)]">Research</h4> <ul class="space-y-2"> <li><a href="/frameworks" class="text-[var(--color-frame-text-muted)] hover:text-[var(--color-frame-text)] text-sm no-underline">Frameworks</a></li> <li><a href="/case-studies" class="text-[var(--color-frame-text-muted)] hover:text-[var(--color-frame-text)] text-sm no-underline">Case Studies</a></li> </ul> </div> <div> <h4 class="text-sm font-semibold uppercase tracking-wider mb-4 text-[var(--color-frame-accent)]">Company</h4> <ul class="space-y-2"> <li><a href="/about" class="text-[var(--color-frame-text-muted)] hover:text-[var(--color-frame-text)] text-sm no-underline">About</a></li> <li><a href="https://github.com/ProductBuildersHQ" target="_blank" rel="noopener noreferrer" class="text-[var(--color-frame-text-muted)] hover:text-[var(--color-frame-text)] text-sm no-underline">GitHub</a></li> </ul> </div> </div> <div class="mt-12 pt-8 border-t border-[var(--color-frame-border)] text-center text-[var(--color-frame-text-muted)] text-sm"> <span class="text-[var(--color-frame-accent)]">ProductBuildersHQ.com</span> <span class="mx-2">&middot;</span>
+&copy; 2026 ProductBuildersHQ
+</div> </div> </footer> </div> </body></html>
