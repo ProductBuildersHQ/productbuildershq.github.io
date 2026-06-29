@@ -28,7 +28,7 @@ const summary = entry.data.summary
         <p class="text-xl text-[var(--color-primary)] mb-4">{entry.data.subtitle}</p>
         <p class="text-[var(--color-text-muted)] mb-6 max-w-3xl">{entry.data.description}</p>
         <div class="flex flex-wrap items-center gap-4 mb-6">
-          <span class="inline-flex items-center text-sm font-medium px-3 py-1.5 bg-[var(--color-accent)] text-[var(--color-primary-dark)] rounded-full">Level {entry.data.level}</span>
+          <a href="/frameworks/software-delivery-autonomy" class="inline-flex items-center text-sm font-medium px-3 py-1.5 bg-[var(--color-accent)] text-[var(--color-primary-dark)] rounded-full no-underline hover:bg-[var(--color-accent-light)] transition-colors">ASDM Level {entry.data.level}</a>
           <span class="text-sm font-medium text-[var(--color-text)]">{entry.data.company}</span>
           {entry.data.industry && <span class="text-sm text-[var(--color-text-muted)]">{entry.data.industry}</span>}
           <span class="text-sm text-[var(--color-text-subtle)]">{entry.data.date}</span>
