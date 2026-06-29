@@ -37,9 +37,11 @@ summary:
 
 # Spotify Honk: Background Agents at Enterprise Scale
 
+**[ASDM Level 5: Agentic Engineering](/frameworks/software-delivery-autonomy)**
+
 Spotify's Honk is the most thoroughly documented enterprise deployment of background coding agents. The system has merged over 1,500 pull requests into production, operates at 650+ PRs per month, and represents a fundamentally different approach to AI-assisted development: **constraint-based design over capability maximization**.
 
-The case study demonstrates [ASDM Level 5](/frameworks/software-delivery-autonomy): AI writes most code with human review as the final gate. But more importantly, it shows what infrastructure is required to make background agents reliable at scale.
+This case study demonstrates ASDM Level 5: AI writes most code with human review as the final gate. But more importantly, it shows what infrastructure is required to make background agents reliable at scale.
 
 ## The Core Problem
 

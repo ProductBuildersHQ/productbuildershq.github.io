@@ -37,6 +37,8 @@ summary:
 
 # GitHub Copilot Workspace: From Issue to Pull Request
 
+**[ASDM Level 5: Agentic Engineering](/frameworks/software-delivery-autonomy)**
+
 GitHub Copilot started as an autocomplete tool. You typed code, it suggested completions. That model scaled to 20 million users and 46% of code written. But it left a gap: the workflow between reading an issue and shipping a fix.
 
 Copilot Workspace addresses that gap with a **spec-driven approach** unique among mainstream AI coding tools. Users define what the codebase should look like after completion, refine a plan, then execute—with human oversight at each stage.

@@ -37,6 +37,8 @@ summary:
 
 # Project Mantle: A Case Study in AI-First Development at AWS
 
+**[ASDM Level 5: Agentic Engineering](/frameworks/software-delivery-autonomy)**
+
 > **TL;DR**: A team of ~9 senior engineers built a new inference engine for Amazon Bedrock using AI-first development, achieving 10x commit velocity. The project started in May 2025 and covered routing/load balancing—not all of Bedrock.
 >
 > **Key success factors:**

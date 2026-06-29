@@ -37,6 +37,8 @@ summary:
 
 # Cursor by Anysphere: Vibe Coding at Scale
 
+**[ASDM Level 4: Human-AI Pair Programming](/frameworks/software-delivery-autonomy)**
+
 Cursor represents the fastest adoption of any AI development tool in history. From launch in March 2023 to $3B+ ARR in early 2026, the trajectory demonstrates product-market fit at a scale rarely seen in developer tools.
 
 More importantly, Cursor pioneered and popularized **vibe coding**—a development philosophy where programmers describe intent in natural language and AI handles implementation. This case study examines Cursor's approach, architecture, and the ongoing tension between vibe coding and [spec-driven development](/frameworks/spec-driven-development).
