@@ -431,7 +431,7 @@ Claude Code supports hooks—shell commands that execute in response to events:
 - `on_permission` — Control tool access per role
 - `on_subagent_stop` — Monitor agent lifecycle
 
-Hooks enable **deterministic validation** alongside LLM-based evaluation. A VEAL loop's command checks run via hooks, providing binary pass/fail signals.
+Hooks enable **deterministic validation** alongside [LLM-based evaluation](/frameworks/llm-as-a-judge). A VEAL loop's command checks run via hooks, providing binary pass/fail signals.
 
 ### 3. MCP Server Integration
 
@@ -562,7 +562,7 @@ As @mosyaseen noted in the viral thread: "Designing the loop is half of it. The 
 
 **2. Separate the validator from the actor.**
 
-The model that wrote the code is too nice grading its own homework. Use a separate evaluator—whether a different model, a deterministic check, or a specialized validation agent.
+The model that wrote the code is too nice grading its own homework. Use a separate evaluator—whether a different model, a deterministic check, or a specialized validation agent. See [LLM-as-a-Judge](/frameworks/llm-as-a-judge) for patterns on multi-judge aggregation and calibration.
 
 **3. Bound execution.**
 

@@ -9,7 +9,7 @@ levels: 5
 tags: ["spec-driven", "sdd", "agents", "specifications", "ai-native", "methodology"]
 ---
 
-In February 2025, Andrej Karpathy coined the term "vibe coding"—describing software development where you prompt an AI with rough intentions and it generates code. By early 2026, vibe coding had become mainstream: 92% of US developers use AI tools daily, and 41% of global code is AI-generated.
+In February 2025, Andrej Karpathy coined the term "vibe coding"—describing software development where you prompt an AI with rough intentions and it generates code. By early 2026, vibe coding had become mainstream: 92% of US developers use AI tools daily, and 41% of global code is AI-generated. Tools like [Cursor](/case-studies/cursor-anysphere) grew to over 1 million daily active users on this paradigm.
 
 But something went wrong.
 
@@ -649,6 +649,8 @@ The five tools we examined represent different approaches to the same insight:
 The engineers who thrive in this environment will be those who master not just AI tooling, but the discipline of specification—defining what to build before building it.
 
 As the Software Delivery Autonomy Levels progress from Level 4 (AI-Native Workflows) through Level 6 (Autonomous Coding & Review), SDD provides the foundation. Without structured specifications, autonomous coding is merely faster chaos. With them, it becomes reliable production software.
+
+The market validates both approaches: [Cursor](/case-studies/cursor-anysphere) scaled vibe coding to 1M+ daily users, while [GitHub Copilot Workspace](/case-studies/github-copilot-workspace) brought spec-driven workflows to 20M users. The tension between speed and structure is real—but for production software at scale, specifications win.
 
 The vibe era is ending. The spec era has begun.
 

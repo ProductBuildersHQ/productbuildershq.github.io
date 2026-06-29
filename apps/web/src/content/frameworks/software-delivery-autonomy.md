@@ -65,7 +65,7 @@ As autonomy increases, validation methods must evolve. Human judgment gives way 
 | 6 | Scenario satisfaction | Scenarios, DTU, LLM-as-a-Judge, probabilistic metrics | Before production |
 | 7 | Operational satisfaction | Production telemetry, SLOs, canaries, rollback/remediation agents | Exceptions only |
 
-**LLM-as-a-Judge** emerges at Level 5 as a bridge technology. AI models evaluate code for style consistency, security vulnerabilities, and architectural compliance—tasks previously requiring human reviewers. At Level 6, LLM-as-a-Judge becomes one component of a broader autonomous validation stack. At Level 7, validation expands beyond code correctness into operational health: deployment safety, live telemetry, incident response, rollback, and continuous policy compliance.
+**[LLM-as-a-Judge](/frameworks/llm-as-a-judge)** emerges at Level 5 as a bridge technology. AI models evaluate code for style consistency, security vulnerabilities, and architectural compliance—tasks previously requiring human reviewers. At Level 6, LLM-as-a-Judge becomes one component of a broader autonomous validation stack. At Level 7, validation expands beyond code correctness into operational health: deployment safety, live telemetry, incident response, rollback, and continuous policy compliance.
 
 ### Artifacts and Rituals by Level
 
@@ -166,7 +166,7 @@ Level 5 breaks this constraint.
 
 **Human role**: Batch reviewer—humans validate completed work rather than guiding each step.
 
-**Examples**: AWS Project Mantle, Spotify Honk
+**Examples**: [AWS Project Mantle](/case-studies/aws-project-mantle), [Spotify Honk](/case-studies/spotify-honk)
 
 ### AWS Project Mantle: Overnight Autonomous Coding
 
@@ -194,7 +194,7 @@ Teams with strong fundamentals—clear communication, fast feedback loops, solid
 
 ### Spotify Honk: Background Agents at Scale
 
-Spotify's Honk system provides another Level 5 implementation, optimized for fleet-wide changes across their large codebase.
+[Spotify's Honk system](/case-studies/spotify-honk) provides another Level 5 implementation, optimized for fleet-wide changes across their large codebase.
 
 **Background execution.** Rather than interactive coding sessions, Honk runs agents in the background. Engineers specify transformations in natural language, and agents execute autonomously—running formatting, linting, generating diffs, and capturing traces.
 

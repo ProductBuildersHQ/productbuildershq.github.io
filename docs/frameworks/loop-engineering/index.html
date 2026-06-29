@@ -450,7 +450,7 @@ Open PDF
 <li><code>on_permission</code> — Control tool access per role</li>
 <li><code>on_subagent_stop</code> — Monitor agent lifecycle</li>
 </ul>
-<p>Hooks enable <strong>deterministic validation</strong> alongside LLM-based evaluation. A VEAL loop’s command checks run via hooks, providing binary pass/fail signals.</p>
+<p>Hooks enable <strong>deterministic validation</strong> alongside <a href="/frameworks/llm-as-a-judge">LLM-based evaluation</a>. A VEAL loop’s command checks run via hooks, providing binary pass/fail signals.</p>
 <h3 id="3-mcp-server-integration">3. MCP Server Integration<a class="heading-anchor" href="#3-mcp-server-integration"><span class="icon icon-link"></span></a></h3>
 <p>The Model Context Protocol (MCP) enables external tools to expose capabilities to Claude Code. A loop orchestration MCP server could:</p>
 <ul>
@@ -559,7 +559,7 @@ Open PDF
 <p>A loop with nothing to push back is the agent agreeing with itself on repeat. Include tests, type checks, linters, or other signals that can say “no.”</p>
 <p>As @mosyaseen noted in the viral thread: “Designing the loop is half of it. The other half is putting something in the loop that can say no.”</p>
 <p><strong>2. Separate the validator from the actor.</strong></p>
-<p>The model that wrote the code is too nice grading its own homework. Use a separate evaluator—whether a different model, a deterministic check, or a specialized validation agent.</p>
+<p>The model that wrote the code is too nice grading its own homework. Use a separate evaluator—whether a different model, a deterministic check, or a specialized validation agent. See <a href="/frameworks/llm-as-a-judge">LLM-as-a-Judge</a> for patterns on multi-judge aggregation and calibration.</p>
 <p><strong>3. Bound execution.</strong></p>
 <p>Without acceptance criteria, a budget cap, and a hard stop rule, a loop can burn tokens indefinitely while appearing productive. Set max_attempts. Include turn limits in conditions.</p>
 <p><strong>4. Define escalation.</strong></p>
