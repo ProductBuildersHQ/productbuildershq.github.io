@@ -28,3 +28,6 @@ npm-debug.log*
 
 # Astro
 apps/web/.astro/
+
+# Ideation chats
+IDEATION_CHAT*.md

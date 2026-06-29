@@ -11,6 +11,10 @@ export default defineConfig({
   publicDir: 'public',
   integrations: [sitemap()],
   markdown: {
+    shikiConfig: {
+      theme: 'github-dark',
+      wrap: false,
+    },
     rehypePlugins: [
       rehypeSlug,
       [rehypeAutolinkHeadings, { behavior: 'append', properties: { className: ['heading-anchor'] } }],

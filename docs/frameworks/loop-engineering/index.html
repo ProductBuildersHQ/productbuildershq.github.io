@@ -1,0 +1,655 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="A practitioner's guide to designing self-running AI coding agents with Claude Code, Codex CLI, and the REAL/VEAL loop patterns for production multi-agent systems."><meta property="og:title" content="Loop Engineering | ProductBuildersHQ"><meta property="og:description" content="A practitioner's guide to designing self-running AI coding agents with Claude Code, Codex CLI, and the REAL/VEAL loop patterns for production multi-agent systems."><meta property="og:type" content="website"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><title>Loop Engineering | ProductBuildersHQ</title><link rel="stylesheet" href="/_astro/BaseLayout.BxrDFfwV.css"></head> <body> <div class="min-h-screen flex flex-col"> <nav class="sticky top-0 z-50 bg-[var(--color-frame-bg)]"> <div class="max-w-7xl mx-auto px-5 md:px-8"> <div class="flex items-center justify-between h-16"> <a href="/" class="flex items-center gap-2 no-underline"> <span class="text-xl font-bold text-[var(--color-frame-text)]">ProductBuildersHQ</span> </a> <div class="hidden md:flex items-center gap-6"> <a href="/frameworks" class="text-sm font-medium no-underline transition-colors text-[var(--color-frame-accent)]"> Frameworks </a><a href="/case-studies" class="text-sm font-medium no-underline transition-colors text-[var(--color-frame-text-muted)] hover:text-[var(--color-frame-text)]"> Case Studies </a> <div class="relative group"> <button class="flex items-center gap-1 text-sm font-medium text-[var(--color-frame-text-muted)] group-hover:text-[var(--color-frame-text)] transition-colors bg-transparent border-none cursor-pointer"> Products <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path> </svg> </button> <div class="absolute top-full left-0 mt-2 w-64 bg-[var(--color-frame-bg)] border border-[rgba(255,255,255,0.15)] rounded-lg shadow-lg py-2 z-50 hidden group-hover:block group-focus-within:block"> <a href="/visionspec/" class="block px-4 py-2 text-sm text-[var(--color-frame-text-muted)] hover:text-[var(--color-frame-text)] hover:bg-[rgba(255,255,255,0.05)] no-underline"> <div class="font-medium">VisionSpec</div> <div class="text-xs text-[var(--color-frame-text-muted)] mt-0.5">Multi-domain specification orchestration</div> </a> </div> </div><div class="relative group"> <button class="flex items-center gap-1 text-sm font-medium text-[var(--color-frame-text-muted)] group-hover:text-[var(--color-frame-text)] transition-colors bg-transparent border-none cursor-pointer"> Resources <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path> </svg> </button> <div class="absolute top-full left-0 mt-2 w-64 bg-[var(--color-frame-bg)] border border-[rgba(255,255,255,0.15)] rounded-lg shadow-lg py-2 z-50 hidden group-hover:block group-focus-within:block"> <a href="/papers" class="block px-4 py-2 text-sm text-[var(--color-frame-text-muted)] hover:text-[var(--color-frame-text)] hover:bg-[rgba(255,255,255,0.05)] no-underline"> <div class="font-medium">Papers</div>  </a><a href="/about" class="block px-4 py-2 text-sm text-[var(--color-frame-text-muted)] hover:text-[var(--color-frame-text)] hover:bg-[rgba(255,255,255,0.05)] no-underline"> <div class="font-medium">About</div>  </a> </div> </div> <a href="https://github.com/ProductBuildersHQ" target="_blank" rel="noopener noreferrer" class="text-[var(--color-frame-text-muted)] hover:text-[var(--color-frame-text)] transition-colors" title="GitHub" aria-label="GitHub"> <svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor" aria-hidden="true"> <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"></path> </svg> </a> </div> <details class="md:hidden relative"> <summary class="list-none text-[var(--color-frame-text)] cursor-pointer p-2" aria-label="Open navigation"> <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path> </svg> </summary> <div class="absolute right-0 top-full mt-3 w-72 bg-[var(--color-frame-bg)] border border-[rgba(255,255,255,0.15)] rounded-lg shadow-lg p-4"> <div class="flex flex-col gap-4"> <a href="/frameworks" class="text-sm font-medium no-underline text-[var(--color-frame-accent)]"> Frameworks </a><a href="/case-studies" class="text-sm font-medium no-underline text-[var(--color-frame-text-muted)]"> Case Studies </a> <div class="border-t border-[rgba(255,255,255,0.1)] pt-4"> <div class="text-xs text-[var(--color-frame-text-muted)] uppercase tracking-wide mb-2">Products</div> <a href="/visionspec/" class="block py-2 text-sm text-[var(--color-frame-text-muted)] no-underline">VisionSpec</a> </div><div class="border-t border-[rgba(255,255,255,0.1)] pt-4"> <div class="text-xs text-[var(--color-frame-text-muted)] uppercase tracking-wide mb-2">Resources</div> <a href="/papers" class="block py-2 text-sm text-[var(--color-frame-text-muted)] no-underline">Papers</a><a href="/about" class="block py-2 text-sm text-[var(--color-frame-text-muted)] no-underline">About</a> </div> </div> </div> </details> </div> </div> </nav> <main class="flex-1">  <div class="py-8 md:py-12"> <div class="max-w-6xl mx-auto px-5 md:px-8"> <a href="/frameworks" class="inline-flex items-center text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline mb-6"> <svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"> <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path> </svg>
+Back to Frameworks
+</a> <div class="mb-8"> <h1 class="text-3xl md:text-4xl font-bold mb-2">Loop Engineering</h1> <p class="text-xl text-[var(--color-primary)] mb-4">From Prompt Engineering to Autonomous Agent Loops</p> <p class="text-[var(--color-text-muted)] mb-6 max-w-3xl">A practitioner&#39;s guide to designing self-running AI coding agents with Claude Code, Codex CLI, and the REAL/VEAL loop patterns for production multi-agent systems.</p> <div class="flex flex-wrap items-center gap-4 mb-6"> <span class="inline-flex items-center text-sm font-medium px-3 py-1.5 bg-[var(--color-primary)] text-white rounded-full">4 Levels</span> <span class="text-sm text-[var(--color-text-muted)]">v1.0</span> <span class="text-sm text-[var(--color-text-subtle)]">Last updated June 2026</span> </div> <div class="flex flex-wrap gap-3"> <a href="/papers/loop-engineering.pdf" download class="inline-flex items-center justify-center px-5 py-2.5 bg-[var(--color-primary-dark)] text-white font-medium rounded-lg no-underline hover:bg-[var(--color-primary)] transition-colors">
+Download PDF
+</a> <a href="/papers/loop-engineering.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-5 py-2.5 border border-[var(--color-border)] text-[var(--color-text)] font-medium rounded-lg no-underline hover:bg-[var(--color-bg-secondary)] transition-colors">
+Open PDF
+</a> </div> </div> <div class="flex flex-wrap gap-2 mb-8"> <span class="text-sm px-3 py-1 bg-[var(--color-bg-secondary)] text-[var(--color-text-muted)] rounded-full">loop-engineering</span><span class="text-sm px-3 py-1 bg-[var(--color-bg-secondary)] text-[var(--color-text-muted)] rounded-full">agents</span><span class="text-sm px-3 py-1 bg-[var(--color-bg-secondary)] text-[var(--color-text-muted)] rounded-full">claude-code</span><span class="text-sm px-3 py-1 bg-[var(--color-bg-secondary)] text-[var(--color-text-muted)] rounded-full">codex</span><span class="text-sm px-3 py-1 bg-[var(--color-bg-secondary)] text-[var(--color-text-muted)] rounded-full">autonomous</span><span class="text-sm px-3 py-1 bg-[var(--color-bg-secondary)] text-[var(--color-text-muted)] rounded-full">REAL</span><span class="text-sm px-3 py-1 bg-[var(--color-bg-secondary)] text-[var(--color-text-muted)] rounded-full">VEAL</span> </div> <div class="grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-10"> <aside class="hidden lg:block"> <div class="sticky top-24 border-l border-[var(--color-border-light)] pl-4"> <div class="text-xs font-semibold uppercase tracking-wide text-[var(--color-text-subtle)] mb-3">Contents</div> <nav class="space-y-2"> <a href="#the-problem-with-prompting" class="block text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline">The Problem with Prompting</a><a href="#level-1-built-in-loops-in-claude-code-and-codex-cli" class="block text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline">Level 1: Built-in Loops in Claude Code and Codex CLI</a><a href="#level-2-the-limits-of-built-in-loops" class="block text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline">Level 2: The Limits of Built-in Loops</a><a href="#level-3-real-loops--mission-driven-execution" class="block text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline">Level 3: REAL Loops — Mission-Driven Execution</a><a href="#level-4-veal-loops--validation-driven-convergence" class="block text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline">Level 4: VEAL Loops — Validation-Driven Convergence</a><a href="#escalation-policies" class="block text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline">Escalation Policies</a><a href="#integrating-cli-tools-with-realveal" class="block text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline">Integrating CLI Tools with REAL/VEAL</a><a href="#practical-example-qa-fix-loop" class="block text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline">Practical Example: QA Fix Loop</a><a href="#the-loop-engineering-mindset" class="block text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline">The Loop Engineering Mindset</a><a href="#cost-considerations" class="block text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline">Cost Considerations</a><a href="#the-four-levels-of-loop-engineering" class="block text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline">The Four Levels of Loop Engineering</a><a href="#conclusion" class="block text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline">Conclusion</a><a href="#references" class="block text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline">References</a> </nav> </div> </aside> <article class="article-content min-w-0"> <p>On June 7, 2026, Peter Steinberger—creator of OpenClaw, the open-source AI agent that became the most-starred new repo in GitHub history—posted twelve words that broke the AI-coding internet:</p>
+<blockquote>
+<p>“You shouldn’t be prompting coding agents anymore. You should be designing loops that prompt your agents.”</p>
+</blockquote>
+<p>The post hit 6.5 million views. Boris Cherny, creator of Claude Code at Anthropic, said the same thing: “I don’t prompt Claude anymore. I have loops that are running. They’re the ones that are prompting Claude and figuring out what to do. My job is to write loops.”</p>
+<p>This is the shift from <strong>prompt engineering</strong> to <strong>loop engineering</strong>.</p>
+<p>Prompt engineering optimizes a single interaction. Loop engineering designs systems that run agents in cycles—set a goal, take an action, observe the result, reflect, and repeat—until the goal is met or the system hands control back to a human.</p>
+<p>This article covers the evolution from manual prompting to autonomous loops:</p>
+<ol>
+<li><strong>Built-in loops</strong> in Claude Code (<code>/goal</code>, <code>/loop</code>) and Codex CLI (<code>/goal</code>)</li>
+<li><strong>The REAL pattern</strong> for mission-driven, goal-oriented execution</li>
+<li><strong>The VEAL pattern</strong> for validation-driven, state-convergent execution</li>
+<li><strong>Integration</strong> between CLI tools and structured loop frameworks</li>
+</ol>
+<p>Many articles discuss loops conceptually. This one shows how to actually build them.</p>
+<hr>
+<h2 id="the-problem-with-prompting">The Problem with Prompting<a class="heading-anchor" href="#the-problem-with-prompting"><span class="icon icon-link"></span></a></h2>
+<p>Traditional AI coding workflows look like this:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Human types prompt</span></span>
+<span class="line"><span>    ↓</span></span>
+<span class="line"><span>AI generates response</span></span>
+<span class="line"><span>    ↓</span></span>
+<span class="line"><span>Human reviews output</span></span>
+<span class="line"><span>    ↓</span></span>
+<span class="line"><span>Human types next prompt</span></span>
+<span class="line"><span>    ↓</span></span>
+<span class="line"><span>Repeat</span></span></code></pre>
+<p>The human remains in the loop for every iteration. This is fine for exploration and learning, but it doesn’t scale. If you’re reviewing every AI response before the next step, you’ve replaced typing with reviewing—not fundamentally changed the workflow.</p>
+<p>The insight from Steinberger, Cherny, and Anthropic’s research team is that <strong>the review step should be automated</strong>. Instead of humans evaluating output, give the model a way to verify its own output. Close the loop.</p>
+<p>Anthropic’s research PM Theo describes this as the critical success factor:</p>
+<blockquote>
+<p>“Close the loop, give the model a way to verify its own output… The verification layer is equally important as generation capabilities—potentially more valuable for reliable deployment.”</p>
+</blockquote>
+<p>Loop engineering shifts the human role from <strong>operator</strong> to <strong>designer</strong>. You design the loop once, then let it run.</p>
+<hr>
+<h2 id="level-1-built-in-loops-in-claude-code-and-codex-cli">Level 1: Built-in Loops in Claude Code and Codex CLI<a class="heading-anchor" href="#level-1-built-in-loops-in-claude-code-and-codex-cli"><span class="icon icon-link"></span></a></h2>
+<p>Both Claude Code and Codex CLI now ship native loop primitives. These are the entry point to loop engineering.</p>
+<h3 id="claude-code-goal">Claude Code: <code>/goal</code><a class="heading-anchor" href="#claude-code-goal"><span class="icon icon-link"></span></a></h3>
+<p>The <code>/goal</code> command sets a completion condition and Claude keeps working toward it without you prompting each step.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>/goal all tests in test/auth pass and the lint step is clean</span></span></code></pre>
+<p><strong>How it works:</strong></p>
+<ol>
+<li>After each turn, a small fast model (Haiku by default) judges whether your condition is met</li>
+<li>If not met, Claude starts another turn automatically</li>
+<li>The goal clears when the condition is verified</li>
+</ol>
+<p><strong>Writing effective conditions:</strong></p>
+<p>The evaluator judges your condition against what Claude has surfaced in the conversation. It doesn’t run commands independently—it reads Claude’s output. So write conditions as something Claude’s own output can demonstrate:</p>
+<ul>
+<li>“All tests in <code>test/auth</code> pass” works because Claude runs the tests and the result lands in the transcript</li>
+<li>Include a stated check: “<code>npm test</code> exits 0” or “<code>git status</code> is clean”</li>
+<li>Add constraints: “no other test file is modified”</li>
+<li>Bound duration: “or stop after 20 turns”</li>
+</ul>
+<p><strong>Key insight:</strong> <code>/goal</code> uses a <strong>separate evaluator model</strong> to judge completion. The model that wrote the code doesn’t grade its own homework.</p>
+<h3 id="claude-code-loop">Claude Code: <code>/loop</code><a class="heading-anchor" href="#claude-code-loop"><span class="icon icon-link"></span></a></h3>
+<p>The <code>/loop</code> command runs your prompt on a time interval.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>/loop 5m</span></span></code></pre>
+<p><strong>How it works:</strong></p>
+<ol>
+<li>Claude executes the prompt</li>
+<li>Waits for the specified interval</li>
+<li>Runs again</li>
+<li>Continues until you press Esc or Claude decides the work is done</li>
+</ol>
+<p><strong>When to use each:</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Command</th><th>Drives</th><th>Stops When</th><th>Best For</th></tr></thead><tbody><tr><td><code>/goal</code></td><td>Progress toward finish line</td><td>Condition verified by evaluator</td><td>Completing discrete tasks</td></tr><tr><td><code>/loop</code></td><td>Time-based polling</td><td>Manual stop or self-determined</td><td>Monitoring external processes</td></tr></tbody></table>
+<p>As the Claude Code docs state: “/goal is for getting something done. /loop is for keeping an eye on something.”</p>
+<h3 id="codex-cli-goal">Codex CLI: <code>/goal</code><a class="heading-anchor" href="#codex-cli-goal"><span class="icon icon-link"></span></a></h3>
+<p>OpenAI’s Codex CLI shipped <code>/goal</code> in v0.128.0 (April 2026). Internally called the “Ralph Loop” after the iterative technique popularized by Geoffrey Huntley.</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>/goal implement user authentication with OAuth2 support</span></span></code></pre>
+<p><strong>How it works:</strong></p>
+<p>The goal command enables Codex to enter an autonomous agentic loop:</p>
+<ol>
+<li><strong>Plan</strong> — Break the goal into executable sub-tasks</li>
+<li><strong>Act</strong> — Modify code, install dependencies, execute commands</li>
+<li><strong>Test</strong> — Run unit tests, linters, and builds</li>
+<li><strong>Review</strong> — Evaluate progress and identify blockers</li>
+<li><strong>Loop</strong> — Repeat until goal is met or blocked</li>
+</ol>
+<p><strong>Real-world example:</strong> Andrew Chen (a16z) left Codex running on a device driver project overnight. Fourteen hours later, it was still making progress with each iteration.</p>
+<p><strong>Cost consideration:</strong> Goal mode can dramatically increase token usage. Chen observed that <code>/goal</code> can “10,000x token use” compared to single prompts. Set budgets and monitor spend.</p>
+<hr>
+<h2 id="level-2-the-limits-of-built-in-loops">Level 2: The Limits of Built-in Loops<a class="heading-anchor" href="#level-2-the-limits-of-built-in-loops"><span class="icon icon-link"></span></a></h2>
+<p>Built-in <code>/goal</code> and <code>/loop</code> commands are powerful, but they have constraints:</p>
+<p><strong>Single evaluator model.</strong> Both Claude Code and Codex use a single model or prompt to evaluate completion. For complex validation—build checks, multiple test suites, security scans, documentation—you need more structured evaluation.</p>
+<p><strong>No separation of concerns.</strong> The same agent writes code and judges its own work. As Addy Osmani (Google Cloud) notes: “The model that wrote the code is way too nice grading its own homework.”</p>
+<p><strong>No escalation policy.</strong> When <code>/goal</code> gets stuck, it either keeps trying or stops. There’s no structured way to escalate to a human, try a fallback agent, or abort with a useful error.</p>
+<p><strong>No multi-agent coordination.</strong> <code>/goal</code> runs a single agent. Production systems often need specialized agents—one to validate, one to fix, one to deploy.</p>
+<p><strong>No bounded execution.</strong> Without explicit limits, loops can burn tokens indefinitely. The <code>/goal</code> docs recommend including turn limits in conditions, but this is manual and error-prone.</p>
+<p>These limitations point toward the next evolution: <strong>structured loop patterns</strong>.</p>
+<hr>
+<h2 id="level-3-real-loops--mission-driven-execution">Level 3: REAL Loops — Mission-Driven Execution<a class="heading-anchor" href="#level-3-real-loops--mission-driven-execution"><span class="icon icon-link"></span></a></h2>
+<p><strong>REAL (Read → Evaluate → Act → Loop)</strong> is a pattern for goal-oriented, mission-driven autonomous execution.</p>
+<p>Unlike <code>/goal</code> which takes a simple condition, REAL loops operate on full mission specifications—roadmaps, PRDs, design documents—and work autonomously toward completion.</p>
+<h3 id="the-real-pattern">The REAL Pattern<a class="heading-anchor" href="#the-real-pattern"><span class="icon icon-link"></span></a></h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Read</span></span>
+<span class="line"><span>  ↓</span></span>
+<span class="line"><span>Evaluate</span></span>
+<span class="line"><span>  ↓</span></span>
+<span class="line"><span>Act</span></span>
+<span class="line"><span>  ↓</span></span>
+<span class="line"><span>Loop</span></span></code></pre>
+<p><strong>Read</strong> — The agent reads its mission specification and current environment:</p>
+<ul>
+<li><code>ROADMAP.md</code></li>
+<li>Product requirements</li>
+<li>Design specifications</li>
+<li>Repository source code</li>
+<li>Test results, lint reports, build logs</li>
+<li>Previous execution history</li>
+</ul>
+<p><strong>Evaluate</strong> — The agent assesses progress toward the goal:</p>
+<ul>
+<li>Which roadmap items remain?</li>
+<li>Which acceptance criteria are unmet?</li>
+<li>What is the highest-value next action?</li>
+<li>Has new work been discovered?</li>
+</ul>
+<p><strong>Act</strong> — The agent performs work:</p>
+<ul>
+<li>Writing or modifying code</li>
+<li>Running tests</li>
+<li>Updating documentation</li>
+<li>Creating pull requests</li>
+<li>Delegating to sub-agents</li>
+<li>Requesting human approval when necessary</li>
+</ul>
+<p><strong>Loop</strong> — The cycle repeats until:</p>
+<ul>
+<li>The mission is complete</li>
+<li>Success criteria are satisfied</li>
+<li>Human intervention is required</li>
+<li>Max attempts reached</li>
+</ul>
+<h3 id="real-vs-repl">REAL vs. REPL<a class="heading-anchor" href="#real-vs-repl"><span class="icon icon-link"></span></a></h3>
+<p>The original <strong>REPL (Read-Eval-Print Loop)</strong> assumes a human is interacting:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>REPL</th><th>REAL</th></tr></thead><tbody><tr><td>Read user input</td><td>Read mission specification</td></tr><tr><td>Evaluate command</td><td>Evaluate progress toward goal</td></tr><tr><td>Print result</td><td>Act to change environment</td></tr><tr><td>Wait for next input</td><td>Loop until objective achieved</td></tr></tbody></table>
+<p>REPL is <strong>input-driven</strong>. REAL is <strong>goal-driven</strong>. The goal persists across iterations.</p>
+<h3 id="real-loop-definition">REAL Loop Definition<a class="heading-anchor" href="#real-loop-definition"><span class="icon icon-link"></span></a></h3>
+<p>A REAL loop can be defined declaratively:</p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">feature-impl</span></span>
+<span class="line"><span style="color:#85E89D">type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">REAL</span></span>
+<span class="line"><span style="color:#85E89D">description</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">Implement quarterly roadmap items</span></span>
+<span class="line"><span style="color:#85E89D">actor</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">developer</span></span>
+<span class="line"><span style="color:#85E89D">mission</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">|</span></span>
+<span class="line"><span style="color:#9ECBFF">  Implement all items in Q3 roadmap.</span></span>
+<span class="line"><span style="color:#9ECBFF">  Prioritize by business value.</span></span>
+<span class="line"><span style="color:#9ECBFF">  Create PRs for each feature.</span></span>
+<span class="line"><span style="color:#85E89D">max_attempts</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">50</span></span>
+<span class="line"><span style="color:#85E89D">escalation</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">human</span></span>
+<span class="line"><span style="color:#85E89D">success_criteria</span><span style="color:#E1E4E8">: </span><span style="color:#F97583">|</span></span>
+<span class="line"><span style="color:#9ECBFF">  All roadmap items completed or explicitly deferred.</span></span>
+<span class="line"><span style="color:#9ECBFF">  Each feature has passing tests and documentation.</span></span></code></pre>
+<p><strong>Key fields:</strong></p>
+<ul>
+<li><code>actor</code> — The agent responsible for execution</li>
+<li><code>mission</code> — The goal statement (what ROADMAP.md or <code>/goal</code> condition would contain)</li>
+<li><code>max_attempts</code> — Bounded execution (typically 5-100 for REAL)</li>
+<li><code>escalation</code> — What happens when max attempts reached: <code>human</code>, <code>abort</code>, <code>continue</code>, or <code>fallback</code></li>
+<li><code>success_criteria</code> — Clear definition of “done”</li>
+</ul>
+<h3 id="when-to-use-real">When to Use REAL<a class="heading-anchor" href="#when-to-use-real"><span class="icon icon-link"></span></a></h3>
+<p>REAL loops are appropriate for:</p>
+<ul>
+<li>Feature implementation</li>
+<li>Codebase migrations</li>
+<li>Refactoring projects</li>
+<li>Roadmap execution</li>
+<li>Any open-ended work with a defined completion state</li>
+</ul>
+<p>REAL loops <strong>complete</strong>. They terminate when the mission is achieved.</p>
+<hr>
+<h2 id="level-4-veal-loops--validation-driven-convergence">Level 4: VEAL Loops — Validation-Driven Convergence<a class="heading-anchor" href="#level-4-veal-loops--validation-driven-convergence"><span class="icon icon-link"></span></a></h2>
+<p><strong>VEAL (Validate → Evaluate → Act → Loop)</strong> is a pattern for state-driven, validation-focused execution with separated concerns.</p>
+<p>The key insight: <strong>separate the validator from the actor</strong>. One agent checks state (read-only), another fixes issues (write access). This prevents the “grading your own homework” problem.</p>
+<h3 id="the-veal-pattern">The VEAL Pattern<a class="heading-anchor" href="#the-veal-pattern"><span class="icon icon-link"></span></a></h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Validate</span></span>
+<span class="line"><span>  ↓</span></span>
+<span class="line"><span>Evaluate (GO / NO-GO)</span></span>
+<span class="line"><span>  ↓</span></span>
+<span class="line"><span>Act (if NO-GO)</span></span>
+<span class="line"><span>  ↓</span></span>
+<span class="line"><span>Loop</span></span></code></pre>
+<p><strong>Validate</strong> — A read-only validator agent runs all checks:</p>
+<ul>
+<li>Build commands</li>
+<li>Test suites</li>
+<li>Linting</li>
+<li>Security scans</li>
+<li>Documentation completeness</li>
+<li>Pattern matching in files</li>
+</ul>
+<p><strong>Evaluate</strong> — Each check returns a status:</p>
+<ul>
+<li><code>GO</code> — Check passed</li>
+<li><code>NO-GO</code> — Check failed, needs fixing</li>
+<li><code>WARN</code> — Passed with warnings</li>
+<li><code>SKIP</code> — Check skipped</li>
+</ul>
+<p><strong>Act</strong> — If any required check is NO-GO, the actor agent receives the findings and fixes the issues.</p>
+<p><strong>Loop</strong> — The validator re-runs checks. The cycle repeats until all checks pass or max attempts reached.</p>
+<h3 id="veal-loop-definition">VEAL Loop Definition<a class="heading-anchor" href="#veal-loop-definition"><span class="icon icon-link"></span></a></h3>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">qa-fix</span></span>
+<span class="line"><span style="color:#85E89D">type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">VEAL</span></span>
+<span class="line"><span style="color:#85E89D">description</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">QA validation and fix loop</span></span>
+<span class="line"><span style="color:#85E89D">validator</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">qa-agent</span></span>
+<span class="line"><span style="color:#85E89D">actor</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">code-fixer</span></span>
+<span class="line"><span style="color:#85E89D">max_attempts</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">3</span></span>
+<span class="line"><span style="color:#85E89D">escalation</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">human</span></span>
+<span class="line"><span style="color:#85E89D">checks</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">id</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">build</span></span>
+<span class="line"><span style="color:#85E89D">    type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">command</span></span>
+<span class="line"><span style="color:#85E89D">    command</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">go build ./...</span></span>
+<span class="line"><span style="color:#85E89D">    required</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span></span>
+<span class="line"><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">id</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">tests</span></span>
+<span class="line"><span style="color:#85E89D">    type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">command</span></span>
+<span class="line"><span style="color:#85E89D">    command</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">go test -v ./...</span></span>
+<span class="line"><span style="color:#85E89D">    required</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span></span>
+<span class="line"><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">id</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">lint</span></span>
+<span class="line"><span style="color:#85E89D">    type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">command</span></span>
+<span class="line"><span style="color:#85E89D">    command</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">golangci-lint run</span></span>
+<span class="line"><span style="color:#85E89D">    required</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span></span>
+<span class="line"><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">id</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">security</span></span>
+<span class="line"><span style="color:#85E89D">    type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">command</span></span>
+<span class="line"><span style="color:#85E89D">    command</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">gosec ./...</span></span>
+<span class="line"><span style="color:#85E89D">    required</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">false</span></span></code></pre>
+<p><strong>Key fields:</strong></p>
+<ul>
+<li><code>validator</code> — Read-only agent that runs checks</li>
+<li><code>actor</code> — Agent that fixes issues</li>
+<li><code>checks</code> — Array of validation checks with types:
+<ul>
+<li><code>command</code> — Execute shell command, check exit code</li>
+<li><code>pattern</code> — Search for regex pattern in files</li>
+<li><code>file</code> — Check file existence/content</li>
+<li><code>manual</code> — Requires human judgment</li>
+</ul>
+</li>
+<li><code>max_attempts</code> — Typically 3-5 for VEAL (if it can’t fix in 3 tries, escalate)</li>
+</ul>
+<h3 id="veal-vs-real">VEAL vs. REAL<a class="heading-anchor" href="#veal-vs-real"><span class="icon icon-link"></span></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Aspect</th><th>REAL</th><th>VEAL</th></tr></thead><tbody><tr><td>Category</td><td>Mission-driven</td><td>State-driven</td></tr><tr><td>Purpose</td><td>Build toward goal</td><td>Converge to valid state</td></tr><tr><td>Agent pattern</td><td>Single actor</td><td>Validator + Actor</td></tr><tr><td>Input</td><td>Mission specification</td><td>Validation checks</td></tr><tr><td>Typical attempts</td><td>5-100</td><td>3-5</td></tr><tr><td>Termination</td><td>Mission complete</td><td>All checks pass</td></tr><tr><td>Use cases</td><td>Features, migrations, roadmaps</td><td>QA fixes, lint fixes, docs updates</td></tr></tbody></table>
+<p><strong>REAL creates. VEAL maintains.</strong></p>
+<p>REAL moves a system toward its desired state. VEAL keeps the system there.</p>
+<h3 id="when-to-use-veal">When to Use VEAL<a class="heading-anchor" href="#when-to-use-veal"><span class="icon icon-link"></span></a></h3>
+<p>VEAL loops are appropriate for:</p>
+<ul>
+<li>QA validation and remediation</li>
+<li>Lint and format fixes</li>
+<li>Documentation completeness checks</li>
+<li>Security compliance validation</li>
+<li>Configuration validation</li>
+<li>Any bounded fix loop with idempotent checks</li>
+</ul>
+<p>VEAL loops <strong>converge</strong>. They approach a valid state through iterative validation and correction.</p>
+<hr>
+<h2 id="escalation-policies">Escalation Policies<a class="heading-anchor" href="#escalation-policies"><span class="icon icon-link"></span></a></h2>
+<p>Both REAL and VEAL loops need bounded execution. When max attempts are reached, four escalation policies control behavior:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Policy</th><th>Behavior</th></tr></thead><tbody><tr><td><code>human</code></td><td>Stop and request human intervention</td></tr><tr><td><code>abort</code></td><td>Stop and fail the workflow</td></tr><tr><td><code>continue</code></td><td>Proceed despite unresolved issues</td></tr><tr><td><code>fallback</code></td><td>Invoke a fallback agent for resolution</td></tr></tbody></table>
+<p><strong>Recommended max_attempts:</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Loop Type</th><th>Range</th><th>Rationale</th></tr></thead><tbody><tr><td>VEAL (QA fix)</td><td>3-5</td><td>If it can’t pass QA in 3 attempts, there’s likely a deeper issue</td></tr><tr><td>VEAL (docs fix)</td><td>3-5</td><td>Documentation updates should converge quickly</td></tr><tr><td>REAL (feature)</td><td>5-10</td><td>Features may need more iterations</td></tr><tr><td>REAL (roadmap)</td><td>50-100</td><td>Long-running work over many sessions</td></tr></tbody></table>
+<hr>
+<h2 id="integrating-cli-tools-with-realveal">Integrating CLI Tools with REAL/VEAL<a class="heading-anchor" href="#integrating-cli-tools-with-realveal"><span class="icon icon-link"></span></a></h2>
+<p>Can Claude Code’s <code>/goal</code> and Codex’s <code>/goal</code> be integrated with structured REAL/VEAL loops?</p>
+<p>Yes. The integration happens at <strong>three levels</strong>:</p>
+<h3 id="1-instructions-based-integration">1. Instructions-Based Integration<a class="heading-anchor" href="#1-instructions-based-integration"><span class="icon icon-link"></span></a></h3>
+<p>REAL and VEAL loop definitions can be compiled into agent instructions. When you generate agents for Claude Code, loop participation instructions are injected:</p>
+<p><strong>Validator agent receives:</strong></p>
+<ul>
+<li>Loop participation section with role description</li>
+<li>Table of all validation checks</li>
+<li>Detailed check definitions</li>
+<li>Max attempts and escalation policy</li>
+<li>Instructions: “Run all checks, report GO/NO-GO status, do NOT modify files”</li>
+</ul>
+<p><strong>Actor agent receives:</strong></p>
+<ul>
+<li>Issues to address</li>
+<li>Fix instructions</li>
+<li>Max attempts and escalation policy</li>
+<li>Instructions: “Fix identified issues, report actions taken”</li>
+</ul>
+<p><strong>Coordinator agent receives:</strong></p>
+<ul>
+<li>VEAL loop execution protocol (invoke validator → if NO-GO invoke actor → re-validate → loop)</li>
+<li>REAL loop execution protocol (invoke actor with mission → check completion → loop)</li>
+<li>Escalation handling instructions</li>
+</ul>
+<p>The agents use Claude Code’s <code>/goal</code> internally, but operate within the structured VEAL/REAL protocol.</p>
+<h3 id="2-hook-based-validation">2. Hook-Based Validation<a class="heading-anchor" href="#2-hook-based-validation"><span class="icon icon-link"></span></a></h3>
+<p>Claude Code supports hooks—shell commands that execute in response to events:</p>
+<ul>
+<li><code>before_file_write</code> — Validator can intercept writes (enforce read-only)</li>
+<li><code>after_command</code> — Capture validation results</li>
+<li><code>on_permission</code> — Control tool access per role</li>
+<li><code>on_subagent_stop</code> — Monitor agent lifecycle</li>
+</ul>
+<p>Hooks enable <strong>deterministic validation</strong> alongside LLM-based evaluation. A VEAL loop’s command checks run via hooks, providing binary pass/fail signals.</p>
+<h3 id="3-mcp-server-integration">3. MCP Server Integration<a class="heading-anchor" href="#3-mcp-server-integration"><span class="icon icon-link"></span></a></h3>
+<p>The Model Context Protocol (MCP) enables external tools to expose capabilities to Claude Code. A loop orchestration MCP server could:</p>
+<ul>
+<li>Load REAL/VEAL loop definitions</li>
+<li>Expose tools for running loop iterations</li>
+<li>Track loop state across sessions</li>
+<li>Handle escalation and fallback</li>
+<li>Provide loop status to the coordinator agent</li>
+</ul>
+<p>This enables <strong>external orchestration</strong> while Claude Code handles execution.</p>
+<hr>
+<h2 id="practical-example-qa-fix-loop">Practical Example: QA Fix Loop<a class="heading-anchor" href="#practical-example-qa-fix-loop"><span class="icon icon-link"></span></a></h2>
+<p>Here’s how a VEAL loop works in practice:</p>
+<p><strong>1. Define the loop:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="yaml"><code><span class="line"><span style="color:#85E89D">name</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">qa-fix</span></span>
+<span class="line"><span style="color:#85E89D">type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">VEAL</span></span>
+<span class="line"><span style="color:#85E89D">validator</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">qa</span></span>
+<span class="line"><span style="color:#85E89D">actor</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">code-fixer</span></span>
+<span class="line"><span style="color:#85E89D">max_attempts</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">3</span></span>
+<span class="line"><span style="color:#85E89D">escalation</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">human</span></span>
+<span class="line"><span style="color:#85E89D">checks</span><span style="color:#E1E4E8">:</span></span>
+<span class="line"><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">id</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">build</span></span>
+<span class="line"><span style="color:#85E89D">    type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">command</span></span>
+<span class="line"><span style="color:#85E89D">    command</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">npm run build</span></span>
+<span class="line"><span style="color:#85E89D">    required</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span></span>
+<span class="line"><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">id</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">test</span></span>
+<span class="line"><span style="color:#85E89D">    type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">command</span></span>
+<span class="line"><span style="color:#85E89D">    command</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">npm run test</span></span>
+<span class="line"><span style="color:#85E89D">    required</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span></span>
+<span class="line"><span style="color:#E1E4E8">  - </span><span style="color:#85E89D">id</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">lint</span></span>
+<span class="line"><span style="color:#85E89D">    type</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">command</span></span>
+<span class="line"><span style="color:#85E89D">    command</span><span style="color:#E1E4E8">: </span><span style="color:#9ECBFF">npm run lint</span></span>
+<span class="line"><span style="color:#85E89D">    required</span><span style="color:#E1E4E8">: </span><span style="color:#79B8FF">true</span></span></code></pre>
+<p><strong>2. Coordinator invokes validator:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Run all validation checks and report status.</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Checks:</span></span>
+<span class="line"><span>| ID    | Type    | Command          | Required |</span></span>
+<span class="line"><span>|-------|---------|------------------|----------|</span></span>
+<span class="line"><span>| build | command | npm run build    | Yes      |</span></span>
+<span class="line"><span>| test  | command | npm run test     | Yes      |</span></span>
+<span class="line"><span>| lint  | command | npm run lint     | Yes      |</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Report GO or NO-GO for each check with findings.</span></span></code></pre>
+<p><strong>3. Validator reports:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Validation Results:</span></span>
+<span class="line"><span>- build: GO (exit 0)</span></span>
+<span class="line"><span>- test: NO-GO (3 tests failing in auth.test.ts)</span></span>
+<span class="line"><span>- lint: NO-GO (12 lint errors in src/components/)</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Overall: NO-GO</span></span></code></pre>
+<p><strong>4. Coordinator invokes actor:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Fix the following issues:</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>1. 3 tests failing in auth.test.ts</span></span>
+<span class="line"><span>2. 12 lint errors in src/components/</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Apply fixes systematically and report actions taken.</span></span></code></pre>
+<p><strong>5. Actor fixes and reports:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Actions taken:</span></span>
+<span class="line"><span>1. Fixed auth.test.ts: updated mock to match new API response shape</span></span>
+<span class="line"><span>2. Fixed lint errors: added missing types, removed unused imports</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Ready for re-validation.</span></span></code></pre>
+<p><strong>6. Coordinator re-invokes validator:</strong></p>
+<pre class="astro-code github-dark" style="background-color:#24292e;color:#e1e4e8; overflow-x: auto;" tabindex="0" data-language="plaintext"><code><span class="line"><span>Validation Results:</span></span>
+<span class="line"><span>- build: GO</span></span>
+<span class="line"><span>- test: GO</span></span>
+<span class="line"><span>- lint: GO</span></span>
+<span class="line"><span></span></span>
+<span class="line"><span>Overall: GO</span></span></code></pre>
+<p><strong>7. Loop completes successfully.</strong></p>
+<p>If still NO-GO after 3 attempts, escalate to human.</p>
+<hr>
+<h2 id="the-loop-engineering-mindset">The Loop Engineering Mindset<a class="heading-anchor" href="#the-loop-engineering-mindset"><span class="icon icon-link"></span></a></h2>
+<p>Loop engineering requires a different way of thinking about AI coding:</p>
+<h3 id="from-prompts-to-loops">From Prompts to Loops<a class="heading-anchor" href="#from-prompts-to-loops"><span class="icon icon-link"></span></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Prompt Engineering</th><th>Loop Engineering</th></tr></thead><tbody><tr><td>Optimize single interaction</td><td>Design repeating system</td></tr><tr><td>Human reviews each output</td><td>System verifies its own output</td></tr><tr><td>Manual iteration</td><td>Autonomous iteration</td></tr><tr><td>Human decides next step</td><td>Loop decides next step</td></tr></tbody></table>
+<h3 id="design-principles">Design Principles<a class="heading-anchor" href="#design-principles"><span class="icon icon-link"></span></a></h3>
+<p><strong>1. Always include verification.</strong></p>
+<p>A loop with nothing to push back is the agent agreeing with itself on repeat. Include tests, type checks, linters, or other signals that can say “no.”</p>
+<p>As @mosyaseen noted in the viral thread: “Designing the loop is half of it. The other half is putting something in the loop that can say no.”</p>
+<p><strong>2. Separate the validator from the actor.</strong></p>
+<p>The model that wrote the code is too nice grading its own homework. Use a separate evaluator—whether a different model, a deterministic check, or a specialized validation agent.</p>
+<p><strong>3. Bound execution.</strong></p>
+<p>Without acceptance criteria, a budget cap, and a hard stop rule, a loop can burn tokens indefinitely while appearing productive. Set max_attempts. Include turn limits in conditions.</p>
+<p><strong>4. Define escalation.</strong></p>
+<p>What happens when the loop gets stuck? Human intervention, abort, continue anyway, or try a fallback agent. Make this explicit.</p>
+<p><strong>5. If you do something more than once, turn it into a loop.</strong></p>
+<p>Steinberger’s recurring point: automate repetitive work. If you do something hard, turn it into a skill afterward so next time is free.</p>
+<p><strong>6. Don’t over-engineer.</strong></p>
+<p>Building a loop for a task that runs once is waste, not automation. Loops have setup cost. Make sure the task is worth automating.</p>
+<hr>
+<h2 id="cost-considerations">Cost Considerations<a class="heading-anchor" href="#cost-considerations"><span class="icon icon-link"></span></a></h2>
+<p>Loop engineering changes the economics of AI coding:</p>
+<p><strong>Token multiplication.</strong> Agent loops make many more model calls than single-shot prompts. A common rule of thumb is 10x to 100x more tokens.</p>
+<p><strong>Budget awareness.</strong> Set explicit token budgets. Include cost limits in loop definitions. Monitor spend per loop.</p>
+<p><strong>Time vs. tokens tradeoff.</strong> <code>/loop</code> with longer intervals (hourly, daily) reduces token use. <code>/goal</code> with tight completion conditions minimizes unnecessary iterations.</p>
+<p><strong>Evaluator efficiency.</strong> Claude Code uses Haiku (a small fast model) for <code>/goal</code> evaluation. This is much cheaper than using the main model for every judgment.</p>
+<hr>
+<h2 id="the-four-levels-of-loop-engineering">The Four Levels of Loop Engineering<a class="heading-anchor" href="#the-four-levels-of-loop-engineering"><span class="icon icon-link"></span></a></h2>
+<p>To summarize the progression:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Level</th><th>Approach</th><th>Verification</th><th>Human Role</th></tr></thead><tbody><tr><td>0</td><td>Manual prompting</td><td>Human reviews each output</td><td>Operator</td></tr><tr><td>1</td><td>Built-in <code>/goal</code>, <code>/loop</code></td><td>Single evaluator model</td><td>Designer of conditions</td></tr><tr><td>2</td><td>Structured validation</td><td>Deterministic checks + LLM</td><td>Designer of check suites</td></tr><tr><td>3</td><td>REAL loops</td><td>Mission specifications, autonomous execution</td><td>Designer of missions</td></tr><tr><td>4</td><td>VEAL loops</td><td>Separated validator/actor, bounded convergence</td><td>Designer of validation systems</td></tr></tbody></table>
+<p>Most developers today operate at Level 0 or 1. The opportunity is in Levels 2-4, where the human designs systems rather than operating them.</p>
+<hr>
+<h2 id="conclusion">Conclusion<a class="heading-anchor" href="#conclusion"><span class="icon icon-link"></span></a></h2>
+<p>The shift from prompt engineering to loop engineering represents a fundamental change in how we work with AI coding agents.</p>
+<p><strong>Prompt engineering</strong> optimizes individual interactions. <strong>Loop engineering</strong> designs autonomous systems.</p>
+<p>The tools are converging on this pattern:</p>
+<ul>
+<li>Claude Code ships <code>/goal</code> and <code>/loop</code> as native primitives</li>
+<li>Codex CLI ships <code>/goal</code> with the Ralph Loop architecture</li>
+<li>Anthropic’s internal teams run swarms of self-improving agents</li>
+</ul>
+<p>The next evolution is <strong>structured loop patterns</strong>:</p>
+<ul>
+<li><strong>REAL</strong> for mission-driven, goal-oriented execution</li>
+<li><strong>VEAL</strong> for validation-driven, state-convergent execution</li>
+<li>Integration between CLI tools and multi-agent frameworks</li>
+</ul>
+<p>The engineers who thrive in this environment will be those who stop prompting and start designing loops.</p>
+<p>As Boris Cherny said: “I feel that loops are the future. I strongly recommend them to anyone who hasn’t tried them yet.”</p>
+<hr>
+<h2 id="references">References<a class="heading-anchor" href="#references"><span class="icon icon-link"></span></a></h2>
+<ul>
+<li>Steinberger, Peter. “You shouldn’t be prompting coding agents anymore.” X/Twitter. June 2026.</li>
+<li>Cherny, Boris. “Coding Is Solved, and What Comes Next.” Square San Francisco. May 2026.</li>
+<li>Anthropic. “Keep Claude working toward a goal.” Claude Code Documentation. 2026. code.claude.com/docs/en/goal</li>
+<li>OpenAI. “Follow a goal.” Codex Use Cases. 2026. developers.openai.com/codex/use-cases/follow-goals</li>
+<li>Willison, Simon. “Codex CLI 0.128.0 adds /goal.” April 2026. simonwillison.net/2026/Apr/30/codex-goals</li>
+<li>Osmani, Addy. “Loop Engineering Best Practices.” Google Cloud. June 2026.</li>
+<li>Huntley, Geoffrey. “The Ralph Wiggum Technique.” July 2025.</li>
+<li>ProductBuildersHQ. “Software Delivery Autonomy Levels.” productbuildershq.com/frameworks/software-delivery-autonomy</li>
+</ul> </article> </div> </div> </div>  </main> <footer class="bg-[var(--color-frame-bg)] text-[var(--color-frame-text)] py-12"> <div class="max-w-7xl mx-auto px-5 md:px-8"> <div class="grid grid-cols-1 md:grid-cols-3 gap-8"> <div> <h3 class="text-lg font-bold mb-4">ProductBuildersHQ</h3> <p class="text-[var(--color-frame-text-muted)] text-sm">Frameworks and case studies for the evolution of product development.</p> </div> <div> <h4 class="text-sm font-semibold uppercase tracking-wider mb-4 text-[var(--color-frame-accent)]">Research</h4> <ul class="space-y-2"> <li><a href="/frameworks" class="text-[var(--color-frame-text-muted)] hover:text-[var(--color-frame-text)] text-sm no-underline">Frameworks</a></li> <li><a href="/case-studies" class="text-[var(--color-frame-text-muted)] hover:text-[var(--color-frame-text)] text-sm no-underline">Case Studies</a></li> </ul> </div> <div> <h4 class="text-sm font-semibold uppercase tracking-wider mb-4 text-[var(--color-frame-accent)]">Company</h4> <ul class="space-y-2"> <li><a href="/about" class="text-[var(--color-frame-text-muted)] hover:text-[var(--color-frame-text)] text-sm no-underline">About</a></li> <li><a href="https://github.com/ProductBuildersHQ" target="_blank" rel="noopener noreferrer" class="text-[var(--color-frame-text-muted)] hover:text-[var(--color-frame-text)] text-sm no-underline">GitHub</a></li> </ul> </div> </div> <div class="mt-12 pt-8 border-t border-[var(--color-frame-border)] text-center text-[var(--color-frame-text-muted)] text-sm"> <span class="text-[var(--color-frame-accent)]">ProductBuildersHQ.com</span> <span class="mx-2">&middot;</span>
+&copy; 2026 ProductBuildersHQ
+</div> </div> </footer> </div> </body></html>

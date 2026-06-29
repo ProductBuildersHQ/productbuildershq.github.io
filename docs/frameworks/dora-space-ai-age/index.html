@@ -1,0 +1,922 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="description" content="How traditional software delivery and developer productivity frameworks must adapt for AI-assisted development. Introducing AI-DORA and AI-SPACE: modified metrics for the era of AI product builders."><meta property="og:title" content="DORA and SPACE in the AI Age | ProductBuildersHQ"><meta property="og:description" content="How traditional software delivery and developer productivity frameworks must adapt for AI-assisted development. Introducing AI-DORA and AI-SPACE: modified metrics for the era of AI product builders."><meta property="og:type" content="website"><link rel="icon" type="image/svg+xml" href="/favicon.svg"><title>DORA and SPACE in the AI Age | ProductBuildersHQ</title><link rel="stylesheet" href="/_astro/BaseLayout.BxrDFfwV.css"></head> <body> <div class="min-h-screen flex flex-col"> <nav class="sticky top-0 z-50 bg-[var(--color-frame-bg)]"> <div class="max-w-7xl mx-auto px-5 md:px-8"> <div class="flex items-center justify-between h-16"> <a href="/" class="flex items-center gap-2 no-underline"> <span class="text-xl font-bold text-[var(--color-frame-text)]">ProductBuildersHQ</span> </a> <div class="hidden md:flex items-center gap-6"> <a href="/frameworks" class="text-sm font-medium no-underline transition-colors text-[var(--color-frame-accent)]"> Frameworks </a><a href="/case-studies" class="text-sm font-medium no-underline transition-colors text-[var(--color-frame-text-muted)] hover:text-[var(--color-frame-text)]"> Case Studies </a> <div class="relative group"> <button class="flex items-center gap-1 text-sm font-medium text-[var(--color-frame-text-muted)] group-hover:text-[var(--color-frame-text)] transition-colors bg-transparent border-none cursor-pointer"> Products <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path> </svg> </button> <div class="absolute top-full left-0 mt-2 w-64 bg-[var(--color-frame-bg)] border border-[rgba(255,255,255,0.15)] rounded-lg shadow-lg py-2 z-50 hidden group-hover:block group-focus-within:block"> <a href="/visionspec/" class="block px-4 py-2 text-sm text-[var(--color-frame-text-muted)] hover:text-[var(--color-frame-text)] hover:bg-[rgba(255,255,255,0.05)] no-underline"> <div class="font-medium">VisionSpec</div> <div class="text-xs text-[var(--color-frame-text-muted)] mt-0.5">Multi-domain specification orchestration</div> </a> </div> </div><div class="relative group"> <button class="flex items-center gap-1 text-sm font-medium text-[var(--color-frame-text-muted)] group-hover:text-[var(--color-frame-text)] transition-colors bg-transparent border-none cursor-pointer"> Resources <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path> </svg> </button> <div class="absolute top-full left-0 mt-2 w-64 bg-[var(--color-frame-bg)] border border-[rgba(255,255,255,0.15)] rounded-lg shadow-lg py-2 z-50 hidden group-hover:block group-focus-within:block"> <a href="/papers" class="block px-4 py-2 text-sm text-[var(--color-frame-text-muted)] hover:text-[var(--color-frame-text)] hover:bg-[rgba(255,255,255,0.05)] no-underline"> <div class="font-medium">Papers</div>  </a><a href="/about" class="block px-4 py-2 text-sm text-[var(--color-frame-text-muted)] hover:text-[var(--color-frame-text)] hover:bg-[rgba(255,255,255,0.05)] no-underline"> <div class="font-medium">About</div>  </a> </div> </div> <a href="https://github.com/ProductBuildersHQ" target="_blank" rel="noopener noreferrer" class="text-[var(--color-frame-text-muted)] hover:text-[var(--color-frame-text)] transition-colors" title="GitHub" aria-label="GitHub"> <svg viewBox="0 0 24 24" class="w-5 h-5" fill="currentColor" aria-hidden="true"> <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"></path> </svg> </a> </div> <details class="md:hidden relative"> <summary class="list-none text-[var(--color-frame-text)] cursor-pointer p-2" aria-label="Open navigation"> <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true"> <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path> </svg> </summary> <div class="absolute right-0 top-full mt-3 w-72 bg-[var(--color-frame-bg)] border border-[rgba(255,255,255,0.15)] rounded-lg shadow-lg p-4"> <div class="flex flex-col gap-4"> <a href="/frameworks" class="text-sm font-medium no-underline text-[var(--color-frame-accent)]"> Frameworks </a><a href="/case-studies" class="text-sm font-medium no-underline text-[var(--color-frame-text-muted)]"> Case Studies </a> <div class="border-t border-[rgba(255,255,255,0.1)] pt-4"> <div class="text-xs text-[var(--color-frame-text-muted)] uppercase tracking-wide mb-2">Products</div> <a href="/visionspec/" class="block py-2 text-sm text-[var(--color-frame-text-muted)] no-underline">VisionSpec</a> </div><div class="border-t border-[rgba(255,255,255,0.1)] pt-4"> <div class="text-xs text-[var(--color-frame-text-muted)] uppercase tracking-wide mb-2">Resources</div> <a href="/papers" class="block py-2 text-sm text-[var(--color-frame-text-muted)] no-underline">Papers</a><a href="/about" class="block py-2 text-sm text-[var(--color-frame-text-muted)] no-underline">About</a> </div> </div> </div> </details> </div> </div> </nav> <main class="flex-1">  <div class="py-8 md:py-12"> <div class="max-w-6xl mx-auto px-5 md:px-8"> <a href="/frameworks" class="inline-flex items-center text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline mb-6"> <svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true"> <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path> </svg>
+Back to Frameworks
+</a> <div class="mb-8"> <h1 class="text-3xl md:text-4xl font-bold mb-2">DORA and SPACE in the AI Age</h1> <p class="text-xl text-[var(--color-primary)] mb-4">Measuring What Matters When AI Changes Everything</p> <p class="text-[var(--color-text-muted)] mb-6 max-w-3xl">How traditional software delivery and developer productivity frameworks must adapt for AI-assisted development. Introducing AI-DORA and AI-SPACE: modified metrics for the era of AI product builders.</p> <div class="flex flex-wrap items-center gap-4 mb-6"> <span class="inline-flex items-center text-sm font-medium px-3 py-1.5 bg-[var(--color-primary)] text-white rounded-full">6 Levels</span> <span class="text-sm text-[var(--color-text-muted)]">v1.1</span> <span class="text-sm text-[var(--color-text-subtle)]">Last updated June 2026</span> </div> <div class="flex flex-wrap gap-3"> <a href="/papers/dora-space-ai-age.pdf" download class="inline-flex items-center justify-center px-5 py-2.5 bg-[var(--color-primary-dark)] text-white font-medium rounded-lg no-underline hover:bg-[var(--color-primary)] transition-colors">
+Download PDF
+</a> <a href="/papers/dora-space-ai-age.pdf" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-5 py-2.5 border border-[var(--color-border)] text-[var(--color-text)] font-medium rounded-lg no-underline hover:bg-[var(--color-bg-secondary)] transition-colors">
+Open PDF
+</a> </div> </div> <div class="flex flex-wrap gap-2 mb-8"> <span class="text-sm px-3 py-1 bg-[var(--color-bg-secondary)] text-[var(--color-text-muted)] rounded-full">dora</span><span class="text-sm px-3 py-1 bg-[var(--color-bg-secondary)] text-[var(--color-text-muted)] rounded-full">space</span><span class="text-sm px-3 py-1 bg-[var(--color-bg-secondary)] text-[var(--color-text-muted)] rounded-full">ai-native</span><span class="text-sm px-3 py-1 bg-[var(--color-bg-secondary)] text-[var(--color-text-muted)] rounded-full">metrics</span><span class="text-sm px-3 py-1 bg-[var(--color-bg-secondary)] text-[var(--color-text-muted)] rounded-full">productivity</span><span class="text-sm px-3 py-1 bg-[var(--color-bg-secondary)] text-[var(--color-text-muted)] rounded-full">devops</span> </div> <div class="grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-10"> <aside class="hidden lg:block"> <div class="sticky top-24 border-l border-[var(--color-border-light)] pl-4"> <div class="text-xs font-semibold uppercase tracking-wide text-[var(--color-text-subtle)] mb-3">Contents</div> <nav class="space-y-2"> <a href="#the-original-frameworks" class="block text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline">The Original Frameworks</a><a href="#why-ai-changes-everything" class="block text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline">Why AI Changes Everything</a><a href="#introducing-ai-dora" class="block text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline">Introducing AI-DORA</a><a href="#introducing-ai-space" class="block text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline">Introducing AI-SPACE</a><a href="#anti-patterns-what-not-to-measure" class="block text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline">Anti-Patterns: What Not to Measure</a><a href="#framework-mapping-how-metrics-connect" class="block text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline">Framework Mapping: How Metrics Connect</a><a href="#applying-the-frameworks-by-role" class="block text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline">Applying the Frameworks by Role</a><a href="#maturity-levels-for-ai-space" class="block text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline">Maturity Levels for AI-SPACE</a><a href="#implementation-guidance" class="block text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline">Implementation Guidance</a><a href="#the-canonical-framework-definitions" class="block text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline">The Canonical Framework Definitions</a><a href="#conclusion" class="block text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline">Conclusion</a><a href="#references" class="block text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline">References</a> </nav> </div> </aside> <article class="article-content min-w-0"> <p>The DORA metrics and SPACE framework have been the gold standards for measuring software delivery performance and developer productivity. DORA’s four key metrics—Deployment Frequency, Lead Time, Change Failure Rate, and Mean Time to Recovery—have guided engineering organizations for years. SPACE’s five dimensions—Satisfaction, Performance, Activity, Communication, and Efficiency—provided a more holistic view of developer productivity.</p>
+<p>But both frameworks were designed for a world where humans wrote code.</p>
+<p>When AI can generate code faster than humans can type, when deployment frequency can increase 10x overnight, when the bottleneck shifts from implementation to validation—the traditional metrics don’t just need adjustment. They need reimagining.</p>
+<p>This article introduces <strong>AI-DORA</strong> and <strong>AI-SPACE</strong>: modified versions of these industry-standard frameworks for the era of AI-assisted development. We examine what changes, what stays the same, and how teams at different maturity levels should apply these frameworks.</p>
+<hr>
+<h2 id="the-original-frameworks">The Original Frameworks<a class="heading-anchor" href="#the-original-frameworks"><span class="icon icon-link"></span></a></h2>
+<p>Before examining the modifications, we need to understand what DORA and SPACE measure and why they matter.</p>
+<h3 id="dora-software-delivery-performance">DORA: Software Delivery Performance<a class="heading-anchor" href="#dora-software-delivery-performance"><span class="icon icon-link"></span></a></h3>
+<p>DORA (DevOps Research and Assessment) emerged from research by Nicole Forsgren, Jez Humble, and Gene Kim, published in <em>Accelerate</em> (2018). The research identified four metrics that predict software delivery performance:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Metric</th><th>What It Measures</th><th>Elite Threshold</th></tr></thead><tbody><tr><td><strong>Deployment Frequency</strong></td><td>How often code reaches production</td><td>Multiple per day</td></tr><tr><td><strong>Lead Time for Changes</strong></td><td>Time from commit to production</td><td>Less than 1 day</td></tr><tr><td><strong>Change Failure Rate</strong></td><td>Percentage of deployments causing failures</td><td>0-5%</td></tr><tr><td><strong>Mean Time to Recovery</strong></td><td>Time to restore service after failure</td><td>Less than 1 hour</td></tr></tbody></table>
+<p>These metrics work together. High deployment frequency with high failure rate indicates recklessness. Low lead time with slow recovery suggests fragile systems. The four metrics form a balanced scorecard for delivery capability.</p>
+<p>DORA’s power is its empirical foundation. The research demonstrated that high-performing teams outperform low performers across all four metrics—there is no tradeoff between speed and stability for elite performers.</p>
+<h3 id="space-developer-productivity">SPACE: Developer Productivity<a class="heading-anchor" href="#space-developer-productivity"><span class="icon icon-link"></span></a></h3>
+<p>SPACE was published in 2021 by researchers at Microsoft and GitHub (Forsgren, Storey, Maddila, Zimmermann, Houck, and Butler). It addresses a harder problem than DORA: measuring developer productivity without falling into the trap of counting lines of code or commits.</p>
+<p>SPACE proposes five dimensions, and comprehensive implementations like LinearB’s identify 20 individual metrics across them:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Dimension</th><th>Focus</th><th>Standard Metrics</th></tr></thead><tbody><tr><td><strong>S</strong>atisfaction</td><td>Developer well-being</td><td>Satisfaction surveys, eNPS, work-life balance, career growth</td></tr><tr><td><strong>P</strong>erformance</td><td>Quality of outputs</td><td>Code quality, feature delivery rate, velocity, defect density</td></tr><tr><td><strong>A</strong>ctivity</td><td>Counts of actions</td><td>Commit frequency, PR activity, time in development</td></tr><tr><td><strong>C</strong>ommunication</td><td>Collaboration effectiveness</td><td>Pair programming, cross-team collaboration, feedback loops, documentation</td></tr><tr><td><strong>E</strong>fficiency</td><td>Flow state and focus</td><td>Cycle time, lead time, resource utilization, deployment frequency</td></tr></tbody></table>
+<p>SPACE’s insight is that no single metric captures productivity. Different dimensions capture different aspects, and organizations should measure multiple dimensions to avoid Goodhart’s Law—when a measure becomes a target, it ceases to be a good measure.</p>
+<h3 id="githubs-engineering-system-metrics">GitHub’s Engineering System Metrics<a class="heading-anchor" href="#githubs-engineering-system-metrics"><span class="icon icon-link"></span></a></h3>
+<p>GitHub’s Well-Architected framework (2025) organizes 12 metrics into four zones, explicitly including AI-specific measurements:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Zone</th><th>Metrics</th></tr></thead><tbody><tr><td><strong>Quality</strong></td><td>Change failure rate, recovery time, code security/maintainability</td></tr><tr><td><strong>Velocity</strong></td><td>Lead time, deployment frequency, PRs merged per developer</td></tr><tr><td><strong>Developer Happiness</strong></td><td>Flow state experience, tooling satisfaction, <strong>Copilot satisfaction</strong></td></tr><tr><td><strong>Business Outcomes</strong></td><td><strong>AI leverage (%)</strong>, engineering expenses to revenue, feature engineering %</td></tr></tbody></table>
+<p>The inclusion of <strong>AI Leverage</strong> and <strong>Copilot Satisfaction</strong> signals that mainstream frameworks now recognize AI as a first-class concern, not an afterthought.</p>
+<hr>
+<h2 id="why-ai-changes-everything">Why AI Changes Everything<a class="heading-anchor" href="#why-ai-changes-everything"><span class="icon icon-link"></span></a></h2>
+<p>Both frameworks assume certain baseline realities that AI development disrupts:</p>
+<p><strong>Implementation is the bottleneck.</strong> Traditional metrics assume that writing code takes meaningful time. When AI generates code in seconds, the bottleneck shifts to specification, validation, and operations.</p>
+<p><strong>Human throughput scales linearly.</strong> A developer can review a certain number of PRs per day. With AI generating PRs at 10x the rate, review capacity—not generation capacity—becomes the constraint.</p>
+<p><strong>Lines of code correlate with value.</strong> SPACE explicitly warns against using LOC as a metric, but the Activity dimension still measures outputs. When AI can produce infinite outputs, counting them becomes meaningless.</p>
+<p><strong>Quality comes from human judgment.</strong> Both frameworks assume humans catch quality issues through code review. Level 6 development (as described in our <a href="/frameworks/software-delivery-autonomy">Software Delivery Autonomy</a> framework) eliminates human code review entirely.</p>
+<p><strong>Efficiency means minimizing interruptions.</strong> SPACE measures flow state in terms of uninterrupted human work time. With AI agents executing overnight, “flow” takes on a different meaning.</p>
+<p>These are not minor calibration issues. They require rethinking what the metrics mean and how to measure them.</p>
+<hr>
+<h2 id="introducing-ai-dora">Introducing AI-DORA<a class="heading-anchor" href="#introducing-ai-dora"><span class="icon icon-link"></span></a></h2>
+<p>AI-DORA maintains DORA’s four core metrics but adjusts thresholds and adds context for AI-assisted development.</p>
+<h3 id="deployment-frequency-ai-modified">Deployment Frequency (AI-Modified)<a class="heading-anchor" href="#deployment-frequency-ai-modified"><span class="icon icon-link"></span></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Level</th><th>Standard DORA</th><th>AI-DORA</th></tr></thead><tbody><tr><td>Elite</td><td>Multiple per day</td><td>10+ per day</td></tr><tr><td>High</td><td>Daily to weekly</td><td>Multiple per day</td></tr><tr><td>Medium</td><td>Weekly to monthly</td><td>Daily</td></tr><tr><td>Low</td><td>Monthly+</td><td>Weekly</td></tr></tbody></table>
+<p><strong>What changes:</strong> AI-generated code enables dramatically higher deployment frequency. What was “elite” under standard DORA becomes merely “high” with AI assistance. Teams at Level 5+ (agentic engineering) routinely deploy 10 or more times daily.</p>
+<p><strong>What stays the same:</strong> The principle that elite teams deploy more frequently. Batch deployments remain riskier than small, frequent deployments.</p>
+<p><strong>AI enablers:</strong></p>
+<ul>
+<li>AI code generation</li>
+<li>Automated test generation</li>
+<li>Intelligent CI/CD pipelines</li>
+<li>AI-assisted deployment decisions</li>
+</ul>
+<h3 id="lead-time-for-changes-ai-modified">Lead Time for Changes (AI-Modified)<a class="heading-anchor" href="#lead-time-for-changes-ai-modified"><span class="icon icon-link"></span></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Level</th><th>Standard DORA</th><th>AI-DORA</th></tr></thead><tbody><tr><td>Elite</td><td>Less than 1 day</td><td>Less than 2 hours</td></tr><tr><td>High</td><td>1 day to 1 week</td><td>Less than 1 day</td></tr><tr><td>Medium</td><td>1 week to 1 month</td><td>1-3 days</td></tr><tr><td>Low</td><td>1 month+</td><td>1 week</td></tr></tbody></table>
+<p><strong>What changes:</strong> AI collapses implementation time from hours or days to minutes. The constraint shifts to validation and deployment approval. Elite AI-assisted teams achieve sub-hour lead times.</p>
+<p><strong>What stays the same:</strong> Shorter lead times remain better. Fast feedback loops enable faster learning.</p>
+<p><strong>AI enablers:</strong></p>
+<ul>
+<li>AI pair programming</li>
+<li>AI-assisted code review</li>
+<li>AI test generation</li>
+<li>Automated documentation</li>
+</ul>
+<h3 id="change-failure-rate-ai-modified">Change Failure Rate (AI-Modified)<a class="heading-anchor" href="#change-failure-rate-ai-modified"><span class="icon icon-link"></span></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Level</th><th>Standard DORA</th><th>AI-DORA</th></tr></thead><tbody><tr><td>Elite</td><td>0-5%</td><td>0-2%</td></tr><tr><td>High</td><td>5-10%</td><td>2-5%</td></tr><tr><td>Medium</td><td>10-15%</td><td>5-8%</td></tr><tr><td>Low</td><td>15%+</td><td>8-12%</td></tr></tbody></table>
+<p><strong>What changes:</strong> AI-generated code introduces new failure modes (hallucinations, subtle logic errors), but also enables more comprehensive testing. With proper validation infrastructure, AI-assisted teams should achieve lower failure rates than human-only teams.</p>
+<p><strong>What stays the same:</strong> Lower failure rates are better. High deployment frequency with high failure rate is worse than low deployment frequency with low failure rate.</p>
+<p><strong>AI enablers:</strong></p>
+<ul>
+<li>AI static analysis</li>
+<li>AI-generated test coverage</li>
+<li>AI security scanning</li>
+<li>AI code review</li>
+<li>Scenario-based validation</li>
+</ul>
+<h3 id="mean-time-to-recovery-ai-modified">Mean Time to Recovery (AI-Modified)<a class="heading-anchor" href="#mean-time-to-recovery-ai-modified"><span class="icon icon-link"></span></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Level</th><th>Standard DORA</th><th>AI-DORA</th></tr></thead><tbody><tr><td>Elite</td><td>Less than 1 hour</td><td>Less than 15 minutes</td></tr><tr><td>High</td><td>Less than 1 day</td><td>Less than 2 hours</td></tr><tr><td>Medium</td><td>1 day to 1 week</td><td>Less than 1 day</td></tr><tr><td>Low</td><td>1 week+</td><td>1-3 days</td></tr></tbody></table>
+<p><strong>What changes:</strong> AI debugging assistants and root cause analysis dramatically accelerate recovery. AI can propose fixes, generate patches, and validate solutions faster than human troubleshooting.</p>
+<p><strong>What stays the same:</strong> Faster recovery is better. Recovery time often matters more than preventing all failures.</p>
+<p><strong>AI enablers:</strong></p>
+<ul>
+<li>AI debugging assistants</li>
+<li>AI root cause analysis</li>
+<li>AI-powered runbooks</li>
+<li>AI fix suggestions</li>
+<li>Auto-remediation</li>
+</ul>
+<hr>
+<h2 id="introducing-ai-space">Introducing AI-SPACE<a class="heading-anchor" href="#introducing-ai-space"><span class="icon icon-link"></span></a></h2>
+<p>AI-SPACE maintains SPACE’s five dimensions but fundamentally reimagines what each measures in an AI-assisted context. The framework includes <strong>25 metrics</strong> (5 per dimension), drawing from the original SPACE research, GitHub’s Well-Architected framework, and LinearB’s comprehensive implementation.</p>
+<h3 id="s--satisfaction-and-well-being-5-metrics">S — Satisfaction and Well-being (5 metrics)<a class="heading-anchor" href="#s--satisfaction-and-well-being-5-metrics"><span class="icon icon-link"></span></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Aspect</th><th>Standard SPACE</th><th>AI-SPACE</th></tr></thead><tbody><tr><td>Focus</td><td>Developer happiness</td><td>Human-AI collaboration satisfaction</td></tr><tr><td>Key Metric</td><td>Satisfaction survey</td><td>AI tool satisfaction + tooling satisfaction</td></tr><tr><td>New Consideration</td><td>N/A</td><td>Toil reduction, creative work ratio, work-life balance</td></tr></tbody></table>
+<p><strong>AI-SPACE Metrics:</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Metric</th><th>Description</th><th>Unit</th><th>Elite</th></tr></thead><tbody><tr><td>AI Tool Satisfaction</td><td>Satisfaction with AI assistants (Copilot, Claude)</td><td>1-5</td><td>> 4.5</td></tr><tr><td>Engineering Tooling Satisfaction</td><td>Satisfaction with overall tool ecosystem</td><td>1-5</td><td>> 4.5</td></tr><tr><td>Toil Reduction</td><td>% reduction in repetitive work due to AI</td><td>%</td><td>> 70%</td></tr><tr><td>Creative Work Ratio</td><td>Time on creative vs routine tasks</td><td>%</td><td>> 80%</td></tr><tr><td>AI Work-Life Balance Impact</td><td>Whether AI improves or degrades balance</td><td>1-5</td><td>> 4.5</td></tr></tbody></table>
+<p><strong>Why it matters:</strong> Satisfaction in AI development is not just “am I happy at work?” but “is AI helping or frustrating me?” Teams with poor AI tooling report lower satisfaction despite having “AI assistance.” The work-life balance metric captures whether AI enables sustainable work or creates new pressures (e.g., expectation of 24/7 availability because “AI can work overnight”).</p>
+<h3 id="p--performance-5-metrics">P — Performance (5 metrics)<a class="heading-anchor" href="#p--performance-5-metrics"><span class="icon icon-link"></span></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Aspect</th><th>Standard SPACE</th><th>AI-SPACE</th></tr></thead><tbody><tr><td>Focus</td><td>Quality of outputs</td><td>AI-assisted output quality</td></tr><tr><td>Key Metric</td><td>Code quality, bugs</td><td>AI acceptance rate + defect density</td></tr><tr><td>New Consideration</td><td>N/A</td><td>Human oversight effectiveness, code security</td></tr></tbody></table>
+<p><strong>AI-SPACE Metrics:</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Metric</th><th>Description</th><th>Unit</th><th>Elite</th></tr></thead><tbody><tr><td>AI Code Acceptance Rate</td><td>% of AI suggestions accepted after review</td><td>%</td><td>> 80%</td></tr><tr><td>AI Code Quality Score</td><td>Quality rating of AI-generated code</td><td>1-5</td><td>> 4.5</td></tr><tr><td>Human Review Catch Rate</td><td>Issues found in human review of AI code</td><td>%</td><td>5-15%</td></tr><tr><td>AI Code Defect Density</td><td>Defects per KLOC in AI-generated code</td><td>defects/KLOC</td><td>&#x3C; 1</td></tr><tr><td>Code Security and Maintainability</td><td>Security/maintainability of AI code</td><td>1-5</td><td>> 4.5</td></tr></tbody></table>
+<p><strong>Why it matters:</strong> When AI generates code, performance measurement must distinguish between AI quality and human review quality. A high acceptance rate could indicate good AI or rubber-stamping. The catch rate provides a counterbalance—too low suggests inadequate review, too high suggests poor AI quality.</p>
+<p>The <strong>5-15% optimal catch rate</strong> is notable: Elite teams expect to catch some issues (demonstrating diligent review) but not many (indicating good AI quality).</p>
+<h3 id="a--activity-5-metrics">A — Activity (5 metrics)<a class="heading-anchor" href="#a--activity-5-metrics"><span class="icon icon-link"></span></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Aspect</th><th>Standard SPACE</th><th>AI-SPACE</th></tr></thead><tbody><tr><td>Focus</td><td>Count of outputs</td><td>AI leverage and orchestration quality</td></tr><tr><td>Key Metric</td><td>PRs, commits, LOC</td><td>AI Leverage %, prompt reuse</td></tr><tr><td>Warning</td><td>Can be gamed</td><td>Even more gameable with AI</td></tr></tbody></table>
+<p><strong>AI-SPACE Metrics:</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Metric</th><th>Description</th><th>Unit</th><th>Elite</th></tr></thead><tbody><tr><td><strong>AI Leverage</strong></td><td>% of work performed with AI assistance</td><td>%</td><td>> 80%</td></tr><tr><td>Prompt Reuse Rate</td><td>% of prompts templated for reuse</td><td>%</td><td>> 60%</td></tr><tr><td>AI Session Efficiency</td><td>Meaningful outcomes per AI session hour</td><td>outcomes/hr</td><td>> 5</td></tr><tr><td>Orchestration Complexity</td><td>Multi-step AI workflows created</td><td>avg steps</td><td>10+</td></tr><tr><td>AI-Assisted Feature Delivery</td><td>Features delivered per sprint with AI</td><td>features/sprint</td><td>> 10</td></tr></tbody></table>
+<p><strong>AI Leverage</strong> (from GitHub’s Well-Architected framework) is perhaps the most important new metric. It measures what percentage of development work is performed with AI assistance—the fundamental indicator of AI adoption maturity.</p>
+<p><strong>What NOT to measure:</strong></p>
+<ul>
+<li>Lines of code generated by AI (infinite, meaningless)</li>
+<li>Number of AI prompts (easily gamed)</li>
+<li>AI tool usage time (more ≠ better)</li>
+<li>Raw commit frequency (AI can generate infinite commits)</li>
+<li>Code churn (AI refactoring inflates churn without value correlation)</li>
+</ul>
+<h3 id="c--communication-and-collaboration-5-metrics">C — Communication and Collaboration (5 metrics)<a class="heading-anchor" href="#c--communication-and-collaboration-5-metrics"><span class="icon icon-link"></span></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Aspect</th><th>Standard SPACE</th><th>AI-SPACE</th></tr></thead><tbody><tr><td>Focus</td><td>Team communication</td><td>Human-AI-Human collaboration</td></tr><tr><td>Key Metric</td><td>PR review time, meetings</td><td>AI workflow sharing, feedback loops</td></tr><tr><td>New Consideration</td><td>N/A</td><td>Prompt libraries, AI-assisted documentation</td></tr></tbody></table>
+<p><strong>AI-SPACE Metrics:</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Metric</th><th>Description</th><th>Unit</th><th>Elite</th></tr></thead><tbody><tr><td>AI Workflow Sharing Rate</td><td>% of AI workflows shared with team</td><td>%</td><td>> 70%</td></tr><tr><td>Prompt Library Contributions</td><td>Monthly contributions to shared prompts</td><td>count/month</td><td>10+</td></tr><tr><td>Cross-team Pattern Adoption</td><td>AI patterns adopted from other teams</td><td>%</td><td>> 50%</td></tr><tr><td>AI-Enabled Feedback Loop Speed</td><td>Time from change to actionable feedback</td><td>minutes</td><td>&#x3C; 10</td></tr><tr><td>AI-Assisted Documentation Quality</td><td>Completeness of AI-maintained docs</td><td>%</td><td>> 90%</td></tr></tbody></table>
+<p><strong>Why it matters:</strong> AI changes collaboration patterns. Instead of sharing code snippets, teams share prompts. Instead of code review, teams review AI workflows. The <strong>feedback loop speed</strong> metric captures a key AI advantage—AI enables near-instant feedback on changes through automated review, test generation, and analysis.</p>
+<h3 id="e--efficiency-and-flow-5-metrics">E — Efficiency and Flow (5 metrics)<a class="heading-anchor" href="#e--efficiency-and-flow-5-metrics"><span class="icon icon-link"></span></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Aspect</th><th>Standard SPACE</th><th>AI-SPACE</th></tr></thead><tbody><tr><td>Focus</td><td>Uninterrupted work time</td><td>AI-augmented flow state</td></tr><tr><td>Key Metric</td><td>Flow state hours</td><td>AI acceleration factor, cycle time</td></tr><tr><td>New Consideration</td><td>N/A</td><td>Context switching to/from AI, time savings</td></tr></tbody></table>
+<p><strong>AI-SPACE Metrics:</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Metric</th><th>Description</th><th>Unit</th><th>Elite</th></tr></thead><tbody><tr><td>AI Acceleration Factor</td><td>Task completion speed with AI vs without</td><td>x</td><td>> 5x</td></tr><tr><td>Context Switch Frequency</td><td>Disruptive switches between human and AI work</td><td>/day</td><td>&#x3C; 3</td></tr><tr><td>AI-Augmented Flow Hours</td><td>Hours per day in AI-augmented flow state</td><td>hours/day</td><td>> 6</td></tr><tr><td>AI-Assisted Cycle Time</td><td>Time from work start to production</td><td>hours</td><td>&#x3C; 4</td></tr><tr><td>Weekly AI Time Savings</td><td>Hours saved per week due to AI</td><td>hours/week</td><td>> 15</td></tr></tbody></table>
+<p><strong>Why it matters:</strong> Flow state with AI is different from traditional flow. The best AI developers enter a state where AI becomes a seamless extension of their thinking. Poor AI integration creates constant context switching between human reasoning and AI interaction.</p>
+<p>The <strong>cycle time</strong> metric (from LinearB) complements lead time—it measures the full span from when work begins to when it reaches production, capturing the entire AI-assisted development cycle.</p>
+<hr>
+<h2 id="anti-patterns-what-not-to-measure">Anti-Patterns: What Not to Measure<a class="heading-anchor" href="#anti-patterns-what-not-to-measure"><span class="icon icon-link"></span></a></h2>
+<p>AI-SPACE explicitly identifies metrics that become harmful in AI-assisted development:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Anti-Pattern</th><th>Why It Fails</th></tr></thead><tbody><tr><td>Lines of code</td><td>AI can generate infinite LOC; meaningless metric</td></tr><tr><td>Number of prompts</td><td>Easily gamed; more prompts ≠ better outcomes</td></tr><tr><td>AI tool usage time</td><td>More time ≠ better; efficiency matters</td></tr><tr><td>Raw commit frequency</td><td>AI can generate infinite commits</td></tr><tr><td>Code churn</td><td>AI refactoring inflates churn without value correlation</td></tr></tbody></table>
+<p>These metrics were already problematic in traditional development. With AI, they become actively harmful—incentivizing behaviors that reduce rather than improve outcomes.</p>
+<hr>
+<h2 id="framework-mapping-how-metrics-connect">Framework Mapping: How Metrics Connect<a class="heading-anchor" href="#framework-mapping-how-metrics-connect"><span class="icon icon-link"></span></a></h2>
+<p>Operations metrics often map to multiple frameworks. A single SLI (Service Level Indicator) can be measured against both standard and AI-modified thresholds.</p>
+<p>For example, <strong>Deployment Frequency</strong> maps to:</p>
+<ul>
+<li><strong>DORA</strong>: Deployment Frequency (DF) — Elite: “Multiple per day”</li>
+<li><strong>AI-DORA</strong>: Deployment Frequency (DF) — Elite: “10+ per day”</li>
+<li><strong>SPACE</strong>: Activity — Measuring team output cadence</li>
+<li><strong>AI-SPACE</strong>: Activity — But shifts focus to AI leverage and orchestration quality</li>
+</ul>
+<p>This dual mapping allows organizations to:</p>
+<ol>
+<li>Track progress against industry-standard DORA/SPACE benchmarks</li>
+<li>Identify AI-specific improvement opportunities</li>
+<li>Measure whether AI tooling is delivering expected acceleration</li>
+</ol>
+<hr>
+<h2 id="applying-the-frameworks-by-role">Applying the Frameworks by Role<a class="heading-anchor" href="#applying-the-frameworks-by-role"><span class="icon icon-link"></span></a></h2>
+<p>Different roles will use these frameworks differently based on their position in the <a href="/frameworks/product-builder-maturity-model">Product Builder Maturity Model</a>.</p>
+<h3 id="for-engineers-l0-l3">For Engineers (L0-L3)<a class="heading-anchor" href="#for-engineers-l0-l3"><span class="icon icon-link"></span></a></h3>
+<p><strong>Focus on:</strong> AI-SPACE Performance and Efficiency dimensions</p>
+<p>Early-stage AI adoption should focus on code quality and acceleration:</p>
+<ul>
+<li>Track AI acceptance rate as you learn to work with AI</li>
+<li>Monitor catch rate to ensure you’re reviewing effectively, not rubber-stamping</li>
+<li>Measure acceleration factor to validate AI is helping</li>
+<li>Check defect density to ensure AI code quality is improving</li>
+</ul>
+<p><strong>Key question:</strong> Is AI making me faster without sacrificing quality?</p>
+<p><strong>Warning signs:</strong></p>
+<ul>
+<li>Catch rate near zero (rubber-stamping)</li>
+<li>Acceleration factor below 2x (AI friction)</li>
+<li>AI quality score declining over time</li>
+<li>Defect density higher than human baseline</li>
+</ul>
+<h3 id="for-product-aware-engineers-l3-l4">For Product-Aware Engineers (L3-L4)<a class="heading-anchor" href="#for-product-aware-engineers-l3-l4"><span class="icon icon-link"></span></a></h3>
+<p><strong>Focus on:</strong> AI-DORA metrics, AI Leverage, and Cycle Time</p>
+<p>Engineers with product judgment should measure delivery impact:</p>
+<ul>
+<li>Track AI Leverage to measure adoption maturity</li>
+<li>Monitor deployment frequency and lead time against AI-DORA thresholds</li>
+<li>Build reusable prompts and workflows (prompt reuse rate)</li>
+<li>Measure cycle time to validate end-to-end acceleration</li>
+</ul>
+<p><strong>Key question:</strong> Is AI helping me ship more value to users?</p>
+<p><strong>Warning signs:</strong></p>
+<ul>
+<li>High deployment frequency but high failure rate (shipping fast, breaking things)</li>
+<li>Low prompt reuse (reinventing wheels)</li>
+<li>Long cycle times despite AI assistance (non-coding bottlenecks)</li>
+<li>AI Leverage below 60% (underutilizing AI)</li>
+</ul>
+<h3 id="for-product-managers-building-prototypes-l2">For Product Managers Building Prototypes (L2)<a class="heading-anchor" href="#for-product-managers-building-prototypes-l2"><span class="icon icon-link"></span></a></h3>
+<p><strong>Focus on:</strong> AI-SPACE Satisfaction and Activity dimensions</p>
+<p>PMs using AI to prototype should measure validation speed:</p>
+<ul>
+<li>Track toil reduction (is AI eliminating grunt work?)</li>
+<li>Measure orchestration complexity (can you direct multi-step AI workflows?)</li>
+<li>Monitor AI tool satisfaction (is the tooling enabling or frustrating you?)</li>
+<li>Check feature delivery rate (are you shipping prototypes faster?)</li>
+</ul>
+<p><strong>Key question:</strong> Can I validate ideas before engineering investment?</p>
+<p><strong>Warning signs:</strong></p>
+<ul>
+<li>Low creative work ratio (spending time on AI plumbing, not product thinking)</li>
+<li>Poor session efficiency (AI isn’t producing usable outputs)</li>
+<li>Prototypes requiring full engineering rebuild (AI output not production-ready)</li>
+<li>Low AI Leverage (not fully utilizing AI capabilities)</li>
+</ul>
+<h3 id="for-product-builders-l5">For Product Builders (L5+)<a class="heading-anchor" href="#for-product-builders-l5"><span class="icon icon-link"></span></a></h3>
+<p><strong>Focus on:</strong> All four AI-DORA metrics plus AI-SPACE holistically</p>
+<p>Full product builders own end-to-end delivery and should measure everything:</p>
+<ul>
+<li>Track all DORA metrics against AI-DORA thresholds</li>
+<li>Monitor AI Leverage to ensure mature adoption (> 80% for elite)</li>
+<li>Balance speed metrics against quality metrics (defect density, security)</li>
+<li>Track team satisfaction and work-life balance</li>
+</ul>
+<p><strong>Key question:</strong> Am I delivering complete, reliable products with AI assistance?</p>
+<p><strong>Warning signs:</strong></p>
+<ul>
+<li>Optimizing one metric at the expense of others</li>
+<li>Team satisfaction declining despite productivity gains</li>
+<li>Technical debt accumulating invisibly (low code security scores)</li>
+<li>Work-life balance degrading (AI creating pressure, not relief)</li>
+</ul>
+<hr>
+<h2 id="maturity-levels-for-ai-space">Maturity Levels for AI-SPACE<a class="heading-anchor" href="#maturity-levels-for-ai-space"><span class="icon icon-link"></span></a></h2>
+<p>We can map AI-SPACE adoption to maturity levels:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Level</th><th>Description</th><th>Key Metrics</th></tr></thead><tbody><tr><td><strong>L0</strong></td><td>No AI usage</td><td>Standard SPACE applies</td></tr><tr><td><strong>L1</strong></td><td>Ad-hoc AI</td><td>AI satisfaction > 3, some toil reduction, AI leverage &#x3C; 20%</td></tr><tr><td><strong>L2</strong></td><td>Structured AI</td><td>Prompt reuse > 30%, workflow sharing begins, AI leverage 20-40%</td></tr><tr><td><strong>L3</strong></td><td>Optimized AI</td><td>Acceleration factor > 3x, high quality scores, AI leverage 40-60%</td></tr><tr><td><strong>L4</strong></td><td>AI-Native</td><td>AI leverage > 80%, &#x3C; 3 context switches/day, cycle time &#x3C; 4 hours</td></tr></tbody></table>
+<p>Most organizations today are between L0 and L2. L3 requires deliberate investment in AI workflow optimization. L4 represents mature AI-native development where AI is the default, not the exception.</p>
+<hr>
+<h2 id="implementation-guidance">Implementation Guidance<a class="heading-anchor" href="#implementation-guidance"><span class="icon icon-link"></span></a></h2>
+<h3 id="starting-with-ai-dora">Starting with AI-DORA<a class="heading-anchor" href="#starting-with-ai-dora"><span class="icon icon-link"></span></a></h3>
+<p>If you’re currently tracking DORA metrics, begin by:</p>
+<ol>
+<li><strong>Establish baselines.</strong> Measure your current DORA performance.</li>
+<li><strong>Add AI-DORA thresholds.</strong> Map your performance against AI-DORA elite/high/medium/low.</li>
+<li><strong>Identify gaps.</strong> Where does AI assistance have the most potential impact?</li>
+<li><strong>Instrument AI enablers.</strong> Track which AI tools contribute to which metrics.</li>
+</ol>
+<h3 id="starting-with-ai-space">Starting with AI-SPACE<a class="heading-anchor" href="#starting-with-ai-space"><span class="icon icon-link"></span></a></h3>
+<p>If you’re measuring developer productivity:</p>
+<ol>
+<li><strong>Identify anti-patterns.</strong> Stop measuring LOC, commits, or other metrics that AI breaks.</li>
+<li><strong>Add AI Leverage.</strong> This single metric captures overall AI adoption maturity.</li>
+<li><strong>Add AI-specific metrics.</strong> Start with AI satisfaction, acceleration factor, and defect density.</li>
+<li><strong>Expand gradually.</strong> Add prompt reuse, workflow sharing, and feedback loop speed as AI adoption matures.</li>
+<li><strong>Balance dimensions.</strong> Ensure you’re measuring across multiple SPACE dimensions, not optimizing one.</li>
+</ol>
+<h3 id="avoiding-common-mistakes">Avoiding Common Mistakes<a class="heading-anchor" href="#avoiding-common-mistakes"><span class="icon icon-link"></span></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Mistake</th><th>Why It’s Harmful</th><th>Better Approach</th></tr></thead><tbody><tr><td>Measuring only speed</td><td>Ignores quality, satisfaction, sustainability</td><td>Balance AI-DORA and AI-SPACE</td></tr><tr><td>Comparing AI and human LOC</td><td>Meaningless comparison</td><td>Focus on outcomes delivered</td></tr><tr><td>Mandating AI usage</td><td>Creates gaming, reduces satisfaction</td><td>Measure value via AI Leverage, not tool usage</td></tr><tr><td>Ignoring satisfaction</td><td>High velocity with low satisfaction is unsustainable</td><td>Include AI satisfaction and work-life balance</td></tr><tr><td>Ignoring security</td><td>AI can introduce vulnerabilities</td><td>Track code security/maintainability explicitly</td></tr></tbody></table>
+<hr>
+<h2 id="the-canonical-framework-definitions">The Canonical Framework Definitions<a class="heading-anchor" href="#the-canonical-framework-definitions"><span class="icon icon-link"></span></a></h2>
+<p>The AI-DORA and AI-SPACE frameworks are maintained as part of the <a href="https://github.com/ProductBuildersHQ/productbuildershq-frameworks">ProductBuildersHQ Frameworks</a>:</p>
+<ul>
+<li><strong>AI-DORA</strong>: <code>frameworks/ai-dora/ai-dora.json</code></li>
+<li><strong>AI-SPACE</strong>: <code>frameworks/ai-space/ai-space.json</code> (25 metrics across 5 dimensions)</li>
+</ul>
+<p>Standard DORA and SPACE definitions are maintained in <a href="https://github.com/grokify/prism-maturity">grokify/prism-maturity</a>, enabling organizations to compare against industry baselines while measuring AI-specific acceleration.</p>
+<hr>
+<h2 id="conclusion">Conclusion<a class="heading-anchor" href="#conclusion"><span class="icon icon-link"></span></a></h2>
+<p>DORA and SPACE remain essential frameworks for measuring software delivery and developer productivity. But AI development requires modifications to thresholds, new metrics, and fundamentally different interpretations.</p>
+<p>AI-DORA provides:</p>
+<ul>
+<li>Recalibrated thresholds for AI-accelerated delivery</li>
+<li>New “elite” targets that reflect AI capabilities</li>
+<li>AI enabler identification for each metric</li>
+</ul>
+<p>AI-SPACE provides:</p>
+<ul>
+<li>25 metrics across 5 dimensions (expanded from original 15)</li>
+<li>AI Leverage as a key adoption indicator</li>
+<li>New metrics for defect density, feedback loops, cycle time, and work-life balance</li>
+<li>Explicit anti-patterns to avoid (LOC, commits, churn)</li>
+</ul>
+<p>The shift is not from DORA to AI-DORA or SPACE to AI-SPACE. It is from measuring human-only development to measuring human-AI collaboration. Organizations that adopt these frameworks early will have clearer visibility into what’s working, what’s not, and where to invest.</p>
+<p>The metrics you choose shape the behaviors you get. Choose metrics that matter for the AI age.</p>
+<hr>
+<h2 id="references">References<a class="heading-anchor" href="#references"><span class="icon icon-link"></span></a></h2>
+<ul>
+<li>Forsgren, Nicole, Jez Humble, and Gene Kim. <em>Accelerate: The Science of Lean Software and DevOps</em>. IT Revolution Press. 2018.</li>
+<li>DORA Research Program. <a href="https://dora.dev">https://dora.dev</a></li>
+<li>Forsgren, Nicole, Margaret-Anne Storey, Chandra Maddila, Thomas Zimmermann, Brian Houck, and Jenna Butler. “The SPACE of Developer Productivity.” <em>ACM Queue</em>. March 2021. <a href="https://queue.acm.org/detail.cfm?id=3454124">https://queue.acm.org/detail.cfm?id=3454124</a></li>
+<li>GitHub Well-Architected: Engineering System Metrics. <a href="https://wellarchitected.github.com/library/productivity/recommendations/engineering-system-metrics/">https://wellarchitected.github.com/library/productivity/recommendations/engineering-system-metrics/</a></li>
+<li>LinearB. “SPACE Framework: 20 Metrics Defined.” <a href="https://linearb.io/blog/space-framework">https://linearb.io/blog/space-framework</a></li>
+<li>Google Cloud. State of DevOps Report. <a href="https://cloud.google.com/devops/state-of-devops">https://cloud.google.com/devops/state-of-devops</a></li>
+<li>ProductBuildersHQ. AI-DORA Framework. <a href="https://github.com/ProductBuildersHQ/productbuildershq-frameworks/tree/main/frameworks/ai-dora">https://github.com/ProductBuildersHQ/productbuildershq-frameworks/tree/main/frameworks/ai-dora</a></li>
+<li>ProductBuildersHQ. AI-SPACE Framework. <a href="https://github.com/ProductBuildersHQ/productbuildershq-frameworks/tree/main/frameworks/ai-space">https://github.com/ProductBuildersHQ/productbuildershq-frameworks/tree/main/frameworks/ai-space</a></li>
+</ul>
+<hr>
+<p><em>This is a living document. Last updated June 2026. Submit feedback at productbuildershq.com.</em></p> </article> </div> </div> </div>  </main> <footer class="bg-[var(--color-frame-bg)] text-[var(--color-frame-text)] py-12"> <div class="max-w-7xl mx-auto px-5 md:px-8"> <div class="grid grid-cols-1 md:grid-cols-3 gap-8"> <div> <h3 class="text-lg font-bold mb-4">ProductBuildersHQ</h3> <p class="text-[var(--color-frame-text-muted)] text-sm">Frameworks and case studies for the evolution of product development.</p> </div> <div> <h4 class="text-sm font-semibold uppercase tracking-wider mb-4 text-[var(--color-frame-accent)]">Research</h4> <ul class="space-y-2"> <li><a href="/frameworks" class="text-[var(--color-frame-text-muted)] hover:text-[var(--color-frame-text)] text-sm no-underline">Frameworks</a></li> <li><a href="/case-studies" class="text-[var(--color-frame-text-muted)] hover:text-[var(--color-frame-text)] text-sm no-underline">Case Studies</a></li> </ul> </div> <div> <h4 class="text-sm font-semibold uppercase tracking-wider mb-4 text-[var(--color-frame-accent)]">Company</h4> <ul class="space-y-2"> <li><a href="/about" class="text-[var(--color-frame-text-muted)] hover:text-[var(--color-frame-text)] text-sm no-underline">About</a></li> <li><a href="https://github.com/ProductBuildersHQ" target="_blank" rel="noopener noreferrer" class="text-[var(--color-frame-text-muted)] hover:text-[var(--color-frame-text)] text-sm no-underline">GitHub</a></li> </ul> </div> </div> <div class="mt-12 pt-8 border-t border-[var(--color-frame-border)] text-center text-[var(--color-frame-text-muted)] text-sm"> <span class="text-[var(--color-frame-accent)]">ProductBuildersHQ.com</span> <span class="mx-2">&middot;</span>
+&copy; 2026 ProductBuildersHQ
+</div> </div> </footer> </div> </body></html>
