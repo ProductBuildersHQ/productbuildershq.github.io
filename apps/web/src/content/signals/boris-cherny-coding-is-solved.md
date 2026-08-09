@@ -2,7 +2,7 @@
 title: 'Boris Cherny: "Coding Is Solved," and Engineering Merges Into Product Building'
 subtitle: 'The head of Claude Code uninstalled his IDE — what that means, and the one word he is assuming: governance'
 description: "Boris Cherny says coding is practically solved and that engineering roles will merge into generalist product builders — the ProductBuildersHQ thesis, from the person who built the tool doing the solving. But 'solved' quietly assumes you can still govern the output, which reframes the two paths to Product Builder."
-date: '2026-08-07'
+date: '2026-02-19'
 author: 'Boris Cherny'
 authorRole: 'Creator and head of Claude Code, Anthropic'
 sources:

@@ -2,7 +2,7 @@
 title: 'Andrej Karpathy: The Coiner of "Vibe Coding" Says He Has Never Felt So Far Behind'
 subtitle: 'Software 3.0, the human as supervisor — and why even the coiner points past the vibes to the specs'
 description: "Andrej Karpathy named vibe coding, then described a Software 3.0 world where the human is a high-level supervisor running many projects in parallel. Even he admits he has never felt so far behind — which is the whole case for a maturity ladder."
-date: '2026-08-07'
+date: '2026-04-20'
 author: 'Andrej Karpathy'
 authorRole: 'OpenAI co-founder; former Tesla AI lead'
 sources:

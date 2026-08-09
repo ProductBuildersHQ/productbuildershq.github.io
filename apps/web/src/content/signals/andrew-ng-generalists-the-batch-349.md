@@ -2,7 +2,7 @@
 title: 'Andrew Ng: Engineers Should Learn Product. PMs Should Learn to Code.'
 subtitle: 'The Batch #349 lands, claim by claim, on the Product Builder Maturity Model'
 description: 'Andrew Ng argues that AI-accelerated coding shifts the bottleneck from engineering to deciding what to build — collapsing engineer-to-PM ratios and favoring generalists. His observations map directly onto the PBMM ladder.'
-date: '2026-08-06'
+date: '2026-04-17'
 author: 'Andrew Ng'
 authorRole: 'Founder, DeepLearning.AI'
 sources:

@@ -2,7 +2,7 @@
 title: 'Jack Dorsey: Block Replaces the Org Chart With Three Roles'
 subtitle: 'From Hierarchy to Intelligence lands on the One Human Operator principle — the DRI is the Product Builder'
 description: "Block is normalizing to three roles — ICs, DRIs, and player-coaches — with a shared world model replacing the middle-management layer that used to route information. Their DRI is ProductBuildersHQ's one human operator, and their world model is the platform that makes one accountable owner viable."
-date: '2026-08-08'
+date: '2026-03-31'
 author: 'Jack Dorsey'
 authorRole: 'Block (CEO)'
 sources:

@@ -2,7 +2,7 @@
 title: 'Steve Yegge: In Gas Town, the Developer Is a Product Manager and the System Is an Idea Compiler'
 subtitle: 'Gas Town, the buy-vs-build shift, and why the Solo-Founder — not the vibe coder — builds the single-person SaaS'
 description: "Steve Yegge's Gas Town inverts the developer into a product manager directing an agent swarm — the ProductBuilder role at the execution frontier. Across three of his dispatches, the thesis converges with ours; on the SaaS-death prediction, ProductBuildersHQ diverges on who actually builds the single-person SaaS."
-date: '2026-08-07'
+date: '2026-01-01'
 author: 'Steve Yegge'
 authorRole: 'Co-author of "Vibe Coding"; creator of Gas Town'
 sources:
