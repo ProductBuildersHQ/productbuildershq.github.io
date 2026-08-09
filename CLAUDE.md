@@ -51,8 +51,9 @@ npm run preview
 | `apps/web/src/content/case-studies/*.md` | Case-study articles (markdown + frontmatter) |
 | `apps/web/src/pages/` | Routes, incl. dynamic `frameworks/[slug].astro` and `case-studies/[slug].astro` |
 | `apps/web/src/layouts/BaseLayout.astro` | Shared page shell (nav, footer, `<head>`) |
-| `apps/web/src/config/nav-config.json` | Navigation config incl. the SDD Workflows megamenu (mirrored to `public/nav-config.json`; consumed by the shared `wt-navbar` web component on this site AND the MkDocs sub-sites) |
+| `apps/web/src/config/nav-config.json` | Navigation config with three megamenus (`megaMenus[]`: Frameworks, SDD Workflows, From the Field) plus Products/Resources dropdowns (mirrored to `public/nav-config.json`; consumed by the shared `wt-navbar` web component on this site AND the MkDocs sub-sites) |
 | `apps/web/public/js/pbhq-nav.js` | PBHQ-branded initializer for the shared `wt-navbar` nav (from `@grokify/site-nav`); fetches `/nav-config.json` same-origin |
+| `apps/web/public/js/site-nav.min.js` | Prebuilt `@grokify/site-nav` bundle (IIFE). **Source lives in `github.com/grokify/web-tools/packages/site-nav`** (Lit + Vite). To change nav behavior (e.g. add a megamenu), edit the source there, run `npm run build`, and copy `dist/site-nav.min.js` here. The config supports multiple megamenus via `megaMenus[]` (legacy single `megaMenu` still works). |
 | `apps/web/src/data/sdd-catalog.json` | Generated SDD catalog (spec types, workflows, integrations, pipelines) — never edit by hand; run `./scripts/generate-sdd-catalog.sh` |
 | `apps/web/src/pages/sdd/` | SDD catalog pages generated from `sdd-catalog.json` (`index`, `specs/[id]`, `definition/[id]`, `execution/[id]`). Terminology: Definition Workflows produce product & engineering specs; Execution Workflows install agent instructions that drive implementation; "Execution" alone (VisionStudio sense) = monitoring building against specs |
 | `apps/web/src/styles/global.css` | Global styles, CSS variables, and `@media print` rules |

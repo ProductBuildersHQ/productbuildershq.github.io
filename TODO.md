@@ -19,21 +19,25 @@ this file tracks the concrete follow-ups.
 
 ## Nav / megamenu
 
-- [ ] Manually click through the deployed nav: megamenu open/close (click
-  triggered — headless verification only covered the closed bar), dropdowns,
-  mobile hamburger menu, and the sub-sites (lever/visionspec) picking up the
-  new megamenu from the shared `/nav-config.json`.
+- [ ] **Manually click through the restructured nav (3 megamenus).** The nav
+  now has three megamenus — Frameworks, SDD Workflows, and From the Field
+  (Case Studies | Signals) — plus Products/Resources dropdowns. Verify in a real
+  browser: each megamenu trigger opens its own panel, only one is open at a time,
+  Escape/click-outside close, the mobile hamburger lists all three, and the
+  sub-sites (lever/visionspec) pick up the new `/nav-config.json`. (Browser
+  extension was unavailable during implementation, so only build + typecheck +
+  config validation were run.)
 - [ ] Consider vendoring or pinning `@grokify/site-nav` (currently consumed as
   the prebuilt `site-nav.min.js` copied into `public/js/`; source lives in
-  `grokify/web-tools`, referenced by `file:` path from plexusone).
-- [ ] **Second megamenu for Resources (Thinking / Library).** `wt-navbar`
-  currently supports only a single `config.megaMenu` (occupied by SDD
-  Workflows); dropdowns are flat item lists with per-item descriptions and no
-  columns. To render a two-column Thinking (Philosophy, Perspectives, Signals) /
-  Library (Papers, presentation, About) megamenu, extend `@grokify/site-nav` in
-  `grokify/web-tools` to accept multiple megamenus (e.g. a `megaMenus` array or
-  a `megaMenu` on a dropdown), rebuild `site-nav.min.js`, and re-ship it to the
-  sub-sites. Until then, Resources ships as a rich dropdown with descriptions.
+  `github.com/grokify/web-tools/packages/site-nav`, referenced by `file:` path
+  from plexusone).
+- [x] **Multiple megamenus.** `wt-navbar` now supports a `megaMenus[]` array
+  (legacy single `megaMenu` still works). Implemented in
+  `github.com/grokify/web-tools/packages/site-nav` and re-shipped as
+  `public/js/site-nav.min.js`. Rather than a Thinking/Library Resources
+  megamenu, the IA was restructured: Frameworks and From the Field became
+  megamenus, Signals moved in with Case Studies, and Resources stays a rich
+  dropdown by design.
 
 ## SDD catalog enhancements
 
