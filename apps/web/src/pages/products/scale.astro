@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+
+const aspects = [
+  { letter: 'S', name: 'Standards', question: 'Do executable engineering standards exist?' },
+  { letter: 'C', name: 'Consumption', question: 'Are teams using them (adoption) and using them correctly (conformance)?' },
+  { letter: 'A', name: 'Automation', question: 'How much is enforced automatically?' },
+  { letter: 'L', name: 'Leverage', question: 'What reuse and engineering capacity do they create?' },
+  { letter: 'E', name: 'Effectiveness', question: 'Did engineering and business outcomes improve?' },
+]
+---
+
+<BaseLayout title="SCALE">
+  <div class="py-16 md:py-24">
+    <div class="max-w-4xl mx-auto px-5 md:px-8">
+      <span class="text-xs font-medium px-2 py-1 bg-[var(--color-accent)] text-[var(--color-primary-dark)] rounded">PBHQ Original</span>
+      <span class="text-xs font-medium px-2 py-1 bg-[var(--color-primary)]/10 text-[var(--color-primary)] rounded">Framework</span>
+      <h1 class="text-4xl md:text-5xl font-bold mt-4 mb-6">SCALE</h1>
+      <p class="text-xl text-[var(--color-text-muted)] mb-8">
+        A machine-readable framework for telling the platform story: how engineering best
+        practices are <strong class="text-[var(--color-text)]">S</strong>tandardized,
+        <strong class="text-[var(--color-text)]">C</strong>onsumed,
+        <strong class="text-[var(--color-text)]">A</strong>utomated,
+        <strong class="text-[var(--color-text)]">L</strong>everaged, and made
+        <strong class="text-[var(--color-text)]">E</strong>ffective across an organization.
+      </p>
+
+      <h2 class="text-2xl font-bold mt-12 mb-4">The Five Aspects</h2>
+      <p class="text-[var(--color-text-muted)] mb-6">
+        Every metric is tagged with exactly one aspect. SCALE is an aggregation and narrative
+        layer over detailed maturity metrics — not another metrics catalog. Maturity frameworks
+        make it cheap to generate hundreds of metrics, and cheap metrics destroy the story.
+        SCALE's purpose is to make hundreds of metrics readable as five aspect-level storylines.
+      </p>
+      <div class="overflow-x-auto mb-6">
+        <table class="w-full text-sm border-collapse">
+          <thead>
+            <tr class="border-b border-[var(--color-border-light)]">
+              <th class="text-left py-2 pr-4 text-[var(--color-text)]">Letter</th>
+              <th class="text-left py-2 pr-4 text-[var(--color-text)]">Aspect</th>
+              <th class="text-left py-2 text-[var(--color-text)]">Question it answers</th>
+            </tr>
+          </thead>
+          <tbody>
+            {aspects.map((a) => (
+              <tr class="border-b border-[var(--color-border-light)]">
+                <td class="py-2 pr-4 font-bold text-[var(--color-primary)]">{a.letter}</td>
+                <td class="py-2 pr-4 text-[var(--color-text)]">{a.name}</td>
+                <td class="py-2 text-[var(--color-text-muted)]">{a.question}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="text-2xl font-bold mt-12 mb-4">Why It Matters for ProductBuilders</h2>
+      <p class="text-[var(--color-text-muted)] mb-4">
+        AI agents make it cheap to generate code and specs — they do not make it cheap to keep
+        the result standardized, automated, or reused. Left unchecked, that gap is exactly how
+        AI-generated systems become unmaintainable at scale: consumption outruns standards,
+        automation lags enforcement, and duplicated effort erodes leverage. SCALE exists to keep
+        that gap visible, aspect by aspect, so "did this actually get more maintainable" has an
+        honest answer instead of a metrics dashboard nobody reads.
+      </p>
+      <p class="text-[var(--color-text-muted)]">
+        SCALE is consumed by <a href="/products/visionstudio" class="text-[var(--color-primary)] hover:underline">VisionStudio's</a>
+        Maturity Model panel and is designed to sit alongside deeper assessment frameworks like
+        PRISM — PRISM assesses, SCALE narrates.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 mt-10">
+        <a href="https://github.com/ProductBuildersHQ/scale" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-6 py-3 bg-[var(--color-primary-dark)] text-white font-medium rounded-lg no-underline hover:bg-[var(--color-primary)] transition-colors">View on GitHub</a>
+        <a href="/scale/" class="inline-flex items-center justify-center px-6 py-3 bg-[var(--color-accent)] text-[var(--color-primary-dark)] font-medium rounded-lg no-underline hover:bg-[var(--color-accent-light)] transition-colors">Documentation</a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

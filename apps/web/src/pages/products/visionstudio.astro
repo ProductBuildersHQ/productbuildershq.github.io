@@ -1,0 +1,101 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+
+const tour = [
+  {
+    image: '/images/products/visionstudio-workflow.webp',
+    width: 1600,
+    height: 1357,
+    alt: 'VisionStudio spec workflow view showing the Working Backwards pipeline: Market Requirements, then Press Release, FAQ, and 6-Pager, then Product Requirements and User Experience, then technical specs, converging on a unified Execution Spec',
+    title: 'Spec Workflow',
+    description:
+      'The Working Backwards pipeline at a glance: human-authored Market Requirements flow into LLM-generated vision documents — Press Release, FAQ, 6-Pager — then product, technical, and test specs, converging on a single Execution Spec. Every spec carries its evaluation status: pass, needs work, or fail.',
+  },
+  {
+    image: '/images/products/visionstudio-prd-eval.webp',
+    width: 1600,
+    height: 1362,
+    alt: 'A Product Requirements Document open in the VisionStudio editor with the LLM-as-a-Judge panel showing a 4/5 score, confidence level, blocking issues, and per-dimension findings',
+    title: 'Spec + LLM-as-a-Judge Evaluation',
+    description:
+      'Each spec is judged in place. The evaluation panel sits beside the document with a categorical score, confidence level, blocking issues, and per-dimension breakdowns — requirements clarity, success metrics, dependencies, user stories — so revision targets are explicit, not vibes.',
+  },
+  {
+    image: '/images/products/visionstudio-findings.webp',
+    width: 1600,
+    height: 1357,
+    alt: 'VisionStudio consolidated findings view showing total findings, specs evaluated, severity distribution, and per-spec LLM-as-a-Judge findings with blocking issues',
+    title: 'Findings Across the Workflow',
+    description:
+      'The consolidated view rolls every evaluation up across the workflow: specs evaluated, passing and needs-work counts, findings by severity, and each blocking issue tied back to the exact section of the exact spec that raised it.',
+  },
+  {
+    image: '/images/products/prism-execution.webp',
+    width: 1600,
+    height: 1476,
+    alt: 'PRISM dashboard showing initiatives, phases, and roadmap items with completion status, repositories, and dependency counts',
+    title: 'Initiative Execution',
+    description:
+      'From spec to shipped: the PRISM dashboard — surfaced in VisionStudio — tracks initiatives, their phases, and stable roadmap items (RMIs) across repositories, with per-phase completion status and dependency tracking.',
+  },
+]
+---
+
+<BaseLayout title="VisionStudio">
+  <div class="py-16 md:py-24">
+    <div class="max-w-4xl mx-auto px-5 md:px-8">
+      <span class="text-xs font-medium px-2 py-1 bg-[var(--color-accent)] text-[var(--color-primary-dark)] rounded">PBHQ Original</span>
+      <span class="text-xs font-medium px-2 py-1 bg-[var(--color-primary)]/10 text-[var(--color-primary)] rounded">Tool</span>
+      <h1 class="text-4xl md:text-5xl font-bold mt-4 mb-6">VisionStudio</h1>
+      <p class="text-xl text-[var(--color-text-muted)] mb-8">
+        An LLM-powered desktop application for specification authoring and evaluation — an
+        integrated workspace for creating, evaluating, and iterating on product specifications
+        using the VisionSpec methodology.
+      </p>
+
+      <h2 class="text-2xl font-bold mt-12 mb-4">Key Capabilities</h2>
+      <ul class="space-y-4 text-[var(--color-text-muted)]">
+        <li><strong class="text-[var(--color-text)]">Dual methodology selection:</strong> choose a requirements methodology (AWS Working Backwards, and others) and an implementation methodology (AIDLC, SpecKit) per project.</li>
+        <li><strong class="text-[var(--color-text)]">LLM-as-a-Judge evaluation:</strong> evaluate specs against profile rubrics, with a context-aware writing assistant to help close the gaps it finds.</li>
+        <li><strong class="text-[var(--color-text)]">AIDLC workflow:</strong> AWS's AI-Driven Development Lifecycle — Inception → Construction → Operations — with generated deliverables and phase gates to track completion.</li>
+        <li><strong class="text-[var(--color-text)]">Strategic planning:</strong> V2MOM cascades from organization to team to project, a visual capability stack, and a timeline roadmap view.</li>
+        <li><strong class="text-[var(--color-text)]">Maturity Model dashboards:</strong> framework-based maturity assessments, including <a href="/products/scale" class="text-[var(--color-primary)] hover:underline">SCALE</a>.</li>
+        <li><strong class="text-[var(--color-text)]">DevX usage dashboard:</strong> sessions, prompts, commits, AI-assisted %, and cost, sourced from OmniDevX.</li>
+      </ul>
+    </div>
+
+    <div class="max-w-6xl mx-auto px-5 md:px-8 mt-16">
+      <h2 class="text-2xl font-bold mb-10 max-w-4xl">Product Tour</h2>
+      <div class="flex flex-col gap-16">
+        {tour.map((stop, index) => (
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div class:list={['rounded-2xl overflow-hidden border border-[var(--color-border)] shadow-xl', index % 2 === 1 && 'md:order-2']}>
+              <img src={stop.image} alt={stop.alt} width={stop.width} height={stop.height} loading="lazy" class="w-full h-auto block" />
+            </div>
+            <div class:list={[index % 2 === 1 && 'md:order-1']}>
+              <span class="block font-mono text-sm text-[var(--color-text-subtle)] mb-3">{String(index + 1).padStart(2, '0')}</span>
+              <h3 class="text-xl font-semibold mb-3 text-[var(--color-text)]">{stop.title}</h3>
+              <p class="text-[var(--color-text-muted)] leading-relaxed m-0">{stop.description}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <div class="max-w-4xl mx-auto px-5 md:px-8 mt-16">
+      <h2 class="text-2xl font-bold mb-4">Why It Matters</h2>
+      <p class="text-[var(--color-text-muted)]">
+        As AI compresses the distance between intent and implementation, the bottleneck moves
+        upstream — to how well a spec is written and judged before an agent ever touches code.
+        VisionStudio is the applied tool for the <a href="/frameworks/spec-driven-development#visionspec" class="text-[var(--color-primary)] hover:underline">VisionSpec methodology</a>
+        described on this site: it turns strategy, specifications, and delivery workflows into an
+        operating system a ProductBuilder can actually run.
+      </p>
+
+      <div class="flex flex-col sm:flex-row gap-4 mt-10">
+        <a href="https://github.com/ProductBuildersHQ/visionstudio" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-6 py-3 bg-[var(--color-primary-dark)] text-white font-medium rounded-lg no-underline hover:bg-[var(--color-primary)] transition-colors">View on GitHub</a>
+        <a href="/visionstudio/" class="inline-flex items-center justify-center px-6 py-3 bg-[var(--color-accent)] text-[var(--color-primary-dark)] font-medium rounded-lg no-underline hover:bg-[var(--color-accent-light)] transition-colors">Documentation</a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

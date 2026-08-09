@@ -1,0 +1,124 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+
+const surfaces = [
+  {
+    name: 'Importable SDK',
+    tag: 'Go library',
+    desc: 'Go packages that load workflows, synthesize specs, run LLM-as-a-Judge evaluation, and report status. This is the layer VisionStudio imports directly — no shelling out to a binary.',
+    example: 'import "github.com/ProductBuildersHQ/visionspec/pkg/..."',
+    iconPath: 'M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5',
+  },
+  {
+    name: 'CLI',
+    tag: 'visionspec',
+    desc: 'A command-line engine for people and terminal-native agents: scaffold a project on a chosen methodology, validate structure, synthesize documents, and emit a readiness report.',
+    example: 'visionspec init my-product --workflow=aws-working-backwards/product',
+    iconPath: 'M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18V6a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z',
+  },
+  {
+    name: 'MCP Server',
+    tag: 'cmd/mcp-server',
+    desc: 'A Model Context Protocol server that exposes the same engine to any coding agent — Claude Code, Cursor, Copilot — so an agent can author, synthesize, and evaluate specs inside the workflow it already runs.',
+    example: 'go run github.com/ProductBuildersHQ/visionspec/cmd/mcp-server',
+    iconPath: 'M9.75 3.104v5.714a2.25 2.25 0 01-.659 1.591L5 14.5M9.75 3.104c-.251.023-.501.05-.75.082m.75-.082a24.301 24.301 0 014.5 0m0 0v5.714c0 .597.237 1.17.659 1.591L19.8 15.3M14.25 3.104c.251.023.501.05.75.082M19.8 15.3l-1.57.393A9.065 9.065 0 0112 15a9.065 9.065 0 00-6.23-.693L5 14.5m14.8.8l1.402 1.402c1.232 1.232.65 3.318-1.067 3.611A48.309 48.309 0 0112 21c-2.773 0-5.491-.235-8.135-.687-1.718-.293-2.3-2.379-1.067-3.61L5 14.5',
+  },
+]
+
+const capabilities = [
+  'Working Backwards flow — start from a vision (Press Release), derive requirements (PRD)',
+  'Dual-methodology system — separate requirements (WHAT) from implementation (HOW)',
+  'LLM synthesis — generate Press, FAQ, PRD, TRD, TPD, IRD from source specs',
+  'LLM-as-a-Judge evaluation — per-domain judges with numeric scoring',
+  'Reconciliation — conflict detection and tradeoff resolution into a single execution spec',
+  'Target adapters — export to Spec-Kit, AWS AI-DLC, OpenSpec, and more',
+]
+---
+
+<BaseLayout title="VisionSpec" description="VisionSpec is the ProductBuildersHQ spec engine — a library, CLI, and MCP server that executes the specification workflows defined in specification-workflow-spec. Used directly by AI agents or imported into VisionStudio.">
+  <div class="py-16 md:py-24">
+    <div class="max-w-4xl mx-auto px-5 md:px-8">
+      <div class="flex flex-wrap gap-2 mb-4">
+        <span class="text-xs font-medium px-2 py-1 bg-[var(--color-accent)] text-[var(--color-primary-dark)] rounded">PBHQ Original</span>
+        <span class="text-xs font-medium px-2 py-1 bg-[var(--color-primary)]/10 text-[var(--color-primary)] rounded">Engine</span>
+      </div>
+      <h1 class="text-4xl md:text-5xl font-bold mb-6">VisionSpec</h1>
+      <p class="text-xl text-[var(--color-text-muted)] mb-8">
+        The spec engine — multi-domain specification orchestration for humans and AI agents.
+        VisionSpec executes the specification workflows defined in
+        <a href="https://github.com/ProductBuildersHQ/specification-workflow-spec" target="_blank" rel="noopener noreferrer" class="text-[var(--color-primary)] hover:underline">specification-workflow-spec</a>
+        — AWS Working Backwards, Big Tech, PBHQ Lite, and any workflow you define there — turning
+        organizational intent into specs an agent can build against.
+      </p>
+
+      <div class="p-5 bg-[var(--color-bg-secondary)] border border-[var(--color-border-light)] rounded-xl mb-12">
+        <p class="text-sm text-[var(--color-text-muted)]">
+          <strong class="text-[var(--color-text)]">Where it sits.</strong>
+          <a href="/sdd/" class="text-[var(--color-primary)] hover:underline">specification-workflow-spec</a>
+          defines the workflows (types, templates, rubrics). <strong class="text-[var(--color-text)]">VisionSpec</strong>
+          is the engine that runs them.
+          <a href="/products/visionstudio" class="text-[var(--color-primary)] hover:underline">VisionStudio</a>
+          is the desktop studio that imports the engine. One contract, one engine, one studio.
+        </p>
+      </div>
+
+      <h2 class="text-2xl font-bold mb-2">Three Surfaces</h2>
+      <p class="text-[var(--color-text-muted)] mb-6">
+        The same engine, exposed three ways — so it meets you wherever you work: in code, in a
+        terminal, or inside your coding agent.
+      </p>
+      <div class="grid grid-cols-1 gap-4 mb-6">
+        {surfaces.map((s) => (
+          <div class="p-6 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-xl">
+            <div class="flex items-center gap-3 mb-3">
+              <span class="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-[var(--color-primary)]/10 text-[var(--color-primary)] shrink-0">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d={s.iconPath}></path>
+                </svg>
+              </span>
+              <h3 class="text-lg font-semibold text-[var(--color-text)]">{s.name}</h3>
+              <span class="font-mono text-xs px-2 py-0.5 bg-[var(--color-bg-secondary)] text-[var(--color-text-muted)] rounded">{s.tag}</span>
+            </div>
+            <p class="text-sm text-[var(--color-text-muted)] mb-3">{s.desc}</p>
+            <pre class="text-xs bg-[var(--color-frame-bg)] text-[var(--color-frame-text)] rounded-lg p-3 overflow-x-auto"><code>{s.example}</code></pre>
+          </div>
+        ))}
+      </div>
+
+      <h2 class="text-2xl font-bold mt-12 mb-4">Two Ways to Use It</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+        <div class="p-6 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-xl">
+          <h3 class="text-lg font-semibold mb-2">Directly by an AI agent</h3>
+          <p class="text-sm text-[var(--color-text-muted)]">
+            Point a coding agent at the MCP server (or the CLI) and it authors, synthesizes, and
+            evaluates specs inside the workflow — no new app to adopt, just a tool your agent
+            already knows how to call.
+          </p>
+        </div>
+        <div class="p-6 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-xl">
+          <h3 class="text-lg font-semibold mb-2">Imported into VisionStudio</h3>
+          <p class="text-sm text-[var(--color-text-muted)]">
+            <a href="/products/visionstudio" class="text-[var(--color-primary)] hover:underline">VisionStudio</a>
+            imports the VisionSpec SDK directly to give the same engine a desktop studio —
+            authoring, evaluation dashboards, and execution tracking over one project.
+          </p>
+        </div>
+      </div>
+
+      <h2 class="text-2xl font-bold mt-12 mb-4">What the Engine Does</h2>
+      <ul class="space-y-3 mb-6">
+        {capabilities.map((c) => (
+          <li class="flex items-start gap-3 text-[var(--color-text-muted)]">
+            <span class="mt-2 w-1.5 h-1.5 rounded-full bg-[var(--color-primary)] shrink-0" aria-hidden="true"></span>
+            <span>{c}</span>
+          </li>
+        ))}
+      </ul>
+
+      <div class="flex flex-col sm:flex-row gap-4 mt-10">
+        <a href="https://github.com/ProductBuildersHQ/visionspec" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-6 py-3 bg-[var(--color-primary-dark)] text-white font-medium rounded-lg no-underline hover:bg-[var(--color-primary)] transition-colors">View on GitHub</a>
+        <a href="/sdd/" class="inline-flex items-center justify-center px-6 py-3 bg-[var(--color-accent)] text-[var(--color-primary-dark)] font-medium rounded-lg no-underline hover:bg-[var(--color-accent-light)] transition-colors">Browse the SDD Catalog</a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
