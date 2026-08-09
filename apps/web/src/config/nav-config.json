@@ -284,29 +284,40 @@
       "label": "Resources",
       "items": [
         {
-          "id": "presentation",
-          "label": "What is a ProductBuilder?",
-          "href": "/presentation"
+          "id": "philosophy",
+          "label": "Philosophy",
+          "href": "/philosophy",
+          "description": "The 4P loop we build by: Program, Practice, Product, Progress"
         },
         {
           "id": "perspectives",
           "label": "Perspectives",
-          "href": "/perspectives"
+          "href": "/perspectives",
+          "description": "First-person essays from the founder"
         },
         {
           "id": "signals",
           "label": "Signals",
-          "href": "/signals"
+          "href": "/signals",
+          "description": "Industry evidence, mapped to the frameworks"
         },
         {
           "id": "papers",
           "label": "Papers",
-          "href": "/papers"
+          "href": "/papers",
+          "description": "Framework & case-study PDFs"
+        },
+        {
+          "id": "presentation",
+          "label": "What is a ProductBuilder?",
+          "href": "/presentation",
+          "description": "The talk, as a deck"
         },
         {
           "id": "about",
           "label": "About",
-          "href": "/about"
+          "href": "/about",
+          "description": "Origin, IP portfolio, and contact"
         }
       ]
     }

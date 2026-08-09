@@ -26,6 +26,14 @@ this file tracks the concrete follow-ups.
 - [ ] Consider vendoring or pinning `@grokify/site-nav` (currently consumed as
   the prebuilt `site-nav.min.js` copied into `public/js/`; source lives in
   `grokify/web-tools`, referenced by `file:` path from plexusone).
+- [ ] **Second megamenu for Resources (Thinking / Library).** `wt-navbar`
+  currently supports only a single `config.megaMenu` (occupied by SDD
+  Workflows); dropdowns are flat item lists with per-item descriptions and no
+  columns. To render a two-column Thinking (Philosophy, Perspectives, Signals) /
+  Library (Papers, presentation, About) megamenu, extend `@grokify/site-nav` in
+  `grokify/web-tools` to accept multiple megamenus (e.g. a `megaMenus` array or
+  a `megaMenu` on a dropdown), rebuild `site-nav.min.js`, and re-ship it to the
+  sub-sites. Until then, Resources ships as a rich dropdown with descriptions.
 
 ## SDD catalog enhancements
 
