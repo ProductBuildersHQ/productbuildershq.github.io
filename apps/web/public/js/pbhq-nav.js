@@ -1,6 +1,6 @@
 /**
  * ProductBuildersHQ Navigation Initializer
- * Version: 2.0.0
+ * Version: 2.1.0
  *
  * Loads navigation config from /nav-config.json and initializes wt-navbar.
  *
@@ -13,8 +13,12 @@
 (function() {
   'use strict';
 
-  // Base URL
-  var BASE_URL = 'https://productbuildershq.com';
+  // Base URL: same-origin by default so the nav works on productbuildershq.com,
+  // its sub-sites, and local previews alike. Override via window.PBHQ_NAV_BASE_URL.
+  var BASE_URL = window.PBHQ_NAV_BASE_URL ||
+    (location.origin && location.origin.indexOf('http') === 0
+      ? location.origin
+      : 'https://productbuildershq.com');
 
   // Theme CSS for ProductBuildersHQ colors - overrides design system variables
   var themeCSS = `
@@ -69,6 +73,8 @@
         return action;
       });
     }
+    // Resolve links against the current origin so local previews stay local.
+    config.baseUrl = BASE_URL;
     return config;
   }
 
