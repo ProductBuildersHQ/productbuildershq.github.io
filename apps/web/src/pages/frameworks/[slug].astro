@@ -1,6 +1,9 @@
 ---
 import { getCollection, render } from 'astro:content'
 import BaseLayout from '../../layouts/BaseLayout.astro'
+import TwoLoopDiagram from '../../components/TwoLoopDiagram.astro'
+import FivePsBars from '../../components/FivePsBars.astro'
+import catalog from '../../data/sdd-catalog.json'
 
 export async function getStaticPaths() {
   const frameworks = await getCollection('frameworks')
@@ -9,12 +12,18 @@ export async function getStaticPaths() {
 
 const { entry } = Astro.props
 const { Content, headings } = await render(entry)
+
+// The two-loop article renders its diagram from the same catalog data the
+// homepage uses — single-sourced from specification-workflow-spec.
+const twoLoop = entry.id === 'product-loop-builder-loop'
+  ? catalog.loop_systems.find((s) => s.id === 'pbhq-two-loop')
+  : undefined
 ---
 
 <BaseLayout title={entry.data.title} description={entry.data.description}>
   <div class="py-8 md:py-12">
     <div class="max-w-6xl mx-auto px-5 md:px-8">
-      <a href="/frameworks" class="inline-flex items-center text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline mb-6">
+      <a href="/frameworks" class="no-print inline-flex items-center text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline mb-6">
         <svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
         </svg>
@@ -26,18 +35,22 @@ const { Content, headings } = await render(entry)
         <p class="text-xl text-[var(--color-primary)] mb-4">{entry.data.subtitle}</p>
         <p class="text-[var(--color-text-muted)] mb-6 max-w-3xl">{entry.data.description}</p>
         <div class="flex flex-wrap items-center gap-4 mb-6">
-          <span class="inline-flex items-center text-sm font-medium px-3 py-1.5 bg-[var(--color-primary)] text-white rounded-full">{entry.data.levels} Levels</span>
+          {entry.data.provenance === 'original' && <span class="inline-flex items-center text-sm font-medium px-3 py-1.5 bg-[var(--color-accent)] text-[var(--color-primary-dark)] rounded-full">PBHQ Original</span>}
+          {entry.data.provenance === 'industry' && <span class="inline-flex items-center text-sm font-medium px-3 py-1.5 bg-[var(--color-bg-secondary)] text-[var(--color-text-muted)] rounded-full">Industry Analysis</span>}
+          {entry.data.levels && <span class="inline-flex items-center text-sm font-medium px-3 py-1.5 bg-[var(--color-primary)] text-white rounded-full">{entry.data.levels} Levels</span>}
           <span class="text-sm text-[var(--color-text-muted)]">{entry.data.version}</span>
           <span class="text-sm text-[var(--color-text-subtle)]">Last updated {entry.data.date}</span>
         </div>
-        <div class="flex flex-wrap gap-3">
-          <a href={entry.data.pdfUrl} download class="inline-flex items-center justify-center px-5 py-2.5 bg-[var(--color-primary-dark)] text-white font-medium rounded-lg no-underline hover:bg-[var(--color-primary)] transition-colors">
-            Download PDF
-          </a>
-          <a href={entry.data.pdfUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-5 py-2.5 border border-[var(--color-border)] text-[var(--color-text)] font-medium rounded-lg no-underline hover:bg-[var(--color-bg-secondary)] transition-colors">
-            Open PDF
-          </a>
-        </div>
+        {entry.data.pdfUrl && (
+          <div class="no-print flex flex-wrap gap-3">
+            <a href={entry.data.pdfUrl} download class="inline-flex items-center justify-center px-5 py-2.5 bg-[var(--color-primary-dark)] text-white font-medium rounded-lg no-underline hover:bg-[var(--color-primary)] transition-colors">
+              Download PDF
+            </a>
+            <a href={entry.data.pdfUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-5 py-2.5 border border-[var(--color-border)] text-[var(--color-text)] font-medium rounded-lg no-underline hover:bg-[var(--color-bg-secondary)] transition-colors">
+              Open PDF
+            </a>
+          </div>
+        )}
       </div>
 
       <div class="flex flex-wrap gap-2 mb-8">
@@ -45,6 +58,20 @@ const { Content, headings } = await render(entry)
           <span class="text-sm px-3 py-1 bg-[var(--color-bg-secondary)] text-[var(--color-text-muted)] rounded-full">{tag}</span>
         ))}
       </div>
+
+      {twoLoop && (
+        <div class="mb-10 overflow-x-auto">
+          <div class="min-w-[860px]">
+            <TwoLoopDiagram system={twoLoop} />
+          </div>
+        </div>
+      )}
+
+      {entry.id === 'five-ps' && (
+        <div class="mb-10">
+          <FivePsBars />
+        </div>
+      )}
 
       <div class="grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-10">
         <aside class="hidden lg:block">

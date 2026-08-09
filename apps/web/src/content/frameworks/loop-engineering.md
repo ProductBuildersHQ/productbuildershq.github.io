@@ -6,6 +6,7 @@ version: "v1.0"
 date: "June 2026"
 pdfUrl: "/papers/loop-engineering.pdf"
 levels: 4
+provenance: "original"
 tags: ["loop-engineering", "agents", "claude-code", "codex", "autonomous", "REAL", "VEAL"]
 ---
 

@@ -1,8 +1,24 @@
 ---
 import { getCollection } from 'astro:content'
 import BaseLayout from '../../layouts/BaseLayout.astro'
+import TwoLoopDiagram from '../../components/TwoLoopDiagram.astro'
+import catalog from '../../data/sdd-catalog.json'
 
-const frameworks = await getCollection('frameworks')
+// Semantic order: the operating model first (the architecture the rest operate
+// within), then the person (PBMM), then the process (ASDM), then the rest.
+const FEATURED = [
+  'product-loop-builder-loop',
+  'product-builder-maturity-model',
+  'software-delivery-autonomy',
+  'five-ps',
+]
+const rank = (id: string) => {
+  const index = FEATURED.indexOf(id)
+  return index === -1 ? FEATURED.length : index
+}
+const frameworks = (await getCollection('frameworks')).sort((a, b) => rank(a.id) - rank(b.id))
+
+const twoLoop = catalog.loop_systems.find((s) => s.id === 'pbhq-two-loop')
 ---
 
 <BaseLayout title="Frameworks" description="Maturity models and methodologies for product builders.">
@@ -14,13 +30,35 @@ const frameworks = await getCollection('frameworks')
           Maturity models and methodologies for product builders. Each framework provides a structured path for growth with tools, metrics, and practices.
         </p>
       </div>
+
+      {twoLoop && (
+        <div class="mb-14">
+          <p class="text-sm text-[var(--color-text-muted)] max-w-3xl mb-4">
+            The frameworks form one system. The <a href="/frameworks/product-loop-builder-loop" class="text-[var(--color-primary)] hover:underline no-underline font-medium">two-loop operating model</a> is
+            the architecture: the <strong>Product Loop</strong> decides what to build and verifies it worked;
+            the <strong>Builder Loop</strong> implements and verifies it&rsquo;s built right. The
+            <a href="/frameworks/product-builder-maturity-model" class="text-[var(--color-primary)] hover:underline no-underline">PBMM</a> grows
+            the person who runs both loops; the
+            <a href="/frameworks/software-delivery-autonomy" class="text-[var(--color-primary)] hover:underline no-underline">autonomy levels</a> grade
+            how much of the Builder Loop runs without humans.
+          </p>
+          <div class="overflow-x-auto pb-2">
+            <div class="min-w-[860px] max-w-5xl">
+              <TwoLoopDiagram system={twoLoop} />
+            </div>
+          </div>
+        </div>
+      )}
+
       <div class="grid grid-cols-1 gap-8">
         {frameworks.map((framework) => (
           <a href={`/frameworks/${framework.id}`} class="group block p-8 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-xl no-underline hover:border-[var(--color-primary)] hover:shadow-lg transition-all">
             <div class="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
               <div class="flex-1">
                 <div class="flex flex-wrap items-center gap-3 mb-3">
-                  <span class="text-sm font-medium px-3 py-1 bg-[var(--color-primary)]/10 text-[var(--color-primary)] rounded-full">{framework.data.levels} Levels</span>
+                  {framework.data.provenance === 'original' && <span class="text-sm font-medium px-3 py-1 bg-[var(--color-accent)] text-[var(--color-primary-dark)] rounded-full">PBHQ Original</span>}
+                  {framework.data.provenance === 'industry' && <span class="text-sm font-medium px-3 py-1 bg-[var(--color-bg-secondary)] text-[var(--color-text-muted)] rounded-full">Industry Analysis</span>}
+                  {framework.data.levels && <span class="text-sm font-medium px-3 py-1 bg-[var(--color-primary)]/10 text-[var(--color-primary)] rounded-full">{framework.data.levels} Levels</span>}
                   <span class="text-sm text-[var(--color-text-subtle)]">{framework.data.version} &middot; {framework.data.date}</span>
                 </div>
                 <h2 class="text-2xl font-bold mb-2 text-[var(--color-text)] group-hover:text-[var(--color-primary)]">{framework.data.title}</h2>

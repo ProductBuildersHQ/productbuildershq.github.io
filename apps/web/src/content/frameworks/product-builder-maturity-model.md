@@ -6,6 +6,7 @@ version: "v1.0"
 date: "May 2026"
 pdfUrl: "/papers/product-builder-maturity-model.pdf"
 levels: 7
+provenance: "original"
 tags: ["maturity-model", "product-management", "engineering", "ai-native"]
 ---
 

@@ -6,6 +6,7 @@ version: "v1.0"
 date: "June 2026"
 pdfUrl: "/papers/spec-driven-development.pdf"
 levels: 5
+provenance: "industry"
 tags: ["spec-driven", "sdd", "agents", "specifications", "ai-native", "methodology"]
 ---
 

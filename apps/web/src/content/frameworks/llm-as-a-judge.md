@@ -6,6 +6,7 @@ version: "v1.0"
 date: "June 2026"
 pdfUrl: "/papers/llm-as-a-judge.pdf"
 levels: 6
+provenance: "industry"
 tags: ["llm-as-a-judge", "code-review", "evaluation", "multi-agent", "VEAL", "automation"]
 ---
 

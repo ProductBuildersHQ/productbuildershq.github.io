@@ -6,6 +6,7 @@ version: "v1.1"
 date: "May 2026"
 pdfUrl: "/papers/software-delivery-autonomy.pdf"
 levels: 7
+provenance: "original"
 tags: ["maturity-model", "asdm", "autonomous", "ai-native", "devops"]
 ---
 
@@ -324,6 +325,16 @@ Level 6 is not achievable by simply removing human review from Level 5. It requi
 Level 7 is the true endpoint of software delivery autonomy. It is what people often mean when they use the "dark factory" metaphor: a production system where software moves from intent to implementation to operation without humans in the normal execution path. We avoid that term here because it carries unnecessary negative connotations and centers the absence of humans rather than the governance model that makes autonomy acceptable.
 
 The important distinction is operational responsibility. Level 6 can produce code without human coding or code review, but humans may still decide when it is exposed to customers, monitor production behavior, approve remediations, and own incident response. Level 7 moves those operational gates into policy-governed autonomous systems.
+
+### The Ideal State Predates AI
+
+Level 7 can sound like speculative AI maximalism. It is not. The demand for autonomous operations is older than the AI acceleration, and two familiar cases have always required it:
+
+**E-commerce.** A store that takes orders, authorizes payments, calculates tax, detects fraud, triggers fulfillment, and retries failures at 3 a.m. is already an operations loop with no human in the normal execution path. The merchant governs by policy — pricing rules, fraud thresholds, inventory limits — and gets paged for exceptions. Nobody considers this radical; it is simply what "the site works" means. For an online store, human-gated operations is not the safe default — it is the failure mode, because the site going down while the owner sleeps is lost revenue.
+
+**Single-founder products.** A solo founder cannot simultaneously staff an on-call rotation, a review queue, and a deployment gate. Every durable one-person product survives by pushing routine operations into automated systems and reserving the human for judgment and exceptions. The founder is a Governor by necessity, long before anyone called it that.
+
+What AI changes is the scope of the loop, not the legitimacy of the goal. Before AI, autonomy applied to *running* the software — serving traffic, processing orders, scaling, retrying. The delivery of *changes* to that software still ran through humans. Levels 4 through 6 progressively move change delivery into the same policy-governed regime. Level 7 closes the loop: the system that runs itself can also change itself, under the same kind of governance merchants and solo founders have trusted for two decades. That is why Level 7 is the ideal state of this model — not an AI-era aspiration bolted onto software delivery, but the completion of an autonomy that parts of the industry have always depended on.
 
 ### What Level 7 Adds Beyond Level 6
 

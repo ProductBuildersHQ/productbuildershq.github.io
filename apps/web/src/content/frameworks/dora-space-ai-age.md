@@ -6,6 +6,7 @@ version: "v1.1"
 date: "June 2026"
 pdfUrl: "/papers/dora-space-ai-age.pdf"
 levels: 6
+provenance: "original"
 tags: ["dora", "space", "ai-native", "metrics", "productivity", "devops"]
 ---
 
@@ -496,6 +497,12 @@ The shift is not from DORA to AI-DORA or SPACE to AI-SPACE. It is from measuring
 The metrics you choose shape the behaviors you get. Choose metrics that matter for the AI age.
 
 ---
+
+## Attribution
+
+AI-DORA and AI-SPACE are original ProductBuildersHQ extensions for the AI era. The underlying
+DORA metrics and the SPACE framework are the work of their respective authors and organizations,
+cited below; neither is affiliated with nor has endorsed these extensions.
 
 ## References
 
