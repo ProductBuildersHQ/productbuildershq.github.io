@@ -1,0 +1,94 @@
+{
+  "id": "what-is-a-productbuilder",
+  "title": "What is a ProductBuilder?",
+  "description": "Why the next role in software collapses the assembly line — and how to become one.",
+  "slides": [
+    {
+      "id": "the-role",
+      "kicker": "ProductBuildersHQ",
+      "title": "The next role in software isn't PM or Engineer. It's ProductBuilder.",
+      "points": [
+        "One person who senses the market, defines the product, builds it, ships it, and grows it — with AI",
+        "Not a job title mashup: a new unit of production"
+      ],
+      "narration": "What if the next role in software isn't product manager or engineer — but both, fused? A ProductBuilder is one person who senses the market, defines the product, builds it, ships it, and grows it — with AI. This isn't a job-title mashup. It's a new unit of production. [PAUSE:800]"
+    },
+    {
+      "id": "the-assembly-line",
+      "kicker": "The Old Physics",
+      "title": "Software was an assembly line of handoffs.",
+      "points": [
+        "PM → Designer → Engineer → QA → Marketing — every arrow is a queue",
+        "Each handoff costs a meeting, a ticket, a sprint — and loses intent in translation",
+        "Coordination cost grows faster than headcount (Brooks's Law)"
+      ],
+      "narration": "For decades, building software meant an assembly line. The product manager wrote requirements and waited. The designer mocked screens and waited. Engineering built, QA verified, marketing launched — and every arrow between them was a queue: a meeting, a ticket, a sprint boundary. Worse, the idea degraded at every translation. Coordination cost grew faster than headcount. That was the physics of software. [PAUSE:800]"
+    },
+    {
+      "id": "the-collapse",
+      "kicker": "What AI Changed",
+      "title": "AI collapsed the cost of implementation — and with it, the need for handoffs.",
+      "points": [
+        "AI agents accelerate coding 10–100x",
+        "The bottleneck moved from building to deciding what to build",
+        "When one person can run the whole loop, the queues disappear"
+      ],
+      "narration": "Then AI collapsed the cost of implementation. Coding agents accelerate the build ten to one hundred x — so the bottleneck moved from building to deciding what to build. And here's the consequence nobody planned for: when one person can run the whole loop, the handoffs don't get faster. They disappear. [PAUSE:800]"
+    },
+    {
+      "id": "the-power",
+      "kicker": "Why It's Powerful",
+      "title": "No waiting on humans: the loop runs at the speed of one mind.",
+      "points": [
+        "Zero coordination latency — no meeting can block a decision you own",
+        "Idea to live: hours, not weeks — iteration count beats iteration size",
+        "Teams are re-forming around it: engineer-to-PM ratios collapsing from 8:1 toward 1:1"
+      ],
+      "narration": "This is the ProductBuilder's real advantage — not skill breadth, but collapsed latency. When the same mind owns what to build and how to build it, no meeting can block a decision, no ticket queues an idea. Idea to live in hours, not weeks — and iteration count beats iteration size. Andrew Ng reports engineer-to-PM ratios collapsing from eight-to-one toward one-to-one. The assembly line isn't being optimized. It's being replaced. [PAUSE:800]"
+    },
+    {
+      "id": "why-now",
+      "kicker": "Why Now",
+      "title": "The evidence is arriving from every direction.",
+      "points": [
+        "Andrew Ng: small generalist teams outpace specialist orgs; engineers should learn product, PMs should learn to code",
+        "Delivery autonomy is climbing: AWS, Spotify, and StrongDM already operate at Levels 4–6",
+        "Execution workflows — AWS AI-DLC, GitHub Spec-Kit, OpenSpec — are industrializing the build side"
+      ],
+      "narration": "And this isn't a prediction — the evidence is arriving from every direction. Andrew Ng writes that small generalist teams now outpace specialist organizations: engineers should learn product, and PMs should learn to code. Delivery autonomy is climbing — AWS, Spotify, and StrongDM already run at levels four through six. And execution workflows like AI-DLC, Spec-Kit, and OpenSpec are industrializing the build side. The infrastructure for this role now exists. [PAUSE:800]"
+    },
+    {
+      "id": "the-model",
+      "kicker": "The Operating Model",
+      "title": "Two loops, one person.",
+      "points": [
+        "The Product Loop decides what to build and verifies it worked — \"Right thing?\"",
+        "The Builder Loop implements and verifies — \"Built right?\"",
+        "AI runs the code and the commands; taste and discernment stay human"
+      ],
+      "narration": "Here's the operating model. Two loops. The Product Loop decides what's worth building and verifies it worked — adoption, revenue. The Builder Loop implements it and verifies it's built right. AI runs the code and the commands inside both. But taste and discernment — earned opinion and proven expertise — stay human. The ProductBuilder is the person who runs both loops. [PAUSE:800]"
+    },
+    {
+      "id": "become-one",
+      "kicker": "How to Become One",
+      "title": "Two on-ramps. One destination.",
+      "points": [
+        "PMs: learn to build — AI Developer, then AI Product Engineer",
+        "Engineers: learn product — Product-Aware, then Full-Stack Product Engineer",
+        "The paths converge at Level 5: the Product Builder"
+      ],
+      "narration": "So how do you become one? There are two on-ramps. If you're a PM, you learn to build — AI developer first, then AI product engineer. If you're an engineer, you learn product — product-aware engineer, then full-stack product engineer. The paths converge at level five: the Product Builder. The Product Builder Maturity Model maps every step. [PAUSE:800]"
+    },
+    {
+      "id": "start",
+      "kicker": "Start Here",
+      "title": "ProductBuildersHQ is the operating system for the transition.",
+      "points": [
+        "Frameworks: the maturity models and the two-loop operating model",
+        "The SDD Catalog: definition workflows, execution workflows, and the specs between them",
+        "Built by a ProductBuilder, on machinery you can inspect"
+      ],
+      "narration": "ProductBuildersHQ is the operating system for that transition — the frameworks, the workflow catalog, and the tools, written by a ProductBuilder and built on machinery you can inspect. Start at productbuildershq.com. Find your level. Pick your on-ramp. And start building. [PAUSE:1000]"
+    }
+  ]
+}

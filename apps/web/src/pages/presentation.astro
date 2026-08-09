@@ -1,0 +1,166 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import TwoLoopDiagram from '../components/TwoLoopDiagram.astro'
+import deck from '../data/productbuilder-deck.json'
+import catalog from '../data/sdd-catalog.json'
+
+// One content source, two renders: this page and the generated Marp deck for
+// the videoascode voiceover pipeline (scripts/generate-marp-deck.mjs).
+const slides = deck.slides
+const twoLoop = catalog.loop_systems.find((s) => s.id === 'pbhq-two-loop')
+
+const handoffChain = ['PM', 'Designer', 'Engineer', 'QA', 'Marketing']
+const pbmmPm = ['AI Developer', 'AI Product Engineer']
+const pbmmEng = ['Product-Aware Engineer', 'Full-Stack Product Engineer']
+---
+
+<BaseLayout title={deck.title} description={deck.description}>
+  <div id="deck" class="deck">
+    {slides.map((slide, index) => (
+      <section id={slide.id} class:list={['deck-slide relative overflow-hidden', index === 0 || index === slides.length - 1 ? 'bg-[var(--color-frame-bg)] text-white' : '']}>
+        {(index === 0 || index === slides.length - 1) && (
+          <div class="absolute inset-0 pointer-events-none" aria-hidden="true" style="background-image: radial-gradient(ellipse 60% 50% at 15% -10%, rgba(234, 179, 8, 0.18), transparent), radial-gradient(ellipse 70% 60% at 85% 110%, rgba(5, 150, 105, 0.5), transparent);"></div>
+        )}
+        <div class="relative max-w-6xl mx-auto px-5 md:px-8 w-full">
+          <p class:list={['text-xs font-semibold tracking-[0.2em] uppercase mb-4', index === 0 || index === slides.length - 1 ? 'text-[var(--color-accent)]' : 'text-[var(--color-primary)]']}>{slide.kicker}</p>
+          <h2 class:list={['font-bold tracking-tight mb-8 max-w-4xl', index === 0 ? 'text-4xl md:text-6xl' : 'text-3xl md:text-5xl']}>
+            {index === 0 ? (
+              <>The next role in software isn&rsquo;t PM or Engineer. It&rsquo;s <span class="text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-light)]">ProductBuilder</span>.</>
+            ) : slide.title}
+          </h2>
+
+          {slide.id === 'the-assembly-line' && (
+            <div class="overflow-x-auto pb-4 mb-8">
+              <div class="flex items-center gap-2 min-w-[820px]">
+                {handoffChain.map((role, i) => (
+                  <>
+                    <div class="px-5 py-4 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-lg text-center shrink-0">
+                      <span class="block text-sm font-semibold">{role}</span>
+                    </div>
+                    {i < handoffChain.length - 1 && (
+                      <div class="flex flex-col items-center shrink-0 px-1" aria-hidden="true">
+                        <span class="text-[var(--color-text-subtle)]">&rarr;</span>
+                        <span class="text-[10px] font-semibold uppercase tracking-widest text-red-700/70">wait</span>
+                      </div>
+                    )}
+                  </>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {slide.id === 'the-power' && (
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 max-w-4xl">
+              <div class="p-6 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-xl">
+                <p class="text-xs font-semibold uppercase tracking-widest text-[var(--color-text-subtle)] mb-3">Team of five</p>
+                <p class="text-3xl font-bold mb-1">Weeks</p>
+                <p class="text-sm text-[var(--color-text-muted)]">idea &rarr; meeting &rarr; ticket &rarr; sprint &rarr; review &rarr; launch queue</p>
+              </div>
+              <div class="p-6 bg-[var(--color-primary-dark)] text-white rounded-xl shadow-lg">
+                <p class="text-xs font-semibold uppercase tracking-widest text-[var(--color-accent)] mb-3">One ProductBuilder + AI</p>
+                <p class="text-3xl font-bold mb-1">Hours</p>
+                <p class="text-sm text-white/70">idea &rarr; spec &rarr; agent builds &rarr; verify &rarr; live</p>
+              </div>
+            </div>
+          )}
+
+          {slide.id === 'the-model' && twoLoop && (
+            <div class="overflow-x-auto pb-2 mb-6">
+              <div class="min-w-[860px] max-w-5xl">
+                <TwoLoopDiagram system={twoLoop} />
+              </div>
+            </div>
+          )}
+
+          {slide.id === 'become-one' && (
+            <div class="overflow-x-auto pb-4 mb-8">
+              <div class="min-w-[860px] max-w-4xl">
+                <div class="flex items-center gap-3 mb-3">
+                  <span class="text-[10px] font-semibold tracking-widest uppercase text-[var(--color-text-subtle)] w-24 text-right shrink-0">PM Path</span>
+                  {pbmmPm.map((name) => (
+                    <div class="px-4 py-2.5 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-lg text-sm whitespace-nowrap">{name}</div>
+                  ))}
+                  <span class="text-[var(--color-text-subtle)]" aria-hidden="true">&searr;</span>
+                </div>
+                <div class="flex items-center gap-3 mb-3">
+                  <span class="text-[10px] font-semibold tracking-widest uppercase text-[var(--color-text-subtle)] w-24 text-right shrink-0">Eng Path</span>
+                  {pbmmEng.map((name) => (
+                    <div class="px-4 py-2.5 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-lg text-sm whitespace-nowrap">{name}</div>
+                  ))}
+                  <span class="text-[var(--color-text-subtle)]" aria-hidden="true">&nearr;</span>
+                  <div class="px-6 py-3 bg-[var(--color-primary-dark)] text-white rounded-lg shadow-lg text-center">
+                    <span class="block font-mono text-xs text-[var(--color-accent)]">L5</span>
+                    <span class="block text-sm font-semibold whitespace-nowrap">Product Builder</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+
+          <ul class:list={['space-y-3 max-w-3xl', index === 0 || index === slides.length - 1 ? 'text-white/80' : 'text-[var(--color-text-muted)]']}>
+            {slide.points.map((point) => (
+              <li class="flex items-start gap-3 text-base md:text-lg">
+                <span class:list={['mt-2 w-1.5 h-1.5 rounded-full shrink-0', index === 0 || index === slides.length - 1 ? 'bg-[var(--color-accent)]' : 'bg-[var(--color-primary)]']} aria-hidden="true"></span>
+                <span set:html={point.replace(/→/g, '&rarr;')}></span>
+              </li>
+            ))}
+          </ul>
+
+          {slide.id === 'start' && (
+            <div class="flex flex-col sm:flex-row gap-4 mt-10">
+              <a href="/frameworks" class="inline-flex items-center justify-center px-7 py-3.5 bg-[var(--color-accent)] text-[var(--color-primary-dark)] font-semibold rounded-lg no-underline hover:bg-[var(--color-accent-light)] transition-all">Explore the Frameworks &rarr;</a>
+              <a href="/sdd/" class="inline-flex items-center justify-center px-7 py-3.5 border border-white/20 text-white font-medium rounded-lg no-underline hover:bg-white/10 transition-all">Browse the SDD Catalog</a>
+            </div>
+          )}
+        </div>
+
+        <div class="absolute bottom-5 right-6 text-xs font-mono" aria-hidden="true">
+          <span class:list={[index === 0 || index === slides.length - 1 ? 'text-white/40' : 'text-[var(--color-text-subtle)]']}>{index + 1} / {slides.length}</span>
+        </div>
+      </section>
+    ))}
+  </div>
+
+  <script is:inline>
+    // Arrow-key / space navigation between slides.
+    (function () {
+      var slides = Array.prototype.slice.call(document.querySelectorAll('.deck-slide'));
+      if (!slides.length) return;
+      function currentIndex() {
+        var mid = window.innerHeight / 2;
+        for (var i = 0; i < slides.length; i++) {
+          var r = slides[i].getBoundingClientRect();
+          if (r.top <= mid && r.bottom >= mid) return i;
+        }
+        return 0;
+      }
+      document.addEventListener('keydown', function (e) {
+        if (e.target && /input|textarea|select/i.test(e.target.tagName)) return;
+        var i = currentIndex();
+        if (e.key === 'ArrowDown' || e.key === 'ArrowRight' || e.key === ' ' || e.key === 'PageDown') {
+          e.preventDefault();
+          if (i < slides.length - 1) slides[i + 1].scrollIntoView({ behavior: 'smooth' });
+        } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft' || e.key === 'PageUp') {
+          e.preventDefault();
+          if (i > 0) slides[i - 1].scrollIntoView({ behavior: 'smooth' });
+        }
+      });
+    })();
+  </script>
+
+  <style>
+    .deck-slide {
+      min-height: calc(100vh - 4rem);
+      display: flex;
+      align-items: center;
+      padding: 4rem 0;
+    }
+    @media print {
+      .deck-slide {
+        min-height: auto;
+        page-break-after: always;
+        padding: 2rem 0;
+      }
+    }
+  </style>
+</BaseLayout>
