@@ -1,39 +1,381 @@
 ---
 import { getCollection } from 'astro:content'
 import BaseLayout from '../layouts/BaseLayout.astro'
+import catalog from '../data/sdd-catalog.json'
+import TwoLoopDiagram from '../components/TwoLoopDiagram.astro'
 
 const frameworks = await getCollection('frameworks')
 const caseStudies = await getCollection('caseStudies')
+const signals = (await getCollection('signals'))
+  .sort((a, b) => b.data.date.localeCompare(a.data.date))
+  .slice(0, 3)
+const paperCount = [...frameworks, ...caseStudies].filter((entry) => entry.data.pdfUrl).length
+
+const FEATURED_FRAMEWORKS = ['product-loop-builder-loop', 'product-builder-maturity-model', 'software-delivery-autonomy', 'five-ps']
+const frameworkRank = (id: string) => {
+  const index = FEATURED_FRAMEWORKS.indexOf(id)
+  return index === -1 ? FEATURED_FRAMEWORKS.length : index
+}
+const sortedFrameworks = [...frameworks].sort((a, b) => frameworkRank(a.id) - frameworkRank(b.id))
+
+const pbmmShared = [
+  { level: 0, name: 'Observer' },
+  { level: 1, name: 'Operator' },
+  { level: 2, name: 'Prototype Builder' },
+]
+const pbmmPaths = [
+  { label: 'PM Path', levels: ['AI Developer', 'AI Product Engineer'] },
+  { label: 'Engineer Path', levels: ['Product-Aware Engineer', 'Full-Stack Product Engineer'] },
+]
+const pbmmConverged = [
+  { level: 5, name: 'Product Builder', highlight: true },
+  { level: 6, name: 'Platform Leader' },
+]
+
+const twoLoop = catalog.loop_systems.find((s) => s.id === 'pbhq-two-loop')
+const actorLabel = (actor: string) =>
+  actor === 'human+ai' ? 'Human + AI' : actor === 'ai' ? 'AI' : 'Human'
+
+const asdmLevels = [
+  { level: 1, name: 'Agile / Scrum' },
+  { level: 2, name: 'DevOps' },
+  { level: 3, name: 'AI-Assisted', note: 'Most teams today' },
+  { level: 4, name: 'AI-Native Workflows' },
+  { level: 5, name: 'Agentic Engineering' },
+  { level: 6, name: 'Autonomous Coding & Review' },
+  { level: 7, name: 'Autonomous Operations', highlight: true },
+]
+const studiesAtLevel = (level: number) =>
+  caseStudies.filter((study) => study.data.level === level && !study.data.comingSoon)
+
+const stats = [
+  { value: String(frameworks.length), label: 'Frameworks' },
+  { value: String(caseStudies.length), label: 'Case Studies' },
+  { value: String(paperCount), label: 'Papers' },
+  { value: '7', label: 'Autonomy Levels' },
+]
+
+const pillars = [
+  {
+    number: '01',
+    kicker: 'The Person',
+    iconPath:
+      'M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z',
+    title: 'Become a Product Builder',
+    description: 'Climb from Observer to Product Builder — the maturity model for the person, grounded in the LEVER capability framework.',
+    links: [
+      { label: 'Product Builder Maturity Model', href: '/frameworks/product-builder-maturity-model' },
+      { label: 'LEVER Capability Framework', href: 'https://github.com/ProductBuildersHQ/lever' },
+    ],
+  },
+  {
+    number: '02',
+    kicker: 'The Team',
+    iconPath:
+      'M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99',
+    title: 'Make Delivery Autonomous',
+    description: 'Move your team up the seven autonomy levels — from AI-assisted coding to autonomous operations — and keep the result maintainable with SCALE.',
+    links: [
+      { label: 'Software Delivery Autonomy Levels', href: '/frameworks/software-delivery-autonomy' },
+      { label: 'SCALE', href: '/products/scale' },
+    ],
+  },
+  {
+    number: '03',
+    kicker: 'The Method',
+    iconPath:
+      'M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z',
+    title: 'Write Specs Agents Can Execute',
+    description: 'AWS Working Backwards, PR/FAQ, and the 6-Pager — the narrative discipline other spec-driven systems skip.',
+    href: '/frameworks/spec-driven-development#visionspec',
+  },
+  {
+    number: '04',
+    kicker: 'The Tools',
+    iconPath:
+      'M6.75 7.5l3 2.25-3 2.25m4.5 0h3m-9 8.25h13.5A2.25 2.25 0 0021 18v-12a2.25 2.25 0 00-2.25-2.25H5.25A2.25 2.25 0 003 6v12a2.25 2.25 0 002.25 2.25z',
+    title: 'Operate the System',
+    description: 'VisionStudio — author and evaluate specs with LLM-as-a-Judge, then track execution across initiatives, phases, and roadmap items.',
+    href: '/products/visionstudio',
+  },
+]
 ---
 
 <BaseLayout>
-  <section class="py-20 md:py-32 bg-[var(--color-bg-secondary)]">
-    <div class="max-w-7xl mx-auto px-5 md:px-8 text-center">
-      <h1 class="text-4xl md:text-6xl font-bold mb-6 text-[var(--color-primary-dark)]">ProductBuildersHQ</h1>
-      <p class="text-xl md:text-2xl text-[var(--color-text-muted)] max-w-3xl mx-auto mb-8">
-        Frameworks and case studies for the evolution of product development. From AI-assisted to AI-operated.
+  <section class="relative overflow-hidden bg-[var(--color-frame-bg)] text-white">
+    <div class="absolute inset-0 pointer-events-none" aria-hidden="true" style="background-image: radial-gradient(ellipse 60% 50% at 15% -10%, rgba(234, 179, 8, 0.18), transparent), radial-gradient(ellipse 70% 60% at 85% 110%, rgba(5, 150, 105, 0.5), transparent);"></div>
+    <div class="absolute inset-0 pointer-events-none" aria-hidden="true" style="background-image: linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 48px 48px; mask-image: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent 75%);"></div>
+    <div class="relative max-w-7xl mx-auto px-5 md:px-8 py-24 md:py-36 text-center">
+      <p class="hero-fade inline-flex items-center gap-2 px-4 py-1.5 mb-8 rounded-full border border-white/15 bg-white/5 text-sm text-white/80 backdrop-blur-sm">
+        <span class="w-2 h-2 rounded-full bg-[var(--color-accent)] animate-pulse" aria-hidden="true"></span>
+        The operating system for AI-native product building
       </p>
-      <div class="flex flex-col sm:flex-row gap-4 justify-center">
-        <a href="/frameworks" class="inline-flex items-center justify-center px-6 py-3 bg-[var(--color-primary-dark)] text-white font-medium rounded-lg no-underline hover:bg-[var(--color-primary)] transition-colors">Explore Frameworks</a>
-        <a href="/case-studies" class="inline-flex items-center justify-center px-6 py-3 bg-[var(--color-accent)] text-[var(--color-primary-dark)] font-medium rounded-lg no-underline hover:bg-[var(--color-accent-light)] transition-colors">View Case Studies</a>
+      <h1 class="hero-fade hero-delay-1 text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6 max-w-4xl mx-auto">
+        The next role in software isn&rsquo;t PM or Engineer. It&rsquo;s <span class="text-transparent bg-clip-text bg-gradient-to-r from-[var(--color-accent)] to-[var(--color-accent-light)]">ProductBuilder</span>.
+      </h1>
+      <p class="hero-fade hero-delay-2 text-lg md:text-xl text-white/70 max-w-2xl mx-auto mb-10">
+        AI is compressing implementation cost, shifting value toward specification, judgment, and
+        operational ownership. ProductBuildersHQ develops the frameworks, standards, and tools that
+        help people and organizations make that transition — from AI-assisted work to autonomous
+        product delivery.
+      </p>
+      <div class="hero-fade hero-delay-3 flex flex-col sm:flex-row gap-4 justify-center mb-16">
+        <a href="/frameworks" class="inline-flex items-center justify-center px-7 py-3.5 bg-[var(--color-accent)] text-[var(--color-primary-dark)] font-semibold rounded-lg no-underline hover:bg-[var(--color-accent-light)] hover:-translate-y-0.5 transition-all shadow-lg shadow-black/20">Explore Frameworks &rarr;</a>
+        <a href="/case-studies" class="inline-flex items-center justify-center px-7 py-3.5 border border-white/20 text-white font-medium rounded-lg no-underline hover:bg-white/10 hover:border-white/40 transition-all">View Case Studies</a>
+      </div>
+      <dl class="hero-fade hero-delay-4 grid grid-cols-2 md:grid-cols-4 gap-px max-w-3xl mx-auto rounded-2xl overflow-hidden border border-white/10 bg-white/10">
+        {stats.map((stat) => (
+          <div class="bg-[var(--color-frame-bg)]/80 px-6 py-5 backdrop-blur-sm">
+            <dt class="sr-only">{stat.label}</dt>
+            <dd class="m-0">
+              <span class="block text-3xl font-bold text-[var(--color-accent)]">{stat.value}</span>
+              <span class="block mt-1 text-xs uppercase tracking-widest text-white/60">{stat.label}</span>
+            </dd>
+          </div>
+        ))}
+      </dl>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-24 bg-[var(--color-bg-secondary)]">
+    <div class="max-w-7xl mx-auto px-5 md:px-8">
+      <div class="max-w-3xl mx-auto text-center mb-14">
+        <p class="text-xs font-semibold tracking-[0.2em] uppercase text-[var(--color-primary)] mb-3">Start Here</p>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">One system, four entrances</h2>
+        <p class="text-lg text-[var(--color-text-muted)]">
+          The boundary between Product Manager and Engineer is dissolving. This is the system for
+          what comes next — enter as a person leveling up, a team transforming delivery, a spec
+          author, or an operator running the tools.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {pillars.map((pillar) => {
+          const cardClass = 'group relative overflow-hidden p-6 pt-8 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-2xl hover:border-[var(--color-primary)] hover:shadow-xl hover:-translate-y-1 transition-all duration-200'
+          const inner = (
+            <>
+              <span class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-accent)]" aria-hidden="true"></span>
+              <span class="absolute top-3 right-5 font-mono text-6xl font-bold leading-none text-[var(--color-text)] opacity-[0.06] select-none" aria-hidden="true">{pillar.number}</span>
+              <span class="relative inline-flex items-center justify-center w-11 h-11 rounded-xl bg-[var(--color-primary)]/10 text-[var(--color-primary)] mb-4 transition-colors duration-200 group-hover:bg-[var(--color-primary)] group-hover:text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d={pillar.iconPath}></path>
+                </svg>
+              </span>
+              <p class="text-[10px] font-semibold tracking-[0.2em] uppercase text-[var(--color-text-subtle)] mb-1.5">{pillar.kicker}</p>
+              <h3 class:list={['text-lg font-semibold mb-2 text-[var(--color-text)]', pillar.href && 'group-hover:text-[var(--color-primary)]']}>{pillar.title}</h3>
+              <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">{pillar.description}</p>
+            </>
+          )
+
+          return pillar.href ? (
+            <a href={pillar.href} class:list={['block no-underline', cardClass]}>
+              {inner}
+              <span class="inline-block mt-4 text-sm font-medium text-[var(--color-primary)]">Learn more <span class="inline-block transition-transform group-hover:translate-x-1">&rarr;</span></span>
+            </a>
+          ) : (
+            <div class={cardClass}>
+              {inner}
+              <div class="flex flex-col gap-1.5 mt-4">
+                {pillar.links?.map((link) => (
+                  <a href={link.href} class="text-sm font-medium text-[var(--color-primary)] hover:underline no-underline">{link.label}&nbsp;&rarr;</a>
+                ))}
+              </div>
+            </div>
+          )
+        })}
+      </div>
+    </div>
+  </section>
+
+  {twoLoop && (
+    <section class="py-16 md:py-24">
+      <div class="max-w-7xl mx-auto px-5 md:px-8">
+        <div class="max-w-3xl mx-auto text-center mb-14">
+          <p class="text-xs font-semibold tracking-[0.2em] uppercase text-[var(--color-primary)] mb-3">The Operating Model</p>
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">Two loops, one system</h2>
+          <p class="text-lg text-[var(--color-text-muted)]">
+            The <strong>Product Loop</strong> originates what to build and verifies it worked.
+            The <strong>Builder Loop</strong> implements it and verifies it&rsquo;s built right.
+            Same anatomy — intent, AI drafts, human gate, AI executes, verify — different
+            artifacts and verification questions.
+          </p>
+          <p class="mt-6 text-lg md:text-xl font-semibold text-[var(--color-text)] max-w-2xl mx-auto">
+            When building is cheap, only
+            <a href="/frameworks/five-ps" class="text-[var(--color-primary)] hover:underline no-underline">results</a>
+            are scarce.
+          </p>
+          <p class="mt-4">
+            <a href="/frameworks/product-loop-builder-loop" class="text-sm font-medium text-[var(--color-primary)] hover:underline no-underline">Read the framework &rarr;</a>
+          </p>
+        </div>
+
+        <div class="overflow-x-auto pb-2">
+          <div class="min-w-[900px] max-w-6xl mx-auto">
+            <TwoLoopDiagram system={twoLoop} />
+          </div>
+        </div>
+        <p class="text-sm text-[var(--color-text-muted)] mt-4 text-center max-w-3xl mx-auto">
+          Gates shift from human to policy authority as a team climbs the
+          <a href="/frameworks/software-delivery-autonomy" class="text-[var(--color-primary)] hover:underline no-underline">autonomy levels</a>.
+          Single-loop systems — AWS AI-DLC, GitHub Spec-Kit, OpenSpec — map onto the Builder Loop;
+          see the <a href="/sdd/" class="text-[var(--color-primary)] hover:underline no-underline">SDD Catalog</a>.
+        </p>
+      </div>
+    </section>
+  )}
+
+  <section class="py-16 md:py-24 bg-[var(--color-bg-secondary)]">
+    <div class="max-w-7xl mx-auto px-5 md:px-8">
+      <div class="max-w-3xl mx-auto text-center mb-14">
+        <p class="text-xs font-semibold tracking-[0.2em] uppercase text-[var(--color-primary)] mb-3">The Foundational Models</p>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Two ladders, one destination</h2>
+        <p class="text-lg text-[var(--color-text-muted)]">
+          One model for the person — how a PM or Engineer becomes a Product Builder. One model for
+          the process — how a team climbs from AI-assisted coding to autonomous operations.
+        </p>
+      </div>
+
+      <div class="mb-16">
+        <div class="flex flex-wrap items-baseline justify-between gap-2 mb-6">
+          <h3 class="text-xl font-semibold">Product Builder Maturity Model</h3>
+          <a href="/frameworks/product-builder-maturity-model" class="text-sm font-medium text-[var(--color-primary)] hover:underline no-underline">Read the framework &rarr;</a>
+        </div>
+        <div class="overflow-x-auto pb-2">
+          <div class="flex items-stretch gap-3 min-w-[1000px]">
+            {pbmmShared.map((stage) => (
+              <div class="flex items-center gap-3">
+                <div class="flex flex-col justify-center px-4 py-3 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-lg text-center h-full">
+                  <span class="block font-mono text-xs text-[var(--color-text-subtle)]">L{stage.level}</span>
+                  <span class="block text-sm font-medium text-[var(--color-text)] whitespace-nowrap">{stage.name}</span>
+                </div>
+                <span class="text-[var(--color-text-subtle)]" aria-hidden="true">&rarr;</span>
+              </div>
+            ))}
+            <div class="flex flex-col justify-center gap-2">
+              {pbmmPaths.map((path) => (
+                <div class="flex items-center gap-3">
+                  <span class="text-[10px] font-semibold tracking-widest uppercase text-[var(--color-text-subtle)] w-20 shrink-0 text-right">{path.label}</span>
+                  {path.levels.map((name, i) => (
+                    <div class="flex items-center gap-3">
+                      <div class="px-4 py-2 bg-[var(--color-bg-secondary)] border border-[var(--color-border-light)] rounded-lg text-center">
+                        <span class="block font-mono text-[10px] text-[var(--color-text-subtle)]">L{i + 3}</span>
+                        <span class="block text-sm text-[var(--color-text-muted)] whitespace-nowrap">{name}</span>
+                      </div>
+                      {i === 0 && <span class="text-[var(--color-text-subtle)]" aria-hidden="true">&rarr;</span>}
+                    </div>
+                  ))}
+                </div>
+              ))}
+            </div>
+            <span class="self-center text-[var(--color-text-subtle)]" aria-hidden="true">&rarr;</span>
+            {pbmmConverged.map((stage, index) => (
+              <div class="flex items-center gap-3">
+                <div class:list={[
+                  'flex flex-col justify-center px-5 py-3 rounded-lg text-center h-full',
+                  stage.highlight
+                    ? 'bg-[var(--color-primary-dark)] text-white shadow-lg'
+                    : 'bg-[var(--color-bg-card)] border border-[var(--color-border)]',
+                ]}>
+                  <span class:list={['block font-mono text-xs', stage.highlight ? 'text-[var(--color-accent)]' : 'text-[var(--color-text-subtle)]']}>L{stage.level}</span>
+                  <span class:list={['block text-sm font-semibold whitespace-nowrap', stage.highlight ? 'text-white' : 'text-[var(--color-text)]']}>{stage.name}</span>
+                </div>
+                {index === 0 && <span class="text-[var(--color-text-subtle)]" aria-hidden="true">&rarr;</span>}
+              </div>
+            ))}
+          </div>
+        </div>
+        <p class="text-sm text-[var(--color-text-muted)] mt-4">
+          Two on-ramps, one destination: PMs and Engineers take different paths through Levels 3&ndash;4,
+          then converge at Level 5 — the Product Builder.
+        </p>
+      </div>
+
+      <div>
+        <div class="flex flex-wrap items-baseline justify-between gap-2 mb-6">
+          <h3 class="text-xl font-semibold">Software Delivery Autonomy Levels</h3>
+          <a href="/frameworks/software-delivery-autonomy" class="text-sm font-medium text-[var(--color-primary)] hover:underline no-underline">Read the framework &rarr;</a>
+        </div>
+        <div class="overflow-x-auto pb-2">
+          <div class="grid grid-cols-7 gap-2 min-w-[1000px]">
+            {asdmLevels.map((stage) => (
+              <div class="flex flex-col gap-2">
+                <div class:list={[
+                  'px-3 py-3 rounded-lg text-center border',
+                  stage.highlight
+                    ? 'bg-[var(--color-primary-dark)] border-[var(--color-primary-dark)] shadow-lg'
+                    : stage.level >= 4
+                      ? 'bg-[var(--color-primary)]/5 border-[var(--color-primary)]/40'
+                      : 'bg-[var(--color-bg-card)] border-[var(--color-border-light)]',
+                ]}>
+                  <span class:list={['block font-mono text-xs', stage.highlight ? 'text-[var(--color-accent)]' : 'text-[var(--color-text-subtle)]']}>L{stage.level}</span>
+                  <span class:list={['block text-sm leading-tight', stage.highlight ? 'font-semibold text-white' : 'font-medium text-[var(--color-text)]']}>{stage.name}</span>
+                </div>
+                {stage.note && (
+                  <span class="text-[10px] text-center font-semibold tracking-wide uppercase text-[var(--color-text-subtle)]">&uarr; {stage.note}</span>
+                )}
+                {studiesAtLevel(stage.level).map((study) => (
+                  <a href={`/case-studies/${study.id}`} class="block px-3 py-1.5 bg-[var(--color-accent)] text-[var(--color-primary-dark)] text-xs font-medium text-center rounded-full no-underline hover:bg-[var(--color-accent-light)] transition-colors">{study.data.company}</a>
+                ))}
+              </div>
+            ))}
+          </div>
+        </div>
+        <p class="text-sm text-[var(--color-text-muted)] mt-4">
+          Levels 4&ndash;7 are the frontier — and the case studies below are already there. Each
+          yellow chip is a published deep dive, placed at the level the organization operates.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="relative overflow-hidden py-16 md:py-24 bg-[var(--color-frame-bg)] text-white">
+    <div class="absolute inset-0 pointer-events-none" aria-hidden="true" style="background-image: radial-gradient(ellipse 60% 60% at 90% -10%, rgba(234, 179, 8, 0.12), transparent), radial-gradient(ellipse 70% 60% at 10% 110%, rgba(5, 150, 105, 0.4), transparent);"></div>
+    <div class="relative max-w-7xl mx-auto px-5 md:px-8">
+      <div class="max-w-3xl mx-auto text-center mb-14">
+        <p class="text-xs font-semibold tracking-[0.2em] uppercase text-[var(--color-accent)] mb-3">In Action</p>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">From spec to shipped</h2>
+        <p class="text-lg text-white/70">
+          Author specs with Working Backwards discipline, judge them with LLM-as-a-Judge, then
+          track execution across initiatives, phases, and roadmap items.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <a href="/products/visionstudio" class="group block no-underline">
+          <div class="rounded-2xl overflow-hidden border border-white/15 shadow-2xl shadow-black/40 group-hover:border-[var(--color-accent)]/60 group-hover:-translate-y-1 transition-all duration-200">
+            <img src="/images/products/visionstudio-workflow.webp" alt="VisionStudio spec workflow: Working Backwards pipeline from Market Requirements through Press Release, FAQ, and 6-Pager to the unified Execution Spec, with evaluation status on every spec" width="1600" height="1357" loading="lazy" class="w-full h-auto block" />
+          </div>
+          <div class="mt-5">
+            <h3 class="text-lg font-semibold text-white group-hover:text-[var(--color-accent)]">Specs</h3>
+            <p class="text-sm text-white/60 mt-1">The Working Backwards workflow in VisionStudio — Press Release, FAQ, and 6-Pager flowing into product and technical specs, each scored by LLM-as-a-Judge.</p>
+          </div>
+        </a>
+        <a href="/products/visionstudio" class="group block no-underline">
+          <div class="rounded-2xl overflow-hidden border border-white/15 shadow-2xl shadow-black/40 group-hover:border-[var(--color-accent)]/60 group-hover:-translate-y-1 transition-all duration-200">
+            <img src="/images/products/prism-execution.webp" alt="PRISM dashboard: initiatives, phases, and roadmap items with completion status and dependencies across tracked repositories" width="1600" height="1476" loading="lazy" class="w-full h-auto block" />
+          </div>
+          <div class="mt-5">
+            <h3 class="text-lg font-semibold text-white group-hover:text-[var(--color-accent)]">Execution</h3>
+            <p class="text-sm text-white/60 mt-1">The PRISM initiative dashboard, surfaced in VisionStudio — initiatives, phases, and roadmap items tracked to completion across repositories.</p>
+          </div>
+        </a>
       </div>
     </div>
   </section>
 
   <section class="py-16 md:py-24">
     <div class="max-w-7xl mx-auto px-5 md:px-8">
-      <div class="flex items-end justify-between mb-8">
+      <div class="flex items-end justify-between mb-10">
         <div>
+          <p class="text-xs font-semibold tracking-[0.2em] uppercase text-[var(--color-primary)] mb-3">Library</p>
           <h2 class="text-3xl md:text-4xl font-bold mb-2">Frameworks</h2>
           <p class="text-[var(--color-text-muted)] text-lg">Maturity models for product builders</p>
         </div>
         <a href="/frameworks" class="hidden sm:inline-flex text-[var(--color-primary)] hover:underline no-underline text-sm font-medium">View all &rarr;</a>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {frameworks.map((framework) => (
-          <a href={`/frameworks/${framework.id}`} class="group block p-6 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-xl no-underline hover:border-[var(--color-primary)] hover:shadow-lg transition-all">
+        {sortedFrameworks.map((framework) => (
+          <a href={`/frameworks/${framework.id}`} class="group block p-6 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-xl no-underline hover:border-[var(--color-primary)] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200">
             <div class="flex items-start justify-between mb-3">
-              <span class="text-xs font-medium px-2 py-1 bg-[var(--color-primary)]/10 text-[var(--color-primary)] rounded">{framework.data.levels} Levels</span>
+              <span class="text-xs font-medium px-2 py-1 bg-[var(--color-primary)]/10 text-[var(--color-primary)] rounded">{framework.data.provenance === 'original' ? 'PBHQ Original' : framework.data.levels ? `${framework.data.levels} Levels` : 'Analysis'}</span>
               <span class="text-xs text-[var(--color-text-subtle)]">{framework.data.version}</span>
             </div>
             <h3 class="text-xl font-semibold mb-2 text-[var(--color-text)] group-hover:text-[var(--color-primary)]">{framework.data.title}</h3>
@@ -51,10 +393,11 @@ const caseStudies = await getCollection('caseStudies')
 
   <section class="py-16 md:py-24 bg-[var(--color-bg-secondary)]">
     <div class="max-w-7xl mx-auto px-5 md:px-8">
-      <div class="flex items-end justify-between mb-8">
+      <div class="flex items-end justify-between mb-10">
         <div>
+          <p class="text-xs font-semibold tracking-[0.2em] uppercase text-[var(--color-primary)] mb-3">In Practice</p>
           <h2 class="text-3xl md:text-4xl font-bold mb-2">Case Studies</h2>
-          <p class="text-[var(--color-text-muted)] text-lg">Real-world implementations of AI-native development</p>
+          <p class="text-[var(--color-text-muted)] text-lg">Real-world implementations of AI-native development, each mapped to its <a href="/frameworks/software-delivery-autonomy" class="text-[var(--color-primary)] hover:underline no-underline">autonomy level</a></p>
         </div>
         <a href="/case-studies" class="hidden sm:inline-flex text-[var(--color-primary)] hover:underline no-underline text-sm font-medium">View all &rarr;</a>
       </div>
@@ -75,18 +418,79 @@ const caseStudies = await getCollection('caseStudies')
           return study.data.comingSoon ? (
             <div class="p-6 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-xl opacity-60">{content}</div>
           ) : (
-            <a href={`/case-studies/${study.id}`} class="group block p-6 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-xl no-underline hover:border-[var(--color-primary)] hover:shadow-lg transition-all">{content}</a>
+            <a href={`/case-studies/${study.id}`} class="group block p-6 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-xl no-underline hover:border-[var(--color-primary)] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200">{content}</a>
           )
         })}
       </div>
     </div>
   </section>
 
+  {signals.length > 0 && (
+    <section class="py-16 md:py-24">
+      <div class="max-w-7xl mx-auto px-5 md:px-8">
+        <div class="flex items-end justify-between mb-10">
+          <div>
+            <p class="text-xs font-semibold tracking-[0.2em] uppercase text-[var(--color-primary)] mb-3">From the Field</p>
+            <h2 class="text-3xl md:text-4xl font-bold mb-2">Signals</h2>
+            <p class="text-[var(--color-text-muted)] text-lg">Industry evidence that the transition is underway — lighter than case studies, mapped to the frameworks</p>
+          </div>
+          <a href="/signals" class="hidden sm:inline-flex text-[var(--color-primary)] hover:underline no-underline text-sm font-medium">View all &rarr;</a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {signals.map((signal) => (
+            <a href={`/signals/${signal.id}`} class="group block p-6 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-xl no-underline hover:border-[var(--color-primary)] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200">
+              <div class="flex flex-wrap items-center gap-2 mb-3">
+                <span class="text-xs font-medium px-2 py-1 bg-[var(--color-primary)]/10 text-[var(--color-primary)] rounded">Signal</span>
+                <span class="text-xs text-[var(--color-text-subtle)]">{signal.data.date}</span>
+              </div>
+              <h3 class="text-lg font-semibold mb-1 text-[var(--color-text)] group-hover:text-[var(--color-primary)]">{signal.data.title}</h3>
+              <p class="text-sm text-[var(--color-primary)] mb-3">{signal.data.author}{signal.data.authorRole && ` — ${signal.data.authorRole}`}</p>
+              <p class="text-sm text-[var(--color-text-muted)]">{signal.data.description}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
   <section class="py-16 md:py-24">
-    <div class="max-w-3xl mx-auto px-5 md:px-8 text-center">
-      <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to evolve your product development?</h2>
-      <p class="text-lg text-[var(--color-text-muted)] mb-8">Download our frameworks and start your journey from AI-assisted to AI-operated.</p>
-      <a href="/frameworks" class="inline-flex items-center justify-center px-6 py-3 bg-[var(--color-primary)] text-white font-medium rounded-lg no-underline hover:bg-[var(--color-primary-light)] transition-colors">Get Started</a>
+    <div class="max-w-5xl mx-auto px-5 md:px-8">
+      <div class="relative overflow-hidden rounded-3xl bg-[var(--color-frame-bg)] text-white text-center px-6 py-16 md:px-16 md:py-20">
+        <div class="absolute inset-0 pointer-events-none" aria-hidden="true" style="background-image: radial-gradient(ellipse 70% 80% at 50% 120%, rgba(234, 179, 8, 0.18), transparent), radial-gradient(ellipse 60% 60% at 10% -20%, rgba(5, 150, 105, 0.5), transparent);"></div>
+        <div class="relative">
+          <h2 class="text-3xl md:text-4xl font-bold mb-4">Ready to evolve your product development?</h2>
+          <p class="text-lg text-white/70 max-w-2xl mx-auto mb-8">Download our frameworks and start your journey from AI-assisted to AI-operated.</p>
+          <a href="/frameworks" class="inline-flex items-center justify-center px-7 py-3.5 bg-[var(--color-accent)] text-[var(--color-primary-dark)] font-semibold rounded-lg no-underline hover:bg-[var(--color-accent-light)] hover:-translate-y-0.5 transition-all shadow-lg shadow-black/20">Get Started &rarr;</a>
+        </div>
+      </div>
     </div>
   </section>
 </BaseLayout>
+
+<style>
+  @keyframes hero-fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .hero-fade {
+    animation: hero-fade-up 0.6s ease-out both;
+  }
+
+  .hero-delay-1 { animation-delay: 0.1s; }
+  .hero-delay-2 { animation-delay: 0.2s; }
+  .hero-delay-3 { animation-delay: 0.3s; }
+  .hero-delay-4 { animation-delay: 0.4s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero-fade {
+      animation: none;
+    }
+  }
+</style>
