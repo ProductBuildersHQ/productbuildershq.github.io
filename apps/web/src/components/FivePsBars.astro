@@ -1,0 +1,72 @@
+---
+// The Five Ps — ascending bars. Rising height and deepening tint encode
+// rising stakes; P5 Profit wears the dark-green destination treatment per the
+// site's ladder convention (PBMM L5, ASDM L7, 5-P P5: the dark green is where
+// you're going).
+const stages = [
+  {
+    p: 1,
+    name: 'Preparation',
+    blurb: 'Foundation: research, hypothesis, specs, environment',
+    height: 'h-24 md:h-28',
+    tint: 'bg-[var(--color-primary)]/10 border-[var(--color-primary)]/20',
+  },
+  {
+    p: 2,
+    name: 'Prototype',
+    blurb: 'PM prototype: simulate the experience, test desirability — will anyone care?',
+    height: 'h-32 md:h-40',
+    tint: 'bg-[var(--color-primary)]/15 border-[var(--color-primary)]/25',
+  },
+  {
+    p: 3,
+    name: 'Proof-of-Concept',
+    blurb: 'Engineering PoC: real data and backend, test feasibility — can we build it?',
+    height: 'h-40 md:h-52',
+    tint: 'bg-[var(--color-primary)]/25 border-[var(--color-primary)]/35',
+  },
+  {
+    p: 4,
+    name: 'Production',
+    blurb: 'Robust, operated, in the hands of real users',
+    height: 'h-48 md:h-64',
+    tint: 'bg-[var(--color-primary)]/40 border-[var(--color-primary)]/50',
+  },
+  {
+    p: 5,
+    name: 'Profit',
+    blurb: 'Verified results: adoption, revenue, sustainable growth',
+    height: 'h-56 md:h-76',
+    highlight: true,
+  },
+]
+---
+
+<div class="overflow-x-auto pb-2">
+  <div class="min-w-[680px] max-w-4xl mx-auto">
+    <div class="grid grid-cols-5 gap-3 items-end">
+      {stages.map((stage) => (
+        <div
+          class:list={[
+            'rounded-t-xl border border-b-0 flex flex-col justify-start pt-4 px-3',
+            stage.height,
+            stage.highlight
+              ? 'bg-[var(--color-primary-dark)] border-[var(--color-primary-dark)] shadow-lg'
+              : stage.tint,
+          ]}
+        >
+          <span class:list={['font-mono text-sm font-bold', stage.highlight ? 'text-[var(--color-accent)]' : 'text-[var(--color-primary)]']}>P{stage.p}</span>
+          <span class:list={['text-sm font-semibold leading-tight mt-1', stage.highlight ? 'text-white' : 'text-[var(--color-text)]']}>{stage.name}</span>
+        </div>
+      ))}
+    </div>
+    <div class="grid grid-cols-5 gap-3 border-t-2 border-[var(--color-primary-dark)] pt-3">
+      {stages.map((stage) => (
+        <p class="text-xs text-[var(--color-text-muted)] leading-snug">{stage.blurb}</p>
+      ))}
+    </div>
+    <p class="text-xs text-[var(--color-text-subtle)] mt-4 text-right">
+      Minimally aim for Production. Ideally, Profit. &nearr;
+    </p>
+  </div>
+</div>

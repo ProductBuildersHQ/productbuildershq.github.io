@@ -1,0 +1,202 @@
+---
+// Renders a two-loop system (see specification-workflow-spec pkg/loop) as a
+// Scrum@Scale-style pair of cycle circles with cross-loop seams, computed
+// deterministically from the catalog data at build time.
+interface Station {
+  id: string
+  name: string
+  actor: string
+  gate?: boolean
+}
+interface Loop {
+  id: string
+  name: string
+  owner?: string
+  question?: string
+  stations: Station[]
+}
+interface Seam {
+  from: string
+  to: string
+  artifact?: string
+}
+interface System {
+  loops: Loop[]
+  seams?: Seam[]
+}
+
+const { system } = Astro.props as { system: System }
+
+const R = 195
+const CENTERS = [
+  { cx: 315, cy: 320 },
+  { cx: 905, cy: 320 },
+]
+// First station of the left loop starts upper-left; of the right loop, at the
+// facing (west) side — chosen so the handoff/telemetry stations face the gap.
+const START_ANGLES = [-145, 145]
+
+const rad = (deg: number) => (deg * Math.PI) / 180
+const posAt = (c: { cx: number; cy: number }, deg: number, r = R) => ({
+  x: c.cx + r * Math.cos(rad(deg)),
+  y: c.cy - r * Math.sin(rad(deg)),
+})
+
+const actorLabel = (actor: string) =>
+  actor === 'human+ai' ? 'HUMAN + AI' : actor === 'ai' ? 'AI' : 'HUMAN'
+
+const loops = system.loops.slice(0, 2).map((loop, li) => {
+  const c = CENTERS[li]
+  const spacing = 360 / loop.stations.length
+  const stations = loop.stations.map((st, i) => {
+    const angle = START_ANGLES[li] - spacing * i
+    return { ...st, angle, ...posAt(c, angle) }
+  })
+  // Clockwise flow arrowheads at arc midpoints between consecutive stations.
+  const arrows = stations.map((st) => {
+    const mid = st.angle - spacing / 2
+    const p = posAt(c, mid)
+    const rot = (Math.atan2(Math.cos(rad(mid)), Math.sin(rad(mid))) * 180) / Math.PI
+    return { ...p, rot }
+  })
+  return { ...loop, c, stations, arrows }
+})
+
+const stationPos = new Map<string, { x: number; y: number }>()
+for (const loop of loops) {
+  for (const st of loop.stations) stationPos.set(`${loop.id}.${st.id}`, { x: st.x, y: st.y })
+}
+
+const MID_X = (CENTERS[0].cx + CENTERS[1].cx) / 2
+const seams = (system.seams ?? [])
+  .map((seam) => {
+    const from = stationPos.get(seam.from)
+    const to = stationPos.get(seam.to)
+    if (!from || !to) return null
+    // Seams whose endpoints both sit near the top render as a dashed arc over
+    // the circles; the rest are labeled connector nodes in the middle gap.
+    const overTop = from.y < CENTERS[0].cy - R * 0.8 && to.y < CENTERS[0].cy - R * 0.8
+    return { ...seam, from, to, overTop, nodeY: (from.y + to.y) / 2 }
+  })
+  .filter((seam) => seam !== null)
+
+const gapSeams = seams.filter((s) => !s.overTop)
+const topSeams = seams.filter((s) => s.overTop)
+
+const STATION_W = 122
+const STATION_H = 54
+const NODE_W = 112
+const NODE_H = 30
+---
+
+<svg viewBox="0 -58 1220 643" role="img" aria-label="The ProductBuildersHQ two-loop framework: the Product Loop and Builder Loop with their cross-loop connections" class="w-full h-auto block">
+  <defs>
+    <marker id="loop-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--color-primary)"></path>
+    </marker>
+    <marker id="loop-arrow-muted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="var(--color-text-subtle)"></path>
+    </marker>
+  </defs>
+
+  {/* Framework title — baked into the image so attribution travels with any screenshot */}
+  <text x={MID_X} y="-30" text-anchor="middle" font-size="19" font-weight="700" fill="var(--color-text)">The Product Loop &amp; Builder Loop</text>
+  <text x={MID_X} y="-11" text-anchor="middle" font-size="11.5" letter-spacing="1.5" fill="var(--color-primary)">A PRODUCTBUILDERSHQ FRAMEWORK</text>
+
+  {/* Loop circles */}
+  {loops.map((loop, li) => (
+    <circle
+      cx={loop.c.cx}
+      cy={loop.c.cy}
+      r={R}
+      fill={li === 0 ? 'rgba(4, 120, 87, 0.05)' : 'rgba(234, 179, 8, 0.08)'}
+      stroke={li === 0 ? 'rgba(4, 120, 87, 0.35)' : 'rgba(202, 138, 4, 0.45)'}
+      stroke-width="1.5"
+    ></circle>
+  ))}
+
+  {/* Cross-loop seams under everything else in the gap */}
+  {gapSeams.map((seam) => {
+    const leftToRight = seam.from.x < seam.to.x
+    return (
+      <>
+        <line
+          x1={seam.from.x}
+          y1={seam.from.y}
+          x2={leftToRight ? MID_X - NODE_W / 2 - 4 : MID_X + NODE_W / 2 + 4}
+          y2={seam.nodeY}
+          stroke="var(--color-primary)"
+          stroke-width="1.75"
+          marker-end="url(#loop-arrow)"
+        ></line>
+        <line
+          x1={leftToRight ? MID_X + NODE_W / 2 + 4 : MID_X - NODE_W / 2 - 4}
+          y1={seam.nodeY}
+          x2={seam.to.x}
+          y2={seam.to.y}
+          stroke="var(--color-primary)"
+          stroke-width="1.75"
+          marker-end="url(#loop-arrow)"
+        ></line>
+      </>
+    )
+  })}
+  {topSeams.map((seam) => (
+    <>
+      <path
+        d={`M ${seam.from.x} ${seam.from.y - 30} Q ${MID_X} 28 ${seam.to.x} ${seam.to.y - 30}`}
+        fill="none"
+        stroke="var(--color-text-subtle)"
+        stroke-width="1.5"
+        stroke-dasharray="5 4"
+        marker-end="url(#loop-arrow-muted)"
+      ></path>
+      <text x={MID_X} y="48" text-anchor="middle" font-size="11" font-style="italic" fill="var(--color-text-muted)">{seam.artifact}</text>
+    </>
+  ))}
+
+  {/* Flow arrowheads on the circles */}
+  {loops.map((loop) => loop.arrows.map((a) => (
+    <path
+      d="M 0 -5.5 L 11 0 L 0 5.5 z"
+      transform={`translate(${a.x} ${a.y}) rotate(${a.rot})`}
+      fill="var(--color-text-subtle)"
+    ></path>
+  )))}
+
+  {/* Loop centers: name, question, owner */}
+  {loops.map((loop) => (
+    <>
+      <text x={loop.c.cx} y={loop.c.cy - 14} text-anchor="middle" font-size="22" font-weight="700" fill="var(--color-text)">{loop.name}</text>
+      {loop.question && <text x={loop.c.cx} y={loop.c.cy + 12} text-anchor="middle" font-size="14" font-style="italic" fill="var(--color-text-muted)">&ldquo;{loop.question}&rdquo;</text>}
+      {loop.owner && <text x={loop.c.cx} y={loop.c.cy + 36} text-anchor="middle" font-size="11" letter-spacing="2" fill="var(--color-text-subtle)">{loop.owner.toUpperCase()}</text>}
+    </>
+  ))}
+
+  {/* Stations */}
+  {loops.map((loop) => loop.stations.map((st) => (
+    <g transform={`translate(${st.x} ${st.y})`}>
+      <rect
+        x={-STATION_W / 2}
+        y={-STATION_H / 2}
+        width={STATION_W}
+        height={STATION_H}
+        rx="10"
+        fill="var(--color-bg-card)"
+        stroke={st.gate ? 'var(--color-primary)' : 'var(--color-border)'}
+        stroke-width={st.gate ? 2 : 1}
+      ></rect>
+      <text y={st.gate ? -8 : -4} text-anchor="middle" font-size="13" font-weight="600" fill="var(--color-text)">{st.name}</text>
+      <text y={st.gate ? 7 : 13} text-anchor="middle" font-size="8.5" letter-spacing="1.2" fill="var(--color-text-subtle)">{actorLabel(st.actor)}</text>
+      {st.gate && <text y="19" text-anchor="middle" font-size="8" font-weight="700" letter-spacing="1.5" fill="var(--color-primary)">&#9670; GATE</text>}
+    </g>
+  )))}
+
+  {/* Seam artifact nodes in the gap */}
+  {gapSeams.map((seam) => (
+    <g transform={`translate(${MID_X} ${seam.nodeY})`}>
+      <rect x={-NODE_W / 2} y={-NODE_H / 2} width={NODE_W} height={NODE_H} rx={NODE_H / 2} fill="var(--color-primary-dark)"></rect>
+      <text y="4" text-anchor="middle" font-size="11" font-weight="600" fill="#ffffff">{seam.artifact}</text>
+    </g>
+  ))}
+</svg>
