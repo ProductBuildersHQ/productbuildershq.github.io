@@ -1,0 +1,299 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+
+const description =
+  'The 4P Product-Building Philosophy connects Program, Practice, Product, and Progress in a continuously improving loop. Program codifies our theory, Practice tests it in real work, Product systematizes and automates it, and Progress measures the health of the whole system.'
+
+const ps = [
+  {
+    letter: 'Program',
+    kicker: 'Intent',
+    question: 'What should we do, and why?',
+    body: 'Our synthesized, codified theory of product building — the principles and frameworks that define how we believe products should be built. Program is the current best expression of the theory, not a finished truth.',
+  },
+  {
+    letter: 'Practice',
+    kicker: 'Reality',
+    question: 'Can we do it, do we want to, and did it work?',
+    body: 'The reality check for both Program and Product. Practice tests the theory against real work through three questions: feasibility (can we?), desirability (do we want to?), and effectiveness (did it produce the outcome?).',
+  },
+  {
+    letter: 'Product',
+    kicker: 'Enablement',
+    question: 'How do we make it repeatable and observable?',
+    body: 'The tools, workflows, guidance, and automation that turn the validated parts of Program and Practice into leverage. Product is not merely an implementation of the theory — it is an instrument for testing and evolving it.',
+  },
+  {
+    letter: 'Progress',
+    kicker: 'System health',
+    question: 'Is the whole system aligned, efficient, and improving?',
+    body: 'The health and improvement of the Program–Practice–Product system — not a fourth activity, but the measure of the other three. Progress asks whether they are becoming more aligned, faster to learn, and producing better outcomes.',
+  },
+]
+
+const practiceChecks = [
+  { name: 'Feasibility', q: 'Can we actually do it, within real constraints?' },
+  { name: 'Desirability', q: 'Having done it, do we actually want to?' },
+  { name: 'Effectiveness', q: 'Did it produce the outcome we wanted?' },
+]
+
+const progressChecks = [
+  { name: 'Alignment', q: 'Do Program, Practice, and Product describe and support the same way of working?' },
+  { name: 'Flow', q: 'Does learning move quickly between them?' },
+  { name: 'Efficiency', q: 'Is the system reducing effort, delay, duplication, and friction?' },
+  { name: 'Adaptability', q: 'Can each part change when the others reveal new evidence?' },
+]
+
+const principles = [
+  {
+    n: '01',
+    title: 'Optimize for one human operator',
+    body: 'The fundamental unit of production is one human operator who owns an initiative across its full lifecycle. AI-agent specialists expand the operator’s range without the handoffs and coordination overhead of assembling a human team for every step. When scale requires many operators, shared platforms keep them consistent and a group leader coordinates the system — not every task.',
+    shorthand: 'One operator. Many agents. Full lifecycle. Shared standards. Clear ownership.',
+    lead: true,
+  },
+  {
+    n: '02',
+    title: 'Own the full lifecycle',
+    body: 'Product building runs from discovery and ideation through validation, implementation, delivery, adoption, and learning. Success is not shipping; it is creating meaningful use and outcomes.',
+  },
+  {
+    n: '03',
+    title: 'Turn theory into executable practice',
+    body: 'Frameworks should influence real decisions and actions. If a theory cannot be applied, observed, and improved, it remains incomplete.',
+  },
+  {
+    n: '04',
+    title: 'Close the loop',
+    body: 'Every meaningful action should generate evidence that can improve Program, Practice, or Product. Outputs become inputs to the next cycle.',
+  },
+  {
+    n: '05',
+    title: 'Automate the repeatable; preserve human judgment',
+    body: 'Use AI and software for synthesis, coordination, consistency, and execution — while keeping consequential product decisions accountable to humans.',
+  },
+  {
+    n: '06',
+    title: 'Maintain continuity of context',
+    body: 'Decisions, evidence, and assumptions should persist across the lifecycle. Nobody should have to reconstruct the reasoning behind the product at every phase.',
+  },
+  {
+    n: '07',
+    title: 'Optimize the system, not isolated steps',
+    body: 'A faster activity is not progress if it creates downstream waste. Improve the flow from idea to adoption, rather than maximizing the speed of individual tasks.',
+  },
+]
+
+const spectrum = [
+  { level: 'AI-assisted', body: 'Existing roles and processes use AI tools.' },
+  { level: 'AI-enabled', body: 'Workflows are redesigned around persistent context and agent capabilities.' },
+  { level: 'AI-orchestrated', body: 'Human operators coordinate specialized agents across the lifecycle.' },
+  { level: 'AI-native', body: 'Structures, decision rights, platforms, and governance are redesigned around the new unit of production.' },
+]
+---
+
+<BaseLayout title="Philosophy" description={description}>
+  <section class="relative overflow-hidden bg-[var(--color-frame-bg)] text-white">
+    <div class="absolute inset-0 pointer-events-none" aria-hidden="true" style="background-image: radial-gradient(ellipse 60% 50% at 15% -10%, rgba(234, 179, 8, 0.16), transparent), radial-gradient(ellipse 70% 60% at 85% 110%, rgba(5, 150, 105, 0.5), transparent);"></div>
+    <div class="relative max-w-4xl mx-auto px-5 md:px-8 py-20 md:py-28">
+      <div class="flex flex-wrap gap-2 mb-5">
+        <span class="text-xs font-medium px-2 py-1 bg-[var(--color-accent)] text-[var(--color-primary-dark)] rounded">PBHQ Original</span>
+        <span class="text-xs font-medium px-2 py-1 bg-white/10 text-white/80 rounded">Philosophy</span>
+      </div>
+      <h1 class="text-4xl md:text-6xl font-bold tracking-tight mb-6">The 4P Product-Building Philosophy</h1>
+      <p class="text-lg md:text-xl text-white/75 max-w-2xl mb-8">
+        A continuous-improvement philosophy for building products in an AI-accelerated world. It
+        connects four layers in a tight learning loop — and it is the philosophy we use to build
+        ProductBuildersHQ itself.
+      </p>
+      <p class="text-lg md:text-xl font-semibold text-white max-w-2xl">
+        Program sets direction. Practice confronts reality. Product enables the work. Progress
+        tells us whether the system is healthy and improving.
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-24">
+    <div class="max-w-6xl mx-auto px-5 md:px-8">
+      <div class="max-w-3xl mb-12">
+        <p class="text-xs font-semibold tracking-[0.2em] uppercase text-[var(--color-primary)] mb-3">The Four Ps</p>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">What each P does</h2>
+        <p class="text-lg text-[var(--color-text-muted)]">
+          Each element has a distinct job. The goal is not perfect alignment from the start — it is
+          to make the gaps between what we intend, what we do, and what our tools enable visible,
+          and steadily close them.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {ps.map((p) => (
+          <div class="relative overflow-hidden p-6 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-2xl">
+            <span class="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-[var(--color-primary)] to-[var(--color-accent)]" aria-hidden="true"></span>
+            <div class="flex items-baseline justify-between mb-2">
+              <h3 class="text-xl font-bold text-[var(--color-text)]">{p.letter}</h3>
+              <span class="text-[10px] font-semibold tracking-[0.2em] uppercase text-[var(--color-text-subtle)]">{p.kicker}</span>
+            </div>
+            <p class="text-sm font-medium text-[var(--color-primary)] mb-3">{p.question}</p>
+            <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">{p.body}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-24 bg-[var(--color-bg-secondary)]">
+    <div class="max-w-5xl mx-auto px-5 md:px-8">
+      <div class="max-w-3xl mb-12">
+        <p class="text-xs font-semibold tracking-[0.2em] uppercase text-[var(--color-primary)] mb-3">The 4P Loop</p>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Codify, apply, enable, learn — then recodify</h2>
+        <p class="text-lg text-[var(--color-text-muted)]">
+          The loop is not "theory becomes software." It is a cycle:
+          <strong class="text-[var(--color-text)]"> synthesize &rarr; codify &rarr; apply &rarr; enable &rarr; observe &rarr; learn &rarr; resynthesize.</strong>
+          AI accelerates it by shortening the distance between an insight and working product capability.
+        </p>
+      </div>
+
+      <div class="overflow-x-auto pb-2">
+        <div class="min-w-[720px]">
+          <div class="grid grid-cols-4 gap-3">
+            {ps.map((p, i) => (
+              <div class="flex items-center gap-3">
+                <div class="flex-1 px-4 py-4 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-xl text-center">
+                  <span class="block text-base font-bold text-[var(--color-text)]">{p.letter}</span>
+                  <span class="block mt-1 text-xs text-[var(--color-text-muted)]">{p.kicker}</span>
+                </div>
+                {i < ps.length - 1 && <span class="text-[var(--color-text-subtle)]" aria-hidden="true">&rarr;</span>}
+              </div>
+            ))}
+          </div>
+          <div class="mt-3 flex items-center gap-3">
+            <div class="flex-1 h-px bg-[var(--color-border)]" aria-hidden="true"></div>
+            <span class="text-xs font-medium text-[var(--color-text-subtle)]">evidence feeds back into every P</span>
+            <div class="flex-1 h-px bg-[var(--color-border)]" aria-hidden="true"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-12">
+        <div class="p-6 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-2xl">
+          <h3 class="text-lg font-semibold mb-1">Practice is the reality check</h3>
+          <p class="text-sm text-[var(--color-text-muted)] mb-5">It subjects both Program and Product to three questions:</p>
+          <ul class="space-y-3">
+            {practiceChecks.map((c) => (
+              <li>
+                <span class="block text-sm font-semibold text-[var(--color-text)]">{c.name}</span>
+                <span class="block text-sm text-[var(--color-text-muted)]">{c.q}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+        <div class="p-6 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-2xl">
+          <h3 class="text-lg font-semibold mb-1">Progress measures system health</h3>
+          <p class="text-sm text-[var(--color-text-muted)] mb-5">Across four dimensions — plus whether the system is actually building better products:</p>
+          <ul class="space-y-3">
+            {progressChecks.map((c) => (
+              <li>
+                <span class="block text-sm font-semibold text-[var(--color-text)]">{c.name}</span>
+                <span class="block text-sm text-[var(--color-text-muted)]">{c.q}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+      <p class="text-sm text-[var(--color-text-muted)] mt-6 max-w-3xl">
+        One caution: efficiency alone tells you the system runs smoothly, not that it is doing the
+        right thing. Progress measures both <strong class="text-[var(--color-text)]">operational health</strong>
+        (is it working well?) and <strong class="text-[var(--color-text)]">outcome health</strong>
+        (is it helping us build better products?).
+      </p>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-24">
+    <div class="max-w-5xl mx-auto px-5 md:px-8">
+      <div class="max-w-3xl mb-12">
+        <p class="text-xs font-semibold tracking-[0.2em] uppercase text-[var(--color-primary)] mb-3">The 4P Principles</p>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Durable rules that guide the loop</h2>
+        <p class="text-lg text-[var(--color-text-muted)]">
+          Principles sit between the high-level philosophy and the specific frameworks in the
+          Program. They are opinionated by design — a small set, not a feature list.
+        </p>
+      </div>
+      <div class="space-y-4">
+        {principles.map((p) => (
+          <div class:list={[
+            'p-6 rounded-2xl border',
+            p.lead
+              ? 'bg-[var(--color-primary)]/5 border-[var(--color-primary)]/40'
+              : 'bg-[var(--color-bg-card)] border-[var(--color-border)]',
+          ]}>
+            <div class="flex items-start gap-4">
+              <span class="font-mono text-sm text-[var(--color-text-subtle)] pt-1">{p.n}</span>
+              <div class="min-w-0">
+                <h3 class="text-lg font-semibold text-[var(--color-text)] mb-1.5">{p.title}</h3>
+                <p class="text-sm text-[var(--color-text-muted)] leading-relaxed">{p.body}</p>
+                {p.shorthand && (
+                  <p class="mt-3 text-sm font-semibold text-[var(--color-primary)]">{p.shorthand}</p>
+                )}
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-24 bg-[var(--color-bg-secondary)]">
+    <div class="max-w-5xl mx-auto px-5 md:px-8">
+      <div class="max-w-3xl mb-10">
+        <p class="text-xs font-semibold tracking-[0.2em] uppercase text-[var(--color-primary)] mb-3">Opinionated About the Destination</p>
+        <h2 class="text-3xl md:text-4xl font-bold mb-4">Adaptable about the path</h2>
+        <p class="text-lg text-[var(--color-text-muted)]">
+          The industry is changing, and thought leaders are placing stakes in the ground about the
+          future of product building. A vision is not enough — new tools, practices, and
+          organizational systems are what make it operational. We take a clear position on the
+          destination while supporting a spectrum of adoption, because organizations move at
+          different speeds and make different choices. The destination maps onto the
+          <a href="/frameworks/software-delivery-autonomy" class="text-[var(--color-primary)] hover:underline">autonomy levels</a>.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        {spectrum.map((s, i) => (
+          <div class="p-5 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-xl">
+            <span class="block font-mono text-xs text-[var(--color-text-subtle)] mb-1">{`0${i + 1}`}</span>
+            <span class="block text-base font-semibold text-[var(--color-text)] mb-2">{s.level}</span>
+            <span class="block text-sm text-[var(--color-text-muted)]">{s.body}</span>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="py-16 md:py-24">
+    <div class="max-w-4xl mx-auto px-5 md:px-8">
+      <p class="text-xs font-semibold tracking-[0.2em] uppercase text-[var(--color-primary)] mb-3">Dogfooding</p>
+      <h2 class="text-3xl md:text-4xl font-bold mb-4">ProductBuildersHQ is the first case study</h2>
+      <p class="text-[var(--color-text-muted)] mb-4">
+        ProductBuildersHQ is unusual because its Program, Practice, and Product are tightly coupled.
+        The Program holds the product-building
+        <a href="/frameworks" class="text-[var(--color-primary)] hover:underline">frameworks</a>;
+        Practice is applying them to build ProductBuildersHQ and other products; the
+        <a href="/products/visionstudio" class="text-[var(--color-primary)] hover:underline">Product</a>
+        operationalizes and automates what the Program proposes and Practice validates; and Progress
+        evaluates whether the whole system is getting healthier and faster. A framework can be tested
+        in real work, encoded in code, reused through the Product, and improved from the evidence —
+        with AI collapsing the time between each step.
+      </p>
+      <p class="text-[var(--color-text-muted)] mb-4">
+        We publish this both to make our own approach explicit and to invite learning from its
+        application. The strongest position today is not "we have solved product building." It is
+        that we are making our product-building system explicit, using it to build ProductBuildersHQ,
+        and sharing what we learn as AI makes the loop between theory, practice, and software
+        dramatically faster.
+      </p>
+      <div class="mt-8 flex flex-col sm:flex-row gap-4">
+        <a href="/frameworks" class="inline-flex items-center justify-center px-6 py-3 bg-[var(--color-primary-dark)] text-white font-medium rounded-lg no-underline hover:bg-[var(--color-primary)] transition-colors">Explore the Program &rarr;</a>
+        <a href="/perspectives" class="inline-flex items-center justify-center px-6 py-3 border border-[var(--color-border)] text-[var(--color-text)] font-medium rounded-lg no-underline hover:bg-[var(--color-bg-secondary)] hover:border-[var(--color-primary)] transition-colors">Read Perspectives</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
