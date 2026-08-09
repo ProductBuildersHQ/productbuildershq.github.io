@@ -4,272 +4,449 @@
     "href": "/"
   },
   "baseUrl": "https://productbuildershq.com",
-  "links": [
+  "links": [],
+  "megaMenus": [
     {
       "id": "frameworks",
       "label": "Frameworks",
-      "href": "/frameworks"
+      "maxFeaturedPerCategory": 6,
+      "categories": [
+        {
+          "id": "foundations",
+          "label": "Foundations",
+          "description": "The philosophy and the core models",
+          "order": 1,
+          "href": "/frameworks"
+        },
+        {
+          "id": "capability",
+          "label": "Capability & Standards",
+          "description": "Skills, standards, and system health",
+          "order": 2,
+          "href": "/frameworks"
+        },
+        {
+          "id": "practice",
+          "label": "Metrics & Practice",
+          "description": "Measures and applied methods",
+          "order": 3,
+          "href": "/frameworks"
+        }
+      ],
+      "items": [
+        {
+          "id": "philosophy",
+          "categoryId": "foundations",
+          "label": "4P Philosophy",
+          "tagline": "Program, Practice, Product, Progress",
+          "href": "/philosophy"
+        },
+        {
+          "id": "two-loop",
+          "categoryId": "foundations",
+          "label": "Product Loop & Builder Loop",
+          "tagline": "The two-loop operating model",
+          "href": "/frameworks/product-loop-builder-loop"
+        },
+        {
+          "id": "pbmm",
+          "categoryId": "foundations",
+          "label": "Product Builder Maturity Model",
+          "tagline": "The person: Observer to Product Builder",
+          "href": "/frameworks/product-builder-maturity-model"
+        },
+        {
+          "id": "asdm",
+          "categoryId": "foundations",
+          "label": "Autonomous Software Delivery Model",
+          "tagline": "The process: Agile to Autonomous Operations",
+          "href": "/frameworks/software-delivery-autonomy"
+        },
+        {
+          "id": "five-ps",
+          "categoryId": "foundations",
+          "label": "The Five Ps",
+          "tagline": "The product: Preparation to Profit",
+          "href": "/frameworks/five-ps"
+        },
+        {
+          "id": "lever",
+          "categoryId": "capability",
+          "label": "LEVER / REVEL",
+          "tagline": "Capability climb, read both directions",
+          "href": "https://github.com/ProductBuildersHQ/lever",
+          "external": true
+        },
+        {
+          "id": "scale",
+          "categoryId": "capability",
+          "label": "SCALE",
+          "tagline": "Keeping AI-built systems maintainable",
+          "href": "/products/scale"
+        },
+        {
+          "id": "pdlc",
+          "categoryId": "capability",
+          "label": "PDLC",
+          "tagline": "The product-to-builder handoff",
+          "href": "https://github.com/ProductBuildersHQ/pdlc",
+          "external": true
+        },
+        {
+          "id": "ai-native-pm-metrics",
+          "categoryId": "practice",
+          "label": "AI-Native PM Metrics",
+          "tagline": "Outcome measures for the Product Loop",
+          "href": "/frameworks/ai-native-pm-metrics"
+        },
+        {
+          "id": "dora-space",
+          "categoryId": "practice",
+          "label": "AI-DORA & AI-SPACE",
+          "tagline": "AI-era delivery & experience metrics",
+          "href": "/frameworks/dora-space-ai-age"
+        },
+        {
+          "id": "loop-engineering",
+          "categoryId": "practice",
+          "label": "Loop Engineering",
+          "tagline": "Designing self-running coding agents",
+          "href": "/frameworks/loop-engineering"
+        },
+        {
+          "id": "llm-as-a-judge",
+          "categoryId": "practice",
+          "label": "LLM-as-a-Judge",
+          "tagline": "Evaluating specs and output at scale",
+          "href": "/frameworks/llm-as-a-judge"
+        },
+        {
+          "id": "spec-driven-development",
+          "categoryId": "practice",
+          "label": "Spec-Driven Development",
+          "tagline": "Narrative specs agents can execute",
+          "href": "/frameworks/spec-driven-development"
+        }
+      ],
+      "footerLinks": [
+        {
+          "id": "all-frameworks",
+          "label": "Browse all frameworks",
+          "href": "/frameworks"
+        }
+      ]
     },
     {
-      "id": "case-studies",
-      "label": "Case Studies",
-      "href": "/case-studies"
+      "id": "sdd-workflows",
+      "label": "SDD Workflows",
+      "maxFeaturedPerCategory": 6,
+      "categories": [
+        {
+          "id": "definition",
+          "label": "Definition Workflows",
+          "description": "Produce the product & engineering specs",
+          "order": 1,
+          "href": "/sdd/#definition"
+        },
+        {
+          "id": "execution",
+          "label": "Execution Workflows",
+          "description": "Drive coding agents to implement the specs",
+          "order": 2,
+          "href": "/sdd/#execution"
+        },
+        {
+          "id": "specs",
+          "label": "Definition Specs",
+          "description": "Product specs (what/why) & engineering specs (how)",
+          "order": 3,
+          "href": "/sdd/#specs"
+        }
+      ],
+      "items": [
+        {
+          "id": "aws-product",
+          "categoryId": "definition",
+          "label": "AWS Working Backwards — Product",
+          "tagline": "MRD to PR/FAQ to 6-Pager for new products",
+          "href": "/sdd/definition/aws-product"
+        },
+        {
+          "id": "aws-feature",
+          "categoryId": "definition",
+          "label": "AWS Working Backwards — Feature",
+          "tagline": "Opportunity Spec driven feature definition",
+          "href": "/sdd/definition/aws-feature"
+        },
+        {
+          "id": "big-tech-product",
+          "categoryId": "definition",
+          "label": "Big Tech — Product",
+          "tagline": "Full product definition stack",
+          "href": "/sdd/definition/big-tech-product"
+        },
+        {
+          "id": "big-tech-feature",
+          "categoryId": "definition",
+          "label": "Big Tech — Feature",
+          "tagline": "Feature-scale definition",
+          "href": "/sdd/definition/big-tech-feature"
+        },
+        {
+          "id": "pbhq-lite",
+          "categoryId": "definition",
+          "label": "PBHQ Lite",
+          "tagline": "Minimum specs: product, tech, plan, roadmap",
+          "href": "/sdd/definition/pbhq-lite"
+        },
+        {
+          "id": "spec-kit",
+          "categoryId": "execution",
+          "label": "GitHub Spec-Kit",
+          "tagline": "Specify, plan, tasks, implement",
+          "href": "/sdd/execution/spec-kit"
+        },
+        {
+          "id": "ai-dlc",
+          "categoryId": "execution",
+          "label": "AWS AI-DLC",
+          "tagline": "Inception, Construction, Operations",
+          "href": "/sdd/execution/ai-dlc"
+        },
+        {
+          "id": "openspec",
+          "categoryId": "execution",
+          "label": "OpenSpec",
+          "tagline": "Delta change proposals to canonical specs",
+          "href": "/sdd/execution/openspec"
+        },
+        {
+          "id": "kiro",
+          "categoryId": "execution",
+          "label": "AWS Kiro",
+          "tagline": "EARS requirements, design, tasks",
+          "href": "/sdd/execution/kiro"
+        },
+        {
+          "id": "visionspec",
+          "categoryId": "execution",
+          "label": "VisionSpec",
+          "tagline": "The PBHQ engine — spans both halves",
+          "href": "/products/visionspec"
+        },
+        {
+          "id": "mrd",
+          "categoryId": "specs",
+          "label": "MRD + BMC",
+          "tagline": "Product — market requirements & business model",
+          "href": "/sdd/specs/mrd"
+        },
+        {
+          "id": "press",
+          "categoryId": "specs",
+          "label": "Press Release",
+          "tagline": "Product — Working Backwards announcement",
+          "href": "/sdd/specs/press"
+        },
+        {
+          "id": "faq",
+          "categoryId": "specs",
+          "label": "FAQ",
+          "tagline": "Product — assumptions, challenged",
+          "href": "/sdd/specs/faq"
+        },
+        {
+          "id": "narrative-6p",
+          "categoryId": "specs",
+          "label": "6-Pager",
+          "tagline": "Product — narrative for alignment",
+          "href": "/sdd/specs/narrative-6p"
+        },
+        {
+          "id": "prd",
+          "categoryId": "specs",
+          "label": "PRD",
+          "tagline": "Product — requirements",
+          "href": "/sdd/specs/prd"
+        },
+        {
+          "id": "trd",
+          "categoryId": "specs",
+          "label": "TRD",
+          "tagline": "Engineering — technical requirements",
+          "href": "/sdd/specs/trd"
+        },
+        {
+          "id": "opportunity-spec",
+          "categoryId": "specs",
+          "label": "Opportunity Spec",
+          "tagline": "Product — 12-box canvas for features",
+          "href": "/sdd/specs/opportunity-spec"
+        },
+        {
+          "id": "uxd",
+          "categoryId": "specs",
+          "label": "UXD",
+          "tagline": "Product — user experience design",
+          "href": "/sdd/specs/uxd"
+        },
+        {
+          "id": "ird",
+          "categoryId": "specs",
+          "label": "IRD",
+          "tagline": "Engineering — infrastructure requirements",
+          "href": "/sdd/specs/ird"
+        },
+        {
+          "id": "tpd",
+          "categoryId": "specs",
+          "label": "TPD",
+          "tagline": "Engineering — test plan",
+          "href": "/sdd/specs/tpd"
+        }
+      ],
+      "footerLinks": [
+        {
+          "id": "sdd-catalog",
+          "label": "Browse the full SDD Catalog",
+          "href": "/sdd/"
+        },
+        {
+          "id": "visionstudio",
+          "label": "VisionStudio",
+          "href": "/products/visionstudio"
+        },
+        {
+          "id": "pdlc-footer",
+          "label": "PDLC — the product-to-builder handoff",
+          "href": "https://github.com/ProductBuildersHQ/pdlc",
+          "external": true
+        }
+      ],
+      "footerText": "Generated from specification-workflow-spec"
+    },
+    {
+      "id": "from-the-field",
+      "label": "From the Field",
+      "maxFeaturedPerCategory": 6,
+      "categories": [
+        {
+          "id": "case-studies",
+          "label": "Case Studies",
+          "description": "What organizations ship — implementations, mapped to autonomy levels",
+          "order": 1,
+          "href": "/case-studies"
+        },
+        {
+          "id": "signals",
+          "label": "Signals",
+          "description": "What practitioners say — claims, mapped to the frameworks",
+          "order": 2,
+          "href": "/signals"
+        }
+      ],
+      "items": [
+        {
+          "id": "aws-project-mantle",
+          "categoryId": "case-studies",
+          "label": "AWS — Project Mantle",
+          "tagline": "AI-first development at AWS · L5",
+          "href": "/case-studies/aws-project-mantle"
+        },
+        {
+          "id": "strongdm-software-factory",
+          "categoryId": "case-studies",
+          "label": "StrongDM Software Factory",
+          "tagline": "Autonomous review pipeline · L6",
+          "href": "/case-studies/strongdm-software-factory"
+        },
+        {
+          "id": "spotify-honk",
+          "categoryId": "case-studies",
+          "label": "Spotify Honk",
+          "tagline": "AI-native internal product platform · L5",
+          "href": "/case-studies/spotify-honk"
+        },
+        {
+          "id": "github-copilot-workspace",
+          "categoryId": "case-studies",
+          "label": "GitHub Copilot Workspace",
+          "tagline": "Issue-to-PR agent workflow · L5",
+          "href": "/case-studies/github-copilot-workspace"
+        },
+        {
+          "id": "cursor-anysphere",
+          "categoryId": "case-studies",
+          "label": "Cursor by Anysphere",
+          "tagline": "The AI-native editor · L4",
+          "href": "/case-studies/cursor-anysphere"
+        },
+        {
+          "id": "jack-dorsey-block",
+          "categoryId": "signals",
+          "label": "Jack Dorsey",
+          "tagline": "Block replaces the org chart with three roles",
+          "href": "/signals/jack-dorsey-block-hierarchy-to-intelligence"
+        },
+        {
+          "id": "boris-cherny",
+          "categoryId": "signals",
+          "label": "Boris Cherny",
+          "tagline": "\"Coding is solved\"; engineering merges into building",
+          "href": "/signals/boris-cherny-coding-is-solved"
+        },
+        {
+          "id": "andrew-ng",
+          "categoryId": "signals",
+          "label": "Andrew Ng",
+          "tagline": "Engineers learn product; PMs learn to code",
+          "href": "/signals/andrew-ng-generalists-the-batch-349"
+        },
+        {
+          "id": "andrej-karpathy",
+          "categoryId": "signals",
+          "label": "Andrej Karpathy",
+          "tagline": "The vibe-coding coiner on keeping up",
+          "href": "/signals/andrej-karpathy-vibe-coding-to-specs"
+        },
+        {
+          "id": "steve-yegge",
+          "categoryId": "signals",
+          "label": "Steve Yegge",
+          "tagline": "The developer is a PM; the system compiles ideas",
+          "href": "/signals/steve-yegge-gas-town"
+        }
+      ],
+      "footerLinks": [
+        {
+          "id": "all-case-studies",
+          "label": "All Case Studies",
+          "href": "/case-studies"
+        },
+        {
+          "id": "all-signals",
+          "label": "All Signals",
+          "href": "/signals"
+        }
+      ]
     }
   ],
-  "megaMenu": {
-    "label": "SDD Workflows",
-    "maxFeaturedPerCategory": 6,
-    "categories": [
-      {
-        "id": "models",
-        "label": "Models",
-        "description": "Original PBHQ maturity & capability models",
-        "order": 1,
-        "href": "/frameworks"
-      },
-      {
-        "id": "definition",
-        "label": "Definition Workflows",
-        "description": "Produce the product & engineering specs",
-        "order": 2,
-        "href": "/sdd/#definition"
-      },
-      {
-        "id": "execution",
-        "label": "Execution Workflows",
-        "description": "Drive coding agents to implement the specs",
-        "order": 3,
-        "href": "/sdd/#execution"
-      },
-      {
-        "id": "specs",
-        "label": "Definition Specs",
-        "description": "Product specs (what/why) & engineering specs (how)",
-        "order": 4,
-        "href": "/sdd/#specs"
-      }
-    ],
-    "items": [
-      {
-        "id": "two-loop",
-        "categoryId": "models",
-        "label": "Product Loop & Builder Loop",
-        "tagline": "The two-loop operating model",
-        "href": "/frameworks/product-loop-builder-loop"
-      },
-      {
-        "id": "pbmm",
-        "categoryId": "models",
-        "label": "Product Builder Maturity Model",
-        "tagline": "The person: Observer to Product Builder",
-        "href": "/frameworks/product-builder-maturity-model"
-      },
-      {
-        "id": "asdm",
-        "categoryId": "models",
-        "label": "Autonomous Software Delivery Model",
-        "tagline": "The process: Agile to Autonomous Operations",
-        "href": "/frameworks/software-delivery-autonomy"
-      },
-      {
-        "id": "five-ps",
-        "categoryId": "models",
-        "label": "The Five Ps",
-        "tagline": "The product: Preparation to Profit",
-        "href": "/frameworks/five-ps"
-      },
-      {
-        "id": "scale",
-        "categoryId": "models",
-        "label": "SCALE",
-        "tagline": "Keeping AI-built systems maintainable",
-        "href": "/products/scale"
-      },
-      {
-        "id": "lever",
-        "categoryId": "models",
-        "label": "LEVER / REVEL",
-        "tagline": "Capability climb, read both directions",
-        "href": "https://github.com/ProductBuildersHQ/lever",
-        "external": true
-      },
-      {
-        "id": "aws-product",
-        "categoryId": "definition",
-        "label": "AWS Working Backwards — Product",
-        "tagline": "MRD to PR/FAQ to 6-Pager for new products",
-        "href": "/sdd/definition/aws-product"
-      },
-      {
-        "id": "aws-feature",
-        "categoryId": "definition",
-        "label": "AWS Working Backwards — Feature",
-        "tagline": "Opportunity Spec driven feature definition",
-        "href": "/sdd/definition/aws-feature"
-      },
-      {
-        "id": "big-tech-product",
-        "categoryId": "definition",
-        "label": "Big Tech — Product",
-        "tagline": "Full product definition stack",
-        "href": "/sdd/definition/big-tech-product"
-      },
-      {
-        "id": "big-tech-feature",
-        "categoryId": "definition",
-        "label": "Big Tech — Feature",
-        "tagline": "Feature-scale definition",
-        "href": "/sdd/definition/big-tech-feature"
-      },
-      {
-        "id": "pbhq-lite",
-        "categoryId": "definition",
-        "label": "PBHQ Lite",
-        "tagline": "Minimum specs: product, tech, plan, roadmap",
-        "href": "/sdd/definition/pbhq-lite"
-      },
-      {
-        "id": "spec-kit",
-        "categoryId": "execution",
-        "label": "GitHub Spec-Kit",
-        "tagline": "Specify, plan, tasks, implement",
-        "href": "/sdd/execution/spec-kit"
-      },
-      {
-        "id": "ai-dlc",
-        "categoryId": "execution",
-        "label": "AWS AI-DLC",
-        "tagline": "Inception, Construction, Operations",
-        "href": "/sdd/execution/ai-dlc"
-      },
-      {
-        "id": "openspec",
-        "categoryId": "execution",
-        "label": "OpenSpec",
-        "tagline": "Delta change proposals to canonical specs",
-        "href": "/sdd/execution/openspec"
-      },
-      {
-        "id": "kiro",
-        "categoryId": "execution",
-        "label": "AWS Kiro",
-        "tagline": "EARS requirements, design, tasks",
-        "href": "/sdd/execution/kiro"
-      },
-      {
-        "id": "visionspec",
-        "categoryId": "execution",
-        "label": "VisionSpec",
-        "tagline": "The PBHQ engine — spans both halves",
-        "href": "/products/visionspec"
-      },
-      {
-        "id": "mrd",
-        "categoryId": "specs",
-        "label": "MRD + BMC",
-        "tagline": "Product — market requirements & business model",
-        "href": "/sdd/specs/mrd"
-      },
-      {
-        "id": "press",
-        "categoryId": "specs",
-        "label": "Press Release",
-        "tagline": "Product — Working Backwards announcement",
-        "href": "/sdd/specs/press"
-      },
-      {
-        "id": "faq",
-        "categoryId": "specs",
-        "label": "FAQ",
-        "tagline": "Product — assumptions, challenged",
-        "href": "/sdd/specs/faq"
-      },
-      {
-        "id": "narrative-6p",
-        "categoryId": "specs",
-        "label": "6-Pager",
-        "tagline": "Product — narrative for alignment",
-        "href": "/sdd/specs/narrative-6p"
-      },
-      {
-        "id": "prd",
-        "categoryId": "specs",
-        "label": "PRD",
-        "tagline": "Product — requirements",
-        "href": "/sdd/specs/prd"
-      },
-      {
-        "id": "trd",
-        "categoryId": "specs",
-        "label": "TRD",
-        "tagline": "Engineering — technical requirements",
-        "href": "/sdd/specs/trd"
-      },
-      {
-        "id": "opportunity-spec",
-        "categoryId": "specs",
-        "label": "Opportunity Spec",
-        "tagline": "Product — 12-box canvas for features",
-        "href": "/sdd/specs/opportunity-spec"
-      },
-      {
-        "id": "uxd",
-        "categoryId": "specs",
-        "label": "UXD",
-        "tagline": "Product — user experience design",
-        "href": "/sdd/specs/uxd"
-      },
-      {
-        "id": "ird",
-        "categoryId": "specs",
-        "label": "IRD",
-        "tagline": "Engineering — infrastructure requirements",
-        "href": "/sdd/specs/ird"
-      },
-      {
-        "id": "tpd",
-        "categoryId": "specs",
-        "label": "TPD",
-        "tagline": "Engineering — test plan",
-        "href": "/sdd/specs/tpd"
-      }
-    ],
-    "footerLinks": [
-      {
-        "id": "sdd-catalog",
-        "label": "Browse the full SDD Catalog",
-        "href": "/sdd/"
-      },
-      {
-        "id": "visionstudio",
-        "label": "VisionStudio",
-        "href": "/products/visionstudio"
-      },
-      {
-        "id": "pdlc",
-        "label": "PDLC — the product-to-builder handoff",
-        "href": "https://github.com/ProductBuildersHQ/pdlc",
-        "external": true
-      }
-    ],
-    "footerText": "Generated from specification-workflow-spec"
-  },
   "dropdowns": [
     {
       "id": "products",
       "label": "Products",
       "items": [
         {
-          "id": "visionspec",
-          "label": "VisionSpec",
-          "href": "/products/visionspec",
-          "description": "Multi-domain specification orchestration"
-        },
-        {
           "id": "visionstudio",
           "label": "VisionStudio",
           "href": "/products/visionstudio",
           "description": "Spec authoring & evaluation desktop app"
+        },
+        {
+          "id": "visionspec",
+          "label": "VisionSpec",
+          "href": "/products/visionspec",
+          "description": "Multi-domain specification orchestration"
         },
         {
           "id": "scale",
@@ -284,22 +461,10 @@
       "label": "Resources",
       "items": [
         {
-          "id": "philosophy",
-          "label": "Philosophy",
-          "href": "/philosophy",
-          "description": "The 4P loop we build by: Program, Practice, Product, Progress"
-        },
-        {
           "id": "perspectives",
           "label": "Perspectives",
           "href": "/perspectives",
           "description": "First-person essays from the founder"
-        },
-        {
-          "id": "signals",
-          "label": "Signals",
-          "href": "/signals",
-          "description": "Industry evidence, mapped to the frameworks"
         },
         {
           "id": "papers",

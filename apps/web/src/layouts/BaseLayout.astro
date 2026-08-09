@@ -50,8 +50,16 @@ const isActive = (href: string) => {
           <nav class="bg-[var(--color-frame-bg)]">
             <div class="max-w-7xl mx-auto px-5 md:px-8 flex items-center justify-between h-16">
               <a href="/" class="text-xl font-bold text-[var(--color-frame-text)] no-underline">{navConfig.brand.name}</a>
-              <div class="flex items-center gap-6">
-                {navConfig.links.map((link) => (
+              <div class="flex flex-wrap items-center gap-x-5 gap-y-1">
+                {[
+                  { href: '/frameworks', label: 'Frameworks' },
+                  { href: '/sdd/', label: 'SDD Workflows' },
+                  { href: '/case-studies', label: 'Case Studies' },
+                  { href: '/signals', label: 'Signals' },
+                  { href: '/products/visionstudio', label: 'Products' },
+                  { href: '/papers', label: 'Papers' },
+                  { href: '/about', label: 'About' },
+                ].map((link) => (
                   <a
                     href={link.href}
                     class:list={[
@@ -62,7 +70,6 @@ const isActive = (href: string) => {
                     {link.label}
                   </a>
                 ))}
-                <a href="/sdd/" class="text-sm font-medium text-[var(--color-frame-text-muted)] no-underline">SDD Catalog</a>
               </div>
             </div>
           </nav>
