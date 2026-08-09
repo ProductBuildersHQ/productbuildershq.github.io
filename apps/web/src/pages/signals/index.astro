@@ -1,0 +1,46 @@
+---
+import { getCollection } from 'astro:content'
+import BaseLayout from '../../layouts/BaseLayout.astro'
+
+const signals = (await getCollection('signals')).sort((a, b) =>
+  b.data.date.localeCompare(a.data.date)
+)
+---
+
+<BaseLayout title="Signals" description="Market signals of the shift to AI-native product building — industry evidence mapped to the ProductBuildersHQ frameworks.">
+  <div class="py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-5 md:px-8">
+      <div class="mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Signals</h1>
+        <p class="text-xl text-[var(--color-text-muted)] max-w-3xl">
+          Industry evidence that the transition to AI-native product building is underway —
+          lighter than case studies, each mapped to the frameworks it confirms.
+        </p>
+        <div class="mt-6 p-4 bg-[var(--color-bg-secondary)] border border-[var(--color-border-light)] rounded-xl max-w-3xl">
+          <p class="text-sm text-[var(--color-text-muted)]">
+            The voices below are mostly engineers — as Andrew Ng notes, more engineers than
+            product managers are making this crossing. For our own take on the same shift, and the
+            rarer vantage among them — a product manager, not an engineer, becoming a product
+            builder — read <a href="/perspectives" class="text-[var(--color-primary)] hover:underline font-medium">Perspectives by John Wang &rarr;</a>
+          </p>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 gap-8">
+        {signals.map((signal) => (
+          <a href={`/signals/${signal.id}`} class="group block p-8 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-xl no-underline hover:border-[var(--color-primary)] hover:shadow-lg transition-all">
+            <div class="flex flex-wrap items-center gap-3 mb-3">
+              <span class="text-sm font-medium px-3 py-1 bg-[var(--color-primary)]/10 text-[var(--color-primary)] rounded-full">Signal</span>
+              <span class="text-sm text-[var(--color-text-subtle)]">{signal.data.author}{signal.data.authorRole && ` — ${signal.data.authorRole}`} &middot; {signal.data.date}</span>
+            </div>
+            <h2 class="text-2xl font-bold mb-2 text-[var(--color-text)] group-hover:text-[var(--color-primary)]">{signal.data.title}</h2>
+            {signal.data.subtitle && <p class="text-base text-[var(--color-text-muted)] mb-4">{signal.data.subtitle}</p>}
+            <p class="text-sm text-[var(--color-text-muted)]">{signal.data.description}</p>
+            <div class="mt-6 flex flex-wrap gap-2">
+              {signal.data.tags.map((tag) => <span class="text-xs px-2 py-1 bg-[var(--color-bg-secondary)] text-[var(--color-text-muted)] rounded">{tag}</span>)}
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</BaseLayout>
