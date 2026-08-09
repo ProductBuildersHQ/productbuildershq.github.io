@@ -1,10 +1,27 @@
 ---
 import { getCollection } from 'astro:content'
 import BaseLayout from '../../layouts/BaseLayout.astro'
+import Timeline from '../../components/Timeline.astro'
 
 const signals = (await getCollection('signals')).sort((a, b) =>
   b.data.date.localeCompare(a.data.date)
 )
+
+// Signal titles follow an "{Author}: {Insight}" convention — reuse that
+// split as the timeline's key-insight line instead of adding a field.
+const insightFrom = (title: string) => {
+  const i = title.indexOf(': ')
+  return i === -1 ? title : title.slice(i + 2)
+}
+
+const timelineEvents = [...signals]
+  .sort((a, b) => a.data.date.localeCompare(b.data.date))
+  .map((signal) => ({
+    date: signal.data.date,
+    title: signal.data.author,
+    subtitle: insightFrom(signal.data.title),
+    href: `/signals/${signal.id}`,
+  }))
 ---
 
 <BaseLayout title="Signals" description="Market signals of the shift to AI-native product building — industry evidence mapped to the ProductBuildersHQ frameworks.">
@@ -25,6 +42,11 @@ const signals = (await getCollection('signals')).sort((a, b) =>
           </p>
         </div>
       </div>
+
+      <div class="mb-16">
+        <Timeline events={timelineEvents} ariaLabel="Signals timeline, oldest to newest" />
+      </div>
+
       <div class="grid grid-cols-1 gap-8">
         {signals.map((signal) => (
           <a href={`/signals/${signal.id}`} class="group block p-8 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-xl no-underline hover:border-[var(--color-primary)] hover:shadow-lg transition-all">
