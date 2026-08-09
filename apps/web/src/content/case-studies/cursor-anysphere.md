@@ -4,7 +4,12 @@ subtitle: "Vibe Coding at Scale"
 description: "How Cursor pioneered vibe coding, grew to 1M+ daily active users, and navigates the tension between free-form AI coding and spec-driven development."
 company: "Anysphere"
 industry: "Developer Tools"
-date: "June 2026"
+date: "2026-06-16"
+sources:
+  - label: "CNBC — SpaceX to acquire the AI coding startup Cursor for $60 billion"
+    url: "https://www.cnbc.com/2026/06/16/spacex-spcx-cursor-acquisition-ipo.html"
+  - label: "Forbes — SpaceX Buys Cursor In Largest Startup Acquisition Ever At $60 Billion"
+    url: "https://www.forbes.com/sites/sandycarter/2026/06/16/spacex-buys-cursor-in-largest-startup-acquisition-ever-at-60-billion/"
 pdfUrl: "/papers/cursor-anysphere.pdf"
 level: 4
 tags: ["cursor", "anysphere", "level-4", "vibe-coding", "ai-ide", "case-study"]

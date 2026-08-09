@@ -4,7 +4,12 @@ subtitle: "From Issue to Pull Request"
 description: "How GitHub Copilot Workspace evolved from experimental browser-based IDE to the foundation of Copilot's agentic capabilities, introducing spec-driven workflows to mainstream development."
 company: "GitHub / Microsoft"
 industry: "Developer Tools"
-date: "June 2026"
+date: "2026-02-09"
+sources:
+  - label: "GitHub Blog — GitHub Copilot Workspace: Welcome to the Copilot-native developer environment"
+    url: "https://github.blog/news-insights/product-news/github-copilot-workspace/"
+  - label: "The Motley Fool — Microsoft Finally Revealed How Many Paying Copilot Users It Has"
+    url: "https://www.fool.com/investing/2026/02/09/microsoft-finally-revealed-how-many-paying-copilot/"
 pdfUrl: "/papers/github-copilot-workspace.pdf"
 level: 5
 tags: ["github", "copilot", "workspace", "level-5", "spec-driven", "case-study"]
