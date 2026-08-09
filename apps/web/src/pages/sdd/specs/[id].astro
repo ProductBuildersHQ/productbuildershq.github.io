@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro'
+import catalog from '../../../data/sdd-catalog.json'
+
+export async function getStaticPaths() {
+  return catalog.spec_types.map((spec) => ({ params: { id: spec.id }, props: { spec } }))
+}
+
+const { spec } = Astro.props
+
+// All specs are Definition-side. Product vs Engineering is the real split;
+// the library's finer categories get collision-free display labels
+// ("execution" the spec category means delivery planning docs, not Execution
+// in the VisionStudio building/monitoring sense).
+const PRODUCT_CATEGORIES = ['source', 'gtm', 'strategic']
+const specGroup = PRODUCT_CATEGORIES.includes(spec.category) ? 'Product Spec' : 'Engineering Spec'
+const categoryDisplay: Record<string, string> = {
+  source: 'discovery',
+  gtm: 'go-to-market',
+  technical: 'technical',
+  execution: 'delivery planning',
+  output: 'handoff output',
+  strategic: 'strategic',
+}
+
+const usedIn = catalog.workflows
+  .filter((w) => w.spec_config && w.spec_config[spec.id])
+  .map((w) => ({
+    name: w.name,
+    required: Boolean(w.spec_config[spec.id]?.required),
+    note: w.spec_config[spec.id]?.description ?? '',
+    sources: w.synthesis?.[spec.id]?.sources ?? [],
+  }))
+
+const specName = (id: string) => catalog.spec_types.find((s) => s.id === id)?.shortName ?? id
+---
+
+<BaseLayout title={`${spec.shortName ?? spec.name} — Spec`} description={spec.description ?? spec.name}>
+  <div class="py-8 md:py-12">
+    <div class="max-w-5xl mx-auto px-5 md:px-8">
+      <a href="/sdd/#specs" class="inline-flex items-center text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline mb-6">
+        <svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
+        </svg>
+        SDD Catalog
+      </a>
+
+      <div class="mb-10">
+        <div class="flex flex-wrap items-center gap-2 mb-4">
+          <span class="text-xs font-medium px-2.5 py-1 bg-[var(--color-primary)]/10 text-[var(--color-primary)] rounded-full">{specGroup}</span>
+          <span class="text-xs font-medium px-2.5 py-1 bg-[var(--color-bg-secondary)] text-[var(--color-text-muted)] rounded-full uppercase tracking-wide">{categoryDisplay[spec.category] ?? spec.category}</span>
+          <span class="text-xs font-medium px-2.5 py-1 bg-[var(--color-bg-secondary)] text-[var(--color-text-muted)] rounded-full">{spec.authorship}-authored</span>
+          <span class="font-mono text-xs text-[var(--color-text-subtle)]">{spec.filename}</span>
+        </div>
+        <h1 class="text-3xl md:text-4xl font-bold mb-2">{spec.name}</h1>
+        {spec.shortName && spec.shortName !== spec.name && <p class="text-xl text-[var(--color-primary)] mb-4">{spec.shortName}</p>}
+        <p class="text-lg text-[var(--color-text-muted)] max-w-3xl">{spec.description}</p>
+        {spec.aliases && spec.aliases.length > 0 && (
+          <p class="text-sm text-[var(--color-text-subtle)] mt-3">Also known as: {spec.aliases.join(', ')}</p>
+        )}
+      </div>
+
+      <section class="mb-12">
+        <h2 class="text-xl font-semibold mb-4">Used in Workflows</h2>
+        {usedIn.length === 0 ? (
+          <p class="text-sm text-[var(--color-text-muted)]">Not required by any default workflow; available for custom workflows.</p>
+        ) : (
+          <div class="grid grid-cols-1 gap-3">
+            {usedIn.map((u) => (
+              <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 p-4 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-lg">
+                <a href={`/sdd/definition/${u.name}`} class="font-mono text-sm font-semibold text-[var(--color-primary)] no-underline hover:underline shrink-0 w-56">{u.name}</a>
+                <span class:list={['text-xs font-medium px-2 py-0.5 rounded-full shrink-0', u.required ? 'bg-[var(--color-primary)] text-white' : 'bg-[var(--color-bg-secondary)] text-[var(--color-text-muted)]']}>{u.required ? 'Required' : 'Optional'}</span>
+                <span class="text-sm text-[var(--color-text-muted)]">
+                  {u.sources.length > 0 && <>Synthesized from {u.sources.map((s, i) => (<>{i > 0 && ', '}<a href={`/sdd/specs/${s}`} class="text-[var(--color-primary)] no-underline hover:underline">{specName(s)}</a></>))}. </>}
+                  {u.note}
+                </span>
+              </div>
+            ))}
+          </div>
+        )}
+      </section>
+
+      {spec.origins && spec.origins.length > 0 && (
+        <section class="mb-12">
+          <h2 class="text-xl font-semibold mb-4">Origins</h2>
+          <div class="flex flex-wrap gap-2">
+            {spec.origins.map((o) => (
+              <a href={`/sdd/definition/${o}`} class="text-sm px-3 py-1 bg-[var(--color-bg-secondary)] text-[var(--color-text-muted)] rounded-full no-underline hover:text-[var(--color-primary)]">{o}</a>
+            ))}
+          </div>
+        </section>
+      )}
+    </div>
+  </div>
+</BaseLayout>

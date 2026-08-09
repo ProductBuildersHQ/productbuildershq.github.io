@@ -1,0 +1,195 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro'
+import catalog from '../../../data/sdd-catalog.json'
+
+export async function getStaticPaths() {
+  return catalog.workflows.map((wf) => ({ params: { id: wf.name }, props: { wf } }))
+}
+
+const { wf } = Astro.props
+
+const specName = (id: string) => catalog.spec_types.find((s) => s.id === id)?.shortName ?? id
+const specEntries = Object.entries(wf.spec_config ?? {})
+  .map(([id, cfg]) => ({ id, required: Boolean(cfg?.required), category: cfg?.category ?? '', note: cfg?.description ?? '' }))
+  .sort((a, b) => Number(b.required) - Number(a.required) || a.id.localeCompare(b.id))
+
+const synthesisEntries = Object.entries(wf.synthesis ?? {})
+  .map(([target, rule]) => ({ target, sources: rule?.sources ?? [], guidance: rule?.guidance ?? '' }))
+  .sort((a, b) => a.target.localeCompare(b.target))
+
+const relatedPipelines = catalog.pipelines.filter((p) => p.definition.workflow === wf.name)
+const integrationName = (id: string) => catalog.integrations.find((i) => i.id === id)?.name ?? id
+---
+
+<BaseLayout title={`${wf.name} — Definition Workflow`} description={wf.description ?? wf.name}>
+  <div class="py-8 md:py-12">
+    <div class="max-w-5xl mx-auto px-5 md:px-8">
+      <a href="/sdd/#definition" class="inline-flex items-center text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline mb-6">
+        <svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
+        </svg>
+        SDD Catalog
+      </a>
+
+      <div class="mb-10">
+        <div class="flex flex-wrap items-center gap-2 mb-4">
+          <span class="text-xs font-medium px-2.5 py-1 bg-[var(--color-primary)]/10 text-[var(--color-primary)] rounded-full">Definition Workflow</span>
+          {wf.methodology?.name && <span class="text-xs text-[var(--color-text-subtle)]">{wf.methodology.name}</span>}
+        </div>
+        <h1 class="text-3xl md:text-4xl font-bold mb-3 font-mono">{wf.name}</h1>
+        <p class="text-lg text-[var(--color-text-muted)] max-w-3xl">{wf.description}</p>
+        {wf.name.startsWith('pbhq') ? (
+          <p class="text-sm text-[var(--color-text-muted)] mt-3 italic">
+            A ProductBuildersHQ original — the workflow PBHQ runs in
+            <a href="/products/visionstudio" class="text-[var(--color-primary)] hover:underline">VisionStudio</a> to
+            build its own products:
+            <a href="https://plexusone.dev" target="_blank" rel="noopener noreferrer" class="text-[var(--color-primary)] hover:underline">PlexusOne.dev</a>,
+            <a href="https://aistandards.io" target="_blank" rel="noopener noreferrer" class="text-[var(--color-primary)] hover:underline">AIStandards.io</a>,
+            ProductBuildersHQ itself — and VisionStudio, built with VisionStudio.
+          </p>
+        ) : wf.methodology?.name && (
+          <div class="mt-4 p-4 bg-[var(--color-bg-secondary)] border border-[var(--color-border-light)] rounded-lg text-sm text-[var(--color-text-muted)] leading-relaxed">
+            <span class="font-semibold text-[var(--color-text)]">Inspired by {wf.methodology.name}{wf.methodology.creator && ` (${wf.methodology.creator})`}.</span>{' '}
+            The methodology is its originators&rsquo; own published work, drawn from their public
+            writing and talks. ProductBuildersHQ has implemented it as a machine-readable workflow in
+            <a href="https://github.com/ProductBuildersHQ/specification-workflow-spec" target="_blank" rel="noopener noreferrer" class="text-[var(--color-primary)] hover:underline">{' '}specification-workflow-spec</a>{' '}
+            so it can be <strong class="text-[var(--color-text)]">automated</strong> — spec synthesis
+            and LLM-as-a-Judge evaluation via
+            <a href="/products/visionspec" class="text-[var(--color-primary)] hover:underline">{' '}VisionSpec</a>.
+            This encoding is an independent interpretation, not affiliated with or endorsed by its originators.
+            {wf.methodology.reference && (
+              <>{' '}<a href={wf.methodology.reference} target="_blank" rel="noopener noreferrer" class="text-[var(--color-primary)] hover:underline">Source &rarr;</a></>
+            )}
+          </div>
+        )}
+        {wf.methodology?.reference && (
+          <p class="text-sm mt-3"><a href={wf.methodology.reference} target="_blank" rel="noopener noreferrer" class="text-[var(--color-primary)] hover:underline no-underline">Methodology reference &rarr;</a></p>
+        )}
+      </div>
+
+      {wf.name === 'pbhq-lite' && (
+        <section class="mb-12">
+          <h2 class="text-xl font-semibold mb-2">The Four-Quadrant Minimum</h2>
+          <p class="text-sm text-[var(--color-text-muted)] mb-6 max-w-3xl">
+            One document per quadrant: <strong>Definition vs. Execution</strong> crossed with
+            <strong> Narrative vs. Structured</strong>. The same split that keeps the PLAN&rsquo;s
+            story separate from the ROADMAP&rsquo;s checklist also separates product judgment
+            (PRD) from machine-consumable contracts (TRD).
+          </p>
+          <div class="overflow-x-auto pb-2">
+            <div class="min-w-[640px] max-w-3xl">
+              <div class="grid grid-cols-[7.5rem_1fr_1fr] gap-2 items-stretch">
+                <div></div>
+                <div class="text-center text-xs font-semibold uppercase tracking-wider text-[var(--color-text-subtle)] pb-1">Narrative — for human judgment</div>
+                <div class="text-center text-xs font-semibold uppercase tracking-wider text-[var(--color-text-subtle)] pb-1">Structured — for machines &amp; agents</div>
+
+                <div class="flex items-center text-xs font-semibold uppercase tracking-wider text-[var(--color-text-subtle)]">Definition<br />what should exist</div>
+                <div class="p-4 bg-[var(--color-primary)]/5 border border-[var(--color-primary)]/40 rounded-lg">
+                  <span class="block font-mono text-sm font-semibold text-[var(--color-text)]">PRD</span>
+                  <span class="block text-sm text-[var(--color-text-muted)] mt-1">The what &amp; why — problem, goals, stories, success metrics</span>
+                  <span class="block text-[10px] uppercase tracking-wide text-[var(--color-text-subtle)] mt-2">changes on learning</span>
+                </div>
+                <div class="p-4 bg-[var(--color-primary)]/5 border border-[var(--color-primary)]/40 rounded-lg">
+                  <span class="block font-mono text-sm font-semibold text-[var(--color-text)]">TRD</span>
+                  <span class="block text-sm text-[var(--color-text-muted)] mt-1">The how — architecture, contracts, APIs, data models</span>
+                  <span class="block text-[10px] uppercase tracking-wide text-[var(--color-text-subtle)] mt-2">changes on architecture</span>
+                </div>
+
+                <div class="flex items-center text-xs font-semibold uppercase tracking-wider text-[var(--color-text-subtle)]">Execution<br />getting it shipped</div>
+                <div class="p-4 bg-[var(--color-accent)]/10 border border-[var(--color-accent)]/50 rounded-lg">
+                  <span class="block font-mono text-sm font-semibold text-[var(--color-text)]">PLAN</span>
+                  <span class="block text-sm text-[var(--color-text-muted)] mt-1">The narrative of the sequence — why this order, phases, dependencies</span>
+                  <span class="block text-[10px] uppercase tracking-wide text-[var(--color-text-subtle)] mt-2">changes on re-planning</span>
+                </div>
+                <div class="p-4 bg-[var(--color-accent)]/10 border border-[var(--color-accent)]/50 rounded-lg">
+                  <span class="block font-mono text-sm font-semibold text-[var(--color-text)]">ROADMAP</span>
+                  <span class="block text-sm text-[var(--color-text-muted)] mt-1">The checklist — machine-readable RMI ledger with stable IDs &amp; status</span>
+                  <span class="block text-[10px] uppercase tracking-wide text-[var(--color-text-subtle)] mt-2">changes every session</span>
+                </div>
+              </div>
+              <p class="text-xs text-[var(--color-text-subtle)] mt-3 text-right">Change cadence increases toward the bottom-right &searr; — the separations keep slow documents out of fast documents&rsquo; churn.</p>
+            </div>
+          </div>
+        </section>
+      )}
+
+      <section class="mb-12">
+        <h2 class="text-xl font-semibold mb-4">Specs in This Workflow</h2>
+        <div class="grid grid-cols-1 gap-3">
+          {specEntries.map((s) => (
+            <div class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 p-4 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-lg">
+              <a href={`/sdd/specs/${s.id}`} class="text-sm font-semibold text-[var(--color-primary)] no-underline hover:underline shrink-0 w-40">{specName(s.id)}</a>
+              <span class:list={['text-xs font-medium px-2 py-0.5 rounded-full shrink-0', s.required ? 'bg-[var(--color-primary)] text-white' : 'bg-[var(--color-bg-secondary)] text-[var(--color-text-muted)]']}>{s.required ? 'Required' : 'Optional'}</span>
+              {s.category && <span class="text-xs uppercase tracking-wide text-[var(--color-text-subtle)] shrink-0 w-20">{s.category}</span>}
+              <span class="text-sm text-[var(--color-text-muted)]">{s.note}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {synthesisEntries.length > 0 && (
+        <section class="mb-12">
+          <h2 class="text-xl font-semibold mb-2">Synthesis Rules</h2>
+          <p class="text-sm text-[var(--color-text-muted)] mb-4">How downstream specs are generated from upstream ones.</p>
+          <div class="grid grid-cols-1 gap-3">
+            {synthesisEntries.map((rule) => (
+              <div class="p-4 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-lg">
+                <div class="flex flex-wrap items-center gap-2 text-sm font-medium mb-1.5">
+                  {rule.sources.map((s, i) => (
+                    <>
+                      {i > 0 && <span class="text-[var(--color-text-subtle)]">+</span>}
+                      <a href={`/sdd/specs/${s}`} class="px-2 py-0.5 bg-[var(--color-bg-secondary)] text-[var(--color-text)] rounded no-underline hover:text-[var(--color-primary)]">{specName(s)}</a>
+                    </>
+                  ))}
+                  <span class="text-[var(--color-text-subtle)]" aria-hidden="true">&rarr;</span>
+                  <a href={`/sdd/specs/${rule.target}`} class="px-2 py-0.5 bg-[var(--color-primary)]/10 text-[var(--color-primary)] rounded no-underline hover:underline">{specName(rule.target)}</a>
+                </div>
+                {rule.guidance && <p class="text-sm text-[var(--color-text-muted)]">{rule.guidance}</p>}
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {wf.methodology?.principles && wf.methodology.principles.length > 0 && (
+        <section class="mb-12">
+          <h2 class="text-xl font-semibold mb-4">Methodology Principles</h2>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+            {wf.methodology.principles.map((p) => (
+              <div class="p-4 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-lg">
+                <span class="block text-sm font-semibold text-[var(--color-text)] mb-1">{p.name ?? p.id}</span>
+                {p.description && <span class="block text-sm text-[var(--color-text-muted)]">{p.description}</span>}
+              </div>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {relatedPipelines.length > 0 && (
+        <section class="mb-12">
+          <h2 class="text-xl font-semibold mb-4">Feeds Execution Via</h2>
+          <div class="grid grid-cols-1 gap-3">
+            {relatedPipelines.map((p) => (
+              <a href={`/sdd/execution/${p.execution.integration}`} class="group block p-4 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-lg no-underline hover:border-[var(--color-primary)] transition-all">
+                <span class="text-sm font-semibold text-[var(--color-text)] group-hover:text-[var(--color-primary)]">{p.name}</span>
+                <span class="block text-sm text-[var(--color-text-muted)] mt-1">{p.description}</span>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {(wf.template_specs?.length > 0 || wf.rubric_specs?.length > 0) && (
+        <section class="mb-6">
+          <h2 class="text-xl font-semibold mb-4">Included Assets</h2>
+          <p class="text-sm text-[var(--color-text-muted)]">
+            {wf.template_specs?.length > 0 && <>{wf.template_specs.length} document template{wf.template_specs.length === 1 ? '' : 's'}</>}
+            {wf.template_specs?.length > 0 && wf.rubric_specs?.length > 0 && <> &middot; </>}
+            {wf.rubric_specs?.length > 0 && <>{wf.rubric_specs.length} LLM-as-a-Judge rubric{wf.rubric_specs.length === 1 ? '' : 's'}</>}
+            &nbsp;— embedded in <a href="https://github.com/ProductBuildersHQ/specification-workflow-spec" class="text-[var(--color-primary)] hover:underline no-underline">specification-workflow-spec</a>.
+          </p>
+        </section>
+      )}
+    </div>
+  </div>
+</BaseLayout>

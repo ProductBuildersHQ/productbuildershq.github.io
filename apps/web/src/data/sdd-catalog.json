@@ -1,0 +1,5907 @@
+{
+  "version": "1",
+  "spec_types": [
+    {
+      "id": "mrd",
+      "name": "Market Requirements Document",
+      "shortName": "MRD",
+      "description": "Defines the market problem, customer segments, and business opportunity.",
+      "category": "source",
+      "authorship": "human",
+      "filename": "MRD.md",
+      "evalFilename": "MRD.eval.json",
+      "origins": [
+        "enterprise",
+        "aws-product",
+        "big-tech-product"
+      ]
+    },
+    {
+      "id": "prd",
+      "name": "Product Requirements Document",
+      "shortName": "PRD",
+      "description": "Defines product goals, user stories, and functional requirements.",
+      "category": "source",
+      "authorship": "human",
+      "filename": "PRD.md",
+      "evalFilename": "PRD.eval.json",
+      "origins": [
+        "startup",
+        "enterprise",
+        "big-tech"
+      ]
+    },
+    {
+      "id": "uxd",
+      "name": "User Experience Design",
+      "shortName": "UXD",
+      "description": "Defines user journeys, wireframes, and interaction patterns.",
+      "category": "source",
+      "authorship": "human",
+      "filename": "UXD.md",
+      "evalFilename": "UXD.eval.json",
+      "origins": [
+        "design-thinking",
+        "big-tech"
+      ]
+    },
+    {
+      "id": "opportunity-spec",
+      "name": "Opportunity Specification",
+      "shortName": "OpportunitySpec",
+      "description": "12-box canvas combining Patton discovery + Cagan business case for features.",
+      "category": "source",
+      "authorship": "human",
+      "filename": "OPPORTUNITY-SPEC.md",
+      "evalFilename": "OPPORTUNITY-SPEC.eval.json",
+      "origins": [
+        "aws-feature",
+        "big-tech-feature"
+      ],
+      "aliases": [
+        "opportunity-canvas"
+      ]
+    },
+    {
+      "id": "press",
+      "name": "Press Release",
+      "shortName": "Press",
+      "description": "Working Backwards customer announcement written before building.",
+      "category": "gtm",
+      "authorship": "synthesized",
+      "filename": "PRESS.md",
+      "evalFilename": "PRESS.eval.json",
+      "origins": [
+        "aws-product",
+        "aws-feature",
+        "big-tech"
+      ],
+      "aliases": [
+        "press-release",
+        "pr"
+      ]
+    },
+    {
+      "id": "faq",
+      "name": "Frequently Asked Questions",
+      "shortName": "FAQ",
+      "description": "Challenges assumptions with internal and external questions.",
+      "category": "gtm",
+      "authorship": "synthesized",
+      "filename": "FAQ.md",
+      "evalFilename": "FAQ.eval.json",
+      "origins": [
+        "aws-product",
+        "aws-feature",
+        "big-tech"
+      ]
+    },
+    {
+      "id": "narrative-6p",
+      "name": "Six-Pager Narrative",
+      "shortName": "6-Pager",
+      "description": "Amazon-style narrative document for stakeholder alignment.",
+      "category": "gtm",
+      "authorship": "synthesized",
+      "filename": "NARRATIVE-6P.md",
+      "evalFilename": "NARRATIVE-6P.eval.json",
+      "origins": [
+        "aws-product",
+        "big-tech-product"
+      ],
+      "aliases": [
+        "6-pager",
+        "six-pager",
+        "narrative"
+      ]
+    },
+    {
+      "id": "narrative-1p",
+      "name": "One-Pager Executive Summary",
+      "shortName": "1-Pager",
+      "description": "Executive summary for quick stakeholder review.",
+      "category": "gtm",
+      "authorship": "synthesized",
+      "filename": "NARRATIVE-1P.md",
+      "evalFilename": "NARRATIVE-1P.eval.json",
+      "origins": [
+        "enterprise",
+        "big-tech"
+      ],
+      "aliases": [
+        "1-pager",
+        "one-pager",
+        "exec-summary"
+      ]
+    },
+    {
+      "id": "bmc",
+      "name": "Business Model Canvas",
+      "shortName": "BMC",
+      "description": "9-block business model visualization extracted from MRD.",
+      "category": "gtm",
+      "authorship": "synthesized",
+      "filename": "BMC.md",
+      "evalFilename": "BMC.eval.json",
+      "origins": [
+        "enterprise",
+        "lean-startup"
+      ]
+    },
+    {
+      "id": "trd",
+      "name": "Technical Requirements Document",
+      "shortName": "TRD",
+      "description": "Defines architecture, components, APIs, and technical approach.",
+      "category": "technical",
+      "authorship": "synthesized",
+      "filename": "TRD.md",
+      "evalFilename": "TRD.eval.json",
+      "origins": [
+        "enterprise",
+        "google",
+        "big-tech"
+      ],
+      "aliases": [
+        "design-doc",
+        "technical-design"
+      ]
+    },
+    {
+      "id": "tpd",
+      "name": "Test Plan Document",
+      "shortName": "TPD",
+      "description": "Defines test strategy, coverage requirements, and validation approach.",
+      "category": "technical",
+      "authorship": "synthesized",
+      "filename": "TPD.md",
+      "evalFilename": "TPD.eval.json",
+      "origins": [
+        "enterprise",
+        "big-tech"
+      ],
+      "aliases": [
+        "test-plan"
+      ]
+    },
+    {
+      "id": "ird",
+      "name": "Infrastructure Requirements Document",
+      "shortName": "IRD",
+      "description": "Defines deployment, scaling, and operational requirements.",
+      "category": "technical",
+      "authorship": "synthesized",
+      "filename": "IRD.md",
+      "evalFilename": "IRD.eval.json",
+      "origins": [
+        "enterprise",
+        "big-tech-product"
+      ],
+      "aliases": [
+        "infra-doc"
+      ]
+    },
+    {
+      "id": "plan",
+      "name": "Implementation Plan",
+      "shortName": "PLAN",
+      "description": "Sequences work into phases with dependencies and milestones.",
+      "category": "execution",
+      "authorship": "hybrid",
+      "filename": "PLAN.md",
+      "origins": [
+        "pbhq-lite"
+      ]
+    },
+    {
+      "id": "roadmap",
+      "name": "Roadmap",
+      "shortName": "ROADMAP",
+      "description": "Tracks RMIs (Roadmap Items) with status and progress.",
+      "category": "execution",
+      "authorship": "hybrid",
+      "filename": "ROADMAP.md",
+      "origins": [
+        "pbhq-lite"
+      ]
+    },
+    {
+      "id": "spec",
+      "name": "Reconciled Specification",
+      "shortName": "SPEC",
+      "description": "Unified execution spec reconciling all source documents.",
+      "category": "output",
+      "authorship": "synthesized",
+      "filename": "spec.md",
+      "origins": [
+        "enterprise"
+      ]
+    },
+    {
+      "id": "hypothesis",
+      "name": "Hypothesis Document",
+      "shortName": "Hypothesis",
+      "description": "Core hypothesis to validate in Build-Measure-Learn cycles.",
+      "category": "source",
+      "authorship": "human",
+      "filename": "HYPOTHESIS.md",
+      "origins": [
+        "lean-startup",
+        "0-1"
+      ]
+    },
+    {
+      "id": "shapeup-pitch",
+      "name": "Shape Up Pitch",
+      "shortName": "Pitch",
+      "description": "Shaped problem and solution with appetite (Basecamp).",
+      "category": "source",
+      "authorship": "human",
+      "filename": "PITCH.md",
+      "origins": [
+        "shapeup"
+      ]
+    },
+    {
+      "id": "ost",
+      "name": "Opportunity Solution Tree",
+      "shortName": "OST",
+      "description": "Maps outcomes to opportunities to solutions (Teresa Torres).",
+      "category": "source",
+      "authorship": "human",
+      "filename": "OST.md",
+      "origins": [
+        "continuous-discovery"
+      ]
+    }
+  ],
+  "workflows": [
+    {
+      "name": "0-1",
+      "description": "Minimal configuration for 0-1 product development. Focus on hypothesis validation.",
+      "spec_config": {
+        "experiment": {
+          "required": false,
+          "category": "source",
+          "description": "Experiment card for hypothesis testing"
+        },
+        "faq": {
+          "required": false,
+          "category": "gtm"
+        },
+        "hypothesis": {
+          "required": true,
+          "category": "source",
+          "description": "Core hypothesis to validate"
+        },
+        "ird": {
+          "required": false,
+          "category": "technical"
+        },
+        "lean-canvas": {
+          "required": false,
+          "category": "source",
+          "description": "Lean Canvas for business model hypothesis"
+        },
+        "mrd": {
+          "required": false,
+          "category": "source"
+        },
+        "narrative-1p": {
+          "required": false,
+          "category": "gtm"
+        },
+        "narrative-6p": {
+          "required": false,
+          "category": "gtm"
+        },
+        "prd": {
+          "required": false,
+          "category": "source"
+        },
+        "press": {
+          "required": false,
+          "category": "gtm"
+        },
+        "trd": {
+          "required": false,
+          "category": "technical"
+        },
+        "uxd": {
+          "required": false,
+          "category": "source"
+        }
+      },
+      "template_specs": [
+        "experiment",
+        "hypothesis",
+        "lean-canvas"
+      ],
+      "rubric_specs": [
+        "experiment",
+        "hypothesis",
+        "lean-canvas"
+      ]
+    },
+    {
+      "name": "aws-feature",
+      "description": "Amazon Working Backwards methodology for feature-level opportunities. Starts with OpportunitySpec (merged Patton + Cagan), uses PR/FAQ-driven development.",
+      "methodology": {
+        "name": "Amazon Working Backwards (Feature)",
+        "description": "For features on existing product lines, OpportunitySpec replaces MRD as the\nstarting document. OpportunitySpec combines Patton's discovery-focused\nOpportunity Canvas with Cagan's business-case-focused SVPG Assessment.\n",
+        "principles": [
+          {
+            "id": "customer_obsession",
+            "name": "Customer Obsession",
+            "description": "Start with the customer and work backwards"
+          },
+          {
+            "id": "ownership",
+            "name": "Ownership",
+            "description": "Think long-term, act on behalf of the entire company"
+          },
+          {
+            "id": "invent_and_simplify",
+            "name": "Invent And Simplify",
+            "description": "Find simplifying assumptions, expect innovation"
+          },
+          {
+            "id": "are_right_a_lot",
+            "name": "Are Right A Lot",
+            "description": "Seek diverse perspectives, disconfirm beliefs"
+          },
+          {
+            "id": "insist_on_highest_standards",
+            "name": "Insist On Highest Standards",
+            "description": "Relentlessly high standards"
+          },
+          {
+            "id": "think_big",
+            "name": "Think Big",
+            "description": "Create bold direction, look around corners"
+          },
+          {
+            "id": "bias_for_action",
+            "name": "Bias For Action",
+            "description": "Speed matters, two-way door decisions"
+          },
+          {
+            "id": "frugality",
+            "name": "Frugality",
+            "description": "Accomplish more with less"
+          },
+          {
+            "id": "earn_trust",
+            "name": "Earn Trust",
+            "description": "Vocally self-critical, benchmark against best"
+          },
+          {
+            "id": "deep_dive",
+            "name": "Deep Dive",
+            "description": "Stay connected to details, narratives expose gaps"
+          },
+          {
+            "id": "have_backbone",
+            "name": "Have Backbone",
+            "description": "Disagree and commit, truth-seeking over social cohesion"
+          },
+          {
+            "id": "deliver_results",
+            "name": "Deliver Results",
+            "description": "Focus on inputs, launch is the starting line"
+          }
+        ]
+      },
+      "spec_config": {
+        "bmc": {
+          "required": false,
+          "category": "gtm",
+          "description": "Business Model Canvas extracted from MRD for stakeholder review"
+        },
+        "faq": {
+          "required": true,
+          "category": "gtm"
+        },
+        "ird": {
+          "required": false,
+          "category": "technical",
+          "description": "Infrastructure requirements"
+        },
+        "mrd": {
+          "required": false,
+          "category": "source"
+        },
+        "narrative-1p": {
+          "required": false,
+          "category": "gtm"
+        },
+        "narrative-6p": {
+          "required": true,
+          "category": "gtm"
+        },
+        "opportunity-spec": {
+          "required": true,
+          "category": "source",
+          "description": "12-box canvas combining Patton (discovery) + Cagan (business case)"
+        },
+        "prd": {
+          "required": true,
+          "category": "source"
+        },
+        "press": {
+          "required": true,
+          "category": "gtm"
+        },
+        "spec": {
+          "required": true,
+          "category": "output"
+        },
+        "tpd": {
+          "required": true,
+          "category": "technical",
+          "description": "Test plan document"
+        },
+        "trd": {
+          "required": true,
+          "category": "technical"
+        },
+        "uxd": {
+          "required": true,
+          "category": "source"
+        }
+      },
+      "synthesis": {
+        "bmc": {
+          "sources": [
+            "mrd"
+          ],
+          "guidance": "Extract Business Model Canvas blocks from MRD sections 2-11. Format as standalone canvas for visual review."
+        },
+        "faq": {
+          "sources": [
+            "opportunity-spec",
+            "press"
+          ],
+          "prompt_context": "Generate FAQ from the OpportunitySpec and Press Release. Include questions about:\n- Users \u0026 Problem: Who is this for? Why is this a problem?\n- Current Solutions: How do people solve this today?\n- Competitive Edge: Why us? Why not competitors?\n- Market \u0026 Timing: Why now?\n- Critical Requirements: What must be true?\n- Risks \u0026 Assumptions: What could go wrong?\n"
+        },
+        "prd": {
+          "sources": [
+            "opportunity-spec",
+            "press",
+            "faq"
+          ]
+        },
+        "press": {
+          "sources": [
+            "opportunity-spec"
+          ],
+          "prompt_context": "Generate a Press Release from the OpportunitySpec. Focus on:\n- User Value (Box 4) for the headline and customer benefit\n- Users \u0026 Problem (Box 1) for the problem statement\n- Solution Ideas (Box 3) for the solution description\n- Business Value (Box 5) and Competitive Edge (Box 6) for differentiation\n- Success Metrics (Box 9) for measurable outcomes\n"
+        },
+        "spec": {
+          "sources": [
+            "mrd",
+            "prd",
+            "uxd",
+            "trd",
+            "tpd"
+          ],
+          "guidance": "Unified specification consolidating all approved specs."
+        },
+        "tpd": {
+          "sources": [
+            "prd",
+            "trd"
+          ],
+          "guidance": "Test plan covering all PRD requirements with traceability."
+        },
+        "trd": {
+          "sources": [
+            "prd",
+            "uxd"
+          ],
+          "guidance": "Technical design to support PRD requirements."
+        }
+      },
+      "template_specs": [
+        "faq",
+        "ird",
+        "mrd",
+        "narrative-1p",
+        "narrative-6p",
+        "prd",
+        "press",
+        "spec",
+        "tpd",
+        "trd",
+        "uxd"
+      ],
+      "rubric_specs": [
+        "faq",
+        "ird",
+        "mrd",
+        "narrative-1p",
+        "narrative-6p",
+        "prd",
+        "press",
+        "spec",
+        "tpd",
+        "trd",
+        "uxd"
+      ]
+    },
+    {
+      "name": "aws-product",
+      "description": "Amazon Working Backwards methodology for new product lines. Starts with MRD, uses PR/FAQ-driven development with emphasis on customer obsession, ownership, and high standards.",
+      "methodology": {
+        "name": "Amazon Working Backwards",
+        "principles": [
+          {
+            "id": "customer_obsession",
+            "name": "Customer Obsession",
+            "description": "Start with the customer and work backwards"
+          },
+          {
+            "id": "ownership",
+            "name": "Ownership",
+            "description": "Think long-term, act on behalf of the entire company"
+          },
+          {
+            "id": "invent_and_simplify",
+            "name": "Invent And Simplify",
+            "description": "Find simplifying assumptions, expect innovation"
+          },
+          {
+            "id": "are_right_a_lot",
+            "name": "Are Right A Lot",
+            "description": "Seek diverse perspectives, disconfirm beliefs"
+          },
+          {
+            "id": "insist_on_highest_standards",
+            "name": "Insist On Highest Standards",
+            "description": "Relentlessly high standards"
+          },
+          {
+            "id": "think_big",
+            "name": "Think Big",
+            "description": "Create bold direction, look around corners"
+          },
+          {
+            "id": "bias_for_action",
+            "name": "Bias For Action",
+            "description": "Speed matters, two-way door decisions"
+          },
+          {
+            "id": "frugality",
+            "name": "Frugality",
+            "description": "Accomplish more with less"
+          },
+          {
+            "id": "earn_trust",
+            "name": "Earn Trust",
+            "description": "Vocally self-critical, benchmark against best"
+          },
+          {
+            "id": "deep_dive",
+            "name": "Deep Dive",
+            "description": "Stay connected to details, narratives expose gaps"
+          },
+          {
+            "id": "have_backbone",
+            "name": "Have Backbone",
+            "description": "Disagree and commit, truth-seeking over social cohesion"
+          },
+          {
+            "id": "deliver_results",
+            "name": "Deliver Results",
+            "description": "Focus on inputs, launch is the starting line"
+          }
+        ]
+      },
+      "spec_config": {
+        "bmc": {
+          "required": false,
+          "category": "gtm",
+          "description": "Business Model Canvas extracted from MRD for stakeholder review"
+        },
+        "faq": {
+          "required": true,
+          "category": "gtm"
+        },
+        "ird": {
+          "required": false,
+          "category": "technical",
+          "description": "Infrastructure requirements"
+        },
+        "mrd": {
+          "required": true,
+          "category": "source",
+          "description": "Market requirements with embedded Business Model Canvas"
+        },
+        "narrative-1p": {
+          "required": false,
+          "category": "gtm"
+        },
+        "narrative-6p": {
+          "required": true,
+          "category": "gtm"
+        },
+        "prd": {
+          "required": true,
+          "category": "source"
+        },
+        "press": {
+          "required": true,
+          "category": "gtm"
+        },
+        "spec": {
+          "required": true,
+          "category": "output"
+        },
+        "tpd": {
+          "required": true,
+          "category": "technical",
+          "description": "Test plan document"
+        },
+        "trd": {
+          "required": true,
+          "category": "technical"
+        },
+        "uxd": {
+          "required": true,
+          "category": "source"
+        }
+      },
+      "synthesis": {
+        "bmc": {
+          "sources": [
+            "mrd"
+          ],
+          "guidance": "Extract Business Model Canvas blocks from MRD. Focus on customer obsession and working backwards."
+        },
+        "faq": {
+          "sources": [
+            "mrd",
+            "press"
+          ],
+          "guidance": "Challenge assumptions ruthlessly. Include internal stakeholder and customer questions."
+        },
+        "narrative-6p": {
+          "sources": [
+            "mrd",
+            "press",
+            "faq"
+          ],
+          "guidance": "Amazon 6-pager format. Data-driven narrative, no slides."
+        },
+        "prd": {
+          "sources": [
+            "mrd",
+            "press",
+            "faq"
+          ],
+          "guidance": "Derive product requirements from market requirements. Map to customer segments."
+        },
+        "press": {
+          "sources": [
+            "mrd"
+          ],
+          "guidance": "Write from customer perspective. Customer obsession is key."
+        },
+        "spec": {
+          "sources": [
+            "mrd",
+            "prd",
+            "uxd",
+            "trd",
+            "tpd"
+          ],
+          "guidance": "Unified specification consolidating all approved specs."
+        },
+        "tpd": {
+          "sources": [
+            "prd",
+            "trd"
+          ],
+          "guidance": "Test plan covering all PRD requirements with traceability."
+        },
+        "trd": {
+          "sources": [
+            "prd",
+            "uxd"
+          ],
+          "guidance": "Technical design to support PRD requirements."
+        }
+      },
+      "template_specs": [
+        "faq",
+        "ird",
+        "mrd",
+        "narrative-1p",
+        "narrative-6p",
+        "prd",
+        "press",
+        "spec",
+        "tpd",
+        "trd",
+        "uxd"
+      ],
+      "rubric_specs": [
+        "faq",
+        "ird",
+        "mrd",
+        "narrative-1p",
+        "narrative-6p",
+        "prd",
+        "press",
+        "spec",
+        "tpd",
+        "trd",
+        "uxd"
+      ]
+    },
+    {
+      "name": "big-tech",
+      "description": "Comprehensive \"best of all worlds\" profile combining practices from 10 leading methodologies:\n- AWS Working Backwards (customer obsession, PR/FAQ, 6-pager)\n- Google Design Docs (OKRs, tradeoffs, alternatives, experimentation)\n- Stripe API-First (developer experience, documentation quality)\n- Netflix Freedom \u0026 Responsibility (context not control, transparency)\n- Spotify Bets (autonomous squads, fail fast)\n- Meta (move fast, bold bets)\n- Apple (DRI, focus)\n- Microsoft (growth mindset, accessibility)\n- Basecamp Shape Up (appetite, pitches, hill charts, circuit breaker)\n- Teresa Torres Continuous Discovery (weekly touchpoints, OST, assumption testing)\n",
+      "methodology": {
+        "name": "Big Tech Best Practices",
+        "principles": [
+          {
+            "id": "customer_obsession",
+            "name": "Customer Obsession",
+            "description": "Start with the customer and work backwards (Amazon)"
+          },
+          {
+            "id": "developer_experience",
+            "name": "Developer Experience",
+            "description": "Optimize for developer productivity (Stripe)"
+          },
+          {
+            "id": "accessibility_first",
+            "name": "Accessibility First",
+            "description": "Design for everyone from the start (Microsoft)"
+          },
+          {
+            "id": "ten_x_thinking",
+            "name": "Ten X Thinking",
+            "description": "Aim for 10x improvement, not 10% (Google)"
+          },
+          {
+            "id": "working_backwards",
+            "name": "Working Backwards",
+            "description": "Write the press release first (Amazon)"
+          },
+          {
+            "id": "bold_bets",
+            "name": "Bold Bets",
+            "description": "Take big swings on transformative ideas (Meta)"
+          },
+          {
+            "id": "bets_not_projects",
+            "name": "Bets Not Projects",
+            "description": "Frame work as bets with explicit risk (Spotify)"
+          },
+          {
+            "id": "explicit_tradeoffs",
+            "name": "Explicit Tradeoffs",
+            "description": "Every decision has costs; make them visible (Google)"
+          },
+          {
+            "id": "alternatives_considered",
+            "name": "Alternatives Considered",
+            "description": "Always evaluate multiple approaches (Google)"
+          },
+          {
+            "id": "data_driven",
+            "name": "Data Driven",
+            "description": "Decisions backed by data and experiments (Google)"
+          },
+          {
+            "id": "bias_for_action",
+            "name": "Bias For Action",
+            "description": "Speed matters; two-way door decisions (Amazon)"
+          },
+          {
+            "id": "reversibility",
+            "name": "Reversibility",
+            "description": "Prefer reversible decisions (Google)"
+          },
+          {
+            "id": "dri",
+            "name": "Dri",
+            "description": "Directly Responsible Individual for every decision (Apple)"
+          },
+          {
+            "id": "highest_standards",
+            "name": "Highest Standards",
+            "description": "Relentlessly high standards (Amazon)"
+          },
+          {
+            "id": "api_first",
+            "name": "Api First",
+            "description": "Design the interface before implementation (Stripe)"
+          },
+          {
+            "id": "documentation_quality",
+            "name": "Documentation Quality",
+            "description": "Docs are part of the product (Stripe)"
+          },
+          {
+            "id": "non_goals",
+            "name": "Non Goals",
+            "description": "What we won't do is as important as what we will (Google)"
+          },
+          {
+            "id": "say_no",
+            "name": "Say No",
+            "description": "Focus means saying no to good ideas (Apple)"
+          },
+          {
+            "id": "peer_review",
+            "name": "Peer Review",
+            "description": "RFCs ensure diverse perspectives (Google)"
+          },
+          {
+            "id": "disagree_and_commit",
+            "name": "Disagree And Commit",
+            "description": "Truth-seeking, then commit (Amazon)"
+          },
+          {
+            "id": "context_not_control",
+            "name": "Context Not Control",
+            "description": "Provide context, not commands (Netflix)"
+          },
+          {
+            "id": "radical_transparency",
+            "name": "Radical Transparency",
+            "description": "Default to open (Netflix)"
+          },
+          {
+            "id": "ownership",
+            "name": "Ownership",
+            "description": "Think long-term, end-to-end ownership (Amazon)"
+          },
+          {
+            "id": "incremental_delivery",
+            "name": "Incremental Delivery",
+            "description": "Ship small, ship often (Stripe)"
+          },
+          {
+            "id": "launch_and_iterate",
+            "name": "Launch And Iterate",
+            "description": "Ship, measure, improve (Google)"
+          },
+          {
+            "id": "move_fast",
+            "name": "Move Fast",
+            "description": "Speed is a competitive advantage (Meta)"
+          },
+          {
+            "id": "fail_fast_learn_fast",
+            "name": "Fail Fast Learn Fast",
+            "description": "Quick experiments over long planning (Spotify)"
+          },
+          {
+            "id": "freedom_and_responsibility",
+            "name": "Freedom And Responsibility",
+            "description": "Freedom with accountability (Netflix)"
+          },
+          {
+            "id": "highly_aligned_loosely_coupled",
+            "name": "Highly Aligned Loosely Coupled",
+            "description": "Align strategy, decouple execution (Netflix)"
+          },
+          {
+            "id": "autonomous_squads",
+            "name": "Autonomous Squads",
+            "description": "Small teams with ownership (Spotify)"
+          },
+          {
+            "id": "growth_mindset",
+            "name": "Growth Mindset",
+            "description": "Learn from failure (Microsoft)"
+          },
+          {
+            "id": "frugality",
+            "name": "Frugality",
+            "description": "Constraints breed resourcefulness (Amazon)"
+          },
+          {
+            "id": "fixed_time_variable_scope",
+            "name": "Fixed Time Variable Scope",
+            "description": "Appetite sets time; scope flexes (Basecamp)"
+          },
+          {
+            "id": "appetite_not_estimates",
+            "name": "Appetite Not Estimates",
+            "description": "How much is it worth, not how long (Basecamp)"
+          },
+          {
+            "id": "shaping",
+            "name": "Shaping",
+            "description": "Define at right abstraction level (Basecamp)"
+          },
+          {
+            "id": "betting_not_planning",
+            "name": "Betting Not Planning",
+            "description": "No backlogs; bet on pitches (Basecamp)"
+          },
+          {
+            "id": "circuit_breaker",
+            "name": "Circuit Breaker",
+            "description": "Stop failures early, don't drag out (Basecamp)"
+          },
+          {
+            "id": "rabbit_holes",
+            "name": "Rabbit Holes",
+            "description": "Identify scope traps upfront (Basecamp)"
+          },
+          {
+            "id": "weekly_touchpoints",
+            "name": "Weekly Touchpoints",
+            "description": "Talk to customers every week (Torres)"
+          },
+          {
+            "id": "story_based_interviews",
+            "name": "Story Based Interviews",
+            "description": "Collect stories, not opinions (Torres)"
+          },
+          {
+            "id": "opportunity_solution_trees",
+            "name": "Opportunity Solution Trees",
+            "description": "Visualize outcome to solution path (Torres)"
+          },
+          {
+            "id": "assumption_testing",
+            "name": "Assumption Testing",
+            "description": "Test riskiest assumptions first (Torres)"
+          },
+          {
+            "id": "compare_and_contrast",
+            "name": "Compare And Contrast",
+            "description": "Test multiple solutions in parallel (Torres)"
+          },
+          {
+            "id": "product_trio",
+            "name": "Product Trio",
+            "description": "PM, Design, Engineering collaborate (Torres)"
+          }
+        ],
+        "artifacts": [
+          {
+            "id": "press_release",
+            "description": "Customer announcement (Amazon)"
+          },
+          {
+            "id": "faq",
+            "description": "Challenge assumptions (Amazon)"
+          },
+          {
+            "id": "six_pager",
+            "description": "Narrative document (Amazon)"
+          },
+          {
+            "id": "design_doc",
+            "description": "Technical specification with tradeoffs (Google)"
+          },
+          {
+            "id": "rfc",
+            "description": "Request for comments (Google)"
+          },
+          {
+            "id": "okr",
+            "description": "Objectives and key results (Google)"
+          },
+          {
+            "id": "experiment_plan",
+            "description": "Hypothesis-driven validation (Google/Spotify)"
+          },
+          {
+            "id": "api_spec",
+            "description": "Interface-first design (Stripe)"
+          },
+          {
+            "id": "bet_brief",
+            "description": "Explicit risk and outcome framing (Spotify)"
+          },
+          {
+            "id": "pitch",
+            "description": "Shaped problem and solution with appetite (Basecamp)"
+          },
+          {
+            "id": "hill_chart",
+            "description": "Progress tracking by uncertainty phase (Basecamp)"
+          },
+          {
+            "id": "scope_map",
+            "description": "Scopes with hill positions (Basecamp)"
+          },
+          {
+            "id": "ost",
+            "description": "Opportunity Solution Tree (Torres)"
+          },
+          {
+            "id": "discovery_snapshot",
+            "description": "Weekly discovery summary (Torres)"
+          },
+          {
+            "id": "assumption_map",
+            "description": "Risk matrix by assumption type (Torres)"
+          },
+          {
+            "id": "experience_map",
+            "description": "Customer journey phases (Torres)"
+          }
+        ]
+      },
+      "spec_config": {
+        "assumption-map": {
+          "required": false,
+          "category": "source",
+          "description": "Risk matrix by assumption type (DVFUE)"
+        },
+        "bmc": {
+          "required": false,
+          "category": "gtm",
+          "description": "Business Model Canvas extracted from MRD for stakeholder review"
+        },
+        "discovery-snapshot": {
+          "required": false,
+          "category": "tracking",
+          "description": "Weekly discovery summary with interviews and learnings"
+        },
+        "faq": {
+          "required": true,
+          "category": "gtm",
+          "description": "Challenge assumptions, internal and external"
+        },
+        "ird": {
+          "required": false,
+          "category": "technical",
+          "description": "Infrastructure requirements"
+        },
+        "mrd": {
+          "required": true,
+          "category": "source",
+          "description": "Market requirements with OKR alignment"
+        },
+        "narrative-1p": {
+          "required": false,
+          "category": "gtm",
+          "description": "Executive summary"
+        },
+        "narrative-6p": {
+          "required": false,
+          "category": "gtm",
+          "description": "Amazon-style 6-pager for major initiatives"
+        },
+        "ost": {
+          "required": false,
+          "category": "source",
+          "description": "Opportunity Solution Tree linking outcome to solutions"
+        },
+        "prd": {
+          "required": true,
+          "category": "source",
+          "description": "Product requirements with API contracts"
+        },
+        "press": {
+          "required": true,
+          "category": "gtm",
+          "description": "Working backwards press release"
+        },
+        "shapeup-pitch": {
+          "required": false,
+          "category": "source",
+          "description": "Shaped pitch with appetite, problem, solution, rabbit holes"
+        },
+        "shapeup-scope": {
+          "required": false,
+          "category": "tracking",
+          "description": "Scopes with hill chart positions for execution tracking"
+        },
+        "spec": {
+          "required": true,
+          "category": "output"
+        },
+        "tpd": {
+          "required": true,
+          "category": "technical",
+          "description": "Test plan with experiment design"
+        },
+        "trd": {
+          "required": true,
+          "category": "technical",
+          "description": "Design doc with alternatives and explicit tradeoffs"
+        },
+        "uxd": {
+          "required": true,
+          "category": "source",
+          "description": "User experience with developer experience considerations"
+        }
+      },
+      "synthesis": {
+        "bmc": {
+          "sources": [
+            "mrd"
+          ],
+          "guidance": "Extract Business Model Canvas blocks from MRD sections 2-11. Format as standalone canvas for visual review."
+        },
+        "faq": {
+          "sources": [
+            "mrd",
+            "press"
+          ],
+          "guidance": "Include internal stakeholder questions and API/DX concerns"
+        },
+        "prd": {
+          "sources": [
+            "mrd",
+            "press",
+            "faq"
+          ],
+          "guidance": "Include API contracts, non-goals, and success metrics"
+        },
+        "press": {
+          "sources": [
+            "mrd"
+          ],
+          "guidance": "Write from customer perspective, include measurable outcomes (OKRs)"
+        },
+        "spec": {
+          "sources": [
+            "mrd",
+            "prd",
+            "uxd",
+            "trd",
+            "tpd"
+          ],
+          "guidance": "Unified specification consolidating all approved specs."
+        },
+        "tpd": {
+          "sources": [
+            "prd",
+            "trd"
+          ],
+          "guidance": "Include experiment design with hypothesis and success criteria"
+        },
+        "trd": {
+          "sources": [
+            "prd",
+            "uxd"
+          ],
+          "guidance": "Include alternatives considered, explicit tradeoffs, and reversibility assessment"
+        }
+      },
+      "evaluation": {
+        "pass_threshold": 80,
+        "partial_threshold": 60
+      },
+      "template_specs": [
+        "faq",
+        "ird",
+        "mrd",
+        "narrative-1p",
+        "prd",
+        "press",
+        "spec",
+        "tpd",
+        "trd",
+        "uxd"
+      ],
+      "rubric_specs": [
+        "faq",
+        "ird",
+        "mrd",
+        "narrative-1p",
+        "prd",
+        "press",
+        "spec",
+        "tpd",
+        "trd",
+        "uxd"
+      ]
+    },
+    {
+      "name": "big-tech-essentials",
+      "description": "Streamlined big-tech profile combining core practices from 3 leading methodologies:\n- AWS Working Backwards (customer obsession, PR/FAQ, 6-pager)\n- Google Design Docs (OKRs, tradeoffs, alternatives)\n- Stripe API-First (developer experience, documentation quality)\n\nThis profile provides the essential big-tech rigor without the full 10-company synthesis.\nTeams get the core DNA (customer obsession, data-driven decisions, API-first thinking)\nwith simplified evaluation criteria.\n\nFor the full synthesis including Netflix, Spotify, Meta, Apple, Microsoft, Basecamp,\nand Teresa Torres practices, use big-tech-product or big-tech-feature instead.\n",
+      "methodology": {
+        "name": "Big Tech Essentials",
+        "principles": [
+          {
+            "id": "customer_obsession",
+            "name": "Customer Obsession",
+            "description": "Start with the customer and work backwards (Amazon)"
+          },
+          {
+            "id": "developer_experience",
+            "name": "Developer Experience",
+            "description": "Optimize for developer productivity (Stripe)"
+          },
+          {
+            "id": "working_backwards",
+            "name": "Working Backwards",
+            "description": "Write the press release first (Amazon)"
+          },
+          {
+            "id": "explicit_tradeoffs",
+            "name": "Explicit Tradeoffs",
+            "description": "Every decision has costs; make them visible (Google)"
+          },
+          {
+            "id": "alternatives_considered",
+            "name": "Alternatives Considered",
+            "description": "Always evaluate multiple approaches (Google)"
+          },
+          {
+            "id": "data_driven",
+            "name": "Data Driven",
+            "description": "Decisions backed by data and experiments (Google)"
+          },
+          {
+            "id": "bias_for_action",
+            "name": "Bias For Action",
+            "description": "Speed matters; two-way door decisions (Amazon)"
+          },
+          {
+            "id": "reversibility",
+            "name": "Reversibility",
+            "description": "Prefer reversible decisions (Google)"
+          },
+          {
+            "id": "highest_standards",
+            "name": "Highest Standards",
+            "description": "Relentlessly high standards (Amazon)"
+          },
+          {
+            "id": "api_first",
+            "name": "Api First",
+            "description": "Design the interface before implementation (Stripe)"
+          },
+          {
+            "id": "documentation_quality",
+            "name": "Documentation Quality",
+            "description": "Docs are part of the product (Stripe)"
+          },
+          {
+            "id": "non_goals",
+            "name": "Non Goals",
+            "description": "What we won't do is as important as what we will (Google)"
+          },
+          {
+            "id": "peer_review",
+            "name": "Peer Review",
+            "description": "Design reviews ensure diverse perspectives (Google)"
+          },
+          {
+            "id": "disagree_and_commit",
+            "name": "Disagree And Commit",
+            "description": "Truth-seeking, then commit (Amazon)"
+          },
+          {
+            "id": "ownership",
+            "name": "Ownership",
+            "description": "Think long-term, end-to-end ownership (Amazon)"
+          },
+          {
+            "id": "incremental_delivery",
+            "name": "Incremental Delivery",
+            "description": "Ship small, ship often (Stripe)"
+          }
+        ],
+        "artifacts": [
+          {
+            "id": "press_release",
+            "description": "Customer announcement (Amazon)"
+          },
+          {
+            "id": "faq",
+            "description": "Challenge assumptions (Amazon)"
+          },
+          {
+            "id": "six_pager",
+            "description": "Narrative document (Amazon)"
+          },
+          {
+            "id": "design_doc",
+            "description": "Technical specification with tradeoffs (Google)"
+          },
+          {
+            "id": "okr",
+            "description": "Objectives and key results (Google)"
+          },
+          {
+            "id": "api_spec",
+            "description": "Interface-first design (Stripe)"
+          }
+        ]
+      },
+      "spec_config": {
+        "bmc": {
+          "required": false,
+          "category": "gtm",
+          "description": "Business Model Canvas extracted from MRD for stakeholder review"
+        },
+        "faq": {
+          "required": true,
+          "category": "gtm",
+          "description": "Challenge assumptions, internal and external"
+        },
+        "ird": {
+          "required": false,
+          "category": "technical",
+          "description": "Infrastructure requirements"
+        },
+        "mrd": {
+          "required": true,
+          "category": "source",
+          "description": "Market requirements with OKR alignment"
+        },
+        "narrative-1p": {
+          "required": false,
+          "category": "gtm",
+          "description": "Executive summary"
+        },
+        "narrative-6p": {
+          "required": false,
+          "category": "gtm",
+          "description": "Amazon-style 6-pager for major initiatives"
+        },
+        "ost": {
+          "required": false,
+          "category": "source",
+          "description": "Use big-tech-product for Continuous Discovery integration"
+        },
+        "prd": {
+          "required": true,
+          "category": "source",
+          "description": "Product requirements with API contracts"
+        },
+        "press": {
+          "required": true,
+          "category": "gtm",
+          "description": "Working backwards press release"
+        },
+        "shapeup-pitch": {
+          "required": false,
+          "category": "source",
+          "description": "Use big-tech-product for Shape Up integration"
+        },
+        "spec": {
+          "required": true,
+          "category": "output"
+        },
+        "tpd": {
+          "required": true,
+          "category": "technical",
+          "description": "Test plan with experiment design"
+        },
+        "trd": {
+          "required": true,
+          "category": "technical",
+          "description": "Design doc with alternatives and explicit tradeoffs"
+        },
+        "uxd": {
+          "required": true,
+          "category": "source",
+          "description": "User experience with developer experience considerations"
+        }
+      },
+      "synthesis": {
+        "bmc": {
+          "sources": [
+            "mrd"
+          ],
+          "guidance": "Extract Business Model Canvas blocks from MRD sections 2-11. Format as standalone canvas for visual review."
+        },
+        "faq": {
+          "sources": [
+            "mrd",
+            "press"
+          ],
+          "guidance": "Include internal stakeholder questions and API/DX concerns"
+        },
+        "prd": {
+          "sources": [
+            "mrd",
+            "press",
+            "faq"
+          ],
+          "guidance": "Include API contracts, non-goals, and success metrics"
+        },
+        "press": {
+          "sources": [
+            "mrd"
+          ],
+          "guidance": "Write from customer perspective, include measurable outcomes (OKRs)"
+        },
+        "spec": {
+          "sources": [
+            "mrd",
+            "prd",
+            "uxd",
+            "trd",
+            "tpd"
+          ],
+          "guidance": "Unified specification consolidating all approved specs."
+        },
+        "tpd": {
+          "sources": [
+            "prd",
+            "trd"
+          ],
+          "guidance": "Include hypothesis and success criteria for key validations"
+        },
+        "trd": {
+          "sources": [
+            "prd",
+            "uxd"
+          ],
+          "guidance": "Include alternatives considered and explicit tradeoffs"
+        }
+      },
+      "evaluation": {
+        "pass_threshold": 70,
+        "partial_threshold": 50
+      },
+      "template_specs": [
+        "faq",
+        "ird",
+        "mrd",
+        "narrative-1p",
+        "prd",
+        "press",
+        "spec",
+        "tpd",
+        "trd",
+        "uxd"
+      ],
+      "rubric_specs": [
+        "faq",
+        "ird",
+        "mrd",
+        "narrative-1p",
+        "prd",
+        "press",
+        "spec",
+        "tpd",
+        "trd",
+        "uxd"
+      ]
+    },
+    {
+      "name": "big-tech-essentials-feature",
+      "description": "Big Tech essentials for feature-level opportunities on existing products. Starts with OpportunitySpec + OKRs, uses PR/FAQ-driven development with design docs and API-first thinking. Simplified evaluation criteria focused on Amazon, Google, and Stripe practices.",
+      "methodology": {
+        "name": "Big Tech Essentials",
+        "principles": [
+          {
+            "id": "customer_obsession",
+            "name": "Customer Obsession",
+            "description": "Start with the customer and work backwards (Amazon)"
+          },
+          {
+            "id": "developer_experience",
+            "name": "Developer Experience",
+            "description": "Optimize for developer productivity (Stripe)"
+          },
+          {
+            "id": "working_backwards",
+            "name": "Working Backwards",
+            "description": "Write the press release first (Amazon)"
+          },
+          {
+            "id": "explicit_tradeoffs",
+            "name": "Explicit Tradeoffs",
+            "description": "Every decision has costs; make them visible (Google)"
+          },
+          {
+            "id": "alternatives_considered",
+            "name": "Alternatives Considered",
+            "description": "Always evaluate multiple approaches (Google)"
+          },
+          {
+            "id": "data_driven",
+            "name": "Data Driven",
+            "description": "Decisions backed by data and experiments (Google)"
+          },
+          {
+            "id": "bias_for_action",
+            "name": "Bias For Action",
+            "description": "Speed matters; two-way door decisions (Amazon)"
+          },
+          {
+            "id": "reversibility",
+            "name": "Reversibility",
+            "description": "Prefer reversible decisions (Google)"
+          },
+          {
+            "id": "highest_standards",
+            "name": "Highest Standards",
+            "description": "Relentlessly high standards (Amazon)"
+          },
+          {
+            "id": "api_first",
+            "name": "Api First",
+            "description": "Design the interface before implementation (Stripe)"
+          },
+          {
+            "id": "documentation_quality",
+            "name": "Documentation Quality",
+            "description": "Docs are part of the product (Stripe)"
+          },
+          {
+            "id": "non_goals",
+            "name": "Non Goals",
+            "description": "What we won't do is as important as what we will (Google)"
+          },
+          {
+            "id": "peer_review",
+            "name": "Peer Review",
+            "description": "Design reviews ensure diverse perspectives (Google)"
+          },
+          {
+            "id": "disagree_and_commit",
+            "name": "Disagree And Commit",
+            "description": "Truth-seeking, then commit (Amazon)"
+          },
+          {
+            "id": "ownership",
+            "name": "Ownership",
+            "description": "Think long-term, end-to-end ownership (Amazon)"
+          },
+          {
+            "id": "incremental_delivery",
+            "name": "Incremental Delivery",
+            "description": "Ship small, ship often (Stripe)"
+          }
+        ],
+        "artifacts": [
+          {
+            "id": "press_release",
+            "description": "Customer announcement (Amazon)"
+          },
+          {
+            "id": "faq",
+            "description": "Challenge assumptions (Amazon)"
+          },
+          {
+            "id": "six_pager",
+            "description": "Narrative document (Amazon)"
+          },
+          {
+            "id": "design_doc",
+            "description": "Technical specification with tradeoffs (Google)"
+          },
+          {
+            "id": "okr",
+            "description": "Objectives and key results (Google)"
+          },
+          {
+            "id": "api_spec",
+            "description": "Interface-first design (Stripe)"
+          }
+        ]
+      },
+      "spec_config": {
+        "bmc": {
+          "required": false,
+          "category": "gtm",
+          "description": "Business Model Canvas extracted from MRD for stakeholder review"
+        },
+        "faq": {
+          "required": true,
+          "category": "gtm",
+          "description": "Challenge assumptions, include developer FAQ"
+        },
+        "ird": {
+          "required": false,
+          "category": "technical",
+          "description": "Infrastructure requirements"
+        },
+        "mrd": {
+          "required": false,
+          "category": "source"
+        },
+        "narrative-1p": {
+          "required": false,
+          "category": "gtm",
+          "description": "Executive summary"
+        },
+        "narrative-6p": {
+          "required": false,
+          "category": "gtm",
+          "description": "Amazon-style 6-pager for major features"
+        },
+        "opportunity-spec": {
+          "required": true,
+          "category": "source",
+          "description": "12-box opportunity canvas with OKR alignment - the starting document for features"
+        },
+        "ost": {
+          "required": false,
+          "category": "source",
+          "description": "Use big-tech-product for Continuous Discovery integration"
+        },
+        "prd": {
+          "required": true,
+          "category": "source",
+          "description": "Product requirements with API contracts, non-goals, and alternatives"
+        },
+        "press": {
+          "required": true,
+          "category": "gtm",
+          "description": "Working backwards press release for the feature"
+        },
+        "shapeup-pitch": {
+          "required": false,
+          "category": "source",
+          "description": "Use big-tech-product for Shape Up integration"
+        },
+        "spec": {
+          "required": true,
+          "category": "output"
+        },
+        "tpd": {
+          "required": true,
+          "category": "technical",
+          "description": "Test plan with experiment design and hypothesis validation"
+        },
+        "trd": {
+          "required": true,
+          "category": "technical",
+          "description": "Design doc with alternatives, tradeoffs, and reversibility assessment"
+        },
+        "uxd": {
+          "required": true,
+          "category": "source",
+          "description": "User experience with developer experience considerations"
+        }
+      },
+      "synthesis": {
+        "bmc": {
+          "sources": [
+            "mrd"
+          ],
+          "guidance": "Extract Business Model Canvas blocks from MRD sections 2-11. Format as standalone canvas for visual review."
+        },
+        "faq": {
+          "sources": [
+            "opportunity-spec",
+            "press"
+          ],
+          "guidance": "Include internal stakeholder questions, customer questions, and developer/API questions (Stripe). Address risks and assumptions from OpportunitySpec."
+        },
+        "prd": {
+          "sources": [
+            "opportunity-spec",
+            "press",
+            "faq"
+          ],
+          "guidance": "Include API contracts (Stripe), non-goals (Google), alternatives considered. Map to OpportunitySpec's critical requirements and success metrics."
+        },
+        "press": {
+          "sources": [
+            "opportunity-spec"
+          ],
+          "guidance": "Write from customer perspective. Focus on the specific user value from OpportunitySpec."
+        },
+        "spec": {
+          "sources": [
+            "mrd",
+            "prd",
+            "uxd",
+            "trd",
+            "tpd"
+          ],
+          "guidance": "Unified specification consolidating all approved specs."
+        },
+        "tpd": {
+          "sources": [
+            "prd",
+            "trd"
+          ],
+          "guidance": "Include hypothesis and success criteria for key validations. Validate core assumptions from OpportunitySpec."
+        },
+        "trd": {
+          "sources": [
+            "prd",
+            "uxd"
+          ],
+          "guidance": "Google design doc format. Include alternatives considered, explicit tradeoffs, and reversibility assessment (two-way vs one-way door)."
+        }
+      },
+      "evaluation": {
+        "pass_threshold": 70,
+        "partial_threshold": 50
+      },
+      "template_specs": [
+        "faq",
+        "ird",
+        "mrd",
+        "narrative-1p",
+        "prd",
+        "press",
+        "spec",
+        "tpd",
+        "trd",
+        "uxd"
+      ],
+      "rubric_specs": [
+        "faq",
+        "ird",
+        "mrd",
+        "narrative-1p",
+        "narrative-6p",
+        "prd",
+        "press",
+        "spec",
+        "tpd",
+        "trd",
+        "uxd"
+      ]
+    },
+    {
+      "name": "big-tech-essentials-product",
+      "description": "Big Tech essentials for new product lines. Starts with MRD + OKRs, uses PR/FAQ-driven development with design docs and API-first thinking. Simplified evaluation criteria focused on Amazon, Google, and Stripe practices.",
+      "methodology": {
+        "name": "Big Tech Essentials",
+        "principles": [
+          {
+            "id": "customer_obsession",
+            "name": "Customer Obsession",
+            "description": "Start with the customer and work backwards (Amazon)"
+          },
+          {
+            "id": "developer_experience",
+            "name": "Developer Experience",
+            "description": "Optimize for developer productivity (Stripe)"
+          },
+          {
+            "id": "working_backwards",
+            "name": "Working Backwards",
+            "description": "Write the press release first (Amazon)"
+          },
+          {
+            "id": "explicit_tradeoffs",
+            "name": "Explicit Tradeoffs",
+            "description": "Every decision has costs; make them visible (Google)"
+          },
+          {
+            "id": "alternatives_considered",
+            "name": "Alternatives Considered",
+            "description": "Always evaluate multiple approaches (Google)"
+          },
+          {
+            "id": "data_driven",
+            "name": "Data Driven",
+            "description": "Decisions backed by data and experiments (Google)"
+          },
+          {
+            "id": "bias_for_action",
+            "name": "Bias For Action",
+            "description": "Speed matters; two-way door decisions (Amazon)"
+          },
+          {
+            "id": "reversibility",
+            "name": "Reversibility",
+            "description": "Prefer reversible decisions (Google)"
+          },
+          {
+            "id": "highest_standards",
+            "name": "Highest Standards",
+            "description": "Relentlessly high standards (Amazon)"
+          },
+          {
+            "id": "api_first",
+            "name": "Api First",
+            "description": "Design the interface before implementation (Stripe)"
+          },
+          {
+            "id": "documentation_quality",
+            "name": "Documentation Quality",
+            "description": "Docs are part of the product (Stripe)"
+          },
+          {
+            "id": "non_goals",
+            "name": "Non Goals",
+            "description": "What we won't do is as important as what we will (Google)"
+          },
+          {
+            "id": "peer_review",
+            "name": "Peer Review",
+            "description": "Design reviews ensure diverse perspectives (Google)"
+          },
+          {
+            "id": "disagree_and_commit",
+            "name": "Disagree And Commit",
+            "description": "Truth-seeking, then commit (Amazon)"
+          },
+          {
+            "id": "ownership",
+            "name": "Ownership",
+            "description": "Think long-term, end-to-end ownership (Amazon)"
+          },
+          {
+            "id": "incremental_delivery",
+            "name": "Incremental Delivery",
+            "description": "Ship small, ship often (Stripe)"
+          }
+        ],
+        "artifacts": [
+          {
+            "id": "press_release",
+            "description": "Customer announcement (Amazon)"
+          },
+          {
+            "id": "faq",
+            "description": "Challenge assumptions (Amazon)"
+          },
+          {
+            "id": "six_pager",
+            "description": "Narrative document (Amazon)"
+          },
+          {
+            "id": "design_doc",
+            "description": "Technical specification with tradeoffs (Google)"
+          },
+          {
+            "id": "okr",
+            "description": "Objectives and key results (Google)"
+          },
+          {
+            "id": "api_spec",
+            "description": "Interface-first design (Stripe)"
+          }
+        ]
+      },
+      "spec_config": {
+        "bmc": {
+          "required": false,
+          "category": "gtm",
+          "description": "Business Model Canvas extracted from MRD for stakeholder review"
+        },
+        "faq": {
+          "required": true,
+          "category": "gtm",
+          "description": "Challenge assumptions, include developer FAQ"
+        },
+        "ird": {
+          "required": false,
+          "category": "technical",
+          "description": "Infrastructure requirements"
+        },
+        "mrd": {
+          "required": true,
+          "category": "source",
+          "description": "Market requirements with OKR alignment - the starting document for new products"
+        },
+        "narrative-1p": {
+          "required": false,
+          "category": "gtm",
+          "description": "Executive summary"
+        },
+        "narrative-6p": {
+          "required": true,
+          "category": "gtm",
+          "description": "Amazon-style 6-pager for stakeholder alignment"
+        },
+        "opportunity-spec": {
+          "required": false,
+          "category": "source"
+        },
+        "ost": {
+          "required": false,
+          "category": "source",
+          "description": "Use big-tech-product for Continuous Discovery integration"
+        },
+        "prd": {
+          "required": true,
+          "category": "source",
+          "description": "Product requirements with API contracts, non-goals, and alternatives"
+        },
+        "press": {
+          "required": true,
+          "category": "gtm",
+          "description": "Working backwards press release"
+        },
+        "shapeup-pitch": {
+          "required": false,
+          "category": "source",
+          "description": "Use big-tech-product for Shape Up integration"
+        },
+        "spec": {
+          "required": true,
+          "category": "output"
+        },
+        "tpd": {
+          "required": true,
+          "category": "technical",
+          "description": "Test plan with experiment design and hypothesis validation"
+        },
+        "trd": {
+          "required": true,
+          "category": "technical",
+          "description": "Design doc with alternatives, tradeoffs, and reversibility assessment"
+        },
+        "uxd": {
+          "required": true,
+          "category": "source",
+          "description": "User experience with developer experience considerations"
+        }
+      },
+      "synthesis": {
+        "bmc": {
+          "sources": [
+            "mrd"
+          ],
+          "guidance": "Extract Business Model Canvas blocks from MRD. Focus on customer segments, value propositions, and revenue streams."
+        },
+        "faq": {
+          "sources": [
+            "mrd",
+            "press"
+          ],
+          "guidance": "Include internal stakeholder questions, customer questions, and developer/API questions (Stripe). Challenge key assumptions."
+        },
+        "narrative-6p": {
+          "sources": [
+            "mrd",
+            "press",
+            "faq"
+          ],
+          "guidance": "Amazon 6-pager format. Include data and explicit tradeoffs (Google). No slides, pure narrative."
+        },
+        "prd": {
+          "sources": [
+            "mrd",
+            "press",
+            "faq"
+          ],
+          "guidance": "Include API contracts (Stripe), non-goals (Google), alternatives considered, and success metrics (OKRs)."
+        },
+        "press": {
+          "sources": [
+            "mrd"
+          ],
+          "guidance": "Write from customer perspective. Include measurable outcomes (OKRs)."
+        },
+        "spec": {
+          "sources": [
+            "mrd",
+            "prd",
+            "uxd",
+            "trd",
+            "tpd"
+          ],
+          "guidance": "Unified specification consolidating all approved specs."
+        },
+        "tpd": {
+          "sources": [
+            "prd",
+            "trd"
+          ],
+          "guidance": "Include hypothesis and success criteria for key validations."
+        },
+        "trd": {
+          "sources": [
+            "prd",
+            "uxd"
+          ],
+          "guidance": "Google design doc format. Include alternatives considered, explicit tradeoffs, and reversibility assessment (two-way vs one-way door)."
+        }
+      },
+      "evaluation": {
+        "pass_threshold": 70,
+        "partial_threshold": 50
+      },
+      "template_specs": [
+        "faq",
+        "ird",
+        "mrd",
+        "narrative-1p",
+        "narrative-6p",
+        "prd",
+        "press",
+        "spec",
+        "tpd",
+        "trd",
+        "uxd"
+      ],
+      "rubric_specs": [
+        "faq",
+        "ird",
+        "mrd",
+        "narrative-1p",
+        "narrative-6p",
+        "prd",
+        "press",
+        "spec",
+        "tpd",
+        "trd",
+        "uxd"
+      ]
+    },
+    {
+      "name": "big-tech-feature",
+      "description": "Big Tech best practices for feature-level opportunities on existing products. Starts with OpportunitySpec + OKRs, uses PR/FAQ-driven development with design docs, API-first thinking, and autonomous team practices.",
+      "methodology": {
+        "name": "Big Tech Best Practices",
+        "principles": [
+          {
+            "id": "customer_obsession",
+            "name": "Customer Obsession",
+            "description": "Start with the customer and work backwards (Amazon)"
+          },
+          {
+            "id": "developer_experience",
+            "name": "Developer Experience",
+            "description": "Optimize for developer productivity (Stripe)"
+          },
+          {
+            "id": "accessibility_first",
+            "name": "Accessibility First",
+            "description": "Design for everyone from the start (Microsoft)"
+          },
+          {
+            "id": "ten_x_thinking",
+            "name": "Ten X Thinking",
+            "description": "Aim for 10x improvement, not 10% (Google)"
+          },
+          {
+            "id": "working_backwards",
+            "name": "Working Backwards",
+            "description": "Write the press release first (Amazon)"
+          },
+          {
+            "id": "bold_bets",
+            "name": "Bold Bets",
+            "description": "Take big swings on transformative ideas (Meta)"
+          },
+          {
+            "id": "bets_not_projects",
+            "name": "Bets Not Projects",
+            "description": "Frame work as bets with explicit risk (Spotify)"
+          },
+          {
+            "id": "explicit_tradeoffs",
+            "name": "Explicit Tradeoffs",
+            "description": "Every decision has costs; make them visible (Google)"
+          },
+          {
+            "id": "alternatives_considered",
+            "name": "Alternatives Considered",
+            "description": "Always evaluate multiple approaches (Google)"
+          },
+          {
+            "id": "data_driven",
+            "name": "Data Driven",
+            "description": "Decisions backed by data and experiments (Google)"
+          },
+          {
+            "id": "bias_for_action",
+            "name": "Bias For Action",
+            "description": "Speed matters; two-way door decisions (Amazon)"
+          },
+          {
+            "id": "reversibility",
+            "name": "Reversibility",
+            "description": "Prefer reversible decisions (Google)"
+          },
+          {
+            "id": "dri",
+            "name": "Dri",
+            "description": "Directly Responsible Individual for every decision (Apple)"
+          },
+          {
+            "id": "highest_standards",
+            "name": "Highest Standards",
+            "description": "Relentlessly high standards (Amazon)"
+          },
+          {
+            "id": "api_first",
+            "name": "Api First",
+            "description": "Design the interface before implementation (Stripe)"
+          },
+          {
+            "id": "documentation_quality",
+            "name": "Documentation Quality",
+            "description": "Docs are part of the product (Stripe)"
+          },
+          {
+            "id": "non_goals",
+            "name": "Non Goals",
+            "description": "What we won't do is as important as what we will (Google)"
+          },
+          {
+            "id": "say_no",
+            "name": "Say No",
+            "description": "Focus means saying no to good ideas (Apple)"
+          },
+          {
+            "id": "peer_review",
+            "name": "Peer Review",
+            "description": "RFCs ensure diverse perspectives (Google)"
+          },
+          {
+            "id": "disagree_and_commit",
+            "name": "Disagree And Commit",
+            "description": "Truth-seeking, then commit (Amazon)"
+          },
+          {
+            "id": "context_not_control",
+            "name": "Context Not Control",
+            "description": "Provide context, not commands (Netflix)"
+          },
+          {
+            "id": "radical_transparency",
+            "name": "Radical Transparency",
+            "description": "Default to open (Netflix)"
+          },
+          {
+            "id": "ownership",
+            "name": "Ownership",
+            "description": "Think long-term, end-to-end ownership (Amazon)"
+          },
+          {
+            "id": "incremental_delivery",
+            "name": "Incremental Delivery",
+            "description": "Ship small, ship often (Stripe)"
+          },
+          {
+            "id": "launch_and_iterate",
+            "name": "Launch And Iterate",
+            "description": "Ship, measure, improve (Google)"
+          },
+          {
+            "id": "move_fast",
+            "name": "Move Fast",
+            "description": "Speed is a competitive advantage (Meta)"
+          },
+          {
+            "id": "fail_fast_learn_fast",
+            "name": "Fail Fast Learn Fast",
+            "description": "Quick experiments over long planning (Spotify)"
+          },
+          {
+            "id": "freedom_and_responsibility",
+            "name": "Freedom And Responsibility",
+            "description": "Freedom with accountability (Netflix)"
+          },
+          {
+            "id": "highly_aligned_loosely_coupled",
+            "name": "Highly Aligned Loosely Coupled",
+            "description": "Align strategy, decouple execution (Netflix)"
+          },
+          {
+            "id": "autonomous_squads",
+            "name": "Autonomous Squads",
+            "description": "Small teams with ownership (Spotify)"
+          },
+          {
+            "id": "growth_mindset",
+            "name": "Growth Mindset",
+            "description": "Learn from failure (Microsoft)"
+          },
+          {
+            "id": "frugality",
+            "name": "Frugality",
+            "description": "Constraints breed resourcefulness (Amazon)"
+          },
+          {
+            "id": "fixed_time_variable_scope",
+            "name": "Fixed Time Variable Scope",
+            "description": "Appetite sets time; scope flexes (Basecamp)"
+          },
+          {
+            "id": "appetite_not_estimates",
+            "name": "Appetite Not Estimates",
+            "description": "How much is it worth, not how long (Basecamp)"
+          },
+          {
+            "id": "shaping",
+            "name": "Shaping",
+            "description": "Define at right abstraction level (Basecamp)"
+          },
+          {
+            "id": "betting_not_planning",
+            "name": "Betting Not Planning",
+            "description": "No backlogs; bet on pitches (Basecamp)"
+          },
+          {
+            "id": "circuit_breaker",
+            "name": "Circuit Breaker",
+            "description": "Stop failures early, don't drag out (Basecamp)"
+          },
+          {
+            "id": "rabbit_holes",
+            "name": "Rabbit Holes",
+            "description": "Identify scope traps upfront (Basecamp)"
+          },
+          {
+            "id": "weekly_touchpoints",
+            "name": "Weekly Touchpoints",
+            "description": "Talk to customers every week (Torres)"
+          },
+          {
+            "id": "story_based_interviews",
+            "name": "Story Based Interviews",
+            "description": "Collect stories, not opinions (Torres)"
+          },
+          {
+            "id": "opportunity_solution_trees",
+            "name": "Opportunity Solution Trees",
+            "description": "Visualize outcome to solution path (Torres)"
+          },
+          {
+            "id": "assumption_testing",
+            "name": "Assumption Testing",
+            "description": "Test riskiest assumptions first (Torres)"
+          },
+          {
+            "id": "compare_and_contrast",
+            "name": "Compare And Contrast",
+            "description": "Test multiple solutions in parallel (Torres)"
+          },
+          {
+            "id": "product_trio",
+            "name": "Product Trio",
+            "description": "PM, Design, Engineering collaborate (Torres)"
+          }
+        ],
+        "artifacts": [
+          {
+            "id": "press_release",
+            "description": "Customer announcement (Amazon)"
+          },
+          {
+            "id": "faq",
+            "description": "Challenge assumptions (Amazon)"
+          },
+          {
+            "id": "six_pager",
+            "description": "Narrative document (Amazon)"
+          },
+          {
+            "id": "design_doc",
+            "description": "Technical specification with tradeoffs (Google)"
+          },
+          {
+            "id": "rfc",
+            "description": "Request for comments (Google)"
+          },
+          {
+            "id": "okr",
+            "description": "Objectives and key results (Google)"
+          },
+          {
+            "id": "experiment_plan",
+            "description": "Hypothesis-driven validation (Google/Spotify)"
+          },
+          {
+            "id": "api_spec",
+            "description": "Interface-first design (Stripe)"
+          },
+          {
+            "id": "bet_brief",
+            "description": "Explicit risk and outcome framing (Spotify)"
+          },
+          {
+            "id": "pitch",
+            "description": "Shaped problem and solution with appetite (Basecamp)"
+          },
+          {
+            "id": "hill_chart",
+            "description": "Progress tracking by uncertainty phase (Basecamp)"
+          },
+          {
+            "id": "scope_map",
+            "description": "Scopes with hill positions (Basecamp)"
+          },
+          {
+            "id": "ost",
+            "description": "Opportunity Solution Tree (Torres)"
+          },
+          {
+            "id": "discovery_snapshot",
+            "description": "Weekly discovery summary (Torres)"
+          },
+          {
+            "id": "assumption_map",
+            "description": "Risk matrix by assumption type (Torres)"
+          },
+          {
+            "id": "experience_map",
+            "description": "Customer journey phases (Torres)"
+          }
+        ]
+      },
+      "spec_config": {
+        "assumption-map": {
+          "required": false,
+          "category": "source",
+          "description": "Risk matrix by assumption type (DVFUE)"
+        },
+        "bmc": {
+          "required": false,
+          "category": "gtm",
+          "description": "Business Model Canvas extracted from MRD for stakeholder review"
+        },
+        "discovery-snapshot": {
+          "required": false,
+          "category": "tracking",
+          "description": "Weekly discovery summary with interviews and learnings"
+        },
+        "faq": {
+          "required": true,
+          "category": "gtm",
+          "description": "Challenge assumptions, include developer FAQ"
+        },
+        "ird": {
+          "required": false,
+          "category": "technical",
+          "description": "Infrastructure requirements"
+        },
+        "mrd": {
+          "required": false,
+          "category": "source"
+        },
+        "narrative-1p": {
+          "required": false,
+          "category": "gtm",
+          "description": "Executive summary"
+        },
+        "narrative-6p": {
+          "required": false,
+          "category": "gtm",
+          "description": "Amazon-style 6-pager for major features"
+        },
+        "opportunity-spec": {
+          "required": true,
+          "category": "source",
+          "description": "12-box opportunity canvas with OKR alignment - the starting document for features"
+        },
+        "ost": {
+          "required": false,
+          "category": "source",
+          "description": "Opportunity Solution Tree linking outcome to solutions"
+        },
+        "prd": {
+          "required": true,
+          "category": "source",
+          "description": "Product requirements with API contracts, non-goals, and alternatives"
+        },
+        "press": {
+          "required": true,
+          "category": "gtm",
+          "description": "Working backwards press release for the feature"
+        },
+        "shapeup-pitch": {
+          "required": false,
+          "category": "source",
+          "description": "Shaped pitch with appetite, problem, solution, rabbit holes"
+        },
+        "shapeup-scope": {
+          "required": false,
+          "category": "tracking",
+          "description": "Scopes with hill chart positions for execution tracking"
+        },
+        "spec": {
+          "required": true,
+          "category": "output"
+        },
+        "tpd": {
+          "required": true,
+          "category": "technical",
+          "description": "Test plan with experiment design and hypothesis validation"
+        },
+        "trd": {
+          "required": true,
+          "category": "technical",
+          "description": "Design doc with alternatives, tradeoffs, and reversibility assessment"
+        },
+        "uxd": {
+          "required": true,
+          "category": "source",
+          "description": "User experience with developer experience and accessibility"
+        }
+      },
+      "synthesis": {
+        "bmc": {
+          "sources": [
+            "mrd"
+          ],
+          "guidance": "Extract Business Model Canvas blocks from MRD sections 2-11. Format as standalone canvas for visual review."
+        },
+        "faq": {
+          "sources": [
+            "opportunity-spec",
+            "press"
+          ],
+          "guidance": "Include internal stakeholder questions, customer questions, and developer/API questions (Stripe). Address risks and assumptions from OpportunitySpec."
+        },
+        "prd": {
+          "sources": [
+            "opportunity-spec",
+            "press",
+            "faq"
+          ],
+          "guidance": "Include API contracts (Stripe), non-goals (Google), alternatives considered (Google). Map to OpportunitySpec's critical requirements and success metrics."
+        },
+        "press": {
+          "sources": [
+            "opportunity-spec"
+          ],
+          "guidance": "Write from customer perspective. Focus on the specific user value from OpportunitySpec. Frame as a bet with explicit risk (Spotify)."
+        },
+        "spec": {
+          "sources": [
+            "mrd",
+            "prd",
+            "uxd",
+            "trd",
+            "tpd"
+          ],
+          "guidance": "Unified specification consolidating all approved specs."
+        },
+        "tpd": {
+          "sources": [
+            "prd",
+            "trd"
+          ],
+          "guidance": "Include experiment design with hypothesis and success criteria (Google/Spotify). Validate assumptions from OpportunitySpec. Define what 'fail fast' looks like."
+        },
+        "trd": {
+          "sources": [
+            "prd",
+            "uxd"
+          ],
+          "guidance": "Google design doc format. Include alternatives considered, explicit tradeoffs, reversibility assessment (two-way vs one-way door), and scalability (10x thinking)."
+        }
+      },
+      "evaluation": {
+        "pass_threshold": 80,
+        "partial_threshold": 60
+      },
+      "template_specs": [
+        "faq",
+        "ird",
+        "mrd",
+        "narrative-1p",
+        "narrative-6p",
+        "prd",
+        "press",
+        "spec",
+        "tpd",
+        "trd",
+        "uxd"
+      ],
+      "rubric_specs": [
+        "faq",
+        "ird",
+        "mrd",
+        "narrative-1p",
+        "narrative-6p",
+        "prd",
+        "press",
+        "spec",
+        "tpd",
+        "trd",
+        "uxd"
+      ]
+    },
+    {
+      "name": "big-tech-product",
+      "description": "Big Tech best practices for new product lines. Starts with MRD + OKRs, uses PR/FAQ-driven development with design docs, API-first thinking, and autonomous team practices.",
+      "methodology": {
+        "name": "Big Tech Best Practices",
+        "principles": [
+          {
+            "id": "customer_obsession",
+            "name": "Customer Obsession",
+            "description": "Start with the customer and work backwards (Amazon)"
+          },
+          {
+            "id": "developer_experience",
+            "name": "Developer Experience",
+            "description": "Optimize for developer productivity (Stripe)"
+          },
+          {
+            "id": "accessibility_first",
+            "name": "Accessibility First",
+            "description": "Design for everyone from the start (Microsoft)"
+          },
+          {
+            "id": "ten_x_thinking",
+            "name": "Ten X Thinking",
+            "description": "Aim for 10x improvement, not 10% (Google)"
+          },
+          {
+            "id": "working_backwards",
+            "name": "Working Backwards",
+            "description": "Write the press release first (Amazon)"
+          },
+          {
+            "id": "bold_bets",
+            "name": "Bold Bets",
+            "description": "Take big swings on transformative ideas (Meta)"
+          },
+          {
+            "id": "bets_not_projects",
+            "name": "Bets Not Projects",
+            "description": "Frame work as bets with explicit risk (Spotify)"
+          },
+          {
+            "id": "explicit_tradeoffs",
+            "name": "Explicit Tradeoffs",
+            "description": "Every decision has costs; make them visible (Google)"
+          },
+          {
+            "id": "alternatives_considered",
+            "name": "Alternatives Considered",
+            "description": "Always evaluate multiple approaches (Google)"
+          },
+          {
+            "id": "data_driven",
+            "name": "Data Driven",
+            "description": "Decisions backed by data and experiments (Google)"
+          },
+          {
+            "id": "bias_for_action",
+            "name": "Bias For Action",
+            "description": "Speed matters; two-way door decisions (Amazon)"
+          },
+          {
+            "id": "reversibility",
+            "name": "Reversibility",
+            "description": "Prefer reversible decisions (Google)"
+          },
+          {
+            "id": "dri",
+            "name": "Dri",
+            "description": "Directly Responsible Individual for every decision (Apple)"
+          },
+          {
+            "id": "highest_standards",
+            "name": "Highest Standards",
+            "description": "Relentlessly high standards (Amazon)"
+          },
+          {
+            "id": "api_first",
+            "name": "Api First",
+            "description": "Design the interface before implementation (Stripe)"
+          },
+          {
+            "id": "documentation_quality",
+            "name": "Documentation Quality",
+            "description": "Docs are part of the product (Stripe)"
+          },
+          {
+            "id": "non_goals",
+            "name": "Non Goals",
+            "description": "What we won't do is as important as what we will (Google)"
+          },
+          {
+            "id": "say_no",
+            "name": "Say No",
+            "description": "Focus means saying no to good ideas (Apple)"
+          },
+          {
+            "id": "peer_review",
+            "name": "Peer Review",
+            "description": "RFCs ensure diverse perspectives (Google)"
+          },
+          {
+            "id": "disagree_and_commit",
+            "name": "Disagree And Commit",
+            "description": "Truth-seeking, then commit (Amazon)"
+          },
+          {
+            "id": "context_not_control",
+            "name": "Context Not Control",
+            "description": "Provide context, not commands (Netflix)"
+          },
+          {
+            "id": "radical_transparency",
+            "name": "Radical Transparency",
+            "description": "Default to open (Netflix)"
+          },
+          {
+            "id": "ownership",
+            "name": "Ownership",
+            "description": "Think long-term, end-to-end ownership (Amazon)"
+          },
+          {
+            "id": "incremental_delivery",
+            "name": "Incremental Delivery",
+            "description": "Ship small, ship often (Stripe)"
+          },
+          {
+            "id": "launch_and_iterate",
+            "name": "Launch And Iterate",
+            "description": "Ship, measure, improve (Google)"
+          },
+          {
+            "id": "move_fast",
+            "name": "Move Fast",
+            "description": "Speed is a competitive advantage (Meta)"
+          },
+          {
+            "id": "fail_fast_learn_fast",
+            "name": "Fail Fast Learn Fast",
+            "description": "Quick experiments over long planning (Spotify)"
+          },
+          {
+            "id": "freedom_and_responsibility",
+            "name": "Freedom And Responsibility",
+            "description": "Freedom with accountability (Netflix)"
+          },
+          {
+            "id": "highly_aligned_loosely_coupled",
+            "name": "Highly Aligned Loosely Coupled",
+            "description": "Align strategy, decouple execution (Netflix)"
+          },
+          {
+            "id": "autonomous_squads",
+            "name": "Autonomous Squads",
+            "description": "Small teams with ownership (Spotify)"
+          },
+          {
+            "id": "growth_mindset",
+            "name": "Growth Mindset",
+            "description": "Learn from failure (Microsoft)"
+          },
+          {
+            "id": "frugality",
+            "name": "Frugality",
+            "description": "Constraints breed resourcefulness (Amazon)"
+          },
+          {
+            "id": "fixed_time_variable_scope",
+            "name": "Fixed Time Variable Scope",
+            "description": "Appetite sets time; scope flexes (Basecamp)"
+          },
+          {
+            "id": "appetite_not_estimates",
+            "name": "Appetite Not Estimates",
+            "description": "How much is it worth, not how long (Basecamp)"
+          },
+          {
+            "id": "shaping",
+            "name": "Shaping",
+            "description": "Define at right abstraction level (Basecamp)"
+          },
+          {
+            "id": "betting_not_planning",
+            "name": "Betting Not Planning",
+            "description": "No backlogs; bet on pitches (Basecamp)"
+          },
+          {
+            "id": "circuit_breaker",
+            "name": "Circuit Breaker",
+            "description": "Stop failures early, don't drag out (Basecamp)"
+          },
+          {
+            "id": "rabbit_holes",
+            "name": "Rabbit Holes",
+            "description": "Identify scope traps upfront (Basecamp)"
+          },
+          {
+            "id": "weekly_touchpoints",
+            "name": "Weekly Touchpoints",
+            "description": "Talk to customers every week (Torres)"
+          },
+          {
+            "id": "story_based_interviews",
+            "name": "Story Based Interviews",
+            "description": "Collect stories, not opinions (Torres)"
+          },
+          {
+            "id": "opportunity_solution_trees",
+            "name": "Opportunity Solution Trees",
+            "description": "Visualize outcome to solution path (Torres)"
+          },
+          {
+            "id": "assumption_testing",
+            "name": "Assumption Testing",
+            "description": "Test riskiest assumptions first (Torres)"
+          },
+          {
+            "id": "compare_and_contrast",
+            "name": "Compare And Contrast",
+            "description": "Test multiple solutions in parallel (Torres)"
+          },
+          {
+            "id": "product_trio",
+            "name": "Product Trio",
+            "description": "PM, Design, Engineering collaborate (Torres)"
+          }
+        ],
+        "artifacts": [
+          {
+            "id": "press_release",
+            "description": "Customer announcement (Amazon)"
+          },
+          {
+            "id": "faq",
+            "description": "Challenge assumptions (Amazon)"
+          },
+          {
+            "id": "six_pager",
+            "description": "Narrative document (Amazon)"
+          },
+          {
+            "id": "design_doc",
+            "description": "Technical specification with tradeoffs (Google)"
+          },
+          {
+            "id": "rfc",
+            "description": "Request for comments (Google)"
+          },
+          {
+            "id": "okr",
+            "description": "Objectives and key results (Google)"
+          },
+          {
+            "id": "experiment_plan",
+            "description": "Hypothesis-driven validation (Google/Spotify)"
+          },
+          {
+            "id": "api_spec",
+            "description": "Interface-first design (Stripe)"
+          },
+          {
+            "id": "bet_brief",
+            "description": "Explicit risk and outcome framing (Spotify)"
+          },
+          {
+            "id": "pitch",
+            "description": "Shaped problem and solution with appetite (Basecamp)"
+          },
+          {
+            "id": "hill_chart",
+            "description": "Progress tracking by uncertainty phase (Basecamp)"
+          },
+          {
+            "id": "scope_map",
+            "description": "Scopes with hill positions (Basecamp)"
+          },
+          {
+            "id": "ost",
+            "description": "Opportunity Solution Tree (Torres)"
+          },
+          {
+            "id": "discovery_snapshot",
+            "description": "Weekly discovery summary (Torres)"
+          },
+          {
+            "id": "assumption_map",
+            "description": "Risk matrix by assumption type (Torres)"
+          },
+          {
+            "id": "experience_map",
+            "description": "Customer journey phases (Torres)"
+          }
+        ]
+      },
+      "spec_config": {
+        "assumption-map": {
+          "required": false,
+          "category": "source",
+          "description": "Risk matrix by assumption type (DVFUE)"
+        },
+        "bmc": {
+          "required": false,
+          "category": "gtm",
+          "description": "Business Model Canvas extracted from MRD for stakeholder review"
+        },
+        "discovery-snapshot": {
+          "required": false,
+          "category": "tracking",
+          "description": "Weekly discovery summary with interviews and learnings"
+        },
+        "faq": {
+          "required": true,
+          "category": "gtm",
+          "description": "Challenge assumptions, include developer FAQ"
+        },
+        "ird": {
+          "required": true,
+          "category": "technical",
+          "description": "Infrastructure design - deployment, scaling, operations, and cloud architecture"
+        },
+        "mrd": {
+          "required": true,
+          "category": "source",
+          "description": "Market requirements with OKR alignment - the starting document for new products"
+        },
+        "narrative-1p": {
+          "required": false,
+          "category": "gtm",
+          "description": "Executive summary"
+        },
+        "narrative-6p": {
+          "required": true,
+          "category": "gtm",
+          "description": "Amazon-style 6-pager for stakeholder alignment"
+        },
+        "opportunity-spec": {
+          "required": false,
+          "category": "source"
+        },
+        "ost": {
+          "required": false,
+          "category": "source",
+          "description": "Opportunity Solution Tree linking outcome to solutions"
+        },
+        "prd": {
+          "required": true,
+          "category": "source",
+          "description": "Product requirements with API contracts, non-goals, and alternatives"
+        },
+        "press": {
+          "required": true,
+          "category": "gtm",
+          "description": "Working backwards press release"
+        },
+        "shapeup-pitch": {
+          "required": false,
+          "category": "source",
+          "description": "Shaped pitch with appetite, problem, solution, rabbit holes"
+        },
+        "shapeup-scope": {
+          "required": false,
+          "category": "tracking",
+          "description": "Scopes with hill chart positions for execution tracking"
+        },
+        "spec": {
+          "required": true,
+          "category": "output"
+        },
+        "tpd": {
+          "required": true,
+          "category": "technical",
+          "description": "Test plan with experiment design and hypothesis validation"
+        },
+        "trd": {
+          "required": true,
+          "category": "technical",
+          "description": "Design doc with alternatives, tradeoffs, and reversibility assessment"
+        },
+        "uxd": {
+          "required": true,
+          "category": "source",
+          "description": "User experience with developer experience and accessibility"
+        }
+      },
+      "synthesis": {
+        "bmc": {
+          "sources": [
+            "mrd"
+          ],
+          "guidance": "Extract Business Model Canvas blocks from MRD. Include customer segments, value propositions, channels, relationships, revenue streams, resources, activities, partnerships, and costs."
+        },
+        "faq": {
+          "sources": [
+            "mrd",
+            "press"
+          ],
+          "guidance": "Include internal stakeholder questions, customer questions, and developer/API questions (Stripe). Challenge assumptions ruthlessly."
+        },
+        "ird": {
+          "sources": [
+            "trd",
+            "prd"
+          ],
+          "guidance": "Infrastructure design covering deployment architecture, scaling strategy, cloud services, monitoring, security, and operational runbooks. Include cost estimates and capacity planning."
+        },
+        "narrative-6p": {
+          "sources": [
+            "mrd",
+            "press",
+            "faq"
+          ],
+          "guidance": "Amazon 6-pager format. Include data and explicit tradeoffs (Google). No slides, pure narrative."
+        },
+        "prd": {
+          "sources": [
+            "mrd",
+            "press",
+            "faq",
+            "narrative-6p"
+          ],
+          "guidance": "Include API contracts (Stripe), non-goals (Google), alternatives considered (Google), and success metrics (OKRs). Align with approved 6-Pager narrative."
+        },
+        "press": {
+          "sources": [
+            "mrd"
+          ],
+          "guidance": "Write from customer perspective. Include measurable outcomes (OKRs). Frame as a bet with explicit risk (Spotify)."
+        },
+        "spec": {
+          "sources": [
+            "mrd",
+            "prd",
+            "uxd",
+            "trd",
+            "tpd"
+          ],
+          "guidance": "Unified specification consolidating all approved specs."
+        },
+        "tpd": {
+          "sources": [
+            "prd",
+            "trd",
+            "ird"
+          ],
+          "guidance": "Include experiment design with hypothesis and success criteria (Google/Spotify). Define what 'fail fast' looks like. Cover infrastructure testing requirements."
+        },
+        "trd": {
+          "sources": [
+            "prd",
+            "uxd"
+          ],
+          "guidance": "Google design doc format. Include alternatives considered, explicit tradeoffs, reversibility assessment (two-way vs one-way door), and scalability (10x thinking)."
+        }
+      },
+      "evaluation": {
+        "pass_threshold": 80,
+        "partial_threshold": 60
+      },
+      "template_specs": [
+        "faq",
+        "ird",
+        "mrd",
+        "narrative-1p",
+        "narrative-6p",
+        "prd",
+        "press",
+        "spec",
+        "tpd",
+        "trd",
+        "uxd"
+      ],
+      "rubric_specs": [
+        "faq",
+        "ird",
+        "mrd",
+        "narrative-1p",
+        "narrative-6p",
+        "prd",
+        "press",
+        "spec",
+        "tpd",
+        "trd",
+        "uxd"
+      ]
+    },
+    {
+      "name": "continuous-discovery",
+      "description": "Teresa Torres's Continuous Discovery Habits. Weekly customer touchpoints, opportunity solution trees, and assumption testing.",
+      "methodology": {
+        "name": "Continuous Discovery Habits",
+        "creator": "Teresa Torres",
+        "reference": "https://www.producttalk.org/",
+        "principles": [
+          {
+            "id": "weekly_touchpoints",
+            "name": "Weekly Touchpoints",
+            "description": "Talk to customers every week, not just during research phases"
+          },
+          {
+            "id": "outcome_driven",
+            "name": "Outcome Driven",
+            "description": "Start with a clear, measurable outcome"
+          },
+          {
+            "id": "opportunity_mapping",
+            "name": "Opportunity Mapping",
+            "description": "Map customer needs, pain points, and desires"
+          },
+          {
+            "id": "solution_trees",
+            "name": "Solution Trees",
+            "description": "Visualize the path from outcome to solutions"
+          },
+          {
+            "id": "assumption_testing",
+            "name": "Assumption Testing",
+            "description": "Test assumptions before building"
+          },
+          {
+            "id": "small_experiments",
+            "name": "Small Experiments",
+            "description": "Run small, fast experiments to learn"
+          },
+          {
+            "id": "story_based_interviews",
+            "name": "Story Based Interviews",
+            "description": "Collect stories (past behavior), not opinions"
+          },
+          {
+            "id": "collaborative_discovery",
+            "name": "Collaborative Discovery",
+            "description": "Product trio works together (PM, Design, Engineering)"
+          },
+          {
+            "id": "compare_and_contrast",
+            "name": "Compare And Contrast",
+            "description": "Test multiple solutions in parallel"
+          },
+          {
+            "id": "iterate_on_learning",
+            "name": "Iterate On Learning",
+            "description": "Let learnings drive the next experiment"
+          }
+        ],
+        "artifacts": [
+          {
+            "id": "ost",
+            "description": "Opportunity Solution Tree"
+          },
+          {
+            "id": "discovery_snapshot",
+            "description": "Weekly discovery summary"
+          },
+          {
+            "id": "assumption_map",
+            "description": "Assumptions by type with risk assessment"
+          },
+          {
+            "id": "experience_map",
+            "description": "Customer journey across phases"
+          },
+          {
+            "id": "interview",
+            "description": "Customer interview notes"
+          }
+        ]
+      },
+      "spec_config": {
+        "assumption-map": {
+          "required": true,
+          "category": "source",
+          "description": "Assumptions organized by type with test plan"
+        },
+        "bmc": {
+          "required": false,
+          "category": "gtm",
+          "description": "Business Model Canvas extracted from MRD for stakeholder review"
+        },
+        "discovery-snapshot": {
+          "required": true,
+          "category": "source",
+          "description": "Weekly touchpoint and learning summary"
+        },
+        "experience-map": {
+          "required": false,
+          "category": "source",
+          "description": "Customer journey map"
+        },
+        "faq": {
+          "required": true,
+          "category": "gtm"
+        },
+        "ird": {
+          "required": false,
+          "category": "technical",
+          "description": "Infrastructure requirements"
+        },
+        "mrd": {
+          "required": false,
+          "category": "source",
+          "description": "Can be derived from OST and discovery snapshots"
+        },
+        "narrative-1p": {
+          "required": false,
+          "category": "gtm"
+        },
+        "narrative-6p": {
+          "required": false,
+          "category": "gtm"
+        },
+        "ost": {
+          "required": true,
+          "category": "source",
+          "description": "Opportunity Solution Tree mapping outcome to solutions"
+        },
+        "prd": {
+          "required": false,
+          "category": "source",
+          "description": "Can be derived from validated solutions"
+        },
+        "press": {
+          "required": true,
+          "category": "gtm"
+        },
+        "spec": {
+          "required": true,
+          "category": "output"
+        },
+        "tpd": {
+          "required": true,
+          "category": "technical",
+          "description": "Test plan document"
+        },
+        "trd": {
+          "required": false,
+          "category": "technical"
+        },
+        "uxd": {
+          "required": false,
+          "category": "source",
+          "description": "Emerges from prototypes and usability testing"
+        }
+      },
+      "synthesis": {
+        "bmc": {
+          "sources": [
+            "mrd"
+          ],
+          "guidance": "Extract Business Model Canvas blocks from MRD sections 2-11. Format as standalone canvas for visual review."
+        },
+        "faq": {
+          "sources": [
+            "mrd",
+            "press"
+          ],
+          "guidance": "Address customer questions based on segments, internal questions based on risks and assumptions."
+        },
+        "mrd": {
+          "sources": [
+            "ost",
+            "discovery-snapshot"
+          ],
+          "guidance": "Extract problem definition and market context from OST root outcome and discovery evidence"
+        },
+        "prd": {
+          "sources": [
+            "ost",
+            "assumption-map"
+          ],
+          "guidance": "Derive requirements from validated solutions in OST. Include only assumptions that passed testing."
+        },
+        "press": {
+          "sources": [
+            "mrd"
+          ],
+          "guidance": "Write from customer perspective based on value propositions and customer segments in MRD."
+        },
+        "spec": {
+          "sources": [
+            "mrd",
+            "prd",
+            "uxd",
+            "trd",
+            "tpd"
+          ],
+          "guidance": "Unified specification consolidating all approved specs."
+        },
+        "tpd": {
+          "sources": [
+            "prd",
+            "trd"
+          ],
+          "guidance": "Test plan covering all PRD requirements with traceability."
+        },
+        "trd": {
+          "sources": [
+            "prd",
+            "uxd"
+          ],
+          "guidance": "Technical design to support PRD requirements."
+        },
+        "uxd": {
+          "sources": [
+            "ost",
+            "experience-map",
+            "assumption-map"
+          ],
+          "guidance": "Synthesize UX from prototype learnings and usability assumption tests"
+        }
+      },
+      "evaluation": {
+        "pass_threshold": 80,
+        "partial_threshold": 60
+      },
+      "template_specs": [
+        "assumption-map",
+        "discovery-snapshot",
+        "faq",
+        "ird",
+        "mrd",
+        "narrative-1p",
+        "prd",
+        "press",
+        "spec",
+        "tpd",
+        "trd",
+        "uxd"
+      ],
+      "rubric_specs": [
+        "assumption-map",
+        "discovery-snapshot",
+        "faq",
+        "ird",
+        "mrd",
+        "narrative-1p",
+        "prd",
+        "press",
+        "spec",
+        "tpd",
+        "trd",
+        "uxd"
+      ]
+    },
+    {
+      "name": "design-thinking",
+      "description": "Stanford d.school Design Thinking methodology. Human-centered design with Empathize-Define-Ideate-Prototype-Test cycles.",
+      "methodology": {
+        "name": "Design Thinking",
+        "source": "Stanford d.school / IDEO",
+        "principles": [
+          {
+            "id": "human_centered",
+            "name": "Human Centered",
+            "description": "Focus on human needs and experiences"
+          },
+          {
+            "id": "empathy_first",
+            "name": "Empathy First",
+            "description": "Deeply understand users before defining problems"
+          },
+          {
+            "id": "bias_toward_action",
+            "name": "Bias Toward Action",
+            "description": "Prototype and test rather than debate"
+          },
+          {
+            "id": "radical_collaboration",
+            "name": "Radical Collaboration",
+            "description": "Diverse perspectives strengthen solutions"
+          },
+          {
+            "id": "embrace_ambiguity",
+            "name": "Embrace Ambiguity",
+            "description": "Sit with uncertainty; don't rush to solutions"
+          },
+          {
+            "id": "fail_fast",
+            "name": "Fail Fast",
+            "description": "Early failure is learning; late failure is expensive"
+          },
+          {
+            "id": "iterate",
+            "name": "Iterate",
+            "description": "Solutions emerge through cycles, not single attempts"
+          },
+          {
+            "id": "show_dont_tell",
+            "name": "Show Dont Tell",
+            "description": "Make ideas tangible to communicate and test"
+          }
+        ]
+      },
+      "spec_config": {
+        "faq": {
+          "required": false,
+          "category": "gtm"
+        },
+        "ird": {
+          "required": false,
+          "category": "technical"
+        },
+        "mrd": {
+          "required": false,
+          "category": "source"
+        },
+        "narrative-1p": {
+          "required": false,
+          "category": "gtm"
+        },
+        "narrative-6p": {
+          "required": false,
+          "category": "gtm"
+        },
+        "prd": {
+          "required": true,
+          "category": "source"
+        },
+        "press": {
+          "required": false,
+          "category": "gtm"
+        },
+        "trd": {
+          "required": false,
+          "category": "technical",
+          "description": "Lightweight technical design for MVP"
+        },
+        "uxd": {
+          "required": true,
+          "category": "source"
+        }
+      },
+      "template_specs": [
+        "prd",
+        "trd",
+        "uxd"
+      ],
+      "rubric_specs": [
+        "prd",
+        "trd",
+        "uxd"
+      ]
+    },
+    {
+      "name": "enterprise",
+      "description": "Comprehensive configuration for post-PMF enterprises. Full specs with security and compliance. MRD includes embedded Business Model Canvas.",
+      "spec_config": {
+        "bmc": {
+          "required": false,
+          "category": "gtm",
+          "description": "Business Model Canvas extracted from MRD for stakeholder review"
+        },
+        "faq": {
+          "required": true,
+          "category": "gtm"
+        },
+        "ird": {
+          "required": false,
+          "category": "technical",
+          "description": "Infrastructure requirements"
+        },
+        "mrd": {
+          "required": true,
+          "category": "source",
+          "description": "Market requirements with embedded Business Model Canvas"
+        },
+        "narrative-1p": {
+          "required": false,
+          "category": "gtm"
+        },
+        "narrative-6p": {
+          "required": false,
+          "category": "gtm"
+        },
+        "prd": {
+          "required": true,
+          "category": "source"
+        },
+        "press": {
+          "required": true,
+          "category": "gtm"
+        },
+        "spec": {
+          "required": true,
+          "category": "output"
+        },
+        "tpd": {
+          "required": true,
+          "category": "technical",
+          "description": "Test plan document"
+        },
+        "trd": {
+          "required": true,
+          "category": "technical"
+        },
+        "uxd": {
+          "required": true,
+          "category": "source"
+        }
+      },
+      "synthesis": {
+        "bmc": {
+          "sources": [
+            "mrd"
+          ],
+          "guidance": "Extract Business Model Canvas blocks from MRD sections 2-11. Format as standalone canvas for visual review."
+        },
+        "faq": {
+          "sources": [
+            "mrd",
+            "press"
+          ],
+          "guidance": "Address customer questions based on segments, internal questions based on risks and assumptions."
+        },
+        "prd": {
+          "sources": [
+            "mrd",
+            "press",
+            "faq"
+          ],
+          "guidance": "Derive product requirements from market requirements. Map to customer segments."
+        },
+        "press": {
+          "sources": [
+            "mrd"
+          ],
+          "guidance": "Write from customer perspective based on value propositions and customer segments in MRD."
+        },
+        "spec": {
+          "sources": [
+            "mrd",
+            "prd",
+            "uxd",
+            "trd",
+            "tpd"
+          ],
+          "guidance": "Unified specification consolidating all approved specs."
+        },
+        "tpd": {
+          "sources": [
+            "prd",
+            "trd"
+          ],
+          "guidance": "Test plan covering all PRD requirements with traceability."
+        },
+        "trd": {
+          "sources": [
+            "prd",
+            "uxd"
+          ],
+          "guidance": "Technical design to support PRD requirements."
+        }
+      },
+      "template_specs": [
+        "faq",
+        "ird",
+        "mrd",
+        "narrative-1p",
+        "prd",
+        "press",
+        "spec",
+        "tpd",
+        "trd",
+        "uxd"
+      ],
+      "rubric_specs": [
+        "faq",
+        "ird",
+        "mrd",
+        "narrative-1p",
+        "prd",
+        "press",
+        "spec",
+        "tpd",
+        "trd",
+        "uxd"
+      ]
+    },
+    {
+      "name": "google",
+      "description": "Google Design Doc + RFC culture. Analytical, engineering-heavy approach with explicit tradeoffs, peer review, and OKR alignment.",
+      "methodology": {
+        "name": "Google Design Docs",
+        "principles": [
+          {
+            "id": "explicit_tradeoffs",
+            "name": "Explicit Tradeoffs",
+            "description": "Every decision has tradeoffs; make them visible"
+          },
+          {
+            "id": "alternatives_considered",
+            "name": "Alternatives Considered",
+            "description": "Always evaluate multiple approaches"
+          },
+          {
+            "id": "peer_review",
+            "name": "Peer Review",
+            "description": "RFCs ensure diverse perspectives before building"
+          },
+          {
+            "id": "data_driven",
+            "name": "Data Driven",
+            "description": "Decisions backed by data and experiments"
+          },
+          {
+            "id": "okr_alignment",
+            "name": "Okr Alignment",
+            "description": "Work connects to measurable objectives"
+          },
+          {
+            "id": "non_goals",
+            "name": "Non Goals",
+            "description": "What we won't do is as important as what we will"
+          },
+          {
+            "id": "technical_depth",
+            "name": "Technical Depth",
+            "description": "Engineering reasoning is first-class"
+          },
+          {
+            "id": "scalability_first",
+            "name": "Scalability First",
+            "description": "Design for scale from the start"
+          },
+          {
+            "id": "reversibility",
+            "name": "Reversibility",
+            "description": "Prefer reversible decisions; be explicit about irreversible ones"
+          },
+          {
+            "id": "launch_and_iterate",
+            "name": "Launch And Iterate",
+            "description": "Ship, measure, improve"
+          }
+        ],
+        "artifacts": [
+          {
+            "id": "design_doc",
+            "description": "Core technical specification with tradeoffs"
+          },
+          {
+            "id": "rfc",
+            "description": "Request for comments for peer review"
+          },
+          {
+            "id": "okr",
+            "description": "Objectives and key results"
+          },
+          {
+            "id": "experiment",
+            "description": "Hypothesis-driven experiment plans"
+          }
+        ]
+      },
+      "spec_config": {
+        "bmc": {
+          "required": false,
+          "category": "gtm",
+          "description": "Business Model Canvas extracted from MRD for stakeholder review"
+        },
+        "faq": {
+          "required": false,
+          "category": "gtm"
+        },
+        "ird": {
+          "required": false,
+          "category": "technical"
+        },
+        "mrd": {
+          "required": false,
+          "category": "source"
+        },
+        "narrative-1p": {
+          "required": false,
+          "category": "gtm"
+        },
+        "narrative-6p": {
+          "required": false,
+          "category": "gtm"
+        },
+        "prd": {
+          "required": true,
+          "category": "source"
+        },
+        "press": {
+          "required": false,
+          "category": "gtm"
+        },
+        "spec": {
+          "required": true,
+          "category": "output"
+        },
+        "tpd": {
+          "required": true,
+          "category": "technical",
+          "description": "Test plan document"
+        },
+        "trd": {
+          "required": true,
+          "category": "technical"
+        },
+        "uxd": {
+          "required": false,
+          "category": "source"
+        }
+      },
+      "synthesis": {
+        "bmc": {
+          "sources": [
+            "mrd"
+          ],
+          "guidance": "Extract Business Model Canvas blocks from MRD sections 2-11. Format as standalone canvas for visual review."
+        },
+        "faq": {
+          "sources": [
+            "mrd",
+            "press"
+          ],
+          "guidance": "Address customer questions based on segments, internal questions based on risks and assumptions."
+        },
+        "prd": {
+          "sources": [
+            "mrd",
+            "press",
+            "faq"
+          ],
+          "guidance": "Derive product requirements from market requirements. Map to customer segments."
+        },
+        "press": {
+          "sources": [
+            "mrd"
+          ],
+          "guidance": "Write from customer perspective based on value propositions and customer segments in MRD."
+        },
+        "spec": {
+          "sources": [
+            "mrd",
+            "prd",
+            "uxd",
+            "trd",
+            "tpd"
+          ],
+          "guidance": "Unified specification consolidating all approved specs."
+        },
+        "tpd": {
+          "sources": [
+            "prd",
+            "trd"
+          ],
+          "guidance": "Test plan covering all PRD requirements with traceability."
+        },
+        "trd": {
+          "sources": [
+            "prd",
+            "uxd"
+          ],
+          "guidance": "Technical design to support PRD requirements."
+        }
+      },
+      "template_specs": [
+        "faq",
+        "ird",
+        "mrd",
+        "narrative-1p",
+        "prd",
+        "press",
+        "spec",
+        "tpd",
+        "trd",
+        "uxd"
+      ],
+      "rubric_specs": [
+        "faq",
+        "ird",
+        "mrd",
+        "narrative-1p",
+        "prd",
+        "press",
+        "spec",
+        "tpd",
+        "trd",
+        "uxd"
+      ]
+    },
+    {
+      "name": "growth",
+      "description": "Metrics-driven configuration for 1-N growth phase. PRD, UXD, and FAQ required.",
+      "spec_config": {
+        "faq": {
+          "required": true,
+          "category": "gtm"
+        },
+        "ird": {
+          "required": false,
+          "category": "technical",
+          "description": "Infrastructure for growth scaling"
+        },
+        "mrd": {
+          "required": false,
+          "category": "source"
+        },
+        "narrative-1p": {
+          "required": false,
+          "category": "gtm"
+        },
+        "narrative-6p": {
+          "required": false,
+          "category": "gtm"
+        },
+        "prd": {
+          "required": true,
+          "category": "source"
+        },
+        "press": {
+          "required": false,
+          "category": "gtm"
+        },
+        "tpd": {
+          "required": false,
+          "category": "technical",
+          "description": "Test plan for quality at scale"
+        },
+        "trd": {
+          "required": false,
+          "category": "technical",
+          "description": "Technical design for scalable architecture"
+        },
+        "uxd": {
+          "required": true,
+          "category": "source"
+        }
+      },
+      "template_specs": [
+        "faq",
+        "ird",
+        "prd",
+        "tpd",
+        "trd",
+        "uxd"
+      ],
+      "rubric_specs": [
+        "faq",
+        "ird",
+        "prd",
+        "tpd",
+        "trd",
+        "uxd"
+      ]
+    },
+    {
+      "name": "jtbd",
+      "description": "Clayton Christensen's Jobs-to-be-Done framework. Focus on the job customers hire products to do, not demographics or features.",
+      "methodology": {
+        "name": "Jobs-to-be-Done",
+        "source": "Clayton Christensen - Competing Against Luck (2016)",
+        "principles": [
+          {
+            "id": "jobs_not_products",
+            "name": "Jobs Not Products",
+            "description": "Customers don't buy products; they hire them to do a job"
+          },
+          {
+            "id": "progress_over_features",
+            "name": "Progress Over Features",
+            "description": "People want to make progress in their lives"
+          },
+          {
+            "id": "circumstances_matter",
+            "name": "Circumstances Matter",
+            "description": "The same person has different jobs in different circumstances"
+          },
+          {
+            "id": "functional_emotional_social",
+            "name": "Functional Emotional Social",
+            "description": "Jobs have functional, emotional, and social dimensions"
+          },
+          {
+            "id": "struggling_moments",
+            "name": "Struggling Moments",
+            "description": "Innovation opportunity exists where customers struggle"
+          },
+          {
+            "id": "competing_with_nothing",
+            "name": "Competing With Nothing",
+            "description": "Sometimes the competition is doing nothing"
+          },
+          {
+            "id": "forces_of_progress",
+            "name": "Forces Of Progress",
+            "description": "Push, pull, anxiety, and habit determine switching"
+          },
+          {
+            "id": "outcome_driven",
+            "name": "Outcome Driven",
+            "description": "Success is measured by outcomes customers seek"
+          }
+        ]
+      },
+      "spec_config": {
+        "faq": {
+          "required": false,
+          "category": "gtm"
+        },
+        "ird": {
+          "required": false,
+          "category": "technical"
+        },
+        "mrd": {
+          "required": true,
+          "category": "source"
+        },
+        "narrative-1p": {
+          "required": false,
+          "category": "gtm"
+        },
+        "narrative-6p": {
+          "required": false,
+          "category": "gtm"
+        },
+        "prd": {
+          "required": true,
+          "category": "source"
+        },
+        "press": {
+          "required": false,
+          "category": "gtm"
+        },
+        "trd": {
+          "required": false,
+          "category": "technical",
+          "description": "Lightweight technical design for MVP"
+        },
+        "uxd": {
+          "required": false,
+          "category": "source"
+        }
+      },
+      "template_specs": [
+        "mrd",
+        "prd",
+        "trd",
+        "uxd"
+      ],
+      "rubric_specs": [
+        "mrd",
+        "prd",
+        "trd",
+        "uxd"
+      ]
+    },
+    {
+      "name": "lean-startup",
+      "description": "Eric Ries' Lean Startup methodology. Build-Measure-Learn cycles with validated learning, MVP focus, and pivot-or-persevere decisions.",
+      "methodology": {
+        "name": "Lean Startup",
+        "source": "Eric Ries - The Lean Startup (2011)",
+        "principles": [
+          {
+            "id": "validated_learning",
+            "name": "Validated Learning",
+            "description": "Progress measured by validated learning, not vanity metrics"
+          },
+          {
+            "id": "build_measure_learn",
+            "name": "Build Measure Learn",
+            "description": "Rapid iteration through Build-Measure-Learn feedback loops"
+          },
+          {
+            "id": "minimum_viable_product",
+            "name": "Minimum Viable Product",
+            "description": "Build the smallest thing that tests the hypothesis"
+          },
+          {
+            "id": "pivot_or_persevere",
+            "name": "Pivot Or Persevere",
+            "description": "Structured decision-making about direction changes"
+          },
+          {
+            "id": "innovation_accounting",
+            "name": "Innovation Accounting",
+            "description": "Measure progress toward product-market fit"
+          },
+          {
+            "id": "continuous_deployment",
+            "name": "Continuous Deployment",
+            "description": "Ship early, ship often, learn fast"
+          },
+          {
+            "id": "split_testing",
+            "name": "Split Testing",
+            "description": "A/B test assumptions systematically"
+          },
+          {
+            "id": "actionable_metrics",
+            "name": "Actionable Metrics",
+            "description": "Focus on metrics that drive decisions, not vanity"
+          }
+        ]
+      },
+      "spec_config": {
+        "faq": {
+          "required": false,
+          "category": "gtm"
+        },
+        "hypothesis": {
+          "required": true,
+          "category": "source"
+        },
+        "ird": {
+          "required": false,
+          "category": "technical"
+        },
+        "mrd": {
+          "required": false,
+          "category": "source"
+        },
+        "narrative-1p": {
+          "required": false,
+          "category": "gtm"
+        },
+        "narrative-6p": {
+          "required": false,
+          "category": "gtm"
+        },
+        "prd": {
+          "required": true,
+          "category": "source"
+        },
+        "press": {
+          "required": false,
+          "category": "gtm"
+        },
+        "trd": {
+          "required": false,
+          "category": "technical",
+          "description": "Lightweight technical design for MVP"
+        },
+        "uxd": {
+          "required": false,
+          "category": "source",
+          "description": "Lightweight UX design for MVP"
+        }
+      },
+      "template_specs": [
+        "hypothesis",
+        "prd",
+        "trd",
+        "uxd"
+      ],
+      "rubric_specs": [
+        "hypothesis",
+        "prd",
+        "trd",
+        "uxd"
+      ]
+    },
+    {
+      "name": "pbhq-lite",
+      "description": "ProductBuildersHQ Lite: the smallest spec set that keeps product, technology, plan, and roadmap distinct — PRD (what), TRD (how), PLAN (sequencing), ROADMAP (tracking). The four stay separate because they answer different questions and change on different cadences; merging any two couples their churn. Built to keep velocity high and development consistent across one-person, multi-repo initiatives: minimal ceremony keeps the loop turning fast, and the same four files committed alongside the code in every repo let humans and agents navigate any initiative the same way. This is the minimal set for the building phase — getting to shipped with verifiable success criteria; growth-phase product execution (GTM plans, growth experiments) adds artifacts or graduates to a heavier workflow rather than stretching these four.",
+      "spec_config": {
+        "plan": {
+          "required": true,
+          "category": "execution",
+          "description": "Implementation plan - the narrative of the sequence: why this order, dependencies, phases, milestones. Deliberately separate from ROADMAP so the plan's story is not churned by status flips"
+        },
+        "prd": {
+          "required": true,
+          "category": "source",
+          "description": "Product Requirements Document - defines the what: problem, goals, non-goals, user stories, functional requirements, and required success metrics (outcome targets with baselines and measurement method — the Product Loop's verification criteria)"
+        },
+        "roadmap": {
+          "required": true,
+          "category": "execution",
+          "description": "Execution tracking - the checklist: a machine-readable RMI ledger (stable IDs, status, progress) committed with the repo. Deliberately separate from PLAN so per-session status churn never touches the narrative"
+        },
+        "trd": {
+          "required": true,
+          "category": "technical",
+          "description": "Technical Requirements Document - defines the how: architecture, components, APIs, data models, security considerations"
+        }
+      },
+      "synthesis": {
+        "plan": {
+          "sources": [
+            "prd",
+            "trd"
+          ],
+          "guidance": "Sequence implementation based on dependencies from TRD and priorities from PRD. Break into phases with clear deliverables."
+        },
+        "roadmap": {
+          "sources": [
+            "plan"
+          ],
+          "guidance": "Create RMI entries for each plan item. Use stable IDs (RMI-REPOSLUG-NNN). Track status alongside code commits."
+        },
+        "trd": {
+          "sources": [
+            "prd"
+          ],
+          "guidance": "Derive technical approach from PRD requirements. Include architecture decisions, component boundaries, and API contracts."
+        }
+      },
+      "template_specs": [
+        "prd"
+      ],
+      "rubric_specs": [
+        "plan",
+        "prd",
+        "roadmap",
+        "trd"
+      ]
+    },
+    {
+      "name": "shapeup",
+      "description": "Basecamp's Shape Up methodology. Fixed time, variable scope. Appetite-based planning with betting table and hill charts.",
+      "methodology": {
+        "name": "Shape Up",
+        "creator": "Ryan Singer (Basecamp)",
+        "reference": "https://basecamp.com/shapeup",
+        "principles": [
+          {
+            "id": "fixed_time_variable_scope",
+            "name": "Fixed Time Variable Scope",
+            "description": "Appetite sets the time; scope flexes to fit"
+          },
+          {
+            "id": "shaping",
+            "name": "Shaping",
+            "description": "Define problems and solutions at the right level of abstraction"
+          },
+          {
+            "id": "betting_not_planning",
+            "name": "Betting Not Planning",
+            "description": "Bet on pitches, don't manage backlogs"
+          },
+          {
+            "id": "small_teams",
+            "name": "Small Teams",
+            "description": "One designer, one or two programmers"
+          },
+          {
+            "id": "full_responsibility",
+            "name": "Full Responsibility",
+            "description": "Teams have full autonomy during the cycle"
+          },
+          {
+            "id": "circuit_breaker",
+            "name": "Circuit Breaker",
+            "description": "If it's not working, stop and reassess"
+          },
+          {
+            "id": "cool_down",
+            "name": "Cool Down",
+            "description": "Two-week break between cycles for recovery"
+          },
+          {
+            "id": "no_backlogs",
+            "name": "No Backlogs",
+            "description": "If it's important, it will come back"
+          },
+          {
+            "id": "appetite_not_estimates",
+            "name": "Appetite Not Estimates",
+            "description": "How much time is this worth, not how long will it take"
+          },
+          {
+            "id": "hill_charts",
+            "name": "Hill Charts",
+            "description": "Track uncertainty, not completion"
+          }
+        ],
+        "artifacts": [
+          {
+            "id": "pitch",
+            "description": "Shaped problem and solution ready for betting"
+          },
+          {
+            "id": "bet",
+            "description": "Decision to pursue a pitch in a cycle"
+          },
+          {
+            "id": "scope",
+            "description": "Hill chart tracking during building"
+          }
+        ]
+      },
+      "spec_config": {
+        "bmc": {
+          "required": false,
+          "category": "gtm",
+          "description": "Business Model Canvas extracted from MRD for stakeholder review"
+        },
+        "faq": {
+          "required": false,
+          "category": "gtm"
+        },
+        "ird": {
+          "required": false,
+          "category": "technical",
+          "description": "Infrastructure requirements"
+        },
+        "mrd": {
+          "required": false,
+          "category": "source"
+        },
+        "narrative-1p": {
+          "required": false,
+          "category": "gtm"
+        },
+        "narrative-6p": {
+          "required": false,
+          "category": "gtm"
+        },
+        "prd": {
+          "required": false,
+          "category": "source"
+        },
+        "press": {
+          "required": false,
+          "category": "gtm"
+        },
+        "shapeup-pitch": {
+          "required": true,
+          "category": "source",
+          "description": "Shaped pitch ready for betting"
+        },
+        "shapeup-scope": {
+          "required": false,
+          "category": "execution",
+          "description": "Hill chart and scope tracking"
+        },
+        "spec": {
+          "required": true,
+          "category": "output"
+        },
+        "tpd": {
+          "required": true,
+          "category": "technical",
+          "description": "Test plan document"
+        },
+        "trd": {
+          "required": false,
+          "category": "technical"
+        },
+        "uxd": {
+          "required": false,
+          "category": "source"
+        }
+      },
+      "synthesis": {
+        "bmc": {
+          "sources": [
+            "mrd"
+          ],
+          "guidance": "Extract Business Model Canvas blocks from MRD sections 2-11. Format as standalone canvas for visual review."
+        },
+        "faq": {
+          "sources": [
+            "mrd",
+            "press"
+          ],
+          "guidance": "Address customer questions based on segments, internal questions based on risks and assumptions."
+        },
+        "prd": {
+          "sources": [
+            "mrd",
+            "press",
+            "faq"
+          ],
+          "guidance": "Derive product requirements from market requirements. Map to customer segments."
+        },
+        "press": {
+          "sources": [
+            "mrd"
+          ],
+          "guidance": "Write from customer perspective based on value propositions and customer segments in MRD."
+        },
+        "spec": {
+          "sources": [
+            "mrd",
+            "prd",
+            "uxd",
+            "trd",
+            "tpd"
+          ],
+          "guidance": "Unified specification consolidating all approved specs."
+        },
+        "tpd": {
+          "sources": [
+            "prd",
+            "trd"
+          ],
+          "guidance": "Test plan covering all PRD requirements with traceability."
+        },
+        "trd": {
+          "sources": [
+            "prd",
+            "uxd"
+          ],
+          "guidance": "Technical design to support PRD requirements."
+        }
+      },
+      "evaluation": {
+        "pass_threshold": 80,
+        "partial_threshold": 60
+      },
+      "template_specs": [
+        "faq",
+        "ird",
+        "mrd",
+        "narrative-1p",
+        "prd",
+        "press",
+        "shapeup-pitch",
+        "shapeup-scope",
+        "spec",
+        "tpd",
+        "trd",
+        "uxd"
+      ],
+      "rubric_specs": [
+        "faq",
+        "ird",
+        "mrd",
+        "narrative-1p",
+        "prd",
+        "press",
+        "shapeup-pitch",
+        "shapeup-scope",
+        "spec",
+        "tpd",
+        "trd",
+        "uxd"
+      ]
+    },
+    {
+      "name": "startup",
+      "description": "Lightweight configuration for pre-PMF startups. Only PRD required.",
+      "spec_config": {
+        "faq": {
+          "required": false,
+          "category": "gtm"
+        },
+        "ird": {
+          "required": false,
+          "category": "technical"
+        },
+        "mrd": {
+          "required": false,
+          "category": "source"
+        },
+        "narrative-1p": {
+          "required": false,
+          "category": "gtm"
+        },
+        "narrative-6p": {
+          "required": false,
+          "category": "gtm"
+        },
+        "prd": {
+          "required": true,
+          "category": "source"
+        },
+        "press": {
+          "required": false,
+          "category": "gtm"
+        },
+        "trd": {
+          "required": false,
+          "category": "technical",
+          "description": "Lightweight technical design for MVP"
+        },
+        "uxd": {
+          "required": false,
+          "category": "source",
+          "description": "Lightweight UX design for MVP"
+        }
+      },
+      "template_specs": [
+        "prd",
+        "trd",
+        "uxd"
+      ],
+      "rubric_specs": [
+        "prd",
+        "trd",
+        "uxd"
+      ]
+    },
+    {
+      "name": "stripe",
+      "description": "Stripe API-first methodology. Documentation as product, precise contracts, developer-centric specs where writing IS the product.",
+      "methodology": {
+        "name": "Stripe API-First",
+        "principles": [
+          {
+            "id": "contract_first",
+            "name": "Contract First",
+            "description": "API design precedes implementation; the spec IS the source of truth"
+          },
+          {
+            "id": "docs_as_product",
+            "name": "Docs As Product",
+            "description": "Documentation is a first-class product, not an afterthought"
+          },
+          {
+            "id": "developer_empathy",
+            "name": "Developer Empathy",
+            "description": "Every spec is written from the API consumer's perspective"
+          },
+          {
+            "id": "precision",
+            "name": "Precision",
+            "description": "No ambiguity; every input, output, and error is explicitly defined"
+          },
+          {
+            "id": "consistency",
+            "name": "Consistency",
+            "description": "Patterns are predictable across the entire API surface"
+          },
+          {
+            "id": "versioning_discipline",
+            "name": "Versioning Discipline",
+            "description": "Breaking changes are managed with care and clear migration paths"
+          },
+          {
+            "id": "externally_legible",
+            "name": "Externally Legible",
+            "description": "Specs should be readable by external developers, not just internal teams"
+          },
+          {
+            "id": "code_as_documentation",
+            "name": "Code As Documentation",
+            "description": "Examples and SDKs are integral to the spec, not supplementary"
+          }
+        ],
+        "artifacts": [
+          {
+            "id": "api_spec",
+            "description": "API Specification - OpenAPI/contract defining all endpoints",
+            "category": "primary"
+          },
+          {
+            "id": "api_prd",
+            "description": "API Product Requirements - developer use cases and integration journeys",
+            "category": "primary"
+          },
+          {
+            "id": "platform_strategy",
+            "description": "Platform/API market strategy and ecosystem thinking",
+            "category": "supporting"
+          },
+          {
+            "id": "dx_spec",
+            "description": "Developer Experience spec - SDKs, samples, onboarding",
+            "category": "supporting"
+          }
+        ]
+      },
+      "spec_config": {
+        "faq": {
+          "required": true,
+          "category": "gtm"
+        },
+        "ird": {
+          "required": false,
+          "category": "technical",
+          "description": "Infrastructure for growth scaling"
+        },
+        "mrd": {
+          "required": false,
+          "category": "source"
+        },
+        "narrative-1p": {
+          "required": false,
+          "category": "gtm"
+        },
+        "narrative-6p": {
+          "required": false,
+          "category": "gtm"
+        },
+        "prd": {
+          "required": true,
+          "category": "source"
+        },
+        "press": {
+          "required": false,
+          "category": "gtm"
+        },
+        "tpd": {
+          "required": false,
+          "category": "technical",
+          "description": "Test plan for quality at scale"
+        },
+        "trd": {
+          "required": false,
+          "category": "technical",
+          "description": "Technical design for scalable architecture"
+        },
+        "uxd": {
+          "required": true,
+          "category": "source"
+        }
+      },
+      "template_specs": [
+        "faq",
+        "ird",
+        "mrd",
+        "prd",
+        "tpd",
+        "trd",
+        "uxd"
+      ],
+      "rubric_specs": [
+        "faq",
+        "ird",
+        "mrd",
+        "prd",
+        "tpd",
+        "trd",
+        "uxd"
+      ]
+    },
+    {
+      "name": "v2mom",
+      "description": "V2MOM strategic planning framework (Vision, Values, Methods, Obstacles, Measures). Supports cascading alignment from Company → Department → Team → Individual levels.",
+      "spec_config": {
+        "v2mom-alignment": {
+          "required": false,
+          "category": "gtm",
+          "description": "Synthesized document showing alignment to parent V2MOM methods."
+        },
+        "v2mom-measures": {
+          "required": true,
+          "category": "source",
+          "description": "Quantifiable metrics. Each measure should map to KPIs in ProductContext."
+        },
+        "v2mom-methods": {
+          "required": true,
+          "category": "source",
+          "description": "Actions and initiatives. Each method should map to capabilities in ProductContext."
+        },
+        "v2mom-obstacles": {
+          "required": true,
+          "category": "source",
+          "description": "Known blockers and risks. Each obstacle should have mitigation strategies."
+        },
+        "v2mom-summary": {
+          "required": false,
+          "category": "output",
+          "description": "Unified V2MOM document combining all sections with cross-references."
+        },
+        "v2mom-values": {
+          "required": true,
+          "category": "source",
+          "description": "Ranked list of beliefs and priorities. Higher-ranked values take precedence in trade-offs."
+        },
+        "v2mom-vision": {
+          "required": true,
+          "category": "source",
+          "description": "The north star - what we want to achieve. Should be inspiring, clear, and memorable."
+        }
+      },
+      "synthesis": {
+        "v2mom-alignment": {
+          "sources": [
+            "v2mom-vision",
+            "parent:v2mom-methods"
+          ],
+          "guidance": "Show how this V2MOM's vision supports the parent's methods.\nInclude:\n- Which parent methods this V2MOM advances\n- Contribution to parent metrics\n- Dependencies on sibling V2MOMs\n"
+        },
+        "v2mom-measures": {
+          "sources": [
+            "v2mom-methods"
+          ],
+          "guidance": "Define quantifiable metrics for each method.\nFor each measure:\n- Be specific and measurable (SMART)\n- Include baseline, target, and stretch goals\n- Define measurement frequency\n- Link to KPIs in ProductContext\n"
+        },
+        "v2mom-methods": {
+          "sources": [
+            "v2mom-vision",
+            "v2mom-values"
+          ],
+          "guidance": "Define specific initiatives that advance the vision while honoring the values.\nFor each method:\n- Link to ProductContext capabilities when applicable\n- Include clear ownership\n- Define success criteria\n- Estimate effort/timeline\n"
+        },
+        "v2mom-obstacles": {
+          "sources": [
+            "v2mom-vision",
+            "v2mom-methods"
+          ],
+          "guidance": "Identify challenges that could block methods from succeeding.\nFor each obstacle:\n- Categorize: technical, organizational, market, resource\n- Define mitigation strategies\n- Assign owner for resolution\n- Link to related decisions in ProductContext\n"
+        },
+        "v2mom-summary": {
+          "sources": [
+            "v2mom-vision",
+            "v2mom-values",
+            "v2mom-methods",
+            "v2mom-obstacles",
+            "v2mom-measures"
+          ],
+          "guidance": "Create a unified V2MOM document with:\n- Executive summary\n- All five sections with cross-references\n- ProductContext entity links\n- Parent V2MOM alignment (if applicable)\n"
+        },
+        "v2mom-values": {
+          "sources": [
+            "v2mom-vision"
+          ],
+          "guidance": "Extract the core beliefs and principles that will guide achieving the vision.\nValues should be:\n- Ranked in priority order (1 = highest)\n- Actionable trade-off guides (\"customer success over short-term revenue\")\n- Consistent with organizational values\n"
+        }
+      },
+      "evaluation": {},
+      "template_specs": [
+        "v2mom-alignment",
+        "v2mom-measures",
+        "v2mom-methods",
+        "v2mom-obstacles",
+        "v2mom-summary",
+        "v2mom-values",
+        "v2mom-vision"
+      ]
+    },
+    {
+      "name": "v2mom-company",
+      "description": "Company-level V2MOM. The top of the cascade - defines organizational vision and strategic priorities that flow down to departments.",
+      "spec_config": {
+        "v2mom-alignment": {
+          "required": false,
+          "category": "gtm",
+          "description": "Synthesized document showing alignment to parent V2MOM methods."
+        },
+        "v2mom-measures": {
+          "required": true,
+          "category": "source",
+          "description": "Quantifiable metrics. Each measure should map to KPIs in ProductContext."
+        },
+        "v2mom-methods": {
+          "required": true,
+          "category": "source",
+          "description": "Actions and initiatives. Each method should map to capabilities in ProductContext."
+        },
+        "v2mom-obstacles": {
+          "required": true,
+          "category": "source",
+          "description": "Known blockers and risks. Each obstacle should have mitigation strategies."
+        },
+        "v2mom-summary": {
+          "required": false,
+          "category": "output",
+          "description": "Unified V2MOM document combining all sections with cross-references."
+        },
+        "v2mom-values": {
+          "required": true,
+          "category": "source",
+          "description": "Ranked list of beliefs and priorities. Higher-ranked values take precedence in trade-offs."
+        },
+        "v2mom-vision": {
+          "required": true,
+          "category": "source",
+          "description": "The north star - what we want to achieve. Should be inspiring, clear, and memorable."
+        }
+      },
+      "synthesis": {
+        "v2mom-alignment": {
+          "sources": [],
+          "guidance": "Company V2MOM is the root - no parent alignment document needed."
+        },
+        "v2mom-measures": {
+          "sources": [
+            "v2mom-methods"
+          ],
+          "guidance": "Define quantifiable metrics for each method.\nFor each measure:\n- Be specific and measurable (SMART)\n- Include baseline, target, and stretch goals\n- Define measurement frequency\n- Link to KPIs in ProductContext\n"
+        },
+        "v2mom-methods": {
+          "sources": [
+            "v2mom-vision",
+            "v2mom-values"
+          ],
+          "guidance": "Define specific initiatives that advance the vision while honoring the values.\nFor each method:\n- Link to ProductContext capabilities when applicable\n- Include clear ownership\n- Define success criteria\n- Estimate effort/timeline\n"
+        },
+        "v2mom-obstacles": {
+          "sources": [
+            "v2mom-vision",
+            "v2mom-methods"
+          ],
+          "guidance": "Identify challenges that could block methods from succeeding.\nFor each obstacle:\n- Categorize: technical, organizational, market, resource\n- Define mitigation strategies\n- Assign owner for resolution\n- Link to related decisions in ProductContext\n"
+        },
+        "v2mom-summary": {
+          "sources": [
+            "v2mom-vision",
+            "v2mom-values",
+            "v2mom-methods",
+            "v2mom-obstacles",
+            "v2mom-measures"
+          ],
+          "guidance": "Create a unified V2MOM document with:\n- Executive summary\n- All five sections with cross-references\n- ProductContext entity links\n- Parent V2MOM alignment (if applicable)\n"
+        },
+        "v2mom-values": {
+          "sources": [
+            "v2mom-vision"
+          ],
+          "guidance": "Extract the core beliefs and principles that will guide achieving the vision.\nValues should be:\n- Ranked in priority order (1 = highest)\n- Actionable trade-off guides (\"customer success over short-term revenue\")\n- Consistent with organizational values\n"
+        }
+      },
+      "evaluation": {},
+      "template_specs": [
+        "v2mom-alignment",
+        "v2mom-measures",
+        "v2mom-methods",
+        "v2mom-obstacles",
+        "v2mom-summary",
+        "v2mom-values",
+        "v2mom-vision"
+      ]
+    },
+    {
+      "name": "v2mom-department",
+      "description": "Department-level V2MOM. Aligns to Company V2MOM methods and cascades down to teams.",
+      "spec_config": {
+        "v2mom-alignment": {
+          "required": true,
+          "category": "gtm",
+          "description": "Shows how department vision and methods support company V2MOM methods."
+        },
+        "v2mom-measures": {
+          "required": true,
+          "category": "source",
+          "description": "Quantifiable metrics. Each measure should map to KPIs in ProductContext."
+        },
+        "v2mom-methods": {
+          "required": true,
+          "category": "source",
+          "description": "Actions and initiatives. Each method should map to capabilities in ProductContext."
+        },
+        "v2mom-obstacles": {
+          "required": true,
+          "category": "source",
+          "description": "Known blockers and risks. Each obstacle should have mitigation strategies."
+        },
+        "v2mom-summary": {
+          "required": false,
+          "category": "output",
+          "description": "Unified V2MOM document combining all sections with cross-references."
+        },
+        "v2mom-values": {
+          "required": true,
+          "category": "source",
+          "description": "Ranked list of beliefs and priorities. Higher-ranked values take precedence in trade-offs."
+        },
+        "v2mom-vision": {
+          "required": true,
+          "category": "source",
+          "description": "The north star - what we want to achieve. Should be inspiring, clear, and memorable."
+        }
+      },
+      "synthesis": {
+        "v2mom-alignment": {
+          "sources": [
+            "v2mom-vision",
+            "v2mom-methods",
+            "parent:v2mom-methods",
+            "parent:v2mom-measures"
+          ],
+          "guidance": "Create an alignment document showing:\n1. Which company methods this department advances\n2. How department methods map to company methods\n3. Expected contribution to company measures\n4. Dependencies on other departments\n5. Resource requirements and constraints\n"
+        },
+        "v2mom-measures": {
+          "sources": [
+            "v2mom-methods"
+          ],
+          "guidance": "Define quantifiable metrics for each method.\nFor each measure:\n- Be specific and measurable (SMART)\n- Include baseline, target, and stretch goals\n- Define measurement frequency\n- Link to KPIs in ProductContext\n"
+        },
+        "v2mom-methods": {
+          "sources": [
+            "v2mom-vision",
+            "v2mom-values"
+          ],
+          "guidance": "Define specific initiatives that advance the vision while honoring the values.\nFor each method:\n- Link to ProductContext capabilities when applicable\n- Include clear ownership\n- Define success criteria\n- Estimate effort/timeline\n"
+        },
+        "v2mom-obstacles": {
+          "sources": [
+            "v2mom-vision",
+            "v2mom-methods"
+          ],
+          "guidance": "Identify challenges that could block methods from succeeding.\nFor each obstacle:\n- Categorize: technical, organizational, market, resource\n- Define mitigation strategies\n- Assign owner for resolution\n- Link to related decisions in ProductContext\n"
+        },
+        "v2mom-summary": {
+          "sources": [
+            "v2mom-vision",
+            "v2mom-values",
+            "v2mom-methods",
+            "v2mom-obstacles",
+            "v2mom-measures"
+          ],
+          "guidance": "Create a unified V2MOM document with:\n- Executive summary\n- All five sections with cross-references\n- ProductContext entity links\n- Parent V2MOM alignment (if applicable)\n"
+        },
+        "v2mom-values": {
+          "sources": [
+            "v2mom-vision"
+          ],
+          "guidance": "Extract the core beliefs and principles that will guide achieving the vision.\nValues should be:\n- Ranked in priority order (1 = highest)\n- Actionable trade-off guides (\"customer success over short-term revenue\")\n- Consistent with organizational values\n"
+        }
+      },
+      "evaluation": {},
+      "template_specs": [
+        "v2mom-alignment",
+        "v2mom-measures",
+        "v2mom-methods",
+        "v2mom-obstacles",
+        "v2mom-summary",
+        "v2mom-values",
+        "v2mom-vision"
+      ]
+    },
+    {
+      "name": "v2mom-team",
+      "description": "Team-level V2MOM. Aligns to Department V2MOM methods. Most tactical level with direct links to capabilities and projects.",
+      "spec_config": {
+        "v2mom-alignment": {
+          "required": true,
+          "category": "gtm",
+          "description": "Shows how team vision and methods support department V2MOM methods."
+        },
+        "v2mom-measures": {
+          "required": true,
+          "category": "source",
+          "description": "Quantifiable metrics. Each measure should map to KPIs in ProductContext."
+        },
+        "v2mom-methods": {
+          "required": true,
+          "category": "source",
+          "description": "Actions and initiatives. Each method should map to capabilities in ProductContext."
+        },
+        "v2mom-obstacles": {
+          "required": true,
+          "category": "source",
+          "description": "Known blockers and risks. Each obstacle should have mitigation strategies."
+        },
+        "v2mom-summary": {
+          "required": false,
+          "category": "output",
+          "description": "Unified V2MOM document combining all sections with cross-references."
+        },
+        "v2mom-values": {
+          "required": true,
+          "category": "source",
+          "description": "Ranked list of beliefs and priorities. Higher-ranked values take precedence in trade-offs."
+        },
+        "v2mom-vision": {
+          "required": true,
+          "category": "source",
+          "description": "The north star - what we want to achieve. Should be inspiring, clear, and memorable."
+        }
+      },
+      "synthesis": {
+        "v2mom-alignment": {
+          "sources": [
+            "v2mom-vision",
+            "v2mom-methods",
+            "parent:v2mom-methods",
+            "parent:v2mom-measures",
+            "grandparent:v2mom-vision"
+          ],
+          "guidance": "Create an alignment document showing:\n1. Which department methods this team advances\n2. How team methods map to department methods\n3. How this contributes to company vision (grandparent context)\n4. ProductContext entity links for each method\n5. Cross-team dependencies\n"
+        },
+        "v2mom-measures": {
+          "sources": [
+            "v2mom-methods"
+          ],
+          "guidance": "Define quantifiable metrics for each method.\nFor each measure:\n- Be specific and measurable (SMART)\n- Include baseline, target, and stretch goals\n- Define measurement frequency\n- Link to KPIs in ProductContext\n"
+        },
+        "v2mom-methods": {
+          "sources": [
+            "v2mom-vision",
+            "v2mom-values",
+            "parent:v2mom-methods"
+          ],
+          "guidance": "Define tactical initiatives that:\n1. Directly support parent (department) methods\n2. Link to ProductContext capabilities\n3. Have clear project definitions\n4. Include sprint/milestone planning\n5. Define done criteria\n"
+        },
+        "v2mom-obstacles": {
+          "sources": [
+            "v2mom-vision",
+            "v2mom-methods"
+          ],
+          "guidance": "Identify challenges that could block methods from succeeding.\nFor each obstacle:\n- Categorize: technical, organizational, market, resource\n- Define mitigation strategies\n- Assign owner for resolution\n- Link to related decisions in ProductContext\n"
+        },
+        "v2mom-summary": {
+          "sources": [
+            "v2mom-vision",
+            "v2mom-values",
+            "v2mom-methods",
+            "v2mom-obstacles",
+            "v2mom-measures"
+          ],
+          "guidance": "Create a unified V2MOM document with:\n- Executive summary\n- All five sections with cross-references\n- ProductContext entity links\n- Parent V2MOM alignment (if applicable)\n"
+        },
+        "v2mom-values": {
+          "sources": [
+            "v2mom-vision"
+          ],
+          "guidance": "Extract the core beliefs and principles that will guide achieving the vision.\nValues should be:\n- Ranked in priority order (1 = highest)\n- Actionable trade-off guides (\"customer success over short-term revenue\")\n- Consistent with organizational values\n"
+        }
+      },
+      "evaluation": {},
+      "template_specs": [
+        "v2mom-alignment",
+        "v2mom-measures",
+        "v2mom-methods",
+        "v2mom-obstacles",
+        "v2mom-summary",
+        "v2mom-values",
+        "v2mom-vision"
+      ]
+    }
+  ],
+  "integrations": [
+    {
+      "id": "ai-dlc",
+      "name": "AWS AI-DLC Workflows",
+      "short_name": "AI-DLC",
+      "vendor": "AWS Labs",
+      "description": "AI-Driven Development Life Cycle — a prompt/rules package that steers an AI coding agent through Inception, Construction, and Operations phases, emitting reviewable markdown artifacts at each human-gated stage. Not a CLI or MCP server: activated in-agent with the phrase \"Using AI-DLC, ...\".",
+      "kind": "execution",
+      "source": "repo",
+      "homepage": "https://github.com/awslabs/aidlc-workflows",
+      "repo": "https://github.com/awslabs/aidlc-workflows",
+      "reference": "https://github.com/awslabs/aidlc-workflows/blob/main/README.md",
+      "license": "MIT-0",
+      "invocations": [
+        "ide"
+      ],
+      "agents": [
+        "Kiro",
+        "Amazon Q Developer",
+        "Cursor",
+        "Cline",
+        "Claude Code",
+        "GitHub Copilot",
+        "Codex"
+      ],
+      "detection": {
+        "root_markers": [
+          "aidlc-docs/aidlc-state.md",
+          ".aidlc-rule-details/",
+          ".kiro/aws-aidlc-rule-details/",
+          ".amazonq/aws-aidlc-rule-details/"
+        ],
+        "globs": [
+          "**/aws-aidlc-rules/core-workflow.md"
+        ]
+      },
+      "artifacts": [
+        {
+          "id": "state",
+          "path": "aidlc-docs/aidlc-state.md",
+          "role": "config",
+          "description": "Primary state tracker — project info, extension config, and the \"## Stage Progress\" checklist. Definitive marker that a run has occurred.",
+          "phase": "inception",
+          "produced": true
+        },
+        {
+          "id": "audit",
+          "path": "aidlc-docs/audit.md",
+          "role": "config",
+          "description": "Append-only, timestamped log of every interaction.",
+          "phase": "inception",
+          "produced": true
+        },
+        {
+          "id": "requirements",
+          "path": "aidlc-docs/inception/requirements/requirements.md",
+          "role": "requirement",
+          "description": "Analyzed requirements — the hinge every downstream stage builds on.",
+          "phase": "inception",
+          "spec_type": "prd",
+          "produced": true
+        },
+        {
+          "id": "stories",
+          "path": "aidlc-docs/inception/user-stories/stories.md",
+          "role": "requirement",
+          "description": "User stories and personas (conditional stage).",
+          "phase": "inception",
+          "produced": true
+        },
+        {
+          "id": "execution-plan",
+          "path": "aidlc-docs/inception/plans/execution-plan.md",
+          "role": "plan",
+          "description": "Which downstream stages run, their depth, and a workflow visualization.",
+          "phase": "inception",
+          "spec_type": "plan",
+          "produced": true
+        },
+        {
+          "id": "app-design",
+          "path": "aidlc-docs/inception/application-design/",
+          "role": "design",
+          "description": "Components, methods, services, and dependency maps (conditional).",
+          "phase": "inception",
+          "produced": true
+        },
+        {
+          "id": "functional-design",
+          "path": "aidlc-docs/construction/\u003cunit\u003e/functional-design/",
+          "role": "design",
+          "description": "Per-unit business logic, domain entities, and rules.",
+          "phase": "construction",
+          "produced": true
+        },
+        {
+          "id": "code-generation-plan",
+          "path": "aidlc-docs/construction/plans/\u003cunit\u003e-code-generation-plan.md",
+          "role": "tasks",
+          "description": "Per-unit code-generation checklist (checkbox steps).",
+          "phase": "construction",
+          "produced": true
+        },
+        {
+          "id": "code-summaries",
+          "path": "aidlc-docs/construction/\u003cunit\u003e/code/",
+          "role": "output",
+          "description": "Markdown summaries of generated code (the code itself lands at the workspace root).",
+          "phase": "construction",
+          "produced": true
+        },
+        {
+          "id": "build-and-test",
+          "path": "aidlc-docs/construction/build-and-test/",
+          "role": "tests",
+          "description": "Build and test instruction files plus a summary.",
+          "phase": "construction",
+          "produced": true
+        },
+        {
+          "id": "code",
+          "path": "./",
+          "role": "output",
+          "description": "Application code, tests, and IaC written to the workspace root.",
+          "phase": "construction",
+          "produced": true
+        }
+      ],
+      "lifecycle": [
+        {
+          "id": "inception",
+          "name": "Inception",
+          "description": "Planning — WHAT \u0026 WHY. Workspace detection, (brownfield) reverse engineering, requirements analysis, user stories, workflow planning, application design, and units-of-work generation.",
+          "produces": [
+            "state",
+            "audit",
+            "requirements",
+            "stories",
+            "execution-plan",
+            "app-design"
+          ]
+        },
+        {
+          "id": "construction",
+          "name": "Construction",
+          "description": "HOW — per unit of work: functional design, NFR requirements and design, infrastructure design, code generation, then build and test.",
+          "produces": [
+            "functional-design",
+            "code-generation-plan",
+            "code-summaries",
+            "build-and-test",
+            "code"
+          ],
+          "consumes": [
+            "requirements",
+            "execution-plan"
+          ]
+        },
+        {
+          "id": "operations",
+          "name": "Operations",
+          "description": "Reserved for deployment and monitoring (placeholder in current release)."
+        }
+      ],
+      "status": {
+        "method": "task-checkboxes",
+        "source": "state",
+        "description": "Parse the \"## Stage Progress\" checklist in aidlc-state.md (respecting SKIPPED as done/not-applicable), then refine per-unit progress from the checkbox ratio in each construction/plans/\u003cunit\u003e-code-generation-plan.md. Formats are LLM-generated markdown — match checkboxes plus the keywords COMPLETED/SKIPPED/IN PROGRESS rather than exact headings."
+      },
+      "inputs": [
+        {
+          "id": "vision-document",
+          "medium": "spec-file",
+          "description": "Vision Document (what to build and why) plus a Technical Environment Document, consumed at Requirements Analysis. An external PRD/6-pager maps onto the Vision Document.",
+          "spec_types": [
+            "narrative-6p",
+            "prd",
+            "mrd"
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "id": "code-out",
+          "medium": "code",
+          "description": "Application code, tests, and IaC at the workspace root.",
+          "artifacts": [
+            "code"
+          ]
+        },
+        {
+          "id": "docs-out",
+          "medium": "export",
+          "description": "The aidlc-docs/ markdown tree (requirements, design, plans, state).",
+          "artifacts": [
+            "requirements",
+            "execution-plan",
+            "functional-design"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "kiro",
+      "name": "AWS Kiro Spec-Driven Development",
+      "short_name": "Kiro",
+      "vendor": "AWS",
+      "description": "Kiro is an agentic IDE whose spec workflow turns a prompt into a three-file spec — requirements (EARS notation), design, and tasks — then implements task by task. Modeled from published documentation and the IDE (no public source repository), so the on-disk detail is lower-confidence than repo-modeled tools.",
+      "kind": "execution",
+      "source": "docs",
+      "homepage": "https://kiro.dev",
+      "reference": "https://kiro.dev/docs/specs/",
+      "license": "Proprietary",
+      "invocations": [
+        "ide"
+      ],
+      "agents": [
+        "Kiro"
+      ],
+      "detection": {
+        "root_markers": [
+          ".kiro/specs/",
+          ".kiro/steering/"
+        ],
+        "globs": [
+          ".kiro/specs/*/requirements.md"
+        ]
+      },
+      "artifacts": [
+        {
+          "id": "steering",
+          "path": ".kiro/steering/",
+          "role": "constitution",
+          "description": "Steering documents — standing project conventions and guidance.",
+          "phase": "steering",
+          "produced": true
+        },
+        {
+          "id": "requirements",
+          "path": ".kiro/specs/\u003cfeature\u003e/requirements.md",
+          "role": "requirement",
+          "description": "Feature requirements in EARS notation (user stories + acceptance criteria).",
+          "phase": "requirements",
+          "spec_type": "prd",
+          "produced": true
+        },
+        {
+          "id": "design",
+          "path": ".kiro/specs/\u003cfeature\u003e/design.md",
+          "role": "design",
+          "description": "Technical design — architecture, components, data models, sequencing.",
+          "phase": "design",
+          "spec_type": "trd",
+          "produced": true
+        },
+        {
+          "id": "tasks",
+          "path": ".kiro/specs/\u003cfeature\u003e/tasks.md",
+          "role": "tasks",
+          "description": "Discrete, checkboxed implementation tasks linked to requirements.",
+          "phase": "tasks",
+          "spec_type": "plan",
+          "produced": true
+        },
+        {
+          "id": "code",
+          "path": "./",
+          "role": "output",
+          "description": "Source code implemented task by task from tasks.md.",
+          "phase": "implement",
+          "produced": true
+        }
+      ],
+      "lifecycle": [
+        {
+          "id": "steering",
+          "name": "Steering",
+          "description": "Optional standing guidance the agent applies across specs.",
+          "produces": [
+            "steering"
+          ]
+        },
+        {
+          "id": "requirements",
+          "name": "Requirements",
+          "description": "Capture requirements in EARS notation from a feature prompt.",
+          "produces": [
+            "requirements"
+          ]
+        },
+        {
+          "id": "design",
+          "name": "Design",
+          "description": "Produce the technical design from the approved requirements.",
+          "produces": [
+            "design"
+          ],
+          "consumes": [
+            "requirements"
+          ]
+        },
+        {
+          "id": "tasks",
+          "name": "Tasks",
+          "description": "Break the design into discrete implementation tasks.",
+          "produces": [
+            "tasks"
+          ],
+          "consumes": [
+            "design"
+          ]
+        },
+        {
+          "id": "implement",
+          "name": "Implement",
+          "description": "Execute tasks one at a time, updating task status.",
+          "produces": [
+            "code"
+          ],
+          "consumes": [
+            "tasks"
+          ]
+        }
+      ],
+      "status": {
+        "method": "task-checkboxes",
+        "source": "tasks",
+        "description": "Percent complete = checked over total tasks in tasks.md. Phase is inferable from which of requirements.md / design.md / tasks.md exist for a feature."
+      },
+      "inputs": [
+        {
+          "id": "feature-prompt",
+          "medium": "prompt",
+          "description": "Feature idea given in the IDE. An external definition-side PRD feeds the requirements phase (or is merged into requirements.md).",
+          "spec_types": [
+            "prd",
+            "narrative-6p"
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "id": "code-out",
+          "medium": "code",
+          "description": "Source code implemented from the task list.",
+          "artifacts": [
+            "code"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "openspec",
+      "name": "OpenSpec",
+      "short_name": "OpenSpec",
+      "vendor": "Fission-AI",
+      "description": "Lightweight, brownfield-first SDD layer where humans and AI agents agree on written specs (requirements + scenarios) before code, using delta-based change proposals (ADDED/MODIFIED/REMOVED) that merge into a canonical spec set on archive. Current workflow surface is branded OPSX.",
+      "kind": "execution",
+      "source": "repo",
+      "homepage": "https://github.com/Fission-AI/OpenSpec",
+      "repo": "https://github.com/Fission-AI/OpenSpec",
+      "reference": "https://github.com/Fission-AI/OpenSpec/blob/main/README.md",
+      "license": "MIT",
+      "invocations": [
+        "cli",
+        "slash-command"
+      ],
+      "cli_command": "openspec",
+      "agents": [
+        "Claude Code",
+        "Cursor",
+        "GitHub Copilot",
+        "Amazon Q",
+        "Codex",
+        "Kiro"
+      ],
+      "detection": {
+        "root_markers": [
+          "openspec/",
+          "openspec/config.yaml",
+          "openspec/specs/",
+          "openspec/changes/"
+        ],
+        "globs": [
+          "openspec/specs/*/spec.md"
+        ]
+      },
+      "artifacts": [
+        {
+          "id": "config",
+          "path": "openspec/config.yaml",
+          "role": "config",
+          "description": "Project config — schema, context, and per-artifact rules injected into generation.",
+          "phase": "init",
+          "produced": true
+        },
+        {
+          "id": "capability-spec",
+          "path": "openspec/specs/\u003ccapability\u003e/spec.md",
+          "role": "spec",
+          "description": "Canonical, agreed-upon behavior — the source of truth (Requirements + WHEN/THEN scenarios).",
+          "phase": "archive",
+          "spec_type": "spec",
+          "produced": true
+        },
+        {
+          "id": "proposal",
+          "path": "openspec/changes/\u003cchange-id\u003e/proposal.md",
+          "role": "proposal",
+          "description": "The why + what of a change (intent, scope, capabilities, impact).",
+          "phase": "propose",
+          "spec_type": "prd",
+          "produced": true
+        },
+        {
+          "id": "delta-spec",
+          "path": "openspec/changes/\u003cchange-id\u003e/specs/\u003ccapability\u003e/spec.md",
+          "role": "spec",
+          "description": "Delta specs — ADDED/MODIFIED/REMOVED/RENAMED requirement sections.",
+          "phase": "propose",
+          "produced": true
+        },
+        {
+          "id": "design",
+          "path": "openspec/changes/\u003cchange-id\u003e/design.md",
+          "role": "design",
+          "description": "Technical how — context, decisions, risks, migration (optional).",
+          "phase": "propose",
+          "produced": true
+        },
+        {
+          "id": "tasks",
+          "path": "openspec/changes/\u003cchange-id\u003e/tasks.md",
+          "role": "tasks",
+          "description": "Implementation checklist (\"- [ ] N.M\" checkboxes).",
+          "phase": "apply",
+          "produced": true
+        },
+        {
+          "id": "archive",
+          "path": "openspec/changes/archive/\u003cYYYY-MM-DD-change-id\u003e/",
+          "role": "proposal",
+          "description": "Completed changes, date-prefixed, retained for history.",
+          "phase": "archive",
+          "produced": true
+        }
+      ],
+      "lifecycle": [
+        {
+          "id": "init",
+          "name": "Init",
+          "description": "Scaffold the openspec/ directory and config.",
+          "command": "openspec init",
+          "produces": [
+            "config"
+          ]
+        },
+        {
+          "id": "explore",
+          "name": "Explore",
+          "description": "Optional shaping/thinking step before proposing (no structured output).",
+          "command": "/opsx:explore"
+        },
+        {
+          "id": "propose",
+          "name": "Propose",
+          "description": "Open a change — proposal, delta specs, optional design, and tasks.",
+          "command": "/opsx:propose",
+          "produces": [
+            "proposal",
+            "delta-spec",
+            "design",
+            "tasks"
+          ],
+          "consumes": [
+            "config"
+          ]
+        },
+        {
+          "id": "apply",
+          "name": "Apply",
+          "description": "Implement the change, checking off tasks as code is written.",
+          "command": "/opsx:apply",
+          "consumes": [
+            "tasks",
+            "delta-spec"
+          ]
+        },
+        {
+          "id": "archive",
+          "name": "Archive",
+          "description": "Merge delta specs into the canonical specs and move the change to archive/.",
+          "command": "openspec archive",
+          "produces": [
+            "capability-spec",
+            "archive"
+          ],
+          "consumes": [
+            "delta-spec"
+          ]
+        }
+      ],
+      "status": {
+        "method": "dir-state",
+        "source": "openspec/changes/**",
+        "description": "A change directly under openspec/changes/ is active; under openspec/changes/archive/ it is done (date-prefixed). For an active change, \"openspec status --change \u003cid\u003e --json\" reports each planning artifact as done/ready/blocked; implementation progress comes from tasks.md checkbox counts. Roll up: count active vs archived changes and specs/*/spec.md."
+      },
+      "inputs": [
+        {
+          "id": "proposal-in",
+          "medium": "prompt",
+          "description": "Human intent handed to /opsx:propose. An external PRD/feature request maps onto proposal.md (its Why / What Changes / Capabilities sections); standing product context maps onto openspec/config.yaml's context block.",
+          "spec_types": [
+            "prd",
+            "narrative-6p"
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "id": "specs-out",
+          "medium": "export",
+          "description": "The evolving canonical capability spec set (the durable product).",
+          "artifacts": [
+            "capability-spec"
+          ]
+        },
+        {
+          "id": "code-out",
+          "medium": "code",
+          "description": "Implemented code, tracked via tasks.md checkboxes."
+        }
+      ]
+    },
+    {
+      "id": "spec-kit",
+      "name": "GitHub Spec-Kit",
+      "short_name": "Spec-Kit",
+      "vendor": "GitHub",
+      "description": "Spec-first toolkit (\"Specify\") that drives any AI coding agent from a natural-language feature description through specification, planning, and task breakdown to implementation. Spans its own requirements and design, but in the ProductBuildersHQ system the definition-side spec feeds its /speckit.specify step.",
+      "kind": "execution",
+      "source": "repo",
+      "homepage": "https://github.com/github/spec-kit",
+      "repo": "https://github.com/github/spec-kit",
+      "reference": "https://github.com/github/spec-kit/blob/main/README.md",
+      "license": "MIT",
+      "invocations": [
+        "cli",
+        "slash-command"
+      ],
+      "cli_command": "specify",
+      "agents": [
+        "Claude Code",
+        "GitHub Copilot",
+        "Cursor",
+        "Gemini CLI",
+        "Codex",
+        "Windsurf",
+        "Kiro"
+      ],
+      "detection": {
+        "root_markers": [
+          ".specify/",
+          ".specify/memory/",
+          ".specify/templates/"
+        ],
+        "globs": [
+          "specs/*/spec.md"
+        ]
+      },
+      "artifacts": [
+        {
+          "id": "constitution",
+          "path": ".specify/memory/constitution.md",
+          "role": "constitution",
+          "description": "Project governing principles, ratified and versioned.",
+          "phase": "constitution",
+          "produced": true
+        },
+        {
+          "id": "feature-pointer",
+          "path": ".specify/feature.json",
+          "role": "config",
+          "description": "Active feature pointer: {\"feature_directory\": \"specs/NNN-...\"}.",
+          "phase": "specify",
+          "produced": true
+        },
+        {
+          "id": "spec",
+          "path": "specs/\u003cNNN-feature\u003e/spec.md",
+          "role": "requirement",
+          "description": "Feature specification (WHAT/WHY) — user stories, FR-###, SC-### success criteria.",
+          "phase": "specify",
+          "spec_type": "prd",
+          "produced": true
+        },
+        {
+          "id": "plan",
+          "path": "specs/\u003cNNN-feature\u003e/plan.md",
+          "role": "design",
+          "description": "Implementation plan (HOW) — technical context and Constitution Check gate.",
+          "phase": "plan",
+          "spec_type": "trd",
+          "produced": true
+        },
+        {
+          "id": "research",
+          "path": "specs/\u003cNNN-feature\u003e/research.md",
+          "role": "research",
+          "description": "Phase 0 decisions, rationale, and alternatives.",
+          "phase": "plan",
+          "produced": true
+        },
+        {
+          "id": "data-model",
+          "path": "specs/\u003cNNN-feature\u003e/data-model.md",
+          "role": "design",
+          "description": "Entities, fields, relationships, and state transitions.",
+          "phase": "plan",
+          "produced": true
+        },
+        {
+          "id": "contracts",
+          "path": "specs/\u003cNNN-feature\u003e/contracts/",
+          "role": "contract",
+          "description": "API/interface contracts (directory; may be absent for internal-only work).",
+          "phase": "plan",
+          "produced": true
+        },
+        {
+          "id": "tasks",
+          "path": "specs/\u003cNNN-feature\u003e/tasks.md",
+          "role": "tasks",
+          "description": "Ordered, checkboxed task list grouped by phase and user story.",
+          "phase": "tasks",
+          "spec_type": "plan",
+          "produced": true
+        },
+        {
+          "id": "code",
+          "path": "src/",
+          "role": "output",
+          "description": "Source code and tests written during implementation.",
+          "phase": "implement",
+          "produced": true
+        }
+      ],
+      "lifecycle": [
+        {
+          "id": "constitution",
+          "name": "Constitution",
+          "description": "Establish project governing principles.",
+          "command": "/speckit.constitution",
+          "produces": [
+            "constitution"
+          ]
+        },
+        {
+          "id": "specify",
+          "name": "Specify",
+          "description": "Turn a feature description into a structured specification.",
+          "command": "/speckit.specify",
+          "produces": [
+            "spec",
+            "feature-pointer"
+          ]
+        },
+        {
+          "id": "clarify",
+          "name": "Clarify",
+          "description": "Resolve open questions in the spec (recommended before planning).",
+          "command": "/speckit.clarify",
+          "consumes": [
+            "spec"
+          ]
+        },
+        {
+          "id": "plan",
+          "name": "Plan",
+          "description": "Produce the implementation plan and Phase 0/1 design docs.",
+          "command": "/speckit.plan",
+          "produces": [
+            "plan",
+            "research",
+            "data-model",
+            "contracts"
+          ],
+          "consumes": [
+            "spec"
+          ]
+        },
+        {
+          "id": "tasks",
+          "name": "Tasks",
+          "description": "Break the plan into an ordered task list.",
+          "command": "/speckit.tasks",
+          "produces": [
+            "tasks"
+          ],
+          "consumes": [
+            "plan"
+          ]
+        },
+        {
+          "id": "analyze",
+          "name": "Analyze",
+          "description": "Cross-artifact consistency check before implementation.",
+          "command": "/speckit.analyze",
+          "consumes": [
+            "spec",
+            "plan",
+            "tasks"
+          ]
+        },
+        {
+          "id": "implement",
+          "name": "Implement",
+          "description": "Execute tasks, writing code and marking tasks complete.",
+          "command": "/speckit.implement",
+          "produces": [
+            "code"
+          ],
+          "consumes": [
+            "tasks"
+          ]
+        }
+      ],
+      "status": {
+        "method": "task-checkboxes",
+        "source": "tasks",
+        "description": "Percent complete = checked over total checkbox lines in tasks.md (\"- [X]\" or \"- [x]\" vs \"- [ ]\"). Phase is also inferable from which artifacts exist: spec only → specified; +plan → planned; +tasks → ready to implement."
+      },
+      "inputs": [
+        {
+          "id": "feature-description",
+          "medium": "prompt",
+          "description": "Natural-language feature description passed to /speckit.specify. An external definition-side PRD feeds in here (or is merged into spec.md).",
+          "spec_types": [
+            "prd",
+            "narrative-6p"
+          ]
+        }
+      ],
+      "outputs": [
+        {
+          "id": "code-out",
+          "medium": "code",
+          "description": "Source code and tests written into the repository.",
+          "artifacts": [
+            "code"
+          ]
+        }
+      ]
+    }
+  ],
+  "pipelines": [
+    {
+      "id": "aws-product-to-ai-dlc",
+      "name": "AWS Working Backwards → AI-DLC",
+      "description": "Definition side runs Amazon Working Backwards (aws-product) to produce the six-pager, PRD, and TRD; the execution side hands those to AWS AI-DLC, whose Requirements Analysis absorbs them as the Vision and drives Construction.",
+      "definition": {
+        "workflow": "aws-product",
+        "outputs": [
+          "narrative-6p",
+          "prd",
+          "trd"
+        ]
+      },
+      "execution": {
+        "integration": "ai-dlc",
+        "input_port": "vision-document"
+      },
+      "handoffs": [
+        {
+          "spec_type": "narrative-6p",
+          "to_artifact": "requirements",
+          "transform": "Distill the six-pager into the Vision Document consumed at Requirements Analysis."
+        },
+        {
+          "spec_type": "prd",
+          "to_artifact": "requirements",
+          "transform": "Fold product requirements into the AI-DLC requirements analysis."
+        },
+        {
+          "spec_type": "trd",
+          "to_artifact": "functional-design",
+          "transform": "Seed per-unit functional and NFR design from the technical requirements."
+        }
+      ]
+    },
+    {
+      "id": "big-tech-product-to-openspec",
+      "name": "Big Tech Product → OpenSpec",
+      "description": "A Big Tech product definition produces a PRD and six-pager; OpenSpec's /opsx:propose consumes them into a change proposal, then delta specs, tasks, and implementation, archiving into the canonical capability specs.",
+      "definition": {
+        "workflow": "big-tech-product",
+        "outputs": [
+          "prd",
+          "narrative-6p"
+        ]
+      },
+      "execution": {
+        "integration": "openspec",
+        "input_port": "proposal-in"
+      },
+      "handoffs": [
+        {
+          "spec_type": "prd",
+          "to_artifact": "proposal",
+          "transform": "Map PRD scope onto proposal.md Why / What Changes / Capabilities."
+        },
+        {
+          "spec_type": "narrative-6p",
+          "to_artifact": "proposal",
+          "transform": "Use the six-pager narrative as the proposal's context and rationale."
+        }
+      ]
+    },
+    {
+      "id": "pbhq-lite-to-spec-kit",
+      "name": "PBHQ Lite → Spec-Kit",
+      "description": "A lightweight PBHQ Lite definition produces a reconciled spec; Spec-Kit's /speckit.specify consumes it (or it is merged into specs/\u003cfeature\u003e/spec.md), after which plan → tasks → implement proceeds.",
+      "definition": {
+        "workflow": "pbhq-lite",
+        "outputs": [
+          "spec"
+        ]
+      },
+      "execution": {
+        "integration": "spec-kit",
+        "input_port": "feature-description"
+      },
+      "handoffs": [
+        {
+          "spec_type": "spec",
+          "to_artifact": "spec",
+          "transform": "Pass the reconciled spec as the /speckit.specify argument, or merge it into specs/\u003cfeature\u003e/spec.md."
+        }
+      ]
+    }
+  ],
+  "loop_systems": [
+    {
+      "id": "aws-ai-dlc",
+      "name": "AWS AI-DLC Single-Loop System",
+      "vendor": "AWS",
+      "description": "The AI-DLC development cycle as published by AWS — a single human-gated AI loop. In ProductBuildersHQ terms it is an engineering (Builder) loop: the task arrives from outside the system, and \"verify outcome\" checks the work matches the task, not whether the task achieved its product goal. Included as the reference system the two-loop model generalizes.",
+      "reference": "https://github.com/awslabs/aidlc-workflows",
+      "loops": [
+        {
+          "id": "dlc",
+          "name": "AI-DLC Cycle",
+          "owner": "Builder",
+          "question": "Matches the task?",
+          "description": "Humans provide and gate; AI plans and executes.",
+          "stations": [
+            {
+              "id": "provide-task",
+              "name": "Humans Provide Task",
+              "actor": "human",
+              "description": "A task arrives from outside the loop."
+            },
+            {
+              "id": "create-plan",
+              "name": "AI Creates Plan",
+              "actor": "ai",
+              "description": "AI drafts a plan and seeks clarification."
+            },
+            {
+              "id": "clarify",
+              "name": "Humans Provide Clarification",
+              "actor": "human",
+              "description": "Humans resolve the AI's questions."
+            },
+            {
+              "id": "refine-plan",
+              "name": "AI Refines Plan",
+              "actor": "ai",
+              "description": "The plan is revised with the clarifications."
+            },
+            {
+              "id": "approve-plan",
+              "name": "Humans Approve Plan",
+              "actor": "human",
+              "description": "Explicit human approval gate before execution.",
+              "gate": true,
+              "gate_authority": "human"
+            },
+            {
+              "id": "execute",
+              "name": "AI Executes Plan",
+              "actor": "ai",
+              "description": "AI implements the approved plan."
+            },
+            {
+              "id": "verify",
+              "name": "Humans Verify Outcome",
+              "actor": "human",
+              "description": "Humans verify the work matches the task, then the cycle repeats.",
+              "gate": true,
+              "gate_authority": "human"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pbhq-two-loop",
+      "name": "ProductBuildersHQ Two-Loop System",
+      "vendor": "ProductBuildersHQ",
+      "description": "The Product Loop originates what to build and verifies outcomes; the Builder Loop implements and verifies built-right. Both loops share the same gate anatomy — intent, AI drafts, clarify, approve, AI executes, verify — and differ in artifact (specs vs code) and verification question (right thing? vs built right?). Gates shift from human to policy authority as a team's autonomy (ASDM level) rises. Generalizes single-loop systems such as AWS AI-DLC, which map onto the Builder Loop.",
+      "reference": "https://productbuildershq.com",
+      "loops": [
+        {
+          "id": "product",
+          "name": "Product Loop",
+          "owner": "Product",
+          "question": "Right thing?",
+          "description": "Humans use AI to originate what to build and to verify the built work achieves its goal — adoption, engagement, revenue.",
+          "stations": [
+            {
+              "id": "sense",
+              "name": "Sense",
+              "actor": "human+ai",
+              "description": "Market signals, user research, and production telemetry arriving from the Builder Loop.",
+              "workflows": [
+                "continuous-discovery",
+                "jtbd"
+              ]
+            },
+            {
+              "id": "hypothesize",
+              "name": "Hypothesize",
+              "actor": "human+ai",
+              "description": "Frame opportunities and hypotheses worth testing.",
+              "spec_types": [
+                "hypothesis",
+                "opportunity-spec",
+                "ost"
+              ],
+              "workflows": [
+                "lean-startup",
+                "0-1",
+                "design-thinking"
+              ]
+            },
+            {
+              "id": "define",
+              "name": "Define",
+              "actor": "ai",
+              "description": "AI drafts the definition specs — MRD, Press Release, FAQ, 6-Pager, PRD, UXD — with a human clarification sub-cycle and LLM-as-a-Judge evaluation.",
+              "spec_types": [
+                "mrd",
+                "press",
+                "faq",
+                "narrative-6p",
+                "prd",
+                "uxd"
+              ],
+              "workflows": [
+                "aws-product",
+                "aws-feature",
+                "big-tech-product",
+                "big-tech-feature",
+                "pbhq-lite"
+              ]
+            },
+            {
+              "id": "approve",
+              "name": "Approve",
+              "actor": "human",
+              "description": "Humans approve the Product Baseline — the handoff contract to the Builder Loop.",
+              "gate": true,
+              "gate_authority": "human",
+              "autonomy_note": "Remains human at every autonomy level; the human's market knowledge advantage is largest here."
+            },
+            {
+              "id": "measure",
+              "name": "Measure",
+              "actor": "human+ai",
+              "description": "Instrument adoption, engagement, and revenue against the hypothesis."
+            },
+            {
+              "id": "validate-grow",
+              "name": "Validate \u0026 Grow",
+              "actor": "human+ai",
+              "description": "Verify the hypothesis survived contact with users; double down or kill. Learnings feed Sense.",
+              "workflows": [
+                "growth"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "builder",
+          "name": "Builder Loop",
+          "owner": "Builder",
+          "question": "Built right?",
+          "description": "AI implements against the handed-off specs under human-or-policy gates. Execution workflows (AI-DLC, Spec-Kit, OpenSpec, Kiro) instantiate this loop; the agentic coding loop runs inside Build.",
+          "stations": [
+            {
+              "id": "accept",
+              "name": "Accept",
+              "actor": "human+ai",
+              "description": "Receive the Product Baseline; the builder accepts the spec as buildable.",
+              "gate": true,
+              "gate_authority": "human",
+              "spec_types": [
+                "spec",
+                "trd"
+              ]
+            },
+            {
+              "id": "plan",
+              "name": "Plan",
+              "actor": "ai",
+              "description": "AI drafts the implementation plan, running the clarify sub-cycle. Spec ambiguity escalates to the Product Loop rather than being resolved by builder guesswork.",
+              "spec_types": [
+                "plan"
+              ]
+            },
+            {
+              "id": "approve",
+              "name": "Approve",
+              "actor": "human",
+              "description": "The implementation plan is approved.",
+              "gate": true,
+              "gate_authority": "human",
+              "autonomy_note": "Human at L5 and below; policy-gated at L6+."
+            },
+            {
+              "id": "build",
+              "name": "Build",
+              "actor": "ai",
+              "description": "AI executes — code, tests, iterate. The agentic coding loop runs unattended inside this station.",
+              "integrations": [
+                "spec-kit",
+                "ai-dlc",
+                "openspec",
+                "kiro"
+              ]
+            },
+            {
+              "id": "verify",
+              "name": "Verify",
+              "actor": "human+ai",
+              "description": "Built-right verification against spec and scenarios.",
+              "gate": true,
+              "gate_authority": "human",
+              "autonomy_note": "Human review at L5 and below; LLM-as-a-Judge and scenario validation at L6."
+            },
+            {
+              "id": "ship",
+              "name": "Ship",
+              "actor": "human+ai",
+              "description": "Release per operational policy; emits telemetry to the Product Loop.",
+              "gate": true,
+              "gate_authority": "human",
+              "autonomy_note": "Human gates through L6; autonomous operations at L7."
+            }
+          ]
+        }
+      ],
+      "seams": [
+        {
+          "from": "product.approve",
+          "to": "builder.accept",
+          "artifact": "Product Baseline",
+          "description": "The versioned handoff contract between product and builder (PDLC)."
+        },
+        {
+          "from": "builder.ship",
+          "to": "product.measure",
+          "artifact": "Telemetry",
+          "description": "Usage, adoption, and operational data flowing back to the Product Loop."
+        },
+        {
+          "from": "builder.plan",
+          "to": "product.define",
+          "artifact": "Spec ambiguity escalation",
+          "description": "Ambiguities in the spec escalate to the Product Loop instead of being resolved by builder guesswork."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,148 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import catalog from '../../data/sdd-catalog.json'
+
+const specTypes = catalog.spec_types
+const workflows = catalog.workflows
+const integrations = catalog.integrations
+const pipelines = catalog.pipelines
+
+// All specs are Definition-side artifacts. The split within them is Product
+// (what/why) vs Engineering (how) — "Execution" is reserved for the activity
+// of building and monitoring code against these specs, not for any document.
+const PRODUCT_CATEGORIES = ['source', 'gtm', 'strategic']
+const specGroups = [
+  {
+    id: 'product',
+    label: 'Product Specs — the what and why',
+    specs: specTypes.filter((s) => PRODUCT_CATEGORIES.includes(s.category)),
+  },
+  {
+    id: 'engineering',
+    label: 'Engineering Specs — the how',
+    specs: specTypes.filter((s) => !PRODUCT_CATEGORIES.includes(s.category)),
+  },
+].filter((group) => group.specs.length > 0)
+
+const integrationName = (id: string) => integrations.find((i) => i.id === id)?.name ?? id
+const workflowDescription = (name: string) => workflows.find((w) => w.name === name)?.description ?? ''
+---
+
+<BaseLayout title="SDD Catalog" description="The ProductBuildersHQ spec-driven development catalog: definition workflows, execution tools, specs, and the pipelines that connect them.">
+  <div class="py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-5 md:px-8">
+      <div class="mb-14">
+        <p class="text-xs font-semibold tracking-[0.2em] uppercase text-[var(--color-primary)] mb-3">Spec-Driven Development</p>
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">The SDD Catalog</h1>
+        <p class="text-xl text-[var(--color-text-muted)] max-w-3xl">
+          Spec-driven development has two halves. <strong>Definition workflows</strong> produce
+          what to build — MRD, Press Release, FAQ, 6-Pager, PRD, TRD. <strong>Execution
+          workflows</strong> install instructions into a coding agent — Claude Code, Codex,
+          Cursor, Copilot — that then implements against those specs. This catalog defines
+          both, and the pipelines that hand one to the other. Every entry is generated from the
+          <a href="https://github.com/ProductBuildersHQ/specification-workflow-spec" class="text-[var(--color-primary)] hover:underline no-underline">specification-workflow-spec</a>
+          library — the same data VisionStudio runs on.
+        </p>
+      </div>
+
+      <section id="pipelines" class="mb-16">
+        <h2 class="text-2xl md:text-3xl font-bold mb-2">Definition &rarr; Execution Pipelines</h2>
+        <p class="text-[var(--color-text-muted)] mb-8 max-w-3xl">The output of a definition workflow becomes the input of an execution workflow.</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {pipelines.map((p) => (
+            <div class="p-6 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-xl">
+              <div class="flex items-center gap-2 mb-3 text-sm font-medium">
+                <a href={`/sdd/definition/${p.definition.workflow}`} class="px-2.5 py-1 bg-[var(--color-primary)]/10 text-[var(--color-primary)] rounded no-underline hover:underline">{p.definition.workflow}</a>
+                <span class="text-[var(--color-text-subtle)]" aria-hidden="true">&rarr;</span>
+                <a href={`/sdd/execution/${p.execution.integration}`} class="px-2.5 py-1 bg-[var(--color-accent)] text-[var(--color-primary-dark)] rounded no-underline hover:underline">{integrationName(p.execution.integration)}</a>
+              </div>
+              <h3 class="text-base font-semibold mb-2 text-[var(--color-text)]">{p.name}</h3>
+              <p class="text-sm text-[var(--color-text-muted)]">{p.description}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section id="execution" class="mb-16">
+        <h2 class="text-2xl md:text-3xl font-bold mb-2">Execution Workflows</h2>
+        <p class="text-[var(--color-text-muted)] mb-8 max-w-3xl">
+          Third-party workflow systems that drive implementation. None contains its own coding
+          model: each installs workflow instructions into your coding agent — Claude Code,
+          Codex, Cursor, Copilot, Kiro — which reads the repo, edits code, and runs tests.
+          Modeled here so VisionStudio can detect each on disk and represent its status.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {integrations.map((tool) => (
+            <a href={`/sdd/execution/${tool.id}`} class="group block p-6 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-xl no-underline hover:border-[var(--color-primary)] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="text-xs font-medium px-2 py-1 bg-[var(--color-accent)] text-[var(--color-primary-dark)] rounded">Execution</span>
+                <span class="text-xs text-[var(--color-text-subtle)]">{tool.vendor}</span>
+                {tool.source === 'docs' && <span class="text-xs px-2 py-1 bg-[var(--color-bg-secondary)] text-[var(--color-text-muted)] rounded">docs-modeled</span>}
+              </div>
+              <h3 class="text-xl font-semibold mb-2 text-[var(--color-text)] group-hover:text-[var(--color-primary)]">{tool.name}</h3>
+              <p class="text-sm text-[var(--color-text-muted)]">{tool.description}</p>
+            </a>
+          ))}
+        </div>
+        <p class="text-sm text-[var(--color-text-muted)] mt-6">
+          These systems are engineering-native — which is exactly why the definition workflows
+          above exist: they supply the product half (Press Release, FAQ, 6-Pager) the execution
+          side omits, rather than recreating what already works. ProductBuildersHQ's own engine is
+          <a href="/products/visionspec" class="text-[var(--color-primary)] hover:underline no-underline">VisionSpec</a>,
+          which spans both halves and exports to these workflows; the
+          <a href="https://github.com/ProductBuildersHQ/pdlc" class="text-[var(--color-primary)] hover:underline no-underline">PDLC</a>
+          specification defines the complete product&rarr;builder handoff around them.
+        </p>
+      </section>
+
+      <section id="definition" class="mb-16">
+        <h2 class="text-2xl md:text-3xl font-bold mb-2">Definition Workflows</h2>
+        <p class="text-[var(--color-text-muted)] mb-8 max-w-3xl">
+          Methodology configurations bundling spec requirements, synthesis rules, templates, and
+          LLM-as-a-Judge rubrics. Start where you are: solo 0&ndash;1 projects run
+          <a href="/sdd/definition/pbhq-lite" class="text-[var(--color-primary)] hover:underline no-underline">pbhq-lite</a>
+          (what PBHQ itself uses); the heavier definition stacks — Working Backwards, Big Tech —
+          earn their ceremony when stakeholders and revenue do.
+        </p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {workflows.map((w) => (
+            <a href={`/sdd/definition/${w.name}`} class="group block p-6 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-xl no-underline hover:border-[var(--color-primary)] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="text-xs font-medium px-2 py-1 bg-[var(--color-primary)]/10 text-[var(--color-primary)] rounded">Definition</span>
+                {w.methodology?.name && <span class="text-xs text-[var(--color-text-subtle)]">{w.methodology.name}</span>}
+              </div>
+              <h3 class="text-lg font-semibold mb-2 text-[var(--color-text)] group-hover:text-[var(--color-primary)] font-mono">{w.name}</h3>
+              <p class="text-sm text-[var(--color-text-muted)]">{w.description}</p>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section id="specs" class="mb-4">
+        <h2 class="text-2xl md:text-3xl font-bold mb-2">Definition Specs</h2>
+        <p class="text-[var(--color-text-muted)] mb-8 max-w-3xl">
+          Every spec is a definition-side artifact: <strong>product specs</strong> define the
+          what and why, <strong>engineering specs</strong> define the how. Execution — in the
+          VisionStudio sense — is the monitoring of actual building against these documents,
+          not a kind of document.
+        </p>
+        {specGroups.map((group) => (
+          <div class="mb-10">
+            <h3 class="text-sm font-semibold tracking-[0.15em] uppercase text-[var(--color-text-subtle)] mb-4">{group.label}</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+              {group.specs.map((spec) => (
+                <a href={`/sdd/specs/${spec.id}`} class="group block p-4 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-lg no-underline hover:border-[var(--color-primary)] hover:shadow transition-all duration-200">
+                  <div class="flex items-baseline justify-between gap-2 mb-1">
+                    <span class="text-base font-semibold text-[var(--color-text)] group-hover:text-[var(--color-primary)]">{spec.shortName ?? spec.name}</span>
+                    <span class="font-mono text-[10px] text-[var(--color-text-subtle)]">{spec.filename}</span>
+                  </div>
+                  <p class="text-xs text-[var(--color-text-muted)]">{spec.name}</p>
+                </a>
+              ))}
+            </div>
+          </div>
+        ))}
+      </section>
+    </div>
+  </div>
+</BaseLayout>
