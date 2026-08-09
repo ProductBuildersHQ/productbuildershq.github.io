@@ -1,0 +1,68 @@
+---
+import { getCollection } from 'astro:content'
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import Timeline from '../../components/Timeline.astro'
+
+const caseStudies = await getCollection('caseStudies', ({ data }) => !data.comingSoon)
+const signals = await getCollection('signals')
+
+// Signal titles follow an "{Author}: {Insight}" convention — reuse that
+// split as the timeline's key-insight line instead of adding a field.
+const insightFrom = (title: string) => {
+  const i = title.indexOf(': ')
+  return i === -1 ? title : title.slice(i + 2)
+}
+
+const timelineEvents = [
+  ...caseStudies.map((study) => ({
+    date: study.data.date,
+    title: study.data.company,
+    subtitle: study.data.subtitle,
+    href: `/case-studies/${study.id}`,
+    kind: 'case-study',
+  })),
+  ...signals.map((signal) => ({
+    date: signal.data.date,
+    title: signal.data.author,
+    subtitle: insightFrom(signal.data.title),
+    href: `/signals/${signal.id}`,
+    kind: 'signal',
+  })),
+].sort((a, b) => a.date.localeCompare(b.date))
+---
+
+<BaseLayout title="From the Field" description="Case studies and signals, on one timeline — what organizations are shipping and what practitioners are saying about the shift to AI-native product building.">
+  <div class="py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-5 md:px-8">
+      <div class="mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">From the Field</h1>
+        <p class="text-xl text-[var(--color-text-muted)] max-w-3xl">
+          Two kinds of evidence that the transition to AI-native product building is underway —
+          <a href="/case-studies" class="text-[var(--color-primary)] hover:underline font-medium">Case Studies</a>,
+          what organizations ship, and
+          <a href="/signals" class="text-[var(--color-primary)] hover:underline font-medium">Signals</a>,
+          what practitioners say — on one timeline.
+        </p>
+      </div>
+
+      <Timeline
+        events={timelineEvents}
+        ariaLabel="Case studies and signals timeline, oldest to newest"
+        legend={{ 'case-study': 'Case Study', signal: 'Signal' }}
+      />
+
+      <div class="mt-20 grid grid-cols-1 md:grid-cols-2 gap-6">
+        <a href="/case-studies" class="group block p-8 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-xl no-underline hover:border-[var(--color-primary)] hover:shadow-lg transition-all">
+          <span class="text-sm font-medium px-3 py-1 bg-[var(--color-accent)] text-[var(--color-primary-dark)] rounded-full">Case Studies</span>
+          <h2 class="text-2xl font-bold mt-4 mb-2 text-[var(--color-text)] group-hover:text-[var(--color-primary)]">What organizations ship</h2>
+          <p class="text-sm text-[var(--color-text-muted)]">Real-world implementations, mapped to the Software Delivery Autonomy Levels — from AWS's nine-engineer Bedrock team to StrongDM's zero-human-review factory.</p>
+        </a>
+        <a href="/signals" class="group block p-8 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-xl no-underline hover:border-[var(--color-primary)] hover:shadow-lg transition-all">
+          <span class="text-sm font-medium px-3 py-1 bg-[var(--color-primary)]/10 text-[var(--color-primary)] rounded-full">Signals</span>
+          <h2 class="text-2xl font-bold mt-4 mb-2 text-[var(--color-text)] group-hover:text-[var(--color-primary)]">What practitioners say</h2>
+          <p class="text-sm text-[var(--color-text-muted)]">Claims from the people building the tools and running the teams, each mapped to the framework it confirms.</p>
+        </a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

@@ -10,14 +10,16 @@ export interface TimelineEvent {
   title: string
   subtitle?: string
   href: string
+  kind?: string // optional category key, e.g. 'case-study' | 'signal' — drives dot color when multiple kinds are mixed
 }
 
 interface Props {
   events: TimelineEvent[]
   ariaLabel?: string
+  legend?: Record<string, string> // kind -> display label, rendered when 2+ kinds are present
 }
 
-const { events, ariaLabel = 'Timeline' } = Astro.props as Props
+const { events, ariaLabel = 'Timeline', legend } = Astro.props as Props
 
 const formatDate = (iso: string) =>
   new Date(`${iso}T00:00:00Z`).toLocaleDateString('en-US', {
@@ -29,44 +31,92 @@ const formatDate = (iso: string) =>
 
 const columns = Math.max(events.length, 1)
 const halfColumn = 50 / columns
+const kinds = [...new Set(events.map((e) => e.kind).filter((k): k is string => Boolean(k)))]
 ---
 
 <div class="pbhq-timeline">
-  <svg
-    class="pbhq-timeline-track pbhq-timeline-track--row"
-    style={`left: ${halfColumn}%; right: ${halfColumn}%;`}
-    viewBox="0 0 2 2"
-    preserveAspectRatio="none"
-    aria-hidden="true"
-  >
-    <line x1="0" y1="1" x2="2" y2="1" vector-effect="non-scaling-stroke"></line>
-  </svg>
-  <svg class="pbhq-timeline-track pbhq-timeline-track--col" viewBox="0 0 2 2" preserveAspectRatio="none" aria-hidden="true">
-    <line x1="1" y1="0" x2="1" y2="2" vector-effect="non-scaling-stroke"></line>
-  </svg>
+  {legend && kinds.length > 1 && (
+    <div class="pbhq-timeline-legend">
+      {kinds.map((kind) => (
+        <span class="pbhq-timeline-legend-item" data-kind={kind}>
+          <svg viewBox="0 0 18 18" aria-hidden="true"><circle cx="9" cy="9" r="6.5"></circle></svg>
+          {legend[kind] ?? kind}
+        </span>
+      ))}
+    </div>
+  )}
+  <div class="pbhq-timeline-scroll">
+    <svg
+      class="pbhq-timeline-track pbhq-timeline-track--row"
+      style={`left: ${halfColumn}%; right: ${halfColumn}%;`}
+      viewBox="0 0 2 2"
+      preserveAspectRatio="none"
+      aria-hidden="true"
+    >
+      <line x1="0" y1="1" x2="2" y2="1" vector-effect="non-scaling-stroke"></line>
+    </svg>
+    <svg class="pbhq-timeline-track pbhq-timeline-track--col" viewBox="0 0 2 2" preserveAspectRatio="none" aria-hidden="true">
+      <line x1="1" y1="0" x2="1" y2="2" vector-effect="non-scaling-stroke"></line>
+    </svg>
 
-  <ol class="pbhq-timeline-row" style={`grid-template-columns: repeat(${columns}, 1fr);`} aria-label={ariaLabel}>
-    {events.map((event) => (
-      <li class="pbhq-timeline-item">
-        <a href={event.href} class="pbhq-timeline-event">
-          <svg class="pbhq-timeline-dot" viewBox="0 0 18 18" aria-hidden="true">
-            <circle cx="9" cy="9" r="6.5"></circle>
-          </svg>
-          <span class="pbhq-timeline-card">
-            <span class="pbhq-timeline-meta">
-              <span class="pbhq-timeline-title">{event.title}</span>
-              <span class="pbhq-timeline-date">{formatDate(event.date)}</span>
+    <ol class="pbhq-timeline-row" style={`--pbhq-timeline-columns: ${columns};`} aria-label={ariaLabel}>
+      {events.map((event) => (
+        <li class="pbhq-timeline-item">
+          <a href={event.href} class="pbhq-timeline-event" data-kind={event.kind}>
+            <svg class="pbhq-timeline-dot" viewBox="0 0 18 18" aria-hidden="true">
+              <circle cx="9" cy="9" r="6.5"></circle>
+            </svg>
+            <span class="pbhq-timeline-card">
+              <span class="pbhq-timeline-meta">
+                <span class="pbhq-timeline-title">{event.title}</span>
+                <span class="pbhq-timeline-date">{formatDate(event.date)}</span>
+              </span>
+              {event.subtitle && <span class="pbhq-timeline-subtitle">{event.subtitle}</span>}
             </span>
-            {event.subtitle && <span class="pbhq-timeline-subtitle">{event.subtitle}</span>}
-          </span>
-        </a>
-      </li>
-    ))}
-  </ol>
+          </a>
+        </li>
+      ))}
+    </ol>
+  </div>
 </div>
 
 <style>
   .pbhq-timeline {
+    position: relative;
+  }
+
+  .pbhq-timeline-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.25rem;
+    margin-bottom: 1rem;
+  }
+
+  .pbhq-timeline-legend-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    color: var(--color-text-muted);
+  }
+
+  .pbhq-timeline-legend-item svg {
+    width: 10px;
+    height: 10px;
+  }
+
+  .pbhq-timeline-legend-item svg circle {
+    fill: var(--color-primary);
+    stroke: none;
+  }
+
+  .pbhq-timeline-legend-item[data-kind='case-study'] svg circle {
+    fill: var(--color-accent);
+  }
+
+  .pbhq-timeline-scroll {
     position: relative;
   }
 
@@ -130,6 +180,10 @@ const halfColumn = 50 / columns
     transition: fill 0.15s ease, stroke 0.15s ease;
   }
 
+  .pbhq-timeline-event[data-kind='case-study'] .pbhq-timeline-dot circle {
+    stroke: var(--color-accent-light);
+  }
+
   .pbhq-timeline-card {
     flex: 1;
     display: flex;
@@ -151,6 +205,11 @@ const halfColumn = 50 / columns
   .pbhq-timeline-event:hover .pbhq-timeline-dot circle,
   .pbhq-timeline-event:focus-visible .pbhq-timeline-dot circle {
     fill: var(--color-primary);
+  }
+
+  .pbhq-timeline-event[data-kind='case-study']:hover .pbhq-timeline-dot circle,
+  .pbhq-timeline-event[data-kind='case-study']:focus-visible .pbhq-timeline-dot circle {
+    fill: var(--color-accent);
   }
 
   .pbhq-timeline-event:focus-visible {
@@ -201,7 +260,13 @@ const halfColumn = 50 / columns
       display: none;
     }
 
+    .pbhq-timeline-scroll {
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+    }
+
     .pbhq-timeline-row {
+      grid-template-columns: repeat(var(--pbhq-timeline-columns), minmax(180px, 1fr));
       gap: 1.25rem;
       align-items: start;
     }

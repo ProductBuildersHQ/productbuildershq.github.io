@@ -419,6 +419,11 @@
       ],
       "footerLinks": [
         {
+          "id": "from-the-field-timeline",
+          "label": "Timeline: Case Studies + Signals",
+          "href": "/from-the-field"
+        },
+        {
           "id": "all-case-studies",
           "label": "All Case Studies",
           "href": "/case-studies"
