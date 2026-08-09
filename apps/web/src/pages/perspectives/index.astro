@@ -1,0 +1,48 @@
+---
+import { getCollection } from 'astro:content'
+import BaseLayout from '../../layouts/BaseLayout.astro'
+
+const perspectives = (await getCollection('perspectives')).sort((a, b) =>
+  b.data.date.localeCompare(a.data.date)
+)
+---
+
+<BaseLayout title="Perspectives" description="First-person perspectives from John Wang, founder of ProductBuildersHQ — opinions on AI-native product building, alongside the practitioners the field is watching.">
+  <div class="py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-5 md:px-8">
+      <div class="mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Perspectives</h1>
+        <p class="text-xl text-[var(--color-text-muted)] max-w-3xl">
+          First-person takes from <a href="/about" class="text-[var(--color-primary)] hover:underline no-underline">John Wang</a>,
+          founder of ProductBuildersHQ. Where <a href="/signals" class="text-[var(--color-primary)] hover:underline no-underline">Signals</a>
+          map what others are saying, Perspectives are our own — staked alongside the practitioners
+          the field is watching, and offering the rarer vantage among them: a product manager, not
+          an engineer, making the crossing into product building.
+        </p>
+        <div class="mt-6 p-4 bg-[var(--color-bg-secondary)] border border-[var(--color-border-light)] rounded-xl max-w-3xl">
+          <p class="text-sm text-[var(--color-text-muted)]">
+            For what the field's leading voices — Andrew Ng, Steve Yegge, Andrej Karpathy, Boris
+            Cherny — are saying about the same shift, and how it maps to the frameworks, see
+            <a href="/signals" class="text-[var(--color-primary)] hover:underline font-medium">Signals &rarr;</a>
+          </p>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 gap-8">
+        {perspectives.map((p) => (
+          <a href={`/perspectives/${p.id}`} class="group block p-8 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-xl no-underline hover:border-[var(--color-primary)] hover:shadow-lg transition-all">
+            <div class="flex flex-wrap items-center gap-3 mb-3">
+              <span class="text-sm font-medium px-3 py-1 bg-[var(--color-primary)]/10 text-[var(--color-primary)] rounded-full">Perspective</span>
+              <span class="text-sm text-[var(--color-text-subtle)]">{p.data.author} &middot; {p.data.date}</span>
+            </div>
+            <h2 class="text-2xl font-bold mb-2 text-[var(--color-text)] group-hover:text-[var(--color-primary)]">{p.data.title}</h2>
+            {p.data.subtitle && <p class="text-base text-[var(--color-text-muted)] mb-4">{p.data.subtitle}</p>}
+            <p class="text-sm text-[var(--color-text-muted)]">{p.data.description}</p>
+            <div class="mt-6 flex flex-wrap gap-2">
+              {p.data.tags.map((tag) => <span class="text-xs px-2 py-1 bg-[var(--color-bg-secondary)] text-[var(--color-text-muted)] rounded">{tag}</span>)}
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</BaseLayout>

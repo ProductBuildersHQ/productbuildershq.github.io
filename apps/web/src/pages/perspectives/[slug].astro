@@ -1,0 +1,112 @@
+---
+import { getCollection, render } from 'astro:content'
+import BaseLayout from '../../layouts/BaseLayout.astro'
+
+export async function getStaticPaths() {
+  const perspectives = await getCollection('perspectives')
+  return perspectives.map((entry) => ({ params: { slug: entry.id }, props: { entry } }))
+}
+
+const { entry } = Astro.props
+const { Content, headings } = await render(entry)
+
+const allFrameworks = await getCollection('frameworks')
+const relatedFrameworks = (entry.data.frameworks ?? [])
+  .map((id) => allFrameworks.find((framework) => framework.id === id))
+  .filter((framework) => framework !== undefined)
+---
+
+<BaseLayout title={entry.data.title} description={entry.data.description}>
+  <div class="py-8 md:py-12">
+    <div class="max-w-6xl mx-auto px-5 md:px-8">
+      <a href="/perspectives" class="no-print inline-flex items-center text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline mb-6">
+        <svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
+        </svg>
+        Back to Perspectives
+      </a>
+
+      <div class="mb-8">
+        <div class="flex flex-wrap items-center gap-3 mb-4">
+          <span class="text-sm font-medium px-3 py-1 bg-[var(--color-primary)]/10 text-[var(--color-primary)] rounded-full">Perspective</span>
+        </div>
+        <h1 class="text-3xl md:text-4xl font-bold mb-2">{entry.data.title}</h1>
+        {entry.data.subtitle && <p class="text-xl text-[var(--color-primary)] mb-5">{entry.data.subtitle}</p>}
+        <div class="flex items-center gap-3">
+          <span class="inline-flex items-center justify-center w-10 h-10 rounded-full bg-[var(--color-primary-dark)] text-white font-bold text-sm" aria-hidden="true">JW</span>
+          <div>
+            <p class="text-sm font-semibold text-[var(--color-text)]">By <a href="/about" class="text-[var(--color-primary)] hover:underline no-underline">{entry.data.author}</a></p>
+            <p class="text-xs text-[var(--color-text-subtle)]">{entry.data.authorRole} &middot; {entry.data.date}</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap gap-2 mb-8">
+        {entry.data.tags.map((tag) => (
+          <span class="text-sm px-3 py-1 bg-[var(--color-bg-secondary)] text-[var(--color-text-muted)] rounded-full">{tag}</span>
+        ))}
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-10">
+        <aside class="hidden lg:block">
+          <div class="sticky top-24 border-l border-[var(--color-border-light)] pl-4">
+            {headings.filter((heading) => heading.depth === 2).length > 0 && (
+              <>
+                <div class="text-xs font-semibold uppercase tracking-wide text-[var(--color-text-subtle)] mb-3">Contents</div>
+                <nav class="space-y-2">
+                  {headings.filter((heading) => heading.depth === 2).map((heading) => (
+                    <a href={`#${heading.slug}`} class="block text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline">{heading.text}</a>
+                  ))}
+                </nav>
+              </>
+            )}
+            {relatedFrameworks.length > 0 && (
+              <div class="mt-8">
+                <div class="text-xs font-semibold uppercase tracking-wide text-[var(--color-text-subtle)] mb-3">Related Frameworks</div>
+                <nav class="space-y-2">
+                  {relatedFrameworks.map((framework) => (
+                    <a href={`/frameworks/${framework.id}`} class="block text-sm text-[var(--color-primary)] hover:underline no-underline">{framework.data.title}</a>
+                  ))}
+                </nav>
+              </div>
+            )}
+          </div>
+        </aside>
+        <div class="min-w-0">
+          <article class="article-content">
+            <Content />
+          </article>
+
+          {entry.data.references && entry.data.references.length > 0 && (
+            <section class="mt-12 pt-8 border-t border-[var(--color-border-light)]">
+              <h2 class="text-sm font-semibold uppercase tracking-wide text-[var(--color-text-subtle)] mb-4">References</h2>
+              <ul class="space-y-2">
+                {entry.data.references.map((ref) => (
+                  <li>
+                    <a href={ref.url} target="_blank" rel="noopener noreferrer" class="text-sm text-[var(--color-primary)] hover:underline no-underline inline-flex items-center gap-1.5">
+                      {ref.label}
+                      <svg class="w-3.5 h-3.5 text-[var(--color-text-subtle)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"></path>
+                      </svg>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+
+          <section class="mt-12 pt-8 border-t border-[var(--color-border-light)]">
+            <div class="flex items-start gap-4">
+              <span class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[var(--color-primary-dark)] text-white font-bold shrink-0" aria-hidden="true">JW</span>
+              <div>
+                <p class="text-sm font-semibold text-[var(--color-text)] mb-1">{entry.data.author} — {entry.data.authorRole}</p>
+                <p class="text-sm text-[var(--color-text-muted)]">Builder of developer tools and AI-agent infrastructure across grokify, PlexusOne, and AIStandards, and the ProductBuilder behind ProductBuildersHQ and VisionStudio. <a href="/about" class="text-[var(--color-primary)] hover:underline">More about John &rarr;</a></p>
+                <p class="text-sm text-[var(--color-text-muted)] mt-2">Available for talks on AI-native product development and the ProductBuilder role — <a href="https://www.linkedin.com/in/johncwang/" target="_blank" rel="noopener noreferrer" class="text-[var(--color-primary)] hover:underline">invitations via LinkedIn</a>.</p>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
