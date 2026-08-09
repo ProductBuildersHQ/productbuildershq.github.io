@@ -4,7 +4,10 @@ subtitle: "How a small team achieved 10x development velocity building Amazon Be
 description: "A deep dive into AWS's Project Mantle, where nine senior engineers used AI-first development practices to build a new inference engine with dramatically increased commit velocity."
 company: "AWS"
 industry: "Cloud Infrastructure"
-date: "January 2026"
+date: "2026-01-26"
+sources:
+  - label: "AWS Podcast Episode 753 — Amazon Bedrock, Mantle, and Developing at the Speed of AI"
+    url: "https://podcasts.apple.com/us/podcast/753-amazon-bedrock-mantle-and-developing-at-the-speed-of-ai/id1122785133?i=1000746669715"
 pdfUrl: "/papers/aws-project-mantle.pdf"
 level: 5
 tags: ["aws", "level-5", "agentic-engineering", "case-study"]

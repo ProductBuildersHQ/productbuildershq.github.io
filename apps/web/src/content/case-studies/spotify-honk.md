@@ -4,7 +4,10 @@ subtitle: "Background Agents at Enterprise Scale"
 description: "How Spotify built Honk, their background coding agent that has merged 1,500+ pull requests into production using Claude Code, constraint-based design, and 15 years of platform infrastructure."
 company: "Spotify"
 industry: "Music Streaming / Technology"
-date: "June 2026"
+date: "2025-11-06"
+sources:
+  - label: "Spotify Engineering — Spotify's Background Coding Agent, Part 1"
+    url: "https://engineering.atspotify.com/2025/11/spotifys-background-coding-agent-part-1"
 pdfUrl: "/papers/spotify-honk.pdf"
 level: 5
 tags: ["spotify", "honk", "level-5", "background-agents", "claude-code", "case-study"]

@@ -3,6 +3,19 @@ import { getCollection } from 'astro:content'
 import BaseLayout from '../../layouts/BaseLayout.astro'
 
 const caseStudies = await getCollection('caseStudies')
+
+// Case studies are migrating from coarse "Month YYYY" dates to exact ISO
+// dates (see the source links on each study); format ISO ones nicely and
+// pass legacy strings through untouched until they're all converted.
+const formatDate = (value: string) => {
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(value)) return value
+  return new Date(`${value}T00:00:00Z`).toLocaleDateString('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric',
+    timeZone: 'UTC',
+  })
+}
 ---
 
 <BaseLayout title="Case Studies" description="Real-world implementations of AI-native development practices.">
@@ -22,7 +35,7 @@ const caseStudies = await getCollection('caseStudies')
                 <div class="flex-1">
                   <div class="flex flex-wrap items-center gap-3 mb-3">
                     <span class="text-sm font-medium px-3 py-1 bg-[var(--color-accent)] text-[var(--color-primary-dark)] rounded-full">Level {study.data.level}</span>
-                    <span class="text-sm text-[var(--color-text-subtle)]">{study.data.company} &middot; {study.data.date}</span>
+                    <span class="text-sm text-[var(--color-text-subtle)]">{study.data.company} &middot; {formatDate(study.data.date)}</span>
                     {study.data.comingSoon && <span class="text-sm font-medium px-3 py-1 bg-[var(--color-text-muted)]/20 text-[var(--color-text-muted)] rounded-full">Coming Soon</span>}
                   </div>
                   <h2 class:list={['text-2xl font-bold mb-2 text-[var(--color-text)]', !study.data.comingSoon && 'group-hover:text-[var(--color-primary)]']}>{study.data.title}</h2>

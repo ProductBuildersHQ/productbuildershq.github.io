@@ -22,6 +22,10 @@ const caseStudySchema = z.object({
   company: z.string(),
   industry: z.string().optional(),
   date: z.string(),
+  sources: z.array(z.object({
+    label: z.string(),
+    url: z.string(),
+  })).optional(),
   pdfUrl: z.string().optional(),
   level: z.number(),
   tags: z.array(z.string()),

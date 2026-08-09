@@ -4,7 +4,10 @@ subtitle: "ASDM Level 6: Autonomous Coding & Review"
 description: "How StrongDM's Software Factory removes humans from coding and code review, replacing review with scenario-based validation and Digital Twin testing."
 company: "StrongDM"
 industry: "Infrastructure Software"
-date: "February 2026"
+date: "2026-02-06"
+sources:
+  - label: "StrongDM — The Software Factory"
+    url: "https://factory.strongdm.ai/"
 pdfUrl: "/papers/strongdm-software-factory.pdf"
 level: 6
 tags: ["strongdm", "level-6", "asdm", "autonomous-coding", "case-study"]
