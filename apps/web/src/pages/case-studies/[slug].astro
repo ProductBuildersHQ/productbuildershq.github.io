@@ -16,7 +16,7 @@ const summary = entry.data.summary
 <BaseLayout title={entry.data.title} description={entry.data.description}>
   <div class="py-8 md:py-12">
     <div class="max-w-6xl mx-auto px-5 md:px-8">
-      <a href="/case-studies" class="inline-flex items-center text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline mb-6">
+      <a href="/case-studies" class="no-print inline-flex items-center text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline mb-6">
         <svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
           <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
         </svg>
@@ -33,10 +33,12 @@ const summary = entry.data.summary
           {entry.data.industry && <span class="text-sm text-[var(--color-text-muted)]">{entry.data.industry}</span>}
           <span class="text-sm text-[var(--color-text-subtle)]">{entry.data.date}</span>
         </div>
-        <div class="flex flex-wrap gap-3">
-          <a href={entry.data.pdfUrl} download class="inline-flex items-center justify-center px-5 py-2.5 bg-[var(--color-primary-dark)] text-white font-medium rounded-lg no-underline hover:bg-[var(--color-primary)] transition-colors">Download PDF</a>
-          <a href={entry.data.pdfUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-5 py-2.5 border border-[var(--color-border)] text-[var(--color-text)] font-medium rounded-lg no-underline hover:bg-[var(--color-bg-secondary)] transition-colors">Open PDF</a>
-        </div>
+        {entry.data.pdfUrl && (
+          <div class="no-print flex flex-wrap gap-3">
+            <a href={entry.data.pdfUrl} download class="inline-flex items-center justify-center px-5 py-2.5 bg-[var(--color-primary-dark)] text-white font-medium rounded-lg no-underline hover:bg-[var(--color-primary)] transition-colors">Download PDF</a>
+            <a href={entry.data.pdfUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-5 py-2.5 border border-[var(--color-border)] text-[var(--color-text)] font-medium rounded-lg no-underline hover:bg-[var(--color-bg-secondary)] transition-colors">Open PDF</a>
+          </div>
+        )}
       </div>
 
       <div class="flex flex-wrap gap-2 mb-8">

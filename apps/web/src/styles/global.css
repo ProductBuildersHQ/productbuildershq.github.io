@@ -205,3 +205,52 @@ details > summary::-webkit-details-marker {
 .article-content pre::-webkit-scrollbar-thumb:hover {
   background: #6e7681;
 }
+
+/* Print / PDF: render the article cleanly without site chrome. Consumed by the
+ * browser's own Cmd-P and by dss-render's headless-Chrome PDF generation. */
+@media print {
+  @page {
+    size: Letter;
+    margin: 18mm 16mm 20mm 16mm;
+  }
+
+  nav,
+  footer,
+  aside,
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  main {
+    padding: 0 !important;
+  }
+
+  .article-content {
+    max-width: 100%;
+    color: var(--color-text);
+  }
+
+  .article-content a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .article-content h1,
+  .article-content h2,
+  .article-content h3,
+  .article-content h4 {
+    break-after: avoid;
+  }
+
+  .article-content pre,
+  .article-content table,
+  .article-content blockquote,
+  .article-content img {
+    break-inside: avoid;
+  }
+}
