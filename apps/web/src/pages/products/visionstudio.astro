@@ -92,6 +92,8 @@ const tour = [
               type="button"
               data-lightbox-src={stop.image}
               data-lightbox-alt={stop.alt}
+              data-lightbox-title={stop.title}
+              data-lightbox-desc={stop.description}
               aria-label={`Enlarge screenshot: ${stop.title}`}
               class:list={['block w-full p-0 bg-transparent text-left rounded-2xl overflow-hidden border border-[var(--color-border)] shadow-xl cursor-zoom-in hover:border-[var(--color-primary)] transition-colors', index % 2 === 1 && 'md:order-2']}
             >
@@ -126,7 +128,7 @@ const tour = [
 
   <div
     id="vs-lightbox"
-    class="no-print fixed inset-0 z-[100] hidden items-center justify-center bg-black/85 p-4 md:p-8 cursor-zoom-out"
+    class="no-print fixed inset-0 z-[100] hidden flex-col items-center justify-center bg-black/90 p-4 md:p-8"
     role="dialog"
     aria-modal="true"
     aria-label="Screenshot preview"
@@ -136,53 +138,115 @@ const tour = [
       id="vs-lightbox-close"
       type="button"
       aria-label="Close preview"
-      class="absolute top-4 right-4 z-10 flex items-center justify-center w-11 h-11 rounded-full bg-white/10 text-white text-2xl leading-none hover:bg-white/20 transition-colors cursor-pointer"
+      class="absolute top-4 right-4 z-20 flex items-center justify-center w-11 h-11 rounded-full bg-white/10 text-white text-2xl leading-none hover:bg-white/20 transition-colors cursor-pointer"
     >&times;</button>
-    <img id="vs-lightbox-img" src="" alt="" class="max-w-[95vw] max-h-[90vh] w-auto h-auto rounded-lg shadow-2xl" />
+    <button
+      id="vs-lightbox-prev"
+      type="button"
+      aria-label="Previous screenshot"
+      class="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-11 h-11 md:w-12 md:h-12 rounded-full bg-white/10 text-white text-3xl leading-none pb-1 hover:bg-white/20 transition-colors cursor-pointer"
+    >&lsaquo;</button>
+    <button
+      id="vs-lightbox-next"
+      type="button"
+      aria-label="Next screenshot"
+      class="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-20 flex items-center justify-center w-11 h-11 md:w-12 md:h-12 rounded-full bg-white/10 text-white text-3xl leading-none pb-1 hover:bg-white/20 transition-colors cursor-pointer"
+    >&rsaquo;</button>
+
+    <div class="flex flex-col items-center w-full max-w-6xl px-12 md:px-16">
+      <img id="vs-lightbox-img" src="" alt="" class="max-w-full max-h-[66vh] w-auto h-auto rounded-lg shadow-2xl" />
+      <div class="mt-5 max-w-3xl text-center">
+        <h3 id="vs-lightbox-title" class="text-lg md:text-xl font-semibold text-white"></h3>
+        <p id="vs-lightbox-desc" class="text-sm md:text-base text-white/70 mt-2 leading-relaxed"></p>
+      </div>
+      <div id="vs-lightbox-dots" class="flex items-center justify-center gap-2.5 mt-6" role="tablist" aria-label="Screenshots"></div>
+    </div>
   </div>
 </BaseLayout>
 
 <script>
   const lb = document.getElementById('vs-lightbox')
   const lbImg = document.getElementById('vs-lightbox-img') as HTMLImageElement | null
+  const lbTitle = document.getElementById('vs-lightbox-title')
+  const lbDesc = document.getElementById('vs-lightbox-desc')
   const lbClose = document.getElementById('vs-lightbox-close')
+  const lbPrev = document.getElementById('vs-lightbox-prev')
+  const lbNext = document.getElementById('vs-lightbox-next')
+  const lbDots = document.getElementById('vs-lightbox-dots')
+  const triggers = Array.from(document.querySelectorAll<HTMLElement>('[data-lightbox-src]'))
 
-  if (lb && lbImg && lbClose) {
+  if (lb && lbImg && lbTitle && lbDesc && lbClose && lbPrev && lbNext && lbDots && triggers.length) {
+    const items = triggers.map((el) => ({
+      src: el.dataset.lightboxSrc || '',
+      alt: el.dataset.lightboxAlt || '',
+      title: el.dataset.lightboxTitle || '',
+      desc: el.dataset.lightboxDesc || '',
+    }))
+
+    let current = 0
     let lastFocused: HTMLElement | null = null
 
-    const open = (src: string, alt: string) => {
-      lbImg.src = src
-      lbImg.alt = alt
-      lb.classList.remove('hidden')
-      lb.classList.add('flex')
-      lb.setAttribute('aria-hidden', 'false')
-      document.body.style.overflow = 'hidden'
-      lastFocused = document.activeElement as HTMLElement
-      lbClose.focus()
+    const dotBase = 'h-2.5 rounded-full transition-all cursor-pointer'
+    const dots = items.map((_, i) => {
+      const dot = document.createElement('button')
+      dot.type = 'button'
+      dot.setAttribute('role', 'tab')
+      dot.setAttribute('aria-label', `Go to screenshot ${i + 1}`)
+      dot.addEventListener('click', () => go(i))
+      lbDots.appendChild(dot)
+      return dot
+    })
+
+    function render() {
+      const it = items[current]
+      lbImg!.src = it.src
+      lbImg!.alt = it.alt
+      lbTitle!.textContent = it.title
+      lbDesc!.textContent = it.desc
+      dots.forEach((d, i) => {
+        d.className = dotBase + (i === current ? ' w-6 bg-white' : ' w-2.5 bg-white/30 hover:bg-white/60')
+        d.setAttribute('aria-selected', i === current ? 'true' : 'false')
+      })
     }
 
-    const close = () => {
-      lb.classList.add('hidden')
-      lb.classList.remove('flex')
-      lb.setAttribute('aria-hidden', 'true')
+    function go(i: number) {
+      current = (i + items.length) % items.length
+      render()
+    }
+
+    function open(i: number) {
+      current = i
+      render()
+      lb!.classList.remove('hidden')
+      lb!.classList.add('flex')
+      lb!.setAttribute('aria-hidden', 'false')
+      document.body.style.overflow = 'hidden'
+      lastFocused = document.activeElement as HTMLElement
+      lbClose!.focus()
+    }
+
+    function close() {
+      lb!.classList.add('hidden')
+      lb!.classList.remove('flex')
+      lb!.setAttribute('aria-hidden', 'true')
       document.body.style.overflow = ''
-      lbImg.src = ''
+      lbImg!.src = ''
       if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus()
     }
 
-    document.querySelectorAll<HTMLElement>('[data-lightbox-src]').forEach((el) => {
-      el.addEventListener('click', () => {
-        open(el.dataset.lightboxSrc || '', el.dataset.lightboxAlt || '')
-      })
-    })
-
+    triggers.forEach((el, i) => el.addEventListener('click', () => open(i)))
     lbClose.addEventListener('click', close)
-    // Backdrop click closes; clicks on the image itself do not.
+    lbPrev.addEventListener('click', () => go(current - 1))
+    lbNext.addEventListener('click', () => go(current + 1))
+    // Backdrop click closes; clicks on the image, caption, dots, or arrows do not.
     lb.addEventListener('click', (e) => {
       if (e.target === lb) close()
     })
     document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && !lb.classList.contains('hidden')) close()
+      if (lb.classList.contains('hidden')) return
+      if (e.key === 'Escape') close()
+      else if (e.key === 'ArrowRight') go(current + 1)
+      else if (e.key === 'ArrowLeft') go(current - 1)
     })
   }
 </script>
