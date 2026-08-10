@@ -28,7 +28,7 @@ Most maturity models assume a single origin point. The Product Builder model rec
 
 Both paths share foundational levels (0-2). At Level 2, they fork into parallel tracks before converging at Level 5: Product Builder.
 
-![Product Builder Convergence Model](./convergence-diagram.png)
+![Product Builder Convergence Model](/images/frameworks/convergence-diagram.png)
 
 This dual-path structure reflects what's happening across the industry. As Andrew Ng observed in early 2026:
 
