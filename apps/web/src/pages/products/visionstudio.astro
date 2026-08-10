@@ -3,40 +3,58 @@ import BaseLayout from '../../layouts/BaseLayout.astro'
 
 const tour = [
   {
-    image: '/images/products/visionstudio-workflow.webp',
-    width: 1600,
-    height: 1357,
-    alt: 'VisionStudio spec workflow view showing the Working Backwards pipeline: Market Requirements, then Press Release, FAQ, and 6-Pager, then Product Requirements and User Experience, then technical specs, converging on a unified Execution Spec',
-    title: 'Spec Workflow',
+    image: '/images/products/visionstudio-initiatives.webp',
+    width: 1317,
+    height: 883,
+    alt: 'VisionStudio All Initiatives view: initiatives grouped by program — Market-Spec, OmniAgent on Lightsail, PRISM Control — as cards with initiative IDs, status badges, and completion bars, beside a portfolio summary of completed, proposed, in-progress, and cancelled counts',
+    title: 'Initiative Portfolio',
     description:
-      'The Working Backwards pipeline at a glance: human-authored Market Requirements flow into LLM-generated vision documents — Press Release, FAQ, 6-Pager — then product, technical, and test specs, converging on a single Execution Spec. Every spec carries its evaluation status: pass, needs work, or fail.',
+      'The whole book of work at a glance. Every initiative rolls up under its program, each card carrying a stable initiative ID, a lifecycle status — delivery complete, executing, proposed — and a live completion bar. A summary ring tallies the portfolio: completed, in progress, proposed, and cancelled.',
   },
   {
-    image: '/images/products/visionstudio-prd-eval.webp',
-    width: 1600,
-    height: 1362,
-    alt: 'A Product Requirements Document open in the VisionStudio editor with the LLM-as-a-Judge panel showing a 4/5 score, confidence level, blocking issues, and per-dimension findings',
-    title: 'Spec + LLM-as-a-Judge Evaluation',
+    image: '/images/products/visionstudio-program.webp',
+    width: 1319,
+    height: 877,
+    alt: 'PRISM Control program view showing its eight initiatives as a card grid with IDs, status badges, and per-initiative completion, plus a program-level summary of roadmap-item counts by state',
+    title: 'Programs & Roadmap',
     description:
-      'Each spec is judged in place. The evaluation panel sits beside the document with a categorical score, confidence level, blocking issues, and per-dimension breakdowns — requirements clarity, success metrics, dependencies, user stories — so revision targets are explicit, not vibes.',
+      'Drill into a single program — here PRISM Control — to see just its initiatives and their roadmap items (RMIs). Program-level counts summarize how much is delivered, ready, proposed, or cancelled, so an owner can triage one program without losing sight of the rest.',
   },
   {
-    image: '/images/products/visionstudio-findings.webp',
-    width: 1600,
-    height: 1357,
-    alt: 'VisionStudio consolidated findings view showing total findings, specs evaluated, severity distribution, and per-spec LLM-as-a-Judge findings with blocking issues',
-    title: 'Findings Across the Workflow',
+    image: '/images/products/visionstudio-initiative-definition.webp',
+    width: 1318,
+    height: 882,
+    alt: "An initiative's Definition Details tab: a PBHQ-Lite spec pipeline — PRD, TRD, PLAN, ROADMAP — with a per-stage LLM-as-a-Judge score out of five, an average score, and the selected spec's markdown rendered below",
+    title: 'Spec Definition + LLM-as-a-Judge',
     description:
-      'The consolidated view rolls every evaluation up across the workflow: specs evaluated, passing and needs-work counts, findings by severity, and each blocking issue tied back to the exact section of the exact spec that raised it.',
+      'Each initiative is defined as a chain of specs — PRD, TRD, PLAN, ROADMAP in the PBHQ-Lite workflow — and every stage is judged in place, carrying a categorical score out of five. The weakest link (a ROADMAP at 3/5 here) is obvious at a glance, and the spec’s rendered markdown sits right below it for revision.',
   },
   {
-    image: '/images/products/prism-execution.webp',
-    width: 1600,
-    height: 1476,
-    alt: 'PRISM dashboard showing initiatives, phases, and roadmap items with completion status, repositories, and dependency counts',
-    title: 'Initiative Execution',
+    image: '/images/products/visionstudio-initiative-execution.webp',
+    width: 1319,
+    height: 884,
+    alt: "The same initiative's Execution Details tab: an RMI status summary and a Foundation phase expanded to list individual roadmap items with completion badges and dependency links",
+    title: 'Execution Tracking',
     description:
-      'From spec to shipped: the PRISM dashboard — surfaced in VisionStudio — tracks initiatives, their phases, and stable roadmap items (RMIs) across repositories, with per-phase completion status and dependency tracking.',
+      'From spec to shipped: the Execution tab tracks the initiative’s roadmap items (RMIs) grouped into phases, each RMI with a completion status and its dependencies. Per-phase progress bars show how far Foundation — and everything built on top of it — has actually gotten.',
+  },
+  {
+    image: '/images/products/visionstudio-performance.webp',
+    width: 1321,
+    height: 884,
+    alt: 'VisionStudio Performance dashboard: headline totals for tokens, input, output, cache reads, and cost; pie charts breaking tokens and cost down by model and by category; and weekly spend-over-time bar charts',
+    title: 'Performance & Token Economics',
+    description:
+      'The build has a bill. The Performance dashboard surfaces total tokens, cache reads, and cost, then breaks them down by model and by category — input, output, cache — with spend-over-time trends. Cache reads dominating the token mix is the tell that context reuse is doing its job.',
+  },
+  {
+    image: '/images/products/visionstudio-performance-monthly.webp',
+    width: 1322,
+    height: 888,
+    alt: 'Performance monthly history: a month summary of cost and tokens, a cost-by-model pie, a month-over-month table with tokens, cost, and percentage change, and an accomplishments count with a weekly velocity chart',
+    title: 'Monthly Trends & Accomplishments',
+    description:
+      'Zoom out to the month. A running history compares cost and token volume period over period, ties spend back to the models that drove it, and pairs it with what actually shipped — an accomplishments count and weekly velocity — so cost is always read against output, never in isolation.',
   },
 ]
 ---
@@ -48,9 +66,9 @@ const tour = [
       <span class="text-xs font-medium px-2 py-1 bg-[var(--color-primary)]/10 text-[var(--color-primary)] rounded">Tool</span>
       <h1 class="text-4xl md:text-5xl font-bold mt-4 mb-6">VisionStudio</h1>
       <p class="text-xl text-[var(--color-text-muted)] mb-8">
-        An LLM-powered desktop application for specification authoring and evaluation — an
-        integrated workspace for creating, evaluating, and iterating on product specifications
-        using the VisionSpec methodology.
+        An LLM-powered web application for authoring, evaluating, and executing product
+        specifications — an integrated workspace that carries the VisionSpec methodology from
+        first draft through LLM-as-a-Judge review to tracked, shipped execution.
       </p>
 
       <h2 class="text-2xl font-bold mt-12 mb-4">Key Capabilities</h2>
@@ -58,9 +76,10 @@ const tour = [
         <li><strong class="text-[var(--color-text)]">Dual methodology selection:</strong> choose a requirements methodology (AWS Working Backwards, and others) and an implementation methodology (AIDLC, SpecKit) per project.</li>
         <li><strong class="text-[var(--color-text)]">LLM-as-a-Judge evaluation:</strong> evaluate specs against profile rubrics, with a context-aware writing assistant to help close the gaps it finds.</li>
         <li><strong class="text-[var(--color-text)]">AIDLC workflow:</strong> AWS's AI-Driven Development Lifecycle — Inception → Construction → Operations — with generated deliverables and phase gates to track completion.</li>
+        <li><strong class="text-[var(--color-text)]">Initiative &amp; portfolio execution:</strong> track initiatives, phases, and stable roadmap items (RMIs) across programs and repositories, with per-phase completion — surfaced from PRISM.</li>
         <li><strong class="text-[var(--color-text)]">Strategic planning:</strong> V2MOM cascades from organization to team to project, a visual capability stack, and a timeline roadmap view.</li>
         <li><strong class="text-[var(--color-text)]">Maturity Model dashboards:</strong> framework-based maturity assessments, including <a href="/products/scale" class="text-[var(--color-primary)] hover:underline">SCALE</a>.</li>
-        <li><strong class="text-[var(--color-text)]">DevX usage dashboard:</strong> sessions, prompts, commits, AI-assisted %, and cost, sourced from OmniDevX.</li>
+        <li><strong class="text-[var(--color-text)]">Performance &amp; token economics:</strong> tokens, cost, and cache usage broken down by model, category, and month, with month-over-month trends and shipped-work velocity — alongside DevX signals from OmniDevX.</li>
       </ul>
     </div>
 
