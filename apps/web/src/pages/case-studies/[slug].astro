@@ -43,24 +43,19 @@ const formatDate = (value: string) => {
           {entry.data.industry && <span class="text-sm text-[var(--color-text-muted)]">{entry.data.industry}</span>}
           <span class="text-sm text-[var(--color-text-subtle)]">{formatDate(entry.data.date)}</span>
         </div>
-        {entry.data.pdfUrl && (
-          <div class="no-print flex flex-wrap gap-3 mb-4">
-            <a href={entry.data.pdfUrl} download class="inline-flex items-center justify-center px-5 py-2.5 bg-[var(--color-primary-dark)] text-white font-medium rounded-lg no-underline hover:bg-[var(--color-primary)] transition-colors">Download PDF</a>
-            <a href={entry.data.pdfUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-5 py-2.5 border border-[var(--color-border)] text-[var(--color-text)] font-medium rounded-lg no-underline hover:bg-[var(--color-bg-secondary)] transition-colors">Open PDF</a>
-          </div>
-        )}
-        {entry.data.sources && entry.data.sources.length > 0 && (
-          <div class="no-print flex flex-wrap gap-3">
-            {entry.data.sources.map((source) => (
-              <a href={source.url} target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2.5 border border-[var(--color-border)] text-[var(--color-text)] font-medium rounded-lg no-underline hover:bg-[var(--color-bg-secondary)] hover:border-[var(--color-primary)] transition-colors">
-                {source.label}
-                <svg class="w-4 h-4 text-[var(--color-text-subtle)]" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 6H5.25A2.25 2.25 0 003 8.25v10.5A2.25 2.25 0 005.25 21h10.5A2.25 2.25 0 0018 18.75V10.5m-10.5 6L21 3m0 0h-5.25M21 3v5.25"></path>
-                </svg>
-              </a>
-            ))}
-          </div>
-        )}
+        <div class="no-print flex flex-wrap items-center gap-3">
+          {entry.data.pdfUrl && (
+            <>
+              <a href={entry.data.pdfUrl} download class="inline-flex items-center justify-center px-5 py-2.5 bg-[var(--color-primary-dark)] text-white font-medium rounded-lg no-underline hover:bg-[var(--color-primary)] transition-colors">Download PDF</a>
+              <a href={entry.data.pdfUrl} target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center px-5 py-2.5 border border-[var(--color-border)] text-[var(--color-text)] font-medium rounded-lg no-underline hover:bg-[var(--color-bg-secondary)] transition-colors">Open PDF</a>
+            </>
+          )}
+          {entry.data.sources && entry.data.sources.length > 0 && (
+            <a href="#footnotes" class="text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline">
+              {entry.data.sources.length} {entry.data.sources.length === 1 ? 'source' : 'sources'} &darr;
+            </a>
+          )}
+        </div>
       </div>
 
       <div class="flex flex-wrap gap-2 mb-8">
@@ -78,7 +73,16 @@ const formatDate = (value: string) => {
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {metrics.map((metric) => (
               <div class="border border-[var(--color-border)] rounded-lg bg-[var(--color-bg-card)] p-5">
-                <div class="text-3xl font-bold text-[var(--color-primary-dark)] mb-2">{metric.value}</div>
+                <div class="text-3xl font-bold text-[var(--color-primary-dark)] mb-2">
+                  {metric.value}
+                  {metric.sourceIndex && entry.data.sources?.[metric.sourceIndex - 1] && (
+                    <a
+                      href={`#ref-${metric.sourceIndex}`}
+                      class="align-super text-xs font-semibold text-[var(--color-primary)] no-underline ml-0.5"
+                      title={entry.data.sources[metric.sourceIndex - 1].label}
+                    >[{metric.sourceIndex}]</a>
+                  )}
+                </div>
                 <div class="text-sm font-semibold text-[var(--color-text)] mb-2">{metric.label}</div>
                 <p class="text-sm text-[var(--color-text-muted)] leading-relaxed mb-3">{metric.detail}</p>
                 {(metric.source || metric.confidence) && (
@@ -126,6 +130,20 @@ const formatDate = (value: string) => {
         </aside>
         <article class="article-content min-w-0">
           <Content />
+
+          {entry.data.sources && entry.data.sources.length > 0 && (
+            <section id="footnotes" class="mt-12 pt-8 border-t border-[var(--color-border-light)]" aria-labelledby="references-heading">
+              <h2 id="references-heading" class="text-xl font-bold mb-4">References</h2>
+              <ol class="space-y-2 text-sm">
+                {entry.data.sources.map((source, i) => (
+                  <li id={`ref-${i + 1}`} class="text-[var(--color-text-muted)]">
+                    <span class="text-[var(--color-text-subtle)] mr-1">[{i + 1}]</span>
+                    <a href={source.url} target="_blank" rel="noopener noreferrer" class="text-[var(--color-primary)] hover:underline break-words">{source.label}</a>
+                  </li>
+                ))}
+              </ol>
+            </section>
+          )}
         </article>
       </div>
     </div>

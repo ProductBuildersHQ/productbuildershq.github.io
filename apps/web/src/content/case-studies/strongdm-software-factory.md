@@ -6,8 +6,12 @@ company: "StrongDM"
 industry: "Infrastructure Software"
 date: "2026-02-06"
 sources:
-  - label: "StrongDM — The Software Factory"
+  - label: "StrongDM AI — Software Factories And The Agentic Moment"
     url: "https://factory.strongdm.ai/"
+  - label: "StrongDM — The StrongDM Software Factory: Building Software with AI"
+    url: "https://www.strongdm.com/blog/the-strongdm-software-factory-building-software-with-ai"
+  - label: "Simon Willison — How StrongDM's AI team build serious software without even looking at the code"
+    url: "https://simonwillison.net/2026/Feb/7/software-factory/"
 pdfUrl: "/papers/strongdm-software-factory.pdf"
 level: 6
 tags: ["strongdm", "level-6", "asdm", "autonomous-coding", "case-study"]
@@ -16,21 +20,25 @@ metrics:
     label: "Human-written code target"
     detail: "StrongDM's published rule says code must not be written by humans."
     source: "StrongDM Software Factory"
+    sourceIndex: 1
     confidence: "reported"
   - value: "0%"
     label: "Human code-review target"
     detail: "StrongDM's published rule says code must not be reviewed by humans."
     source: "StrongDM Software Factory"
+    sourceIndex: 1
     confidence: "reported"
   - value: "$1k/day"
     label: "Token spend benchmark"
     detail: "StrongDM frames at least $1,000/day per human engineer as a practical factory benchmark."
     source: "StrongDM Software Factory"
+    sourceIndex: 1
     confidence: "reported"
   - value: "1,000s/hr"
     label: "Scenario throughput"
     detail: "The Digital Twin Universe can run thousands of scenarios per hour without production API limits."
     source: "StrongDM Software Factory"
+    sourceIndex: 1
     confidence: "reported"
 summary:
   challenge: "AI-generated code still creates a human review bottleneck when humans must read every change before it is trusted."
@@ -172,9 +180,3 @@ Under ASDM, Level 7 requires autonomous operations, not just autonomous coding a
 - How are scenario libraries reviewed, versioned, and audited?
 - How does StrongDM prevent architectural drift when humans do not read code?
 - What operational gates remain before software reaches enterprise customers?
-
-## Sources
-
-- StrongDM AI. "Software Factories And The Agentic Moment." February 6, 2026. https://factory.strongdm.ai/
-- StrongDM. "The StrongDM Software Factory: Building Software with AI." February 19, 2026. https://www.strongdm.com/blog/the-strongdm-software-factory-building-software-with-ai
-- Willison, Simon. "How StrongDM's AI team build serious software without even looking at the code." February 7, 2026. https://simonwillison.net/2026/Feb/7/software-factory/

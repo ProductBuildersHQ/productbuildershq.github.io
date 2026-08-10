@@ -10,6 +10,16 @@ sources:
     url: "https://www.cnbc.com/2026/06/16/spacex-spcx-cursor-acquisition-ipo.html"
   - label: "Forbes — SpaceX Buys Cursor In Largest Startup Acquisition Ever At $60 Billion"
     url: "https://www.forbes.com/sites/sandycarter/2026/06/16/spacex-buys-cursor-in-largest-startup-acquisition-ever-at-60-billion/"
+  - label: "Contrary Research — Cursor Business Breakdown & Founding Story"
+    url: "https://research.contrary.com/company/cursor"
+  - label: "The Next Web — Cursor in Talks to Raise $2B at $50B Valuation"
+    url: "https://thenextweb.com/news/cursor-anysphere-2-billion-funding-50-billion-valuation-ai-coding"
+  - label: "Cursor — A Technical Report on Composer 2"
+    url: "https://cursor.com/blog/composer-2-technical-report"
+  - label: "Stratechery — An Interview with Cursor CEO Michael Truell"
+    url: "https://stratechery.com/2025/an-interview-with-cursor-co-founder-and-ceo-michael-truell-about-coding-with-ai/"
+  - label: "Y Combinator — Cursor CEO: Going Beyond Code, Superintelligent AI Agents"
+    url: "https://www.ycombinator.com/library/MU-cursor-ceo-going-beyond-code-superintelligent-ai-agents-and-why-taste-still-matters"
 pdfUrl: "/papers/cursor-anysphere.pdf"
 level: 4
 tags: ["cursor", "anysphere", "level-4", "vibe-coding", "ai-ide", "case-study"]
@@ -27,7 +37,8 @@ metrics:
   - value: "$60B"
     label: "Valuation (post-acquisition)"
     detail: "SpaceX acquisition in June 2026 valued Cursor at $60 billion."
-    source: "Fortune, industry reports"
+    source: "CNBC, Forbes"
+    sourceIndex: 1
     confidence: "reported"
   - value: "50%+"
     label: "Fortune 500 penetration"
@@ -283,13 +294,3 @@ But Cursor also illustrates the limits of this approach. The company doesn't enf
 
 The future likely includes both: vibe coding for exploration and individual productivity, spec-driven development for coordination and scale. Cursor occupies one end of that spectrum, and occupies it very well.
 
----
-
-## Sources
-
-- [Report: Cursor Business Breakdown & Founding Story](https://research.contrary.com/company/cursor)
-- [Cursor in Talks to Raise $2B at $50B Valuation](https://thenextweb.com/news/cursor-anysphere-2-billion-funding-50-billion-valuation-ai-coding)
-- [A Technical Report on Composer 2](https://cursor.com/blog/composer-2-technical-report)
-- [An Interview with Cursor CEO Michael Truell](https://stratechery.com/2025/an-interview-with-cursor-co-founder-and-ceo-michael-truell-about-coding-with-ai/)
-- [Cursor CEO: Going Beyond Code, Superintelligent AI Agents](https://www.ycombinator.com/library/MU-cursor-ceo-going-beyond-code-superintelligent-ai-agents-and-why-taste-still-matters)
-- [Cursor AI Statistics 2026: Users, Revenue and Adoption](https://www.getpanto.ai/blog/cursor-ai-statistics)

@@ -1,13 +1,25 @@
 ---
 title: "Spotify Honk"
 subtitle: "Background Agents at Enterprise Scale"
-description: "How Spotify built Honk, their background coding agent that has merged 1,500+ pull requests into production using Claude Code, constraint-based design, and 15 years of platform infrastructure."
+description: "How Spotify built Honk, their background coding agent that has merged 1,500+ pull requests into production using Claude Code, constraint-based design, and years of platform infrastructure investment."
 company: "Spotify"
 industry: "Music Streaming / Technology"
 date: "2025-11-06"
 sources:
-  - label: "Spotify Engineering — Spotify's Background Coding Agent, Part 1"
+  - label: "Spotify Engineering — 1,500+ PRs Later: Spotify's Journey with Our Background Coding Agent (Honk, Part 1)"
     url: "https://engineering.atspotify.com/2025/11/spotifys-background-coding-agent-part-1"
+  - label: "Spotify Engineering — Background Coding Agents: Context Engineering (Honk, Part 2)"
+    url: "https://engineering.atspotify.com/2025/11/context-engineering-background-coding-agents-part-2"
+  - label: "Spotify Engineering — Background Coding Agents: Predictable Results Through Strong Feedback Loops (Honk, Part 3)"
+    url: "https://engineering.atspotify.com/2025/12/feedback-loops-background-coding-agents-part-3"
+  - label: "Spotify Engineering — Background Coding Agents: Supercharging Downstream Consumer Dataset Migrations (Honk, Part 4)"
+    url: "https://engineering.atspotify.com/2026/4/background-coding-agents-dataset-migrations-honk-part-4"
+  - label: "Spotify Engineering — Coding Is No Longer the Constraint: Scaling Developer Experience at Spotify"
+    url: "https://engineering.atspotify.com/2026/6/code-with-claude-coding-is-no-longer-the-constraint"
+  - label: "Anthropic — Spotify customer case study"
+    url: "https://claude.com/customers/spotify"
+  - label: "Spotify Engineering — Fleet Management at Spotify, Part 3"
+    url: "https://engineering.atspotify.com/2023/05/fleet-management-at-spotify-part-3"
 pdfUrl: "/papers/spotify-honk.pdf"
 level: 5
 tags: ["spotify", "honk", "level-5", "background-agents", "claude-code", "case-study"]
@@ -16,25 +28,29 @@ metrics:
     label: "PRs merged by agents"
     detail: "AI agents have generated and merged over 1,500 pull requests into Spotify's production codebase."
     source: "Spotify Engineering Blog"
+    sourceIndex: 1
     confidence: "reported"
   - value: "650+"
     label: "PRs merged monthly"
     detail: "The system merges approximately 650+ pull requests per month from agent-generated code."
-    source: "Spotify Engineering Blog"
+    source: "Anthropic customer case study"
+    sourceIndex: 6
     confidence: "reported"
   - value: "60-90%"
     label: "Time savings on migrations"
     detail: "Complex migrations show 60-90% time savings compared to manual code changes."
     source: "Spotify Engineering Blog"
+    sourceIndex: 1
     confidence: "reported"
   - value: "50%"
     label: "Share of all PRs"
     detail: "Honk and related automation systems process approximately half of Spotify's pull requests."
     source: "Spotify Engineering Blog"
+    sourceIndex: 1
     confidence: "reported"
 summary:
   challenge: "Spotify needed to automate large-scale code changes across thousands of components without introducing unpredictability or quality regressions."
-  approach: "Built Honk on Claude Code with intentional constraints (3 tools only), deterministic verification, LLM-as-Judge layer, and 15 years of platform infrastructure including Backstage."
+  approach: "Built Honk on Claude Code with intentional constraints (3 tools only), deterministic verification, LLM-as-Judge layer, and years of platform infrastructure including Backstage."
   outcome: "1,500+ merged PRs, 650+ monthly, with engineers able to ship code from their phones during morning commutes."
 ---
 
@@ -148,7 +164,7 @@ The agent handles the implementation; humans handle the intent.
 
 ## What Made Honk Possible
 
-Honk's success wasn't built on LLMs—it was built on 15 years of platform engineering.
+Honk's success wasn't built on LLMs—it was built on years of platform engineering investment.
 
 ### Backstage: The Developer Portal
 
@@ -242,18 +258,8 @@ The skills that matter change when agents handle implementation.
 
 ## Conclusion
 
-Spotify Honk demonstrates that enterprise-scale background agents are possible—with the right infrastructure. The 1,500+ merged PRs prove the model works. The 15 years of platform engineering prove the model has prerequisites.
+Spotify Honk demonstrates that enterprise-scale background agents are possible—with the right infrastructure. The 1,500+ merged PRs prove the model works. Years of platform engineering investment prove the model has prerequisites.
 
 For organizations evaluating background agents, Honk provides a clear message: **infrastructure enables AI, not the reverse**. Backstage, Fleet, and the BOM created the conditions where Honk could succeed. Without that foundation, the same AI models would produce unpredictable results.
 
 The constraint-based design philosophy—three tools, pre-populated context, explicit exclusions—offers a template for reliable agent deployment. More capability isn't always better. Sometimes less is the path to production.
-
----
-
-## Sources
-
-- [1,500+ PRs Later: Spotify's Journey with Our Background Coding Agent (Honk, Part 1)](https://engineering.atspotify.com/2025/11/spotifys-background-coding-agent-part-1)
-- [Background Coding Agents: Context Engineering (Honk, Part 2)](https://engineering.atspotify.com/2025/11/context-engineering-background-coding-agents-part-2)
-- [Background Coding Agents: Predictable Results Through Strong Feedback Loops (Honk, Part 3)](https://engineering.atspotify.com/2025/12/feedback-loops-background-coding-agents-part-3)
-- [Background Coding Agents: Supercharging Downstream Consumer Dataset Migrations (Honk, Part 4)](https://engineering.atspotify.com/2026/4/background-coding-agents-dataset-migrations-honk-part-4)
-- [Coding Is No Longer the Constraint: Scaling Developer Experience at Spotify](https://engineering.atspotify.com/2026/6/code-with-claude-coding-is-no-longer-the-constraint)

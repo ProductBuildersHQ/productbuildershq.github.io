@@ -34,6 +34,11 @@ const caseStudySchema = z.object({
     label: z.string(),
     detail: z.string(),
     source: z.string().optional(),
+    // 1-based index into the top-level `sources[]` array — renders as a
+    // Wikipedia-style clickable footnote (e.g. "[1]") next to the metric,
+    // linking to that source's entry. Omit when the metric isn't yet tied
+    // to a specific checkable source.
+    sourceIndex: z.number().int().positive().optional(),
     confidence: z.enum(['reported', 'estimated', 'verified']).optional(),
   })).optional(),
   summary: z.object({

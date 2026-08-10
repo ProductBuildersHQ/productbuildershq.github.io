@@ -8,6 +8,8 @@ date: "2026-01-26"
 sources:
   - label: "AWS Podcast Episode 753 — Amazon Bedrock, Mantle, and Developing at the Speed of AI"
     url: "https://podcasts.apple.com/us/podcast/753-amazon-bedrock-mantle-and-developing-at-the-speed-of-ai/id1122785133?i=1000746669715"
+  - label: "Reddit — Was AWS Bedrock entirely refactored by AI in one week? (r/amazonemployees corroboration thread)"
+    url: "https://www.reddit.com/r/amazonemployees/comments/1oln543/was_aws_bedrock_entirely_refactored_by_ai_in_one/"
 pdfUrl: "/papers/aws-project-mantle.pdf"
 level: 5
 tags: ["aws", "level-5", "agentic-engineering", "case-study"]
@@ -16,21 +18,25 @@ metrics:
     label: "Commit velocity"
     detail: "Reported average increase across the Mantle team."
     source: "AWS Podcast Episode 753"
+    sourceIndex: 1
     confidence: "reported"
   - value: "~9"
     label: "Senior engineers"
     detail: "Core team described as 1 Distinguished Engineer plus 8 Principal Engineers."
     source: "AWS Podcast and public discussion"
+    sourceIndex: 2
     confidence: "reported"
   - value: "25%"
     label: "Testing and tooling effort"
     detail: "Approximate team energy invested in development practices."
     source: "AWS Podcast Episode 753"
+    sourceIndex: 1
     confidence: "reported"
   - value: "80-90%"
     label: "Async change cycle"
     detail: "Share of a change cycle that could run without active human attention."
     source: "AWS Podcast Episode 753"
+    sourceIndex: 1
     confidence: "reported"
 summary:
   challenge: "Bedrock inference had become a scheduling and placement problem with accumulated operational complexity."
@@ -191,14 +197,9 @@ As Magherimov observes: "We are seeing a big shift in the industry. A lot of how
 
 The Mantle project offers a glimpse of what that change might look like in practice.
 
-*Based on AWS Podcast Episode 753, released January 26, 2026. Transcript generated using OmniVoice CLI.*
+*Based on AWS Podcast Episode 753, released January 26, 2026. Transcript generated using OmniVoice CLI. Full citation in References, below.*
 
 ---
-
-## References
-
-- Magherimov, Joe. "Amazon Bedrock Mantle and Developing at the Speed of AI." *AWS Podcast*. Episode 753. AWS. January 2026. podcasts.apple.com/us/podcast/753-amazon-bedrock-mantle-and-developing-at-the-speed-of-ai/id1122785133
-
 
 ## Appendix: Public Discussion
 
