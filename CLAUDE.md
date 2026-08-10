@@ -30,17 +30,57 @@ npm run preview
 
 # Regenerate the SDD catalog data from specification-workflow-spec
 ./scripts/generate-sdd-catalog.sh
+
+# Reproduce a cold CI build locally (clears Astro's warm cache first)
+rm -rf node_modules/.astro apps/web/.astro && npm run build
+
+# Lint a case-study claims ledger (see Verified Statistics) — run from the
+# internal content repo where the ledgers live
+sevaluation lint <slug>--claims.json
 ```
 
 ## Architecture
 
 - **Monorepo**: npm workspaces with `apps/` and `packages/` directories
 - **Main app**: `apps/web/` is the Astro site
-- **Output**: builds to `docs/` (not `dist/`) for GitHub Pages
+- **Output**: builds to `docs/` (not `dist/`) — but `docs/` is **not committed**
+  (see Deployment below); it is `.gitignore`d and rebuilt in CI on every push.
 - **Routing**: Astro file-based routing generates static HTML per route; there
   is no client-side router. `apps/web/public/404.html` is a static fallback.
 - **Content**: markdown in `apps/web/src/content/`, typed by Astro content
   collections (`apps/web/src/content.config.ts`)
+
+## Deployment
+
+The site deploys via **GitHub Actions**, not by committing build output:
+
+- `.github/workflows/deploy-pages.yml` runs `npm run build` and publishes
+  `docs/` with `actions/deploy-pages`. GitHub Pages **Source must be set to
+  "GitHub Actions"** (not "Deploy from a branch") — the branch-deploy mode runs
+  a legacy Jekyll build that fails on this repo (no `docs/` in git, no Jekyll).
+- `docs/` is **`.gitignore`d and untracked** — do not commit it, and do not
+  reference it as a committed artifact. It exists locally only as a build
+  product. (Historically it *was* committed; that was changed — every content
+  change produced huge noisy diffs.)
+- The custom domain is carried by `apps/web/public/CNAME` (→ `docs/CNAME` on
+  build). Switching the Pages Source unsets the custom domain in repo Settings;
+  re-enter it under Settings → Pages if the apex domain 404s while `*.github.io`
+  works.
+- **Local builds use a warm Astro cache** (`node_modules/.astro`), so a build
+  that passes locally can still fail cold in CI. To reproduce CI, clear the
+  cache first: `rm -rf node_modules/.astro apps/web/.astro && npm run build`.
+
+## Images
+
+- **Content-collection images fail cold-cache builds.** A relative markdown
+  image inside `src/content/**` (Astro's optimizer) can fail in CI with
+  `ENOENT … .astro/_astro/<hash>.png` on a cold cache. Put images referenced
+  from content/pages in **`apps/web/public/images/**`** and reference them by
+  absolute URL (`/images/...`); `public/` assets are copied verbatim with no
+  optimization step, so there is no fragile intermediate to go missing.
+- **Convert screenshots to `.webp`** to match existing optimized assets. No
+  `cwebp`/ImageMagick is needed — Astro bundles `sharp`:
+  `node -e "require('sharp')('in.png').webp({quality:82}).toFile('out.webp')"`.
 
 ## Key Files
 
@@ -65,10 +105,69 @@ npm run preview
 Frameworks and case studies are markdown files with frontmatter validated by
 `content.config.ts`. Frameworks use `title`, `subtitle`, `description`,
 `version`, `date`, `levels`, `tags`, and an optional `pdfUrl`. Case studies add
-`company`, `level`, optional `industry`, `metrics`, `summary`, and `comingSoon`.
+`company`, `level`, optional `industry`, `sources[]`, `metrics`, `summary`, and
+`comingSoon`.
+
+Each entry in `metrics[]` has `value`, `label`, `detail`, an optional
+`source`/`sourceIndex` (a 1-based index into the top-level `sources[]` array,
+rendered as a Wikipedia-style `[n]` footnote), and an optional `confidence`
+(`reported` | `estimated` | `verified`). **See Verified Statistics below for
+what `verified` requires.**
 
 `pdfUrl` is **optional**: templates render the Download/Open PDF buttons only
 when it is set, so a document without a generated PDF still builds.
+
+## Verified Statistics (structured-evaluation)
+
+A published metric may only carry `confidence: "verified"` when it is backed by
+a **structured-evaluation claims ledger** — do not hand-label a stat
+`verified`. This exists because a real false positive slipped through once (a
+Cursor "$3B ARR" figure marked verified from a secondary-synthesis source; a
+primary-source check later put it far lower). The ledger is the evidence; the
+site publishes only the subset that survives it.
+
+**Where the evidence lives** — ledgers are in the *internal* content repo, one
+per case study, alongside a rendered HTML view:
+
+```
+~/go/src/github.com/ProductBuildersHQ/productbuildershq-content-internal/
+  case-studies/<slug>/<slug>--claims.json   # the ClaimsReport (evidence)
+  case-studies/<slug>/<slug>--claims.html   # human-readable render
+```
+
+The tooling is [`github.com/plexusone/structured-evaluation`](https://github.com/plexusone/structured-evaluation)
+— the `claims` package (`ClaimsReport`, verdicts, `Lint`) and the `sevaluation`
+CLI (`go install github.com/plexusone/structured-evaluation/cmd/sevaluation@latest`).
+
+**Workflow to produce/refresh verified stats:**
+
+1. Research each statistic to a **primary source** with a verbatim quote and a
+   resolving URL. Aggregator/"stats roundup" pages are auto-rejected; a
+   secondary-analysis or self-reported source needs a corroborating source.
+2. Encode the findings as a `ClaimsReport` in `<slug>--claims.json`. Each claim
+   carries its `verdict` (`verified` / `needs-review` / `rejected` /
+   `unverified`), the source URL, the `quotedText`, and a `statistical`
+   value/unit whose number must appear in the quote.
+3. Gate it: `sevaluation lint <slug>--claims.json` (evidence integrity —
+   verified claim must have URL + quote + corroboration + a fresh `asOfDate`)
+   and `sevaluation check <slug>--claims.json` (criteria decision). Render for
+   review: `sevaluation render <slug>--claims.json --format=html > <slug>--claims.html`.
+4. Publish **only** the claims whose `verdict` is `verified` — set
+   `confidence: "verified"` on the matching `metrics[]` entry on the public
+   site. Everything else stays `reported` (or off the site).
+
+**Principles:**
+
+- The **site publishes only the `verified` subset**; the ledger audits
+  *everything*. It is normal and expected for a ledger's report-level
+  `decision` to be `fail` — that just means it contains some `needs-review` /
+  `rejected` claims (e.g. an unverifiable ARR figure) that are **not** on the
+  site. A failing ledger does not imply a bad published stat.
+- **AWS Mantle is the standing exception**: its metrics are all `reported`
+  (podcast-sourced, under separate review) and its ledger has no verified
+  claims. Do not promote them to `verified` without new primary sources.
+- When adding or changing a published stat, update the ledger first, re-lint,
+  and keep the published `value` consistent with the verified claim's number.
 
 ## Positioning
 
@@ -141,8 +240,13 @@ To add a paper: write the markdown, give it a `pdfUrl` of
 
 ## Important Notes
 
-- Always rebuild (`npm run build`) after changes before committing
-- The `docs/` directory is committed and deployed to GitHub Pages
-- Do not edit files in `docs/` directly; they are generated
-- Paper PDFs in `docs/papers/` are generated by `scripts/build-pdfs.sh`, not
-  added by hand
+- Rebuild (`npm run build`) after changes to confirm the site compiles before
+  committing — but **do not commit `docs/`** (it is `.gitignore`d and built in
+  CI; see Deployment). Commit only source under `apps/web/**` and repo config.
+- Do not edit files in `docs/` directly; they are generated.
+- Source-of-truth paper PDFs live in `apps/web/public/papers/` and are
+  generated by `scripts/build-pdfs.sh`, not added by hand; the build copies
+  them into `docs/papers/`.
+- Release: bump `CHANGELOG.json` (compact single-line leaf objects — the
+  existing style, not `json.dump(indent=2)`), regenerate `CHANGELOG.md` via
+  `schangelog generate`, then tag only after commits are pushed and CI is green.
