@@ -7,6 +7,61 @@
   "maintainers": ["ProductBuildersHQ", "johncwang@gmail.com"],
   "releases": [
     {
+      "version": "v0.4.0",
+      "date": "2026-08-10",
+      "highlights": [
+        { "description": "Major content build-out: VisionStudio / VisionSpec / SCALE product pages, the 4P Product-Building Philosophy, Signals and Perspectives collections, an SDD workflow catalog, and the From-the-Field timeline" },
+        { "description": "Case-study metrics now publish only structured-evaluation-verified statistics, with Wikipedia-style numbered footnotes and sourced, precise dates" },
+        { "description": "VisionStudio product page updated to the new web application UI, with a reordered product tour and a keyboard-navigable lightbox gallery" },
+        { "description": "Site build moved into GitHub Actions (generated docs/ no longer tracked), fixing a cold-cache image-optimization failure" }
+      ],
+      "added": [
+        { "description": "VisionStudio, VisionSpec, and SCALE product pages", "commit": "edb78c6" },
+        { "description": "4P Product-Building Philosophy page", "commit": "873dc34" },
+        { "description": "\"What is a ProductBuilder?\" presentation deck", "commit": "8381efb" },
+        { "description": "Signals collection and pages", "commit": "0b34577" },
+        { "description": "SVG/CSS signal timeline above the signals list", "commit": "40ee6d3" },
+        { "description": "Jack Dorsey / Block signal", "commit": "53b5afb" },
+        { "description": "Perspectives collection and pages", "commit": "33cef22" },
+        { "description": "/from-the-field joint case-study and signal timeline", "commit": "ee19ef0" },
+        { "description": "SDD workflow catalog data and generated pages", "commit": "14f6580" },
+        { "description": "Two-Loop, Five Ps, and AI-Native PM Metrics frameworks", "commit": "df1e1ec" },
+        { "description": "Framework provenance marking and attribution", "commit": "ea70b34" },
+        { "description": "Wikipedia-style numbered footnotes and references on case studies", "commit": "a294550" },
+        { "description": "Source links and precise dates on case studies", "commit": "b0fc9ff" },
+        { "description": "Sources and precise dates for the Cursor and GitHub Copilot case studies", "commit": "2fb0647" },
+        { "description": "Shared wt-navbar with SDD megamenu and SEO head", "commit": "29c0e07" },
+        { "description": "Navigation restructured into three megamenus", "commit": "0c204d2" },
+        { "description": "Resources dropdown enriched with Philosophy and descriptions", "commit": "09733cc" },
+        { "description": "New VisionStudio web-UI screenshots on the product page", "commit": "e067105" },
+        { "description": "New VisionStudio web-UI screenshots on the homepage", "commit": "587a860" },
+        { "description": "Lightbox gallery on the VisionStudio product tour: title, caption, prev/next arrows, dot navigation, and keyboard/Escape controls", "commit": "6eab377" },
+        { "description": "\"VisionStudio Product Tour\" header on the lightbox", "commit": "7f66e53" },
+        { "description": "Expanded content schema for provenance and new collections", "commit": "e1b927b" },
+        { "description": "PDF, SDD catalog, and Marp deck generation scripts", "commit": "16b1512" }
+      ],
+      "changed": [
+        { "description": "Rebuilt the homepage around the two-loop operating model", "commit": "f25e815" },
+        { "description": "Published case-study metrics now use only verified statistics", "commit": "d7f000e" },
+        { "description": "Reordered the VisionStudio product tour to lead with specs and execution (hook -> scale -> economics)", "commit": "3c8fc9b" },
+        { "description": "Theming, print styles, and optional-PDF rendering", "commit": "46655a0" }
+      ],
+      "fixed": [
+        { "description": "Cold-cache CI build failure: serve the convergence diagram from public/ instead of the content-collection image pipeline", "commit": "bd0cce1" },
+        { "description": "Date signals to the source date, not the publish day", "commit": "408301d" },
+        { "description": "Correct the Karpathy signal date and primary source", "commit": "1bf1b78" }
+      ],
+      "documentation": [
+        { "description": "Document the site-nav source and multi-megamenu restructure", "commit": "d579000" },
+        { "description": "Revise project guides for Astro and add a working TODO", "commit": "464beda" }
+      ],
+      "infrastructure": [
+        { "description": "Build the site in GitHub Actions before the Pages deploy", "commit": "8705bd8" },
+        { "description": "Stop tracking generated docs/; build it in CI", "commit": "3642955" },
+        { "description": "Regenerate the docs/ site and paper PDFs", "commit": "bf6df3f" }
+      ]
+    },
+    {
       "version": "v0.3.0",
       "date": "2026-06-29",
       "highlights": [
