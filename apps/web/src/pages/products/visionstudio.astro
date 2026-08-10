@@ -88,9 +88,15 @@ const tour = [
       <div class="flex flex-col gap-16">
         {tour.map((stop, index) => (
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-            <div class:list={['rounded-2xl overflow-hidden border border-[var(--color-border)] shadow-xl', index % 2 === 1 && 'md:order-2']}>
+            <button
+              type="button"
+              data-lightbox-src={stop.image}
+              data-lightbox-alt={stop.alt}
+              aria-label={`Enlarge screenshot: ${stop.title}`}
+              class:list={['block w-full p-0 bg-transparent text-left rounded-2xl overflow-hidden border border-[var(--color-border)] shadow-xl cursor-zoom-in hover:border-[var(--color-primary)] transition-colors', index % 2 === 1 && 'md:order-2']}
+            >
               <img src={stop.image} alt={stop.alt} width={stop.width} height={stop.height} loading="lazy" class="w-full h-auto block" />
-            </div>
+            </button>
             <div class:list={[index % 2 === 1 && 'md:order-1']}>
               <span class="block font-mono text-sm text-[var(--color-text-subtle)] mb-3">{String(index + 1).padStart(2, '0')}</span>
               <h3 class="text-xl font-semibold mb-3 text-[var(--color-text)]">{stop.title}</h3>
@@ -117,4 +123,66 @@ const tour = [
       </div>
     </div>
   </div>
+
+  <div
+    id="vs-lightbox"
+    class="no-print fixed inset-0 z-[100] hidden items-center justify-center bg-black/85 p-4 md:p-8 cursor-zoom-out"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Screenshot preview"
+    aria-hidden="true"
+  >
+    <button
+      id="vs-lightbox-close"
+      type="button"
+      aria-label="Close preview"
+      class="absolute top-4 right-4 z-10 flex items-center justify-center w-11 h-11 rounded-full bg-white/10 text-white text-2xl leading-none hover:bg-white/20 transition-colors cursor-pointer"
+    >&times;</button>
+    <img id="vs-lightbox-img" src="" alt="" class="max-w-[95vw] max-h-[90vh] w-auto h-auto rounded-lg shadow-2xl" />
+  </div>
 </BaseLayout>
+
+<script>
+  const lb = document.getElementById('vs-lightbox')
+  const lbImg = document.getElementById('vs-lightbox-img') as HTMLImageElement | null
+  const lbClose = document.getElementById('vs-lightbox-close')
+
+  if (lb && lbImg && lbClose) {
+    let lastFocused: HTMLElement | null = null
+
+    const open = (src: string, alt: string) => {
+      lbImg.src = src
+      lbImg.alt = alt
+      lb.classList.remove('hidden')
+      lb.classList.add('flex')
+      lb.setAttribute('aria-hidden', 'false')
+      document.body.style.overflow = 'hidden'
+      lastFocused = document.activeElement as HTMLElement
+      lbClose.focus()
+    }
+
+    const close = () => {
+      lb.classList.add('hidden')
+      lb.classList.remove('flex')
+      lb.setAttribute('aria-hidden', 'true')
+      document.body.style.overflow = ''
+      lbImg.src = ''
+      if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus()
+    }
+
+    document.querySelectorAll<HTMLElement>('[data-lightbox-src]').forEach((el) => {
+      el.addEventListener('click', () => {
+        open(el.dataset.lightboxSrc || '', el.dataset.lightboxAlt || '')
+      })
+    })
+
+    lbClose.addEventListener('click', close)
+    // Backdrop click closes; clicks on the image itself do not.
+    lb.addEventListener('click', (e) => {
+      if (e.target === lb) close()
+    })
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !lb.classList.contains('hidden')) close()
+    })
+  }
+</script>
