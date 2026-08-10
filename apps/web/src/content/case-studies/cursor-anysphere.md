@@ -20,42 +20,41 @@ sources:
     url: "https://stratechery.com/2025/an-interview-with-cursor-co-founder-and-ceo-michael-truell-about-coding-with-ai/"
   - label: "Y Combinator — Cursor CEO: Going Beyond Code, Superintelligent AI Agents"
     url: "https://www.ycombinator.com/library/MU-cursor-ceo-going-beyond-code-superintelligent-ai-agents-and-why-taste-still-matters"
+  - label: "Cursor — Enterprise"
+    url: "https://cursor.com/enterprise"
 pdfUrl: "/papers/cursor-anysphere.pdf"
 level: 4
 tags: ["cursor", "anysphere", "level-4", "vibe-coding", "ai-ide", "case-study"]
 metrics:
   - value: "1M+"
     label: "Daily active users"
-    detail: "Cursor has over 1 million daily active users as of December 2025."
-    source: "Cursor/Anysphere reports"
-    confidence: "reported"
-  - value: "$3B+"
-    label: "Annual recurring revenue"
-    detail: "Cursor reached $3B+ ARR by early 2026, with 9,900% year-over-year growth."
-    source: "Industry reports"
-    confidence: "reported"
+    detail: "Cursor has surpassed 1 million daily active users (as of December 2025)."
+    source: "Contrary Research — Cursor Business Breakdown"
+    sourceIndex: 3
+    confidence: "verified"
   - value: "$60B"
     label: "Valuation (post-acquisition)"
-    detail: "SpaceX acquisition in June 2026 valued Cursor at $60 billion."
+    detail: "SpaceX's June 2026 acquisition valued Cursor at $60 billion."
     source: "CNBC, Forbes"
     sourceIndex: 1
-    confidence: "reported"
+    confidence: "verified"
   - value: "50%+"
     label: "Fortune 500 penetration"
-    detail: "Over 50% of Fortune 500 companies have developers using Cursor."
-    source: "Cursor reports"
-    confidence: "reported"
+    detail: "Over half the Fortune 500 have developers using Cursor; Cursor's own enterprise page reports 64%."
+    source: "Cursor — Enterprise"
+    sourceIndex: 8
+    confidence: "verified"
 summary:
   challenge: "AI coding assistance required deep IDE integration that VS Code extensions couldn't provide, limiting the potential of language model-driven development."
   approach: "Forked VS Code entirely to build AI-native architecture from the ground up, enabling multi-file editing, lower latency, and seamless context management."
-  outcome: "1M+ DAU, $3B+ ARR, $60B valuation, pioneering 'vibe coding' as a mainstream development paradigm."
+  outcome: "1M+ DAU, a $60B SpaceX acquisition, and majority Fortune 500 adoption—pioneering 'vibe coding' as a mainstream development paradigm."
 ---
 
 # Cursor by Anysphere: Vibe Coding at Scale
 
 **[ASDM Level 4: Human-AI Pair Programming](/frameworks/software-delivery-autonomy)**
 
-Cursor represents the fastest adoption of any AI development tool in history. From launch in March 2023 to $3B+ ARR in early 2026, the trajectory demonstrates product-market fit at a scale rarely seen in developer tools.
+Cursor represents the fastest adoption of any AI development tool in history. From launch in March 2023 to a $60 billion acquisition by SpaceX in June 2026, the trajectory demonstrates product-market fit at a scale rarely seen in developer tools.
 
 More importantly, Cursor pioneered and popularized **vibe coding**—a development philosophy where programmers describe intent in natural language and AI handles implementation. This case study examines Cursor's approach, architecture, and the ongoing tension between vibe coding and [spec-driven development](/frameworks/spec-driven-development).
 
@@ -208,12 +207,11 @@ These tools add the structure Cursor intentionally omits.
 | Milestone | Timeline |
 |-----------|----------|
 | Launch | March 2023 |
-| $100M ARR | ~12 months post-launch |
-| $500M ARR | ~21 months post-launch |
-| $2B ARR | February 2026 |
-| $3B+ ARR | Early 2026 |
+| $100M ARR | early 2025 |
+| $500M ARR | late 2025 |
+| $60B valuation (SpaceX acquisition) | June 2026 |
 
-Growth rate: 9,900% year-over-year as of December 2025.
+Higher ARR figures (e.g. "$2B+") and a "9,900% year-over-year" growth rate circulate widely but trace only to secondary aggregators; they are omitted here pending confirmation against Cursor or primary reporting.
 
 ### User Metrics
 

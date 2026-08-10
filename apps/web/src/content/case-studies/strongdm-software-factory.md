@@ -21,25 +21,25 @@ metrics:
     detail: "StrongDM's published rule says code must not be written by humans."
     source: "StrongDM Software Factory"
     sourceIndex: 1
-    confidence: "reported"
+    confidence: "verified"
   - value: "0%"
     label: "Human code-review target"
     detail: "StrongDM's published rule says code must not be reviewed by humans."
     source: "StrongDM Software Factory"
     sourceIndex: 1
-    confidence: "reported"
+    confidence: "verified"
   - value: "$1k/day"
     label: "Token spend benchmark"
     detail: "StrongDM frames at least $1,000/day per human engineer as a practical factory benchmark."
     source: "StrongDM Software Factory"
     sourceIndex: 1
-    confidence: "reported"
+    confidence: "verified"
   - value: "1,000s/hr"
     label: "Scenario throughput"
     detail: "The Digital Twin Universe can run thousands of scenarios per hour without production API limits."
     source: "StrongDM Software Factory"
     sourceIndex: 1
-    confidence: "reported"
+    confidence: "verified"
 summary:
   challenge: "AI-generated code still creates a human review bottleneck when humans must read every change before it is trusted."
   approach: "StrongDM moved humans upstream to intent, scenarios, and constraints while agents generate and iterate code against scenario satisfaction."

@@ -29,25 +29,19 @@ metrics:
     detail: "AI agents have generated and merged over 1,500 pull requests into Spotify's production codebase."
     source: "Spotify Engineering Blog"
     sourceIndex: 1
-    confidence: "reported"
+    confidence: "verified"
   - value: "650+"
     label: "PRs merged monthly"
     detail: "The system merges approximately 650+ pull requests per month from agent-generated code."
     source: "Anthropic customer case study"
     sourceIndex: 6
-    confidence: "reported"
+    confidence: "verified"
   - value: "60-90%"
     label: "Time savings on migrations"
     detail: "Complex migrations show 60-90% time savings compared to manual code changes."
     source: "Spotify Engineering Blog"
     sourceIndex: 1
-    confidence: "reported"
-  - value: "50%"
-    label: "Share of all PRs"
-    detail: "Honk and related automation systems process approximately half of Spotify's pull requests."
-    source: "Spotify Engineering Blog"
-    sourceIndex: 1
-    confidence: "reported"
+    confidence: "verified"
 summary:
   challenge: "Spotify needed to automate large-scale code changes across thousands of components without introducing unpredictability or quality regressions."
   approach: "Built Honk on Claude Code with intentional constraints (3 tools only), deterministic verification, LLM-as-Judge layer, and years of platform infrastructure including Backstage."

@@ -35,25 +35,19 @@ metrics:
     detail: "GitHub Copilot reached 20 million total users by July 2025."
     source: "TechCrunch, reporting Satya Nadella's earnings-call statement"
     sourceIndex: 3
-    confidence: "reported"
+    confidence: "verified"
   - value: "4.7M"
     label: "Paid subscribers"
     detail: "4.7 million paid Copilot subscribers by January 2026, with 75% year-over-year growth."
     source: "Microsoft FY26 Q2 earnings, via The Motley Fool"
     sourceIndex: 2
-    confidence: "reported"
-  - value: "55%"
-    label: "Faster task completion"
-    detail: "From a controlled GitHub study (n≈95), 2022–23 — not a current fleet-wide figure."
-    source: "GitHub Blog research post"
-    sourceIndex: 6
-    confidence: "reported"
+    confidence: "verified"
   - value: "67%"
     label: "PR review turnaround reduction (Duolingo)"
     detail: "GitHub's own Duolingo customer story reports a 67% decrease in median code-review turnaround — a single customer's result, not a platform-wide average. (A widely-repeated \"9.6 days to 2.4 days\" figure could not be traced to any GitHub source and has been dropped.)"
     source: "GitHub customer story — Duolingo"
     sourceIndex: 8
-    confidence: "reported"
+    confidence: "verified"
 summary:
   challenge: "Inline code suggestions helped developers write code faster, but didn't address the full workflow from understanding an issue to shipping a complete solution."
   approach: "Built Copilot Workspace as a browser-based environment with specification → plan → implementation workflow, giving developers control at each stage."
