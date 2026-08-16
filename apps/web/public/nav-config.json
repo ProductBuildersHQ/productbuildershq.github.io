@@ -70,6 +70,13 @@
           "href": "/frameworks/five-ps"
         },
         {
+          "id": "app-reality-ladder",
+          "categoryId": "foundations",
+          "label": "App Reality Ladder",
+          "tagline": "The artifact: Concept to Production, by what it proves",
+          "href": "/frameworks/app-reality-ladder"
+        },
+        {
           "id": "lever",
           "categoryId": "capability",
           "label": "LEVER / REVEL",
