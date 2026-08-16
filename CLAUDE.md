@@ -28,7 +28,7 @@ npm run preview
 # Regenerate the framework/case-study PDFs (see PDF Pipeline below)
 ./scripts/build-pdfs.sh
 
-# Regenerate the SDD catalog data from specification-workflow-spec
+# Regenerate the SDD catalog data from visionspec
 ./scripts/generate-sdd-catalog.sh
 
 # Reproduce a cold CI build locally (clears Astro's warm cache first)

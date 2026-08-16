@@ -7,12 +7,13 @@
       "shortName": "MRD",
       "description": "Defines the market problem, customer segments, and business opportunity.",
       "category": "source",
+      "pdlcStage": "product-definition",
       "authorship": "human",
       "filename": "MRD.md",
       "evalFilename": "MRD.eval.json",
       "origins": [
         "enterprise",
-        "aws-product",
+        "aws-one-way-door",
         "big-tech-product"
       ]
     },
@@ -22,6 +23,7 @@
       "shortName": "PRD",
       "description": "Defines product goals, user stories, and functional requirements.",
       "category": "source",
+      "pdlcStage": "product-definition",
       "authorship": "human",
       "filename": "PRD.md",
       "evalFilename": "PRD.eval.json",
@@ -37,6 +39,7 @@
       "shortName": "UXD",
       "description": "Defines user journeys, wireframes, and interaction patterns.",
       "category": "source",
+      "pdlcStage": "product-definition",
       "authorship": "human",
       "filename": "UXD.md",
       "evalFilename": "UXD.eval.json",
@@ -51,11 +54,12 @@
       "shortName": "OpportunitySpec",
       "description": "12-box canvas combining Patton discovery + Cagan business case for features.",
       "category": "source",
+      "pdlcStage": "product-definition",
       "authorship": "human",
       "filename": "OPPORTUNITY-SPEC.md",
       "evalFilename": "OPPORTUNITY-SPEC.eval.json",
       "origins": [
-        "aws-feature",
+        "aws-two-way-door",
         "big-tech-feature"
       ],
       "aliases": [
@@ -68,12 +72,13 @@
       "shortName": "Press",
       "description": "Working Backwards customer announcement written before building.",
       "category": "gtm",
+      "pdlcStage": "product-definition",
       "authorship": "synthesized",
       "filename": "PRESS.md",
       "evalFilename": "PRESS.eval.json",
       "origins": [
-        "aws-product",
-        "aws-feature",
+        "aws-one-way-door",
+        "aws-two-way-door",
         "big-tech"
       ],
       "aliases": [
@@ -87,12 +92,13 @@
       "shortName": "FAQ",
       "description": "Challenges assumptions with internal and external questions.",
       "category": "gtm",
+      "pdlcStage": "product-definition",
       "authorship": "synthesized",
       "filename": "FAQ.md",
       "evalFilename": "FAQ.eval.json",
       "origins": [
-        "aws-product",
-        "aws-feature",
+        "aws-one-way-door",
+        "aws-two-way-door",
         "big-tech"
       ]
     },
@@ -102,11 +108,12 @@
       "shortName": "6-Pager",
       "description": "Amazon-style narrative document for stakeholder alignment.",
       "category": "gtm",
+      "pdlcStage": "product-definition",
       "authorship": "synthesized",
       "filename": "NARRATIVE-6P.md",
       "evalFilename": "NARRATIVE-6P.eval.json",
       "origins": [
-        "aws-product",
+        "aws-one-way-door",
         "big-tech-product"
       ],
       "aliases": [
@@ -121,6 +128,7 @@
       "shortName": "1-Pager",
       "description": "Executive summary for quick stakeholder review.",
       "category": "gtm",
+      "pdlcStage": "product-definition",
       "authorship": "synthesized",
       "filename": "NARRATIVE-1P.md",
       "evalFilename": "NARRATIVE-1P.eval.json",
@@ -140,6 +148,7 @@
       "shortName": "BMC",
       "description": "9-block business model visualization extracted from MRD.",
       "category": "gtm",
+      "pdlcStage": "product-definition",
       "authorship": "synthesized",
       "filename": "BMC.md",
       "evalFilename": "BMC.eval.json",
@@ -154,6 +163,7 @@
       "shortName": "TRD",
       "description": "Defines architecture, components, APIs, and technical approach.",
       "category": "technical",
+      "pdlcStage": "builder-definition",
       "authorship": "synthesized",
       "filename": "TRD.md",
       "evalFilename": "TRD.eval.json",
@@ -173,6 +183,7 @@
       "shortName": "TPD",
       "description": "Defines test strategy, coverage requirements, and validation approach.",
       "category": "technical",
+      "pdlcStage": "builder-definition",
       "authorship": "synthesized",
       "filename": "TPD.md",
       "evalFilename": "TPD.eval.json",
@@ -190,6 +201,7 @@
       "shortName": "IRD",
       "description": "Defines deployment, scaling, and operational requirements.",
       "category": "technical",
+      "pdlcStage": "builder-definition",
       "authorship": "synthesized",
       "filename": "IRD.md",
       "evalFilename": "IRD.eval.json",
@@ -231,6 +243,7 @@
       "shortName": "SPEC",
       "description": "Unified execution spec reconciling all source documents.",
       "category": "output",
+      "pdlcStage": "product-definition",
       "authorship": "synthesized",
       "filename": "spec.md",
       "origins": [
@@ -243,6 +256,7 @@
       "shortName": "Hypothesis",
       "description": "Core hypothesis to validate in Build-Measure-Learn cycles.",
       "category": "source",
+      "pdlcStage": "product-definition",
       "authorship": "human",
       "filename": "HYPOTHESIS.md",
       "origins": [
@@ -256,6 +270,7 @@
       "shortName": "Pitch",
       "description": "Shaped problem and solution with appetite (Basecamp).",
       "category": "source",
+      "pdlcStage": "product-definition",
       "authorship": "human",
       "filename": "PITCH.md",
       "origins": [
@@ -268,6 +283,7 @@
       "shortName": "OST",
       "description": "Maps outcomes to opportunities to solutions (Teresa Torres).",
       "category": "source",
+      "pdlcStage": "product-definition",
       "authorship": "human",
       "filename": "OST.md",
       "origins": [
@@ -287,7 +303,13 @@
         },
         "faq": {
           "required": false,
-          "category": "gtm"
+          "category": "gtm",
+          "template": {
+            "from": "enterprise"
+          },
+          "rubric": {
+            "from": "enterprise"
+          }
         },
         "hypothesis": {
           "required": true,
@@ -296,7 +318,13 @@
         },
         "ird": {
           "required": false,
-          "category": "technical"
+          "category": "technical",
+          "template": {
+            "from": "enterprise"
+          },
+          "rubric": {
+            "from": "enterprise"
+          }
         },
         "lean-canvas": {
           "required": false,
@@ -305,110 +333,190 @@
         },
         "mrd": {
           "required": false,
-          "category": "source"
+          "category": "source",
+          "template": {
+            "from": "enterprise"
+          },
+          "rubric": {
+            "from": "enterprise"
+          }
         },
         "narrative-1p": {
           "required": false,
-          "category": "gtm"
+          "category": "gtm",
+          "template": {
+            "from": "enterprise"
+          },
+          "rubric": {
+            "from": "enterprise"
+          }
         },
         "narrative-6p": {
           "required": false,
-          "category": "gtm"
+          "category": "gtm",
+          "template": {
+            "from": "enterprise"
+          },
+          "rubric": {
+            "from": "enterprise"
+          }
         },
         "prd": {
           "required": false,
-          "category": "source"
+          "category": "source",
+          "template": {
+            "from": "enterprise"
+          },
+          "rubric": {
+            "from": "enterprise"
+          }
         },
         "press": {
           "required": false,
-          "category": "gtm"
+          "category": "gtm",
+          "template": {
+            "from": "enterprise"
+          },
+          "rubric": {
+            "from": "enterprise"
+          }
         },
         "trd": {
           "required": false,
-          "category": "technical"
+          "category": "technical",
+          "template": {
+            "from": "enterprise"
+          },
+          "rubric": {
+            "from": "enterprise"
+          }
         },
         "uxd": {
           "required": false,
-          "category": "source"
+          "category": "source",
+          "template": {
+            "from": "enterprise"
+          },
+          "rubric": {
+            "from": "enterprise"
+          }
         }
       },
       "template_specs": [
         "experiment",
+        "faq",
         "hypothesis",
-        "lean-canvas"
+        "ird",
+        "lean-canvas",
+        "mrd",
+        "narrative-1p",
+        "narrative-6p",
+        "prd",
+        "press",
+        "trd",
+        "uxd"
       ],
       "rubric_specs": [
         "experiment",
+        "faq",
         "hypothesis",
-        "lean-canvas"
+        "ird",
+        "lean-canvas",
+        "mrd",
+        "narrative-1p",
+        "narrative-6p",
+        "prd",
+        "press",
+        "trd",
+        "uxd"
       ]
     },
     {
-      "name": "aws-feature",
-      "description": "Amazon Working Backwards methodology for feature-level opportunities. Starts with OpportunitySpec (merged Patton + Cagan), uses PR/FAQ-driven development.",
+      "name": "aws-one-way-door",
+      "description": "Amazon Working Backwards with one-way-door ceremony — for hard-to-reverse decisions (typically new product lines, public commitments, major investments). Starts with the human-authored Press Release (the founding artifact), stress-tests it with the FAQ, and requires the 6-pager decision narrative before build spend. Optional post-FAQ deepening: MRD (market validation, product scale) or OpportunitySpec (discovery, feature scale) — the door sets the ceremony; the scale picks the tool.",
       "methodology": {
-        "name": "Amazon Working Backwards (Feature)",
-        "description": "For features on existing product lines, OpportunitySpec replaces MRD as the\nstarting document. OpportunitySpec combines Patton's discovery-focused\nOpportunity Canvas with Cagan's business-case-focused SVPG Assessment.\n",
+        "name": "Amazon Working Backwards",
+        "reference": "https://www.amazon.jobs/content/en/our-workplace/leadership-principles",
         "principles": [
           {
             "id": "customer_obsession",
             "name": "Customer Obsession",
-            "description": "Start with the customer and work backwards"
+            "description": "Start with the customer and work backwards; earn and keep customer trust. Economics count: exciting customers with something unsustainable is not doing right by them. Competitors inform, customers decide."
           },
           {
             "id": "ownership",
             "name": "Ownership",
-            "description": "Think long-term, act on behalf of the entire company"
+            "description": "Think long-term; never sacrifice long-term value for short-term results. Act for the whole company. The test: what would I do if this were my personal money?"
           },
           {
             "id": "invent_and_simplify",
             "name": "Invent And Simplify",
-            "description": "Find simplifying assumptions, expect innovation"
+            "description": "Expect invention and simplification; be externally aware and take ideas from everywhere — no 'not invented here.' Accept being misunderstood for long periods."
           },
           {
             "id": "are_right_a_lot",
             "name": "Are Right A Lot",
-            "description": "Seek diverse perspectives, disconfirm beliefs"
+            "description": "Judgment over ego: seek diverse perspectives and work to disconfirm your own beliefs. The goal is the best answer for the customer, whoever's idea it is. Leaders speak last."
+          },
+          {
+            "id": "learn_and_be_curious",
+            "name": "Learn And Be Curious",
+            "description": "Never done learning; curious about new possibilities and act to explore them."
+          },
+          {
+            "id": "hire_and_develop_the_best",
+            "name": "Hire And Develop The Best",
+            "description": "Raise the performance bar with every hire; develop leaders and take ownership of others' growth."
           },
           {
             "id": "insist_on_highest_standards",
             "name": "Insist On Highest Standards",
-            "description": "Relentlessly high standards"
+            "description": "Relentlessly, even unreasonably, high standards. Defects do not get sent down the line. Higher expectations produce better results."
           },
           {
             "id": "think_big",
             "name": "Think Big",
-            "description": "Create bold direction, look around corners"
+            "description": "Thinking small is a self-fulfilling prophecy. Communicate a bold direction; look around corners for ways to serve customers."
           },
           {
             "id": "bias_for_action",
             "name": "Bias For Action",
-            "description": "Speed matters, two-way door decisions"
+            "description": "Speed matters and is a leadership decision, not a circumstance. Most decisions are reversible two-way doors — make them quickly at the team level. Reserve deep study for one-way doors. Days or hours, not weeks."
           },
           {
             "id": "frugality",
             "name": "Frugality",
-            "description": "Accomplish more with less"
+            "description": "Accomplish more with less. Constraints breed resourcefulness, self-sufficiency, and invention. No extra points for headcount, budget, or fixed expense."
           },
           {
             "id": "earn_trust",
             "name": "Earn Trust",
-            "description": "Vocally self-critical, benchmark against best"
+            "description": "Listen attentively, speak candidly, treat others respectfully. Be vocally self-critical, even when awkward; benchmark against the best."
           },
           {
             "id": "deep_dive",
             "name": "Deep Dive",
-            "description": "Stay connected to details, narratives expose gaps"
+            "description": "Operate at all levels and stay connected to the details; audit frequently; be skeptical when metrics and anecdotes differ. It is hard to fake the details in a narrative — that is why the narrative format works."
           },
           {
             "id": "have_backbone",
             "name": "Have Backbone",
-            "description": "Disagree and commit, truth-seeking over social cohesion"
+            "description": "Respectfully challenge decisions when you disagree, even when uncomfortable. No compromise for social cohesion. Once decided, commit wholly."
           },
           {
             "id": "deliver_results",
             "name": "Deliver Results",
-            "description": "Focus on inputs, launch is the starting line"
+            "description": "Focus on the key inputs and deliver with the right quality, on time. Launch is the starting line, not the finish."
+          },
+          {
+            "id": "strive_to_be_earths_best_employer",
+            "name": "Strive To Be Earths Best Employer",
+            "description": "Work to create a safer, more productive, more diverse, and more just work environment; lead with empathy and make others' success possible."
+          },
+          {
+            "id": "success_and_scale_bring_broad_responsibility",
+            "name": "Success And Scale Bring Broad Responsibility",
+            "description": "Big things carry big obligations: be humble about second-order effects, better every day for customers, employees, communities, and the world, and leave things better than found."
           }
         ]
       },
@@ -420,7 +528,8 @@
         },
         "faq": {
           "required": true,
-          "category": "gtm"
+          "category": "gtm",
+          "description": "Stress-tests the press release. Absorbs the business case: market, economics, why-now, feasibility."
         },
         "ird": {
           "required": false,
@@ -429,7 +538,8 @@
         },
         "mrd": {
           "required": false,
-          "category": "source"
+          "category": "source",
+          "description": "Optional market validation deepening the FAQ's business-case answers with evidence (typical at product scale)"
         },
         "narrative-1p": {
           "required": false,
@@ -440,221 +550,21 @@
           "category": "gtm"
         },
         "opportunity-spec": {
-          "required": true,
-          "category": "source",
-          "description": "12-box canvas combining Patton (discovery) + Cagan (business case)"
-        },
-        "prd": {
-          "required": true,
-          "category": "source"
-        },
-        "press": {
-          "required": true,
-          "category": "gtm"
-        },
-        "spec": {
-          "required": true,
-          "category": "output"
-        },
-        "tpd": {
-          "required": true,
-          "category": "technical",
-          "description": "Test plan document"
-        },
-        "trd": {
-          "required": true,
-          "category": "technical"
-        },
-        "uxd": {
-          "required": true,
-          "category": "source"
-        }
-      },
-      "synthesis": {
-        "bmc": {
-          "sources": [
-            "mrd"
-          ],
-          "guidance": "Extract Business Model Canvas blocks from MRD sections 2-11. Format as standalone canvas for visual review."
-        },
-        "faq": {
-          "sources": [
-            "opportunity-spec",
-            "press"
-          ],
-          "prompt_context": "Generate FAQ from the OpportunitySpec and Press Release. Include questions about:\n- Users \u0026 Problem: Who is this for? Why is this a problem?\n- Current Solutions: How do people solve this today?\n- Competitive Edge: Why us? Why not competitors?\n- Market \u0026 Timing: Why now?\n- Critical Requirements: What must be true?\n- Risks \u0026 Assumptions: What could go wrong?\n"
-        },
-        "prd": {
-          "sources": [
-            "opportunity-spec",
-            "press",
-            "faq"
-          ]
-        },
-        "press": {
-          "sources": [
-            "opportunity-spec"
-          ],
-          "prompt_context": "Generate a Press Release from the OpportunitySpec. Focus on:\n- User Value (Box 4) for the headline and customer benefit\n- Users \u0026 Problem (Box 1) for the problem statement\n- Solution Ideas (Box 3) for the solution description\n- Business Value (Box 5) and Competitive Edge (Box 6) for differentiation\n- Success Metrics (Box 9) for measurable outcomes\n"
-        },
-        "spec": {
-          "sources": [
-            "mrd",
-            "prd",
-            "uxd",
-            "trd",
-            "tpd"
-          ],
-          "guidance": "Unified specification consolidating all approved specs."
-        },
-        "tpd": {
-          "sources": [
-            "prd",
-            "trd"
-          ],
-          "guidance": "Test plan covering all PRD requirements with traceability."
-        },
-        "trd": {
-          "sources": [
-            "prd",
-            "uxd"
-          ],
-          "guidance": "Technical design to support PRD requirements."
-        }
-      },
-      "template_specs": [
-        "faq",
-        "ird",
-        "mrd",
-        "narrative-1p",
-        "narrative-6p",
-        "prd",
-        "press",
-        "spec",
-        "tpd",
-        "trd",
-        "uxd"
-      ],
-      "rubric_specs": [
-        "faq",
-        "ird",
-        "mrd",
-        "narrative-1p",
-        "narrative-6p",
-        "prd",
-        "press",
-        "spec",
-        "tpd",
-        "trd",
-        "uxd"
-      ]
-    },
-    {
-      "name": "aws-product",
-      "description": "Amazon Working Backwards methodology for new product lines. Starts with MRD, uses PR/FAQ-driven development with emphasis on customer obsession, ownership, and high standards.",
-      "methodology": {
-        "name": "Amazon Working Backwards",
-        "principles": [
-          {
-            "id": "customer_obsession",
-            "name": "Customer Obsession",
-            "description": "Start with the customer and work backwards"
-          },
-          {
-            "id": "ownership",
-            "name": "Ownership",
-            "description": "Think long-term, act on behalf of the entire company"
-          },
-          {
-            "id": "invent_and_simplify",
-            "name": "Invent And Simplify",
-            "description": "Find simplifying assumptions, expect innovation"
-          },
-          {
-            "id": "are_right_a_lot",
-            "name": "Are Right A Lot",
-            "description": "Seek diverse perspectives, disconfirm beliefs"
-          },
-          {
-            "id": "insist_on_highest_standards",
-            "name": "Insist On Highest Standards",
-            "description": "Relentlessly high standards"
-          },
-          {
-            "id": "think_big",
-            "name": "Think Big",
-            "description": "Create bold direction, look around corners"
-          },
-          {
-            "id": "bias_for_action",
-            "name": "Bias For Action",
-            "description": "Speed matters, two-way door decisions"
-          },
-          {
-            "id": "frugality",
-            "name": "Frugality",
-            "description": "Accomplish more with less"
-          },
-          {
-            "id": "earn_trust",
-            "name": "Earn Trust",
-            "description": "Vocally self-critical, benchmark against best"
-          },
-          {
-            "id": "deep_dive",
-            "name": "Deep Dive",
-            "description": "Stay connected to details, narratives expose gaps"
-          },
-          {
-            "id": "have_backbone",
-            "name": "Have Backbone",
-            "description": "Disagree and commit, truth-seeking over social cohesion"
-          },
-          {
-            "id": "deliver_results",
-            "name": "Deliver Results",
-            "description": "Focus on inputs, launch is the starting line"
-          }
-        ]
-      },
-      "spec_config": {
-        "bmc": {
           "required": false,
+          "category": "source",
+          "description": "Optional 12-box discovery canvas (Patton + Cagan) deepening the FAQ's answers (typical at feature scale)"
+        },
+        "prd": {
+          "required": true,
+          "category": "source"
+        },
+        "press": {
+          "required": true,
           "category": "gtm",
-          "description": "Business Model Canvas extracted from MRD for stakeholder review"
-        },
-        "faq": {
-          "required": true,
-          "category": "gtm"
-        },
-        "ird": {
-          "required": false,
-          "category": "technical",
-          "description": "Infrastructure requirements"
-        },
-        "mrd": {
-          "required": true,
-          "category": "source",
-          "description": "Market requirements with embedded Business Model Canvas"
-        },
-        "narrative-1p": {
-          "required": false,
-          "category": "gtm"
-        },
-        "narrative-6p": {
-          "required": true,
-          "category": "gtm"
-        },
-        "prd": {
-          "required": true,
-          "category": "source"
-        },
-        "press": {
-          "required": true,
-          "category": "gtm"
+          "description": "The founding artifact: human-authored press release announcing the customer experience. Written first; everything else works backward from it."
         },
         "spec": {
-          "required": true,
+          "required": false,
           "category": "output"
         },
         "tpd": {
@@ -680,32 +590,50 @@
         },
         "faq": {
           "sources": [
-            "mrd",
             "press"
           ],
-          "guidance": "Challenge assumptions ruthlessly. Include internal stakeholder and customer questions."
+          "guidance": "Challenge the press release's assumptions ruthlessly. Include customer questions, internal stakeholder questions, and the business case: market, economics, why now, feasibility."
+        },
+        "ird": {
+          "sources": [
+            "trd"
+          ],
+          "guidance": "Infrastructure and operations requirements derived from the technical design."
+        },
+        "mrd": {
+          "sources": [
+            "press",
+            "faq"
+          ],
+          "guidance": "Deepen and validate the FAQ's business-case answers with market evidence: segments, sizing, competition, positioning."
         },
         "narrative-6p": {
           "sources": [
-            "mrd",
+            "press",
+            "faq",
+            "prd"
+          ],
+          "guidance": "Amazon 6-pager format for the one-way-door decision meeting. Data-driven narrative, no slides."
+        },
+        "opportunity-spec": {
+          "sources": [
             "press",
             "faq"
           ],
-          "guidance": "Amazon 6-pager format. Data-driven narrative, no slides."
+          "guidance": "Populate the 12-box OpportunitySpec canvas from the Press Release and FAQ. Flag boxes the source documents leave unanswered — those are the discovery gaps."
         },
         "prd": {
           "sources": [
-            "mrd",
             "press",
-            "faq"
+            "faq",
+            "mrd",
+            "opportunity-spec"
           ],
-          "guidance": "Derive product requirements from market requirements. Map to customer segments."
+          "guidance": "Derive product requirements from the announced customer experience (press) and its stress-tested constraints (FAQ), grounded in whichever optional deepening is present: market validation (MRD, typical at product scale) or the discovery canvas (OpportunitySpec, typical at feature scale)."
         },
         "press": {
-          "sources": [
-            "mrd"
-          ],
-          "guidance": "Write from customer perspective. Customer obsession is key."
+          "sources": [],
+          "guidance": "Human-authored founding artifact — not synthesized. Write the press release first; everything else works backward from it."
         },
         "spec": {
           "sources": [
@@ -720,9 +648,333 @@
         "tpd": {
           "sources": [
             "prd",
-            "trd"
+            "trd",
+            "uxd"
           ],
-          "guidance": "Test plan covering all PRD requirements with traceability."
+          "guidance": "Test plan covering all PRD requirements with traceability, including UX acceptance flows."
+        },
+        "trd": {
+          "sources": [
+            "prd",
+            "uxd",
+            "mrd"
+          ],
+          "guidance": "Technical design to support PRD requirements, grounded in the market context from the MRD where present."
+        }
+      },
+      "execution": {
+        "sequence": [
+          "press",
+          "faq",
+          "mrd",
+          "prd",
+          "narrative-6p",
+          "uxd",
+          "trd",
+          "tpd",
+          "ird"
+        ],
+        "phases": [
+          {
+            "id": "vision",
+            "name": "Vision (Working Backwards)",
+            "specs": [
+              "press",
+              "faq"
+            ]
+          },
+          {
+            "id": "validation",
+            "name": "Validation",
+            "specs": [
+              "mrd"
+            ]
+          },
+          {
+            "id": "requirements",
+            "name": "Requirements",
+            "specs": [
+              "prd"
+            ]
+          },
+          {
+            "id": "decision",
+            "name": "Decision Narrative",
+            "specs": [
+              "narrative-6p"
+            ]
+          },
+          {
+            "id": "experience",
+            "name": "Experience",
+            "specs": [
+              "uxd"
+            ]
+          },
+          {
+            "id": "technical",
+            "name": "Technical",
+            "specs": [
+              "trd",
+              "tpd",
+              "ird"
+            ]
+          }
+        ],
+        "iteration_trigger": "faq",
+        "review_gates": [
+          {
+            "after": "faq",
+            "action": "prfaq_review"
+          },
+          {
+            "after": "narrative-6p",
+            "action": "decision_meeting",
+            "required": true
+          }
+        ]
+      },
+      "template_specs": [
+        "bmc",
+        "faq",
+        "ird",
+        "mrd",
+        "narrative-1p",
+        "narrative-6p",
+        "opportunity-spec",
+        "plan",
+        "prd",
+        "press",
+        "roadmap",
+        "spec",
+        "tpd",
+        "trd",
+        "uxd"
+      ],
+      "rubric_specs": [
+        "bmc",
+        "faq",
+        "ird",
+        "mrd",
+        "narrative-1p",
+        "narrative-6p",
+        "opportunity-spec",
+        "prd",
+        "press",
+        "spec",
+        "tpd",
+        "trd",
+        "uxd"
+      ]
+    },
+    {
+      "name": "aws-two-way-door",
+      "description": "Amazon Working Backwards with two-way-door ceremony — for reversible decisions (typically features, experiments, incremental bets). Starts with the human-authored Press Release (the same founding artifact regardless of scale), stress-tested by the FAQ; the iterative PR/FAQ review is the only formal gate and the 6-pager is optional. Optional post-FAQ deepening: OpportunitySpec (discovery, feature scale) or MRD (market validation, product scale) — the door sets the ceremony; the scale picks the tool.",
+      "methodology": {
+        "name": "Amazon Working Backwards (Feature)",
+        "description": "Amazon uses the same PR/FAQ instrument for features as for products; what\nscales is ceremony (one-way vs. two-way door), not the sequence. At feature\nscale the optional discovery deepening is the OpportunitySpec, which\ncombines Patton's discovery-focused Opportunity Canvas with Cagan's\nbusiness-case-focused SVPG Assessment.\n",
+        "reference": "https://www.amazon.jobs/content/en/our-workplace/leadership-principles",
+        "principles": [
+          {
+            "id": "customer_obsession",
+            "name": "Customer Obsession",
+            "description": "Start with the customer and work backwards; earn and keep customer trust. Economics count: exciting customers with something unsustainable is not doing right by them. Competitors inform, customers decide."
+          },
+          {
+            "id": "ownership",
+            "name": "Ownership",
+            "description": "Think long-term; never sacrifice long-term value for short-term results. Act for the whole company. The test: what would I do if this were my personal money?"
+          },
+          {
+            "id": "invent_and_simplify",
+            "name": "Invent And Simplify",
+            "description": "Expect invention and simplification; be externally aware and take ideas from everywhere — no 'not invented here.' Accept being misunderstood for long periods."
+          },
+          {
+            "id": "are_right_a_lot",
+            "name": "Are Right A Lot",
+            "description": "Judgment over ego: seek diverse perspectives and work to disconfirm your own beliefs. The goal is the best answer for the customer, whoever's idea it is. Leaders speak last."
+          },
+          {
+            "id": "learn_and_be_curious",
+            "name": "Learn And Be Curious",
+            "description": "Never done learning; curious about new possibilities and act to explore them."
+          },
+          {
+            "id": "hire_and_develop_the_best",
+            "name": "Hire And Develop The Best",
+            "description": "Raise the performance bar with every hire; develop leaders and take ownership of others' growth."
+          },
+          {
+            "id": "insist_on_highest_standards",
+            "name": "Insist On Highest Standards",
+            "description": "Relentlessly, even unreasonably, high standards. Defects do not get sent down the line. Higher expectations produce better results."
+          },
+          {
+            "id": "think_big",
+            "name": "Think Big",
+            "description": "Thinking small is a self-fulfilling prophecy. Communicate a bold direction; look around corners for ways to serve customers."
+          },
+          {
+            "id": "bias_for_action",
+            "name": "Bias For Action",
+            "description": "Speed matters and is a leadership decision, not a circumstance. Most decisions are reversible two-way doors — make them quickly at the team level. Reserve deep study for one-way doors. Days or hours, not weeks."
+          },
+          {
+            "id": "frugality",
+            "name": "Frugality",
+            "description": "Accomplish more with less. Constraints breed resourcefulness, self-sufficiency, and invention. No extra points for headcount, budget, or fixed expense."
+          },
+          {
+            "id": "earn_trust",
+            "name": "Earn Trust",
+            "description": "Listen attentively, speak candidly, treat others respectfully. Be vocally self-critical, even when awkward; benchmark against the best."
+          },
+          {
+            "id": "deep_dive",
+            "name": "Deep Dive",
+            "description": "Operate at all levels and stay connected to the details; audit frequently; be skeptical when metrics and anecdotes differ. It is hard to fake the details in a narrative — that is why the narrative format works."
+          },
+          {
+            "id": "have_backbone",
+            "name": "Have Backbone",
+            "description": "Respectfully challenge decisions when you disagree, even when uncomfortable. No compromise for social cohesion. Once decided, commit wholly."
+          },
+          {
+            "id": "deliver_results",
+            "name": "Deliver Results",
+            "description": "Focus on the key inputs and deliver with the right quality, on time. Launch is the starting line, not the finish."
+          },
+          {
+            "id": "strive_to_be_earths_best_employer",
+            "name": "Strive To Be Earths Best Employer",
+            "description": "Work to create a safer, more productive, more diverse, and more just work environment; lead with empathy and make others' success possible."
+          },
+          {
+            "id": "success_and_scale_bring_broad_responsibility",
+            "name": "Success And Scale Bring Broad Responsibility",
+            "description": "Big things carry big obligations: be humble about second-order effects, better every day for customers, employees, communities, and the world, and leave things better than found."
+          }
+        ]
+      },
+      "spec_config": {
+        "bmc": {
+          "required": false,
+          "category": "gtm",
+          "description": "Business Model Canvas extracted from MRD for stakeholder review"
+        },
+        "faq": {
+          "required": true,
+          "category": "gtm",
+          "description": "Stress-tests the press release. Absorbs the business case: users, problem, timing, feasibility."
+        },
+        "ird": {
+          "required": false,
+          "category": "technical",
+          "description": "Infrastructure requirements"
+        },
+        "mrd": {
+          "required": false,
+          "category": "source",
+          "description": "Optional market validation deepening the FAQ's business-case answers with evidence (typical at product scale)"
+        },
+        "narrative-1p": {
+          "required": false,
+          "category": "gtm"
+        },
+        "narrative-6p": {
+          "required": false,
+          "category": "gtm"
+        },
+        "opportunity-spec": {
+          "required": false,
+          "category": "source",
+          "description": "Optional 12-box canvas combining Patton (discovery) + Cagan (business case) — deepens the FAQ's answers when the risk warrants it"
+        },
+        "prd": {
+          "required": true,
+          "category": "source"
+        },
+        "press": {
+          "required": true,
+          "category": "gtm",
+          "description": "The founding artifact: human-authored press release announcing the customer experience. Written first; everything else works backward from it."
+        },
+        "spec": {
+          "required": false,
+          "category": "output"
+        },
+        "tpd": {
+          "required": true,
+          "category": "technical",
+          "description": "Test plan document"
+        },
+        "trd": {
+          "required": true,
+          "category": "technical"
+        },
+        "uxd": {
+          "required": true,
+          "category": "source"
+        }
+      },
+      "synthesis": {
+        "bmc": {
+          "sources": [
+            "mrd"
+          ],
+          "guidance": "Extract Business Model Canvas blocks from MRD sections 2-11. Format as standalone canvas for visual review."
+        },
+        "faq": {
+          "sources": [
+            "press"
+          ],
+          "prompt_context": "Generate FAQ challenging the Press Release's claims. Include questions about:\n- Users \u0026 Problem: Who is this for? Why is this a problem?\n- Current Solutions: How do people solve this today?\n- Competitive Edge: Why us? Why not competitors?\n- Market \u0026 Timing: Why now?\n- Critical Requirements: What must be true?\n- Risks \u0026 Assumptions: What could go wrong?\n"
+        },
+        "mrd": {
+          "sources": [
+            "press",
+            "faq"
+          ],
+          "guidance": "Deepen and validate the FAQ's business-case answers with market evidence: segments, sizing, competition, positioning."
+        },
+        "opportunity-spec": {
+          "sources": [
+            "press",
+            "faq"
+          ],
+          "prompt_context": "Populate the 12-box OpportunitySpec canvas from the Press Release and FAQ:\n- Users \u0026 Problem (Box 1) from the problem statement\n- Solution Ideas (Box 3) from the announced experience\n- User Value (Box 4) from the headline benefit\n- Business Value (Box 5) and Competitive Edge (Box 6) from differentiation claims\n- Success Metrics (Box 9) from measurable outcomes\nFlag boxes the source documents leave unanswered — those are the discovery gaps.\n"
+        },
+        "prd": {
+          "sources": [
+            "press",
+            "faq",
+            "opportunity-spec",
+            "mrd"
+          ],
+          "guidance": "Derive product requirements from the announced customer experience (press) and its stress-tested constraints (FAQ), grounded in whichever optional deepening is present: the discovery canvas (OpportunitySpec, typical at feature scale) or market validation (MRD, typical at product scale)."
+        },
+        "press": {
+          "sources": [],
+          "guidance": "Human-authored founding artifact — not synthesized. Write the press release first; everything else works backward from it."
+        },
+        "spec": {
+          "sources": [
+            "mrd",
+            "prd",
+            "uxd",
+            "trd",
+            "tpd"
+          ],
+          "guidance": "Unified specification consolidating all approved specs."
+        },
+        "tpd": {
+          "sources": [
+            "prd",
+            "trd",
+            "uxd"
+          ],
+          "guidance": "Test plan covering all PRD requirements with traceability, including UX acceptance flows."
         },
         "trd": {
           "sources": [
@@ -732,25 +984,88 @@
           "guidance": "Technical design to support PRD requirements."
         }
       },
+      "execution": {
+        "sequence": [
+          "press",
+          "faq",
+          "opportunity-spec",
+          "prd",
+          "uxd",
+          "trd",
+          "tpd"
+        ],
+        "phases": [
+          {
+            "id": "vision",
+            "name": "Vision (Working Backwards)",
+            "specs": [
+              "press",
+              "faq"
+            ]
+          },
+          {
+            "id": "discovery",
+            "name": "Discovery",
+            "specs": [
+              "opportunity-spec"
+            ]
+          },
+          {
+            "id": "requirements",
+            "name": "Requirements",
+            "specs": [
+              "prd"
+            ]
+          },
+          {
+            "id": "experience",
+            "name": "Experience",
+            "specs": [
+              "uxd"
+            ]
+          },
+          {
+            "id": "technical",
+            "name": "Technical",
+            "specs": [
+              "trd",
+              "tpd"
+            ]
+          }
+        ],
+        "iteration_trigger": "faq",
+        "review_gates": [
+          {
+            "after": "faq",
+            "action": "prfaq_review"
+          }
+        ]
+      },
       "template_specs": [
+        "bmc",
         "faq",
         "ird",
         "mrd",
         "narrative-1p",
         "narrative-6p",
+        "opportunity-spec",
+        "plan",
         "prd",
         "press",
+        "roadmap",
         "spec",
         "tpd",
         "trd",
         "uxd"
       ],
       "rubric_specs": [
+        "bmc",
         "faq",
         "ird",
         "mrd",
         "narrative-1p",
         "narrative-6p",
+        "opportunity-spec",
         "prd",
         "press",
         "spec",
@@ -1057,7 +1372,13 @@
         "assumption-map": {
           "required": false,
           "category": "source",
-          "description": "Risk matrix by assumption type (DVFUE)"
+          "description": "Risk matrix by assumption type (DVFUE)",
+          "template": {
+            "from": "continuous-discovery"
+          },
+          "rubric": {
+            "from": "continuous-discovery"
+          }
         },
         "bmc": {
           "required": false,
@@ -1067,7 +1388,13 @@
         "discovery-snapshot": {
           "required": false,
           "category": "tracking",
-          "description": "Weekly discovery summary with interviews and learnings"
+          "description": "Weekly discovery summary with interviews and learnings",
+          "template": {
+            "from": "continuous-discovery"
+          },
+          "rubric": {
+            "from": "continuous-discovery"
+          }
         },
         "faq": {
           "required": true,
@@ -1097,7 +1424,13 @@
         "ost": {
           "required": false,
           "category": "source",
-          "description": "Opportunity Solution Tree linking outcome to solutions"
+          "description": "Opportunity Solution Tree linking outcome to solutions",
+          "template": {
+            "from": "continuous-discovery"
+          },
+          "rubric": {
+            "from": "continuous-discovery"
+          }
         },
         "prd": {
           "required": true,
@@ -1112,12 +1445,24 @@
         "shapeup-pitch": {
           "required": false,
           "category": "source",
-          "description": "Shaped pitch with appetite, problem, solution, rabbit holes"
+          "description": "Shaped pitch with appetite, problem, solution, rabbit holes",
+          "template": {
+            "from": "shapeup"
+          },
+          "rubric": {
+            "from": "shapeup"
+          }
         },
         "shapeup-scope": {
           "required": false,
           "category": "tracking",
-          "description": "Scopes with hill chart positions for execution tracking"
+          "description": "Scopes with hill chart positions for execution tracking",
+          "template": {
+            "from": "shapeup"
+          },
+          "rubric": {
+            "from": "shapeup"
+          }
         },
         "spec": {
           "required": true,
@@ -1197,24 +1542,42 @@
         "partial_threshold": 60
       },
       "template_specs": [
+        "assumption-map",
+        "bmc",
+        "discovery-snapshot",
         "faq",
         "ird",
         "mrd",
         "narrative-1p",
+        "narrative-6p",
+        "opportunity-spec",
+        "ost",
+        "plan",
         "prd",
         "press",
+        "roadmap",
+        "shapeup-pitch",
+        "shapeup-scope",
         "spec",
         "tpd",
         "trd",
         "uxd"
       ],
       "rubric_specs": [
+        "assumption-map",
+        "bmc",
+        "discovery-snapshot",
         "faq",
         "ird",
         "mrd",
         "narrative-1p",
+        "narrative-6p",
+        "opportunity-spec",
+        "ost",
         "prd",
         "press",
+        "shapeup-pitch",
+        "shapeup-scope",
         "spec",
         "tpd",
         "trd",
@@ -1369,7 +1732,13 @@
         "ost": {
           "required": false,
           "category": "source",
-          "description": "Use big-tech-product for Continuous Discovery integration"
+          "description": "Use big-tech-product for Continuous Discovery integration",
+          "template": {
+            "from": "continuous-discovery"
+          },
+          "rubric": {
+            "from": "continuous-discovery"
+          }
         },
         "prd": {
           "required": true,
@@ -1384,7 +1753,13 @@
         "shapeup-pitch": {
           "required": false,
           "category": "source",
-          "description": "Use big-tech-product for Shape Up integration"
+          "description": "Use big-tech-product for Shape Up integration",
+          "template": {
+            "from": "shapeup"
+          },
+          "rubric": {
+            "from": "shapeup"
+          }
         },
         "spec": {
           "required": true,
@@ -1464,24 +1839,36 @@
         "partial_threshold": 50
       },
       "template_specs": [
+        "bmc",
         "faq",
         "ird",
         "mrd",
         "narrative-1p",
+        "narrative-6p",
+        "opportunity-spec",
+        "ost",
+        "plan",
         "prd",
         "press",
+        "roadmap",
+        "shapeup-pitch",
         "spec",
         "tpd",
         "trd",
         "uxd"
       ],
       "rubric_specs": [
+        "bmc",
         "faq",
         "ird",
         "mrd",
         "narrative-1p",
+        "narrative-6p",
+        "opportunity-spec",
+        "ost",
         "prd",
         "press",
+        "shapeup-pitch",
         "spec",
         "tpd",
         "trd",
@@ -1640,7 +2027,13 @@
         "ost": {
           "required": false,
           "category": "source",
-          "description": "Use big-tech-product for Continuous Discovery integration"
+          "description": "Use big-tech-product for Continuous Discovery integration",
+          "template": {
+            "from": "continuous-discovery"
+          },
+          "rubric": {
+            "from": "continuous-discovery"
+          }
         },
         "prd": {
           "required": true,
@@ -1655,7 +2048,13 @@
         "shapeup-pitch": {
           "required": false,
           "category": "source",
-          "description": "Use big-tech-product for Shape Up integration"
+          "description": "Use big-tech-product for Shape Up integration",
+          "template": {
+            "from": "shapeup"
+          },
+          "rubric": {
+            "from": "shapeup"
+          }
         },
         "spec": {
           "required": true,
@@ -1735,25 +2134,36 @@
         "partial_threshold": 50
       },
       "template_specs": [
+        "bmc",
         "faq",
         "ird",
         "mrd",
         "narrative-1p",
+        "narrative-6p",
+        "opportunity-spec",
+        "ost",
+        "plan",
         "prd",
         "press",
+        "roadmap",
+        "shapeup-pitch",
         "spec",
         "tpd",
         "trd",
         "uxd"
       ],
       "rubric_specs": [
+        "bmc",
         "faq",
         "ird",
         "mrd",
         "narrative-1p",
         "narrative-6p",
+        "opportunity-spec",
+        "ost",
         "prd",
         "press",
+        "shapeup-pitch",
         "spec",
         "tpd",
         "trd",
@@ -1912,7 +2322,13 @@
         "ost": {
           "required": false,
           "category": "source",
-          "description": "Use big-tech-product for Continuous Discovery integration"
+          "description": "Use big-tech-product for Continuous Discovery integration",
+          "template": {
+            "from": "continuous-discovery"
+          },
+          "rubric": {
+            "from": "continuous-discovery"
+          }
         },
         "prd": {
           "required": true,
@@ -1927,7 +2343,13 @@
         "shapeup-pitch": {
           "required": false,
           "category": "source",
-          "description": "Use big-tech-product for Shape Up integration"
+          "description": "Use big-tech-product for Shape Up integration",
+          "template": {
+            "from": "shapeup"
+          },
+          "rubric": {
+            "from": "shapeup"
+          }
         },
         "spec": {
           "required": true,
@@ -2015,26 +2437,36 @@
         "partial_threshold": 50
       },
       "template_specs": [
+        "bmc",
         "faq",
         "ird",
         "mrd",
         "narrative-1p",
         "narrative-6p",
+        "opportunity-spec",
+        "ost",
+        "plan",
         "prd",
         "press",
+        "roadmap",
+        "shapeup-pitch",
         "spec",
         "tpd",
         "trd",
         "uxd"
       ],
       "rubric_specs": [
+        "bmc",
         "faq",
         "ird",
         "mrd",
         "narrative-1p",
         "narrative-6p",
+        "opportunity-spec",
+        "ost",
         "prd",
         "press",
+        "shapeup-pitch",
         "spec",
         "tpd",
         "trd",
@@ -2339,7 +2771,13 @@
         "assumption-map": {
           "required": false,
           "category": "source",
-          "description": "Risk matrix by assumption type (DVFUE)"
+          "description": "Risk matrix by assumption type (DVFUE)",
+          "template": {
+            "from": "continuous-discovery"
+          },
+          "rubric": {
+            "from": "continuous-discovery"
+          }
         },
         "bmc": {
           "required": false,
@@ -2349,7 +2787,13 @@
         "discovery-snapshot": {
           "required": false,
           "category": "tracking",
-          "description": "Weekly discovery summary with interviews and learnings"
+          "description": "Weekly discovery summary with interviews and learnings",
+          "template": {
+            "from": "continuous-discovery"
+          },
+          "rubric": {
+            "from": "continuous-discovery"
+          }
         },
         "faq": {
           "required": true,
@@ -2383,7 +2827,13 @@
         "ost": {
           "required": false,
           "category": "source",
-          "description": "Opportunity Solution Tree linking outcome to solutions"
+          "description": "Opportunity Solution Tree linking outcome to solutions",
+          "template": {
+            "from": "continuous-discovery"
+          },
+          "rubric": {
+            "from": "continuous-discovery"
+          }
         },
         "prd": {
           "required": true,
@@ -2398,12 +2848,24 @@
         "shapeup-pitch": {
           "required": false,
           "category": "source",
-          "description": "Shaped pitch with appetite, problem, solution, rabbit holes"
+          "description": "Shaped pitch with appetite, problem, solution, rabbit holes",
+          "template": {
+            "from": "shapeup"
+          },
+          "rubric": {
+            "from": "shapeup"
+          }
         },
         "shapeup-scope": {
           "required": false,
           "category": "tracking",
-          "description": "Scopes with hill chart positions for execution tracking"
+          "description": "Scopes with hill chart positions for execution tracking",
+          "template": {
+            "from": "shapeup"
+          },
+          "rubric": {
+            "from": "shapeup"
+          }
         },
         "spec": {
           "required": true,
@@ -2483,26 +2945,42 @@
         "partial_threshold": 60
       },
       "template_specs": [
+        "assumption-map",
+        "bmc",
+        "discovery-snapshot",
         "faq",
         "ird",
         "mrd",
         "narrative-1p",
         "narrative-6p",
+        "opportunity-spec",
+        "ost",
+        "plan",
         "prd",
         "press",
+        "roadmap",
+        "shapeup-pitch",
+        "shapeup-scope",
         "spec",
         "tpd",
         "trd",
         "uxd"
       ],
       "rubric_specs": [
+        "assumption-map",
+        "bmc",
+        "discovery-snapshot",
         "faq",
         "ird",
         "mrd",
         "narrative-1p",
         "narrative-6p",
+        "opportunity-spec",
+        "ost",
         "prd",
         "press",
+        "shapeup-pitch",
+        "shapeup-scope",
         "spec",
         "tpd",
         "trd",
@@ -2807,7 +3285,13 @@
         "assumption-map": {
           "required": false,
           "category": "source",
-          "description": "Risk matrix by assumption type (DVFUE)"
+          "description": "Risk matrix by assumption type (DVFUE)",
+          "template": {
+            "from": "continuous-discovery"
+          },
+          "rubric": {
+            "from": "continuous-discovery"
+          }
         },
         "bmc": {
           "required": false,
@@ -2817,7 +3301,13 @@
         "discovery-snapshot": {
           "required": false,
           "category": "tracking",
-          "description": "Weekly discovery summary with interviews and learnings"
+          "description": "Weekly discovery summary with interviews and learnings",
+          "template": {
+            "from": "continuous-discovery"
+          },
+          "rubric": {
+            "from": "continuous-discovery"
+          }
         },
         "faq": {
           "required": true,
@@ -2851,7 +3341,13 @@
         "ost": {
           "required": false,
           "category": "source",
-          "description": "Opportunity Solution Tree linking outcome to solutions"
+          "description": "Opportunity Solution Tree linking outcome to solutions",
+          "template": {
+            "from": "continuous-discovery"
+          },
+          "rubric": {
+            "from": "continuous-discovery"
+          }
         },
         "prd": {
           "required": true,
@@ -2866,12 +3362,24 @@
         "shapeup-pitch": {
           "required": false,
           "category": "source",
-          "description": "Shaped pitch with appetite, problem, solution, rabbit holes"
+          "description": "Shaped pitch with appetite, problem, solution, rabbit holes",
+          "template": {
+            "from": "shapeup"
+          },
+          "rubric": {
+            "from": "shapeup"
+          }
         },
         "shapeup-scope": {
           "required": false,
           "category": "tracking",
-          "description": "Scopes with hill chart positions for execution tracking"
+          "description": "Scopes with hill chart positions for execution tracking",
+          "template": {
+            "from": "shapeup"
+          },
+          "rubric": {
+            "from": "shapeup"
+          }
         },
         "spec": {
           "required": true,
@@ -2968,26 +3476,42 @@
         "partial_threshold": 60
       },
       "template_specs": [
+        "assumption-map",
+        "bmc",
+        "discovery-snapshot",
         "faq",
         "ird",
         "mrd",
         "narrative-1p",
         "narrative-6p",
+        "opportunity-spec",
+        "ost",
+        "plan",
         "prd",
         "press",
+        "roadmap",
+        "shapeup-pitch",
+        "shapeup-scope",
         "spec",
         "tpd",
         "trd",
         "uxd"
       ],
       "rubric_specs": [
+        "assumption-map",
+        "bmc",
+        "discovery-snapshot",
         "faq",
         "ird",
         "mrd",
         "narrative-1p",
         "narrative-6p",
+        "opportunity-spec",
+        "ost",
         "prd",
         "press",
+        "shapeup-pitch",
+        "shapeup-scope",
         "spec",
         "tpd",
         "trd",
@@ -3225,13 +3749,20 @@
       },
       "template_specs": [
         "assumption-map",
+        "bmc",
         "discovery-snapshot",
+        "experience-map",
         "faq",
         "ird",
         "mrd",
         "narrative-1p",
+        "narrative-6p",
+        "opportunity-spec",
+        "ost",
+        "plan",
         "prd",
         "press",
+        "roadmap",
         "spec",
         "tpd",
         "trd",
@@ -3239,11 +3770,16 @@
       ],
       "rubric_specs": [
         "assumption-map",
+        "bmc",
         "discovery-snapshot",
+        "experience-map",
         "faq",
         "ird",
         "mrd",
         "narrative-1p",
+        "narrative-6p",
+        "opportunity-spec",
+        "ost",
         "prd",
         "press",
         "spec",
@@ -3308,7 +3844,13 @@
         },
         "ird": {
           "required": false,
-          "category": "technical"
+          "category": "technical",
+          "template": {
+            "from": "enterprise"
+          },
+          "rubric": {
+            "from": "enterprise"
+          }
         },
         "mrd": {
           "required": false,
@@ -3316,11 +3858,23 @@
         },
         "narrative-1p": {
           "required": false,
-          "category": "gtm"
+          "category": "gtm",
+          "template": {
+            "from": "enterprise"
+          },
+          "rubric": {
+            "from": "enterprise"
+          }
         },
         "narrative-6p": {
           "required": false,
-          "category": "gtm"
+          "category": "gtm",
+          "template": {
+            "from": "enterprise"
+          },
+          "rubric": {
+            "from": "enterprise"
+          }
         },
         "prd": {
           "required": true,
@@ -3341,12 +3895,24 @@
         }
       },
       "template_specs": [
+        "faq",
+        "ird",
+        "mrd",
+        "narrative-1p",
+        "narrative-6p",
         "prd",
+        "press",
         "trd",
         "uxd"
       ],
       "rubric_specs": [
+        "faq",
+        "ird",
+        "mrd",
+        "narrative-1p",
+        "narrative-6p",
         "prd",
+        "press",
         "trd",
         "uxd"
       ]
@@ -3462,22 +4028,30 @@
         }
       },
       "template_specs": [
+        "bmc",
         "faq",
         "ird",
         "mrd",
         "narrative-1p",
+        "narrative-6p",
+        "opportunity-spec",
+        "plan",
         "prd",
         "press",
+        "roadmap",
         "spec",
         "tpd",
         "trd",
         "uxd"
       ],
       "rubric_specs": [
+        "bmc",
         "faq",
         "ird",
         "mrd",
         "narrative-1p",
+        "narrative-6p",
+        "opportunity-spec",
         "prd",
         "press",
         "spec",
@@ -3668,22 +4242,30 @@
         }
       },
       "template_specs": [
+        "bmc",
         "faq",
         "ird",
         "mrd",
         "narrative-1p",
+        "narrative-6p",
+        "opportunity-spec",
+        "plan",
         "prd",
         "press",
+        "roadmap",
         "spec",
         "tpd",
         "trd",
         "uxd"
       ],
       "rubric_specs": [
+        "bmc",
         "faq",
         "ird",
         "mrd",
         "narrative-1p",
+        "narrative-6p",
+        "opportunity-spec",
         "prd",
         "press",
         "spec",
@@ -3707,15 +4289,33 @@
         },
         "mrd": {
           "required": false,
-          "category": "source"
+          "category": "source",
+          "template": {
+            "from": "enterprise"
+          },
+          "rubric": {
+            "from": "enterprise"
+          }
         },
         "narrative-1p": {
           "required": false,
-          "category": "gtm"
+          "category": "gtm",
+          "template": {
+            "from": "enterprise"
+          },
+          "rubric": {
+            "from": "enterprise"
+          }
         },
         "narrative-6p": {
           "required": false,
-          "category": "gtm"
+          "category": "gtm",
+          "template": {
+            "from": "enterprise"
+          },
+          "rubric": {
+            "from": "enterprise"
+          }
         },
         "prd": {
           "required": true,
@@ -3723,7 +4323,13 @@
         },
         "press": {
           "required": false,
-          "category": "gtm"
+          "category": "gtm",
+          "template": {
+            "from": "enterprise"
+          },
+          "rubric": {
+            "from": "enterprise"
+          }
         },
         "tpd": {
           "required": false,
@@ -3743,7 +4349,11 @@
       "template_specs": [
         "faq",
         "ird",
+        "mrd",
+        "narrative-1p",
+        "narrative-6p",
         "prd",
+        "press",
         "tpd",
         "trd",
         "uxd"
@@ -3751,7 +4361,11 @@
       "rubric_specs": [
         "faq",
         "ird",
+        "mrd",
+        "narrative-1p",
+        "narrative-6p",
         "prd",
+        "press",
         "tpd",
         "trd",
         "uxd"
@@ -3813,7 +4427,13 @@
         },
         "ird": {
           "required": false,
-          "category": "technical"
+          "category": "technical",
+          "template": {
+            "from": "enterprise"
+          },
+          "rubric": {
+            "from": "enterprise"
+          }
         },
         "mrd": {
           "required": true,
@@ -3821,11 +4441,23 @@
         },
         "narrative-1p": {
           "required": false,
-          "category": "gtm"
+          "category": "gtm",
+          "template": {
+            "from": "enterprise"
+          },
+          "rubric": {
+            "from": "enterprise"
+          }
         },
         "narrative-6p": {
           "required": false,
-          "category": "gtm"
+          "category": "gtm",
+          "template": {
+            "from": "enterprise"
+          },
+          "rubric": {
+            "from": "enterprise"
+          }
         },
         "prd": {
           "required": true,
@@ -3846,14 +4478,24 @@
         }
       },
       "template_specs": [
+        "faq",
+        "ird",
         "mrd",
+        "narrative-1p",
+        "narrative-6p",
         "prd",
+        "press",
         "trd",
         "uxd"
       ],
       "rubric_specs": [
+        "faq",
+        "ird",
         "mrd",
+        "narrative-1p",
+        "narrative-6p",
         "prd",
+        "press",
         "trd",
         "uxd"
       ]
@@ -3918,11 +4560,23 @@
         },
         "ird": {
           "required": false,
-          "category": "technical"
+          "category": "technical",
+          "template": {
+            "from": "enterprise"
+          },
+          "rubric": {
+            "from": "enterprise"
+          }
         },
         "mrd": {
           "required": false,
-          "category": "source"
+          "category": "source",
+          "template": {
+            "from": "enterprise"
+          },
+          "rubric": {
+            "from": "enterprise"
+          }
         },
         "narrative-1p": {
           "required": false,
@@ -3952,14 +4606,26 @@
         }
       },
       "template_specs": [
+        "faq",
         "hypothesis",
+        "ird",
+        "mrd",
+        "narrative-1p",
+        "narrative-6p",
         "prd",
+        "press",
         "trd",
         "uxd"
       ],
       "rubric_specs": [
+        "faq",
         "hypothesis",
+        "ird",
+        "mrd",
+        "narrative-1p",
+        "narrative-6p",
         "prd",
+        "press",
         "trd",
         "uxd"
       ]
@@ -3971,22 +4637,46 @@
         "plan": {
           "required": true,
           "category": "execution",
-          "description": "Implementation plan - the narrative of the sequence: why this order, dependencies, phases, milestones. Deliberately separate from ROADMAP so the plan's story is not churned by status flips"
+          "description": "Implementation plan - the narrative of the sequence: why this order, dependencies, phases, milestones. Deliberately separate from ROADMAP so the plan's story is not churned by status flips",
+          "template": {
+            "from": "enterprise"
+          },
+          "rubric": {
+            "from": "local"
+          }
         },
         "prd": {
           "required": true,
           "category": "source",
-          "description": "Product Requirements Document - defines the what: problem, goals, non-goals, user stories, functional requirements, and required success metrics (outcome targets with baselines and measurement method — the Product Loop's verification criteria)"
+          "description": "Product Requirements Document - defines the what: problem, goals, non-goals, user stories, functional requirements, and required success metrics (outcome targets with baselines and measurement method — the Product Loop's verification criteria)",
+          "template": {
+            "from": "local"
+          },
+          "rubric": {
+            "from": "local"
+          }
         },
         "roadmap": {
           "required": true,
           "category": "execution",
-          "description": "Execution tracking - the checklist: a machine-readable RMI ledger (stable IDs, status, progress) committed with the repo. Deliberately separate from PLAN so per-session status churn never touches the narrative"
+          "description": "Execution tracking - the checklist: a machine-readable RMI ledger (stable IDs, status, progress) committed with the repo. Deliberately separate from PLAN so per-session status churn never touches the narrative",
+          "template": {
+            "from": "enterprise"
+          },
+          "rubric": {
+            "from": "local"
+          }
         },
         "trd": {
           "required": true,
           "category": "technical",
-          "description": "Technical Requirements Document - defines the how: architecture, components, APIs, data models, security considerations"
+          "description": "Technical Requirements Document - defines the how: architecture, components, APIs, data models, security considerations",
+          "template": {
+            "from": "enterprise"
+          },
+          "rubric": {
+            "from": "local"
+          }
         }
       },
       "synthesis": {
@@ -4010,8 +4700,92 @@
           "guidance": "Derive technical approach from PRD requirements. Include architecture decisions, component boundaries, and API contracts."
         }
       },
+      "execution": {
+        "sequence": [
+          "prd",
+          "trd",
+          "plan",
+          "roadmap"
+        ],
+        "iteration_trigger": "roadmap",
+        "review_gates": [
+          {
+            "after": "prd",
+            "action": "stakeholder_review"
+          },
+          {
+            "after": "plan",
+            "action": "tech_lead_review"
+          }
+        ]
+      },
       "template_specs": [
-        "prd"
+        "plan",
+        "prd",
+        "roadmap",
+        "trd"
+      ],
+      "rubric_specs": [
+        "plan",
+        "prd",
+        "roadmap",
+        "trd"
+      ]
+    },
+    {
+      "name": "quick-fix",
+      "description": "Minimal workflow for small fixes and maintenance tasks. Only the ROADMAP (the machine-readable RMI ledger) is required, so a fix can be tracked and shipped without spec ceremony. PRD, TRD, and PLAN remain available as optional documents when a fix turns out to need more context.",
+      "spec_config": {
+        "plan": {
+          "required": false,
+          "category": "execution"
+        },
+        "prd": {
+          "required": false,
+          "category": "source"
+        },
+        "roadmap": {
+          "required": true,
+          "category": "execution",
+          "description": "Execution tracking - the checklist: a machine-readable RMI ledger (stable IDs, status, progress) committed with the repo"
+        },
+        "trd": {
+          "required": false,
+          "category": "technical"
+        }
+      },
+      "synthesis": {
+        "plan": {
+          "sources": [
+            "prd",
+            "trd"
+          ],
+          "guidance": "Sequence implementation based on dependencies from TRD and priorities from PRD. Break into phases with clear deliverables."
+        },
+        "roadmap": {
+          "sources": [
+            "plan"
+          ],
+          "guidance": "Create RMI entries for each plan item. Use stable IDs (RMI-REPOSLUG-NNN). Track status alongside code commits."
+        },
+        "trd": {
+          "sources": [
+            "prd"
+          ],
+          "guidance": "Derive technical approach from PRD requirements. Include architecture decisions, component boundaries, and API contracts."
+        }
+      },
+      "execution": {
+        "sequence": [
+          "roadmap"
+        ],
+        "iteration_trigger": "roadmap"
+      },
+      "template_specs": [
+        "plan",
+        "prd",
+        "roadmap",
+        "trd"
       ],
       "rubric_specs": [
         "plan",
@@ -4215,12 +4989,17 @@
         "partial_threshold": 60
       },
       "template_specs": [
+        "bmc",
         "faq",
         "ird",
         "mrd",
         "narrative-1p",
+        "narrative-6p",
+        "opportunity-spec",
+        "plan",
         "prd",
         "press",
+        "roadmap",
         "shapeup-pitch",
         "shapeup-scope",
         "spec",
@@ -4229,10 +5008,13 @@
         "uxd"
       ],
       "rubric_specs": [
+        "bmc",
         "faq",
         "ird",
         "mrd",
         "narrative-1p",
+        "narrative-6p",
+        "opportunity-spec",
         "prd",
         "press",
         "shapeup-pitch",
@@ -4249,23 +5031,53 @@
       "spec_config": {
         "faq": {
           "required": false,
-          "category": "gtm"
+          "category": "gtm",
+          "template": {
+            "from": "enterprise"
+          },
+          "rubric": {
+            "from": "enterprise"
+          }
         },
         "ird": {
           "required": false,
-          "category": "technical"
+          "category": "technical",
+          "template": {
+            "from": "enterprise"
+          },
+          "rubric": {
+            "from": "enterprise"
+          }
         },
         "mrd": {
           "required": false,
-          "category": "source"
+          "category": "source",
+          "template": {
+            "from": "enterprise"
+          },
+          "rubric": {
+            "from": "enterprise"
+          }
         },
         "narrative-1p": {
           "required": false,
-          "category": "gtm"
+          "category": "gtm",
+          "template": {
+            "from": "enterprise"
+          },
+          "rubric": {
+            "from": "enterprise"
+          }
         },
         "narrative-6p": {
           "required": false,
-          "category": "gtm"
+          "category": "gtm",
+          "template": {
+            "from": "enterprise"
+          },
+          "rubric": {
+            "from": "enterprise"
+          }
         },
         "prd": {
           "required": true,
@@ -4273,7 +5085,13 @@
         },
         "press": {
           "required": false,
-          "category": "gtm"
+          "category": "gtm",
+          "template": {
+            "from": "enterprise"
+          },
+          "rubric": {
+            "from": "enterprise"
+          }
         },
         "trd": {
           "required": false,
@@ -4287,12 +5105,24 @@
         }
       },
       "template_specs": [
+        "faq",
+        "ird",
+        "mrd",
+        "narrative-1p",
+        "narrative-6p",
         "prd",
+        "press",
         "trd",
         "uxd"
       ],
       "rubric_specs": [
+        "faq",
+        "ird",
+        "mrd",
+        "narrative-1p",
+        "narrative-6p",
         "prd",
+        "press",
         "trd",
         "uxd"
       ]
@@ -4379,15 +5209,33 @@
         },
         "mrd": {
           "required": false,
-          "category": "source"
+          "category": "source",
+          "template": {
+            "from": "enterprise"
+          },
+          "rubric": {
+            "from": "enterprise"
+          }
         },
         "narrative-1p": {
           "required": false,
-          "category": "gtm"
+          "category": "gtm",
+          "template": {
+            "from": "enterprise"
+          },
+          "rubric": {
+            "from": "enterprise"
+          }
         },
         "narrative-6p": {
           "required": false,
-          "category": "gtm"
+          "category": "gtm",
+          "template": {
+            "from": "enterprise"
+          },
+          "rubric": {
+            "from": "enterprise"
+          }
         },
         "prd": {
           "required": true,
@@ -4395,7 +5243,13 @@
         },
         "press": {
           "required": false,
-          "category": "gtm"
+          "category": "gtm",
+          "template": {
+            "from": "enterprise"
+          },
+          "rubric": {
+            "from": "enterprise"
+          }
         },
         "tpd": {
           "required": false,
@@ -4416,7 +5270,10 @@
         "faq",
         "ird",
         "mrd",
+        "narrative-1p",
+        "narrative-6p",
         "prd",
+        "press",
         "tpd",
         "trd",
         "uxd"
@@ -4425,7 +5282,10 @@
         "faq",
         "ird",
         "mrd",
+        "narrative-1p",
+        "narrative-6p",
         "prd",
+        "press",
         "tpd",
         "trd",
         "uxd"
@@ -4525,6 +5385,15 @@
         "v2mom-summary",
         "v2mom-values",
         "v2mom-vision"
+      ],
+      "rubric_specs": [
+        "v2mom-alignment",
+        "v2mom-measures",
+        "v2mom-methods",
+        "v2mom-obstacles",
+        "v2mom-summary",
+        "v2mom-values",
+        "v2mom-vision"
       ]
     },
     {
@@ -4611,6 +5480,15 @@
       },
       "evaluation": {},
       "template_specs": [
+        "v2mom-alignment",
+        "v2mom-measures",
+        "v2mom-methods",
+        "v2mom-obstacles",
+        "v2mom-summary",
+        "v2mom-values",
+        "v2mom-vision"
+      ],
+      "rubric_specs": [
         "v2mom-alignment",
         "v2mom-measures",
         "v2mom-methods",
@@ -4716,6 +5594,15 @@
         "v2mom-summary",
         "v2mom-values",
         "v2mom-vision"
+      ],
+      "rubric_specs": [
+        "v2mom-alignment",
+        "v2mom-measures",
+        "v2mom-methods",
+        "v2mom-obstacles",
+        "v2mom-summary",
+        "v2mom-values",
+        "v2mom-vision"
       ]
     },
     {
@@ -4809,6 +5696,15 @@
       },
       "evaluation": {},
       "template_specs": [
+        "v2mom-alignment",
+        "v2mom-measures",
+        "v2mom-methods",
+        "v2mom-obstacles",
+        "v2mom-summary",
+        "v2mom-values",
+        "v2mom-vision"
+      ],
+      "rubric_specs": [
         "v2mom-alignment",
         "v2mom-measures",
         "v2mom-methods",
@@ -5576,11 +6472,11 @@
   ],
   "pipelines": [
     {
-      "id": "aws-product-to-ai-dlc",
+      "id": "aws-one-way-door-to-ai-dlc",
       "name": "AWS Working Backwards → AI-DLC",
-      "description": "Definition side runs Amazon Working Backwards (aws-product) to produce the six-pager, PRD, and TRD; the execution side hands those to AWS AI-DLC, whose Requirements Analysis absorbs them as the Vision and drives Construction.",
+      "description": "Definition side runs Amazon Working Backwards (aws-one-way-door) to produce the six-pager, PRD, and TRD; the execution side hands those to AWS AI-DLC, whose Requirements Analysis absorbs them as the Vision and drives Construction.",
       "definition": {
-        "workflow": "aws-product",
+        "workflow": "aws-one-way-door",
         "outputs": [
           "narrative-6p",
           "prd",
@@ -5779,8 +6675,8 @@
                 "uxd"
               ],
               "workflows": [
-                "aws-product",
-                "aws-feature",
+                "aws-one-way-door",
+                "aws-two-way-door",
                 "big-tech-product",
                 "big-tech-feature",
                 "pbhq-lite"
