@@ -51,11 +51,11 @@ const integrationName = (id: string) => catalog.integrations.find((i) => i.id ==
           <div class="mt-4 p-4 bg-[var(--color-bg-secondary)] border border-[var(--color-border-light)] rounded-lg text-sm text-[var(--color-text-muted)] leading-relaxed">
             <span class="font-semibold text-[var(--color-text)]">Inspired by {wf.methodology.name}{wf.methodology.creator && ` (${wf.methodology.creator})`}.</span>{' '}
             The methodology is its originators&rsquo; own published work, drawn from their public
-            writing and talks. ProductBuildersHQ has implemented it as a machine-readable workflow in
-            <a href="https://github.com/ProductBuildersHQ/specification-workflow-spec" target="_blank" rel="noopener noreferrer" class="text-[var(--color-primary)] hover:underline">{' '}specification-workflow-spec</a>{' '}
+            writing and talks. ProductBuildersHQ has implemented it as a machine-readable workflow
+            in
+            <a href="/products/visionspec" class="text-[var(--color-primary)] hover:underline">{' '}VisionSpec</a>{' '}
             so it can be <strong class="text-[var(--color-text)]">automated</strong> — spec synthesis
-            and LLM-as-a-Judge evaluation via
-            <a href="/products/visionspec" class="text-[var(--color-primary)] hover:underline">{' '}VisionSpec</a>.
+            and LLM-as-a-Judge evaluation, built in.
             This encoding is an independent interpretation, not affiliated with or endorsed by its originators.
             {wf.methodology.reference && (
               <>{' '}<a href={wf.methodology.reference} target="_blank" rel="noopener noreferrer" class="text-[var(--color-primary)] hover:underline">Source &rarr;</a></>
@@ -186,7 +186,7 @@ const integrationName = (id: string) => catalog.integrations.find((i) => i.id ==
             {wf.template_specs?.length > 0 && <>{wf.template_specs.length} document template{wf.template_specs.length === 1 ? '' : 's'}</>}
             {wf.template_specs?.length > 0 && wf.rubric_specs?.length > 0 && <> &middot; </>}
             {wf.rubric_specs?.length > 0 && <>{wf.rubric_specs.length} LLM-as-a-Judge rubric{wf.rubric_specs.length === 1 ? '' : 's'}</>}
-            &nbsp;— embedded in <a href="https://github.com/ProductBuildersHQ/specification-workflow-spec" class="text-[var(--color-primary)] hover:underline no-underline">specification-workflow-spec</a>.
+            &nbsp;— embedded in <a href="https://github.com/ProductBuildersHQ/visionspec" class="text-[var(--color-primary)] hover:underline no-underline">visionspec</a>.
           </p>
         </section>
       )}

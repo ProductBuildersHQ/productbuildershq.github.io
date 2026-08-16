@@ -35,7 +35,7 @@ const capabilities = [
 ]
 ---
 
-<BaseLayout title="VisionSpec" description="VisionSpec is the ProductBuildersHQ spec engine — a library, CLI, and MCP server that executes the specification workflows defined in specification-workflow-spec. Used directly by AI agents or imported into VisionStudio.">
+<BaseLayout title="VisionSpec" description="VisionSpec is the ProductBuildersHQ spec engine — a library, CLI, and MCP server with an embedded catalog of 25 workflow methodologies, executed directly. Used directly by AI agents or imported into VisionStudio.">
   <div class="py-16 md:py-24">
     <div class="max-w-4xl mx-auto px-5 md:px-8">
       <div class="flex flex-wrap gap-2 mb-4">
@@ -45,20 +45,20 @@ const capabilities = [
       <h1 class="text-4xl md:text-5xl font-bold mb-6">VisionSpec</h1>
       <p class="text-xl text-[var(--color-text-muted)] mb-8">
         The spec engine — multi-domain specification orchestration for humans and AI agents.
-        VisionSpec executes the specification workflows defined in
-        <a href="https://github.com/ProductBuildersHQ/specification-workflow-spec" target="_blank" rel="noopener noreferrer" class="text-[var(--color-primary)] hover:underline">specification-workflow-spec</a>
-        — AWS Working Backwards, Big Tech, PBHQ Lite, and any workflow you define there — turning
-        organizational intent into specs an agent can build against.
+        VisionSpec ships an embedded catalog of
+        <a href="/sdd/" class="text-[var(--color-primary)] hover:underline">workflow methodologies</a>
+        — AWS Working Backwards, Big Tech, PBHQ Lite, and any workflow you define — and executes
+        them directly, turning organizational intent into specs an agent can build against.
       </p>
 
       <div class="p-5 bg-[var(--color-bg-secondary)] border border-[var(--color-border-light)] rounded-xl mb-12">
         <p class="text-sm text-[var(--color-text-muted)]">
           <strong class="text-[var(--color-text)]">Where it sits.</strong>
-          <a href="/sdd/" class="text-[var(--color-primary)] hover:underline">specification-workflow-spec</a>
-          defines the workflows (types, templates, rubrics). <strong class="text-[var(--color-text)]">VisionSpec</strong>
-          is the engine that runs them.
+          <strong class="text-[var(--color-text)]">VisionSpec</strong> is both the contract and the
+          engine — <a href="/sdd/" class="text-[var(--color-primary)] hover:underline">workflow definitions</a>
+          (types, templates, rubrics) and the code that runs them, in one repo.
           <a href="/products/visionstudio" class="text-[var(--color-primary)] hover:underline">VisionStudio</a>
-          is the desktop studio that imports the engine. One contract, one engine, one studio.
+          is the desktop studio that imports it. One engine, one studio.
         </p>
       </div>
 

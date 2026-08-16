@@ -14,7 +14,7 @@ const { entry } = Astro.props
 const { Content, headings } = await render(entry)
 
 // The two-loop article renders its diagram from the same catalog data the
-// homepage uses — single-sourced from specification-workflow-spec.
+// homepage uses — single-sourced from visionspec.
 const twoLoop = entry.id === 'product-loop-builder-loop'
   ? catalog.loop_systems.find((s) => s.id === 'pbhq-two-loop')
   : undefined

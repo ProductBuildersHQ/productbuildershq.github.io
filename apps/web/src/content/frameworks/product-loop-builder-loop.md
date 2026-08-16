@@ -147,7 +147,7 @@ The two-loop model is the organizational architecture; the rest of the ProductBu
 | The Product Baseline handoff contract | [PDLC](https://github.com/ProductBuildersHQ/pdlc) |
 | The Product Loop's outcome instruments | [AI-Native PM Metrics](/frameworks/ai-native-pm-metrics) |
 
-The model itself is machine-readable: both loops — stations, actors, gates, seams, and their mappings to workflows and integrations — are defined as data in [specification-workflow-spec](https://github.com/ProductBuildersHQ/specification-workflow-spec) (`loop.schema.json`), alongside the AI-DLC single-loop system as a reference. The diagram above is rendered from that data, and [VisionStudio](/products/visionstudio) consumes the same definitions.
+The model itself is machine-readable: both loops — stations, actors, gates, seams, and their mappings to workflows and integrations — are defined as data in [visionspec](https://github.com/ProductBuildersHQ/visionspec) (`loop.schema.json`), alongside the AI-DLC single-loop system as a reference. The diagram above is rendered from that data, and [VisionStudio](/products/visionstudio) consumes the same definitions.
 
 ---
 
