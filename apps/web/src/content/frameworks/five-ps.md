@@ -26,7 +26,7 @@ The model has one job: name the stages so that stopping at an early one becomes 
 | # | Stage | What it means |
 |---|-------|---------------|
 | **P1** | **Preparation** | Foundation — research, hypothesis, specs, environment. The work before the work. |
-| **P2** | **Prototype** | The *PM prototype* — a backend-less click-through that simulates the experience and tests desirability: will anyone care? |
+| **P2** | **Prototype** | The *PM prototype* — a backend-less click-through that simulates the experience and tests desirability: will anyone care? In [App Reality Ladder](/frameworks/app-reality-ladder) terms, an **R2 Demo**. |
 | **P3** | **Proof-of-Concept** | The *engineering PoC* — a spike against real data and a real backend that tests feasibility: can we build it? |
 | **P4** | **Production** | Robust, operated, in the hands of real users. The first stage that is a real product. |
 | **P5** | **Profit** | Verified results — adoption, revenue, sustainable growth. The point of the exercise. |
@@ -35,7 +35,7 @@ Each stage is taller than the last because the stakes are. And the top bar is a 
 
 ## The Product Lens: Why Prototype Comes Before Proof-of-Concept
 
-An engineer reading the ladder may balk: doesn't proof-of-concept come *before* prototype? In engineering, yes — a PoC proves feasibility, and a functional prototype is the first real working model that follows it. The Five Ps orders them the other way on purpose, because it reads a product through a **product lens**, and "prototype" means two different things:
+An engineer reading the ladder may balk: doesn't proof-of-concept come *before* prototype? In engineering, yes — a PoC proves feasibility, and a functional prototype is the first real working model that follows it. The Five Ps orders them the other way on purpose, because it reads a product through a **product lens**, and "prototype" means two different things — a collision the [App Reality Ladder](/frameworks/app-reality-ladder) names precisely (the PM prototype is its **R2 Demo**; the engineering prototype is its **R4**):
 
 - The **PM prototype** (P2) is behavioral — a click-through built in Figma, v0, or Claude with hardcoded data and no backend. Its only job is to simulate the experience and test **desirability**: *will anyone care?*
 - The **engineering proof-of-concept** (P3) is technical — a spike against real data and a real backend that tests **feasibility**: *can we build it?*
@@ -49,6 +49,35 @@ This model predates ProductBuildersHQ. It was written by a solo founder with a s
 That message has only become more urgent. AI made prototypes nearly free, which means the P2 trap is now the default failure mode of AI-native building: an endless stream of impressive demos that never become products and never earn a dollar. A prototype that stops at P2 is a toy app — not an insult, a stage. The problem is staying there.
 
 Read as stages, the Five Ps permit stopping; a proof-of-concept is a legitimate place to learn something and move on. Read as a commitment — the way it was meant — **P4 is the floor and P5 is the goal.** The model is normative on purpose.
+
+## Two Audiences, Two Crossings
+
+The Five Ps addresses both of PBMM's [convergence paths](/frameworks/product-builder-maturity-model), and the pre-AI delegation map is the place to start, because it explains where each audience's comfort zone came from.
+
+**Pre-AI, nobody owned the ladder.** The product manager owned the *ends* — P1 Preparation (the thinking) and P5 Profit (the accountability) — and delegated the entire middle: Prototype to UX, Proof-of-Concept and Production to Engineering.
+
+| Stage | Pre-AI owner |
+|---|---|
+| P1 Preparation | Product Manager — the thinking |
+| P2 Prototype | UX / Design |
+| P3 Proof-of-Concept | Engineering |
+| P4 Production | Engineering |
+| P5 Profit | Product Manager — the accountability |
+
+Every boundary in that table is a handoff, and every handoff loses intent. The PM who "owned the outcome" touched nothing between the spec and the revenue report.
+
+**What AI changed first was P2.** Prototyping tools moved the click-through from the design team into the PM's own hands — the "PM prototype" is a historically *new* possession, which is exactly why it feels like arrival. For the first time, the PM built something. The Five Ps' founding message lands here: that feeling is the trap. **The Product Manager's crossing is P2 → P3** — out of the newly-won facade and into engineering reality: real data, a real backend. It is the PM's first genuine Product Builder step, the technical-depth move PBMM's PM path is built around. "Don't stop at Prototype" is addressed to the PM, in the PM's own vocabulary, on purpose.
+
+**The Engineer's crossing is P4 → P5.** The engineer's story is the mirror image: home ground in the delegated middle (P3–P4), with the ends handed elsewhere — P1 to the PM, P5 to "the business." Engineers don't need the P2→P3 push; an engineer left alone will happily produce PoCs and Production systems forever. Their comfortable stopping point is **Production**: it ships, it runs, the dashboards are green. Production is the engineer's Prototype — the impressive artifact that is not yet the result. The crossing into Profit — claiming the end that was always someone else's job — is the product-judgment move PBMM's engineer path is built around. "Don't stop at Production" is that path's version of the same message.
+
+One ladder, two addresses:
+
+| Audience | Pre-AI territory | The trap | The crossing |
+|---|---|---|---|
+| Product Manager | P1 + P5 (the ends) — AI newly adds P2 | Stopping at **Prototype** | **P2 → P3** — into engineering reality |
+| Engineer | P3–P4 (the middle) | Stopping at **Production** | **P4 → P5** — into owned results |
+
+Both crossings point at the same destination, and now it has a precise definition: **the Product Builder is the delegation map collapsed into one person.** Convergence doesn't mean the two roles meet in the middle — it means each stops being blocked at the boundary the other crosses without noticing, until no handoff is left.
 
 ## Results Complete the Product Loop
 
