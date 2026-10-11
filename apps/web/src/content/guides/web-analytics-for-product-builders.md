@@ -163,7 +163,7 @@ Consent is only half the decision. The other half is what you get for it. This m
 **Legend:** ● offered. ◐ offered in a limited form. ○ not found in the sources we checked, which does not prove it is absent.
 
 | Capability | Cloudflare HTTP | Cloudflare Web Analytics | PostHog | Google Analytics 4 | Microsoft Clarity |
-| --- | --- | --- | --- | --- | --- |
+| --- | :---: | :---: | :---: | :---: | :---: |
 | Traffic volume, bandwidth, cache | ● | ○ | ○ | ○ | ○ |
 | Bot and crawler visibility | ● | ○ | ○ | ○ | ◐ |
 | Page views and visits | ◐ | ● | ● | ● | ◐ |

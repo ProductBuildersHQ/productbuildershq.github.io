@@ -127,6 +127,11 @@ details > summary::-webkit-details-marker {
   vertical-align: top;
 }
 
+.article-content th[align='center'],
+.article-content td[align='center'] {
+  text-align: center;
+}
+
 .article-content th {
   background: var(--color-bg-secondary);
   color: var(--color-text);
