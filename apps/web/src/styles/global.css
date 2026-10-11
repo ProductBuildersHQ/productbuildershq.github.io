@@ -132,6 +132,26 @@ details > summary::-webkit-details-marker {
   text-align: center;
 }
 
+.article-content table.matrix th,
+.article-content table.matrix td {
+  padding: 0.6rem 0.45rem;
+  font-size: 0.9rem;
+}
+
+.article-content table.matrix th.group {
+  background: var(--color-bg);
+  color: var(--color-text-subtle);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.article-content tbody th[scope='row'] {
+  background: transparent;
+  font-weight: 500;
+}
+
 .article-content th {
   background: var(--color-bg-secondary);
   color: var(--color-text);

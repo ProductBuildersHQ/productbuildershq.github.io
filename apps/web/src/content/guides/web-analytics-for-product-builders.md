@@ -164,25 +164,54 @@ Consent is only half the decision. The other half is what you get for it. This m
 
 **Legend:** ● offered. ◐ offered in a limited form. ○ not available, or not found in the sources we checked, which does not prove it is absent.
 
-| Capability | Cloudflare HTTP | Cloudflare Web Analytics | PostHog (cookies) | PostHog (cookieless) | Google Analytics 4 | Microsoft Clarity |
-| --- | :---: | :---: | :---: | :---: | :---: | :---: |
-| Traffic volume, bandwidth, cache | ● | ○ | ○ | ○ | ○ | ○ |
-| Bot and crawler visibility | ● | ○ | ○ | ○ | ○ | ◐ |
-| Page views and visits | ◐ | ● | ● | ● | ● | ◐ |
-| Referrers and traffic sources | ○ | ○ | ● | ● | ● | ○ |
-| Core Web Vitals and page load time | ○ | ● | ○ | ○ | ○ | ◐ |
-| Custom events | ○ | ○ | ● | ● | ● | ◐ |
-| Funnels | ○ | ○ | ● | ◐ | ● | ● |
-| Retention and returning users | ○ | ○ | ● | ◐ | ○ | ○ |
-| Session replay | ○ | ○ | ● | ○ | ○ | ● |
-| Heatmaps | ○ | ○ | ● | ○ | ○ | ● |
-| Feature flags, experiments, surveys | ○ | ○ | ● | ◐ | ○ | ○ |
-| Error tracking | ○ | ○ | ● | ● | ○ | ○ |
-| Search Console link | ○ | ○ | ○ | ○ | ● | ○ |
-| Google Ads link | ○ | ○ | ○ | ○ | ● | ◐ |
-| Raw data export or warehouse | ○ | ○ | ● | ● | ● | ◐ |
-| AI-assisted insights | ○ | ○ | ● | ● | ○ | ● |
-| Self-hosting or open source | ○ | ○ | ● | ● | ○ | ○ |
+<table class="matrix">
+<thead>
+<tr>
+<th scope="col">Capability</th>
+<th scope="col" align="center">Cloudflare HTTP</th>
+<th scope="col" align="center">Cloudflare Web Analytics</th>
+<th scope="col" align="center">PostHog (cookies)</th>
+<th scope="col" align="center">PostHog (cookieless)</th>
+<th scope="col" align="center">Google Analytics 4</th>
+<th scope="col" align="center">Microsoft Clarity</th>
+</tr>
+</thead>
+<tbody>
+<tr><th colspan="7" scope="colgroup" class="group">Traffic and delivery</th></tr>
+<tr><th scope="row">Traffic volume, bandwidth, cache</th><td align="center">●</td><td align="center">○</td><td align="center">○</td><td align="center">○</td><td align="center">○</td><td align="center">○</td></tr>
+<tr><th scope="row">Bot and crawler visibility</th><td align="center">●</td><td align="center">○</td><td align="center">○</td><td align="center">○</td><td align="center">○</td><td align="center">◐</td></tr>
+<tr><th scope="row">Page views and visits</th><td align="center">◐</td><td align="center">●</td><td align="center">●</td><td align="center">●</td><td align="center">●</td><td align="center">◐</td></tr>
+<tr><th scope="row">Referrers and traffic sources</th><td align="center">○</td><td align="center">○</td><td align="center">●</td><td align="center">●</td><td align="center">●</td><td align="center">○</td></tr>
+<tr><th scope="row">Core Web Vitals and page load time</th><td align="center">○</td><td align="center">●</td><td align="center">○</td><td align="center">○</td><td align="center">○</td><td align="center">◐</td></tr>
+</tbody>
+<tbody>
+<tr><th colspan="7" scope="colgroup" class="group">Behavior and product analytics</th></tr>
+<tr><th scope="row">Custom events</th><td align="center">○</td><td align="center">○</td><td align="center">●</td><td align="center">●</td><td align="center">●</td><td align="center">◐</td></tr>
+<tr><th scope="row">Funnels</th><td align="center">○</td><td align="center">○</td><td align="center">●</td><td align="center">◐</td><td align="center">●</td><td align="center">●</td></tr>
+<tr><th scope="row">Retention and returning users</th><td align="center">○</td><td align="center">○</td><td align="center">●</td><td align="center">◐</td><td align="center">○</td><td align="center">○</td></tr>
+</tbody>
+<tbody>
+<tr><th colspan="7" scope="colgroup" class="group">Understanding sessions</th></tr>
+<tr><th scope="row">Session replay</th><td align="center">○</td><td align="center">○</td><td align="center">●</td><td align="center">○</td><td align="center">○</td><td align="center">●</td></tr>
+<tr><th scope="row">Heatmaps</th><td align="center">○</td><td align="center">○</td><td align="center">●</td><td align="center">○</td><td align="center">○</td><td align="center">●</td></tr>
+</tbody>
+<tbody>
+<tr><th colspan="7" scope="colgroup" class="group">Shipping and quality</th></tr>
+<tr><th scope="row">Feature flags, experiments, surveys</th><td align="center">○</td><td align="center">○</td><td align="center">●</td><td align="center">◐</td><td align="center">○</td><td align="center">○</td></tr>
+<tr><th scope="row">Error tracking</th><td align="center">○</td><td align="center">○</td><td align="center">●</td><td align="center">●</td><td align="center">○</td><td align="center">○</td></tr>
+</tbody>
+<tbody>
+<tr><th colspan="7" scope="colgroup" class="group">Marketing and search</th></tr>
+<tr><th scope="row">Search Console link</th><td align="center">○</td><td align="center">○</td><td align="center">○</td><td align="center">○</td><td align="center">●</td><td align="center">○</td></tr>
+<tr><th scope="row">Google Ads link</th><td align="center">○</td><td align="center">○</td><td align="center">○</td><td align="center">○</td><td align="center">●</td><td align="center">◐</td></tr>
+</tbody>
+<tbody>
+<tr><th colspan="7" scope="colgroup" class="group">Data and platform</th></tr>
+<tr><th scope="row">Raw data export or warehouse</th><td align="center">○</td><td align="center">○</td><td align="center">●</td><td align="center">●</td><td align="center">●</td><td align="center">◐</td></tr>
+<tr><th scope="row">AI-assisted insights</th><td align="center">○</td><td align="center">○</td><td align="center">●</td><td align="center">●</td><td align="center">○</td><td align="center">●</td></tr>
+<tr><th scope="row">Self-hosting or open source</th><td align="center">○</td><td align="center">○</td><td align="center">●</td><td align="center">●</td><td align="center">○</td><td align="center">○</td></tr>
+</tbody>
+</table>
 
 **PostHog appears twice** because its default settings and its cookieless mode give different results. Per PostHog's [cookieless tracking guide](https://posthog.com/docs/data/cookieless-tracking), in cookieless mode you cannot call `identify()`, unique users are measured with a privacy-preserving hash computed on PostHog's servers (so counts beyond a single day are limited), session replay and surveys are disabled, feature flags can be delayed unless bootstrapped, and IP-based enrichment such as GeoIP and bot detection does not apply. That is why funnels, retention, and flags are ◐ there and replay is ○. The guide does not say how heatmaps behave in cookieless mode, so that cell is ○ for "not found". Error tracking, events, and export are ● in both columns because the guide lists no limitation for them; confirm in your own project.
 
