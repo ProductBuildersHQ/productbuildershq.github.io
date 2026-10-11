@@ -21,6 +21,8 @@ references:
     url: 'https://posthog.com/docs/libraries/js/persistence'
   - label: 'PostHog — README (products and free tier)'
     url: 'https://github.com/PostHog/posthog'
+  - label: 'PostHog — Cookieless tracking guide'
+    url: 'https://posthog.com/docs/data/cookieless-tracking'
   - label: 'PostHog — Funnels'
     url: 'https://posthog.com/docs/product-analytics/funnels'
   - label: 'PostHog — Retention'
@@ -160,29 +162,31 @@ A dashboard that looks harmless can sit on top of a script that stores a persist
 
 Consent is only half the decision. The other half is what you get for it. This matrix lists capabilities as each vendor's documentation names them.
 
-**Legend:** ● offered. ◐ offered in a limited form. ○ not found in the sources we checked, which does not prove it is absent.
+**Legend:** ● offered. ◐ offered in a limited form. ○ not available, or not found in the sources we checked, which does not prove it is absent.
 
-| Capability | Cloudflare HTTP | Cloudflare Web Analytics | PostHog | Google Analytics 4 | Microsoft Clarity |
-| --- | :---: | :---: | :---: | :---: | :---: |
-| Traffic volume, bandwidth, cache | ● | ○ | ○ | ○ | ○ |
-| Bot and crawler visibility | ● | ○ | ○ | ○ | ◐ |
-| Page views and visits | ◐ | ● | ● | ● | ◐ |
-| Referrers and traffic sources | ○ | ○ | ● | ● | ○ |
-| Core Web Vitals and page load time | ○ | ● | ○ | ○ | ◐ |
-| Custom events | ○ | ○ | ● | ● | ◐ |
-| Funnels | ○ | ○ | ● | ● | ● |
-| Retention and returning users | ○ | ○ | ● | ○ | ○ |
-| Session replay | ○ | ○ | ● | ○ | ● |
-| Heatmaps | ○ | ○ | ● | ○ | ● |
-| Feature flags, experiments, surveys | ○ | ○ | ● | ○ | ○ |
-| Error tracking | ○ | ○ | ● | ○ | ○ |
-| Search Console link | ○ | ○ | ○ | ● | ○ |
-| Google Ads link | ○ | ○ | ○ | ● | ◐ |
-| Raw data export or warehouse | ○ | ○ | ● | ● | ◐ |
-| AI-assisted insights | ○ | ○ | ● | ○ | ● |
-| Self-hosting or open source | ○ | ○ | ● | ○ | ○ |
+| Capability | Cloudflare HTTP | Cloudflare Web Analytics | PostHog (cookies) | PostHog (cookieless) | Google Analytics 4 | Microsoft Clarity |
+| --- | :---: | :---: | :---: | :---: | :---: | :---: |
+| Traffic volume, bandwidth, cache | ● | ○ | ○ | ○ | ○ | ○ |
+| Bot and crawler visibility | ● | ○ | ○ | ○ | ○ | ◐ |
+| Page views and visits | ◐ | ● | ● | ● | ● | ◐ |
+| Referrers and traffic sources | ○ | ○ | ● | ● | ● | ○ |
+| Core Web Vitals and page load time | ○ | ● | ○ | ○ | ○ | ◐ |
+| Custom events | ○ | ○ | ● | ● | ● | ◐ |
+| Funnels | ○ | ○ | ● | ◐ | ● | ● |
+| Retention and returning users | ○ | ○ | ● | ◐ | ○ | ○ |
+| Session replay | ○ | ○ | ● | ○ | ○ | ● |
+| Heatmaps | ○ | ○ | ● | ○ | ○ | ● |
+| Feature flags, experiments, surveys | ○ | ○ | ● | ◐ | ○ | ○ |
+| Error tracking | ○ | ○ | ● | ● | ○ | ○ |
+| Search Console link | ○ | ○ | ○ | ○ | ● | ○ |
+| Google Ads link | ○ | ○ | ○ | ○ | ● | ◐ |
+| Raw data export or warehouse | ○ | ○ | ● | ● | ● | ◐ |
+| AI-assisted insights | ○ | ○ | ● | ● | ○ | ● |
+| Self-hosting or open source | ○ | ○ | ● | ● | ○ | ○ |
 
-How to read the ◐ cells: Cloudflare HTTP analytics shows page views and visits on Pro, Business, and Enterprise plans; the free plan shows requests, bandwidth, and unique visitors. Clarity's page and session counts sit in its dashboard insights, its bot view is its AI Visibility bot-activity report, its custom events are custom tags and smart events, its performance data is a dashboard widget, its ads view is ad campaign insights, and its export is a data export API.
+**PostHog appears twice** because its default settings and its cookieless mode give different results. Per PostHog's [cookieless tracking guide](https://posthog.com/docs/data/cookieless-tracking), in cookieless mode you cannot call `identify()`, unique users are measured with a privacy-preserving hash computed on PostHog's servers (so counts beyond a single day are limited), session replay and surveys are disabled, feature flags can be delayed unless bootstrapped, and IP-based enrichment such as GeoIP and bot detection does not apply. That is why funnels, retention, and flags are ◐ there and replay is ○. The guide does not say how heatmaps behave in cookieless mode, so that cell is ○ for "not found". Error tracking, events, and export are ● in both columns because the guide lists no limitation for them; confirm in your own project.
+
+How to read the other ◐ cells: Cloudflare HTTP analytics shows page views and visits on Pro, Business, and Enterprise plans; the free plan shows requests, bandwidth, and unique visitors. Clarity's page and session counts sit in its dashboard insights, its bot view is its AI Visibility bot-activity report, its custom events are custom tags and smart events, its performance data is a dashboard widget, its ads view is ad campaign insights, and its export is a data export API.
 
 ### What it costs
 
