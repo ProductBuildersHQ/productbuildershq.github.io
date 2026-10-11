@@ -9,18 +9,38 @@ authorRole: 'Research notes from building ImpactChiefs.com'
 references:
   - label: 'Cloudflare — Privacy-first Web Analytics (blog)'
     url: 'https://blog.cloudflare.com/privacy-first-web-analytics/'
+  - label: 'Cloudflare — Web Analytics high-level metrics'
+    url: 'https://developers.cloudflare.com/web-analytics/data-metrics/high-level-metrics/'
+  - label: 'Cloudflare — Zone analytics'
+    url: 'https://developers.cloudflare.com/analytics/account-and-zone-analytics/zone-analytics/'
   - label: 'Cloudflare — Types of analytics (developer docs)'
     url: 'https://developers.cloudflare.com/analytics/types-of-analytics/'
   - label: 'PostHog — JavaScript library configuration (cookieless_mode, persistence, person_profiles, autocapture)'
     url: 'https://posthog.com/docs/libraries/js/config'
   - label: 'PostHog — Persistence options'
     url: 'https://posthog.com/docs/libraries/js/persistence'
+  - label: 'PostHog — README (products and free tier)'
+    url: 'https://github.com/PostHog/posthog'
+  - label: 'PostHog — Funnels'
+    url: 'https://posthog.com/docs/product-analytics/funnels'
+  - label: 'PostHog — Retention'
+    url: 'https://posthog.com/docs/product-analytics/retention'
+  - label: 'PostHog — Web analytics'
+    url: 'https://posthog.com/docs/web-analytics'
   - label: 'PostHog — GDPR compliance'
     url: 'https://posthog.com/docs/privacy/gdpr-compliance'
   - label: 'PostHog — Reverse proxy'
     url: 'https://posthog.com/docs/advanced/proxy'
   - label: 'Google — Cookies used by Google Analytics 4'
     url: 'https://support.google.com/analytics/answer/11397207'
+  - label: 'Google — Funnel exploration'
+    url: 'https://support.google.com/analytics/answer/9327974'
+  - label: 'Google — BigQuery Export'
+    url: 'https://support.google.com/analytics/answer/9358801'
+  - label: 'Google — Search Console integration'
+    url: 'https://support.google.com/analytics/answer/10737381'
+  - label: 'Google — GA4 reports overview'
+    url: 'https://support.google.com/analytics/answer/9212670'
   - label: 'Google — Consent mode'
     url: 'https://support.google.com/analytics/answer/9976101'
   - label: 'Google — GA4 data retention'
@@ -135,6 +155,69 @@ A dashboard that looks harmless can sit on top of a script that stores a persist
 **Cost to the visitor.** Per Microsoft's [cookie list](https://learn.microsoft.com/en-us/clarity/setup-and-installation/clarity-cookies), Clarity sets `_clck` and `_clsk` as first-party cookies, plus third-party cookies (`CLID`, `ANONCHK`, `MR`, `MUID`, `SM`). Microsoft says its "typical usage requires that non-essential cookies are set". Starting October 31, 2025, Clarity [enforces consent signal requirements](https://learn.microsoft.com/en-us/clarity/setup-and-installation/consent-mode) for visits from the EEA, UK, and Switzerland, and a valid signal is required for full functionality there. Consent Mode is on by default for those regions.
 
 **Limits.** It records behavior on your pages, so masking and what appears on screen matter. Do not use it where forms collect sensitive information without masking.
+
+## What each tool gives you
+
+Consent is only half the decision. The other half is what you get for it. This matrix lists capabilities as each vendor's documentation names them.
+
+**Legend:** ● offered. ◐ offered in a limited form. · not found in the sources we checked, which does not prove it is absent.
+
+| Capability | Cloudflare HTTP | Cloudflare Web Analytics | PostHog | Google Analytics 4 | Microsoft Clarity |
+| --- | --- | --- | --- | --- | --- |
+| Traffic volume, bandwidth, cache | ● | · | · | · | · |
+| Bot and crawler visibility | ● | · | · | · | ◐ |
+| Page views and visits | ◐ | ● | ● | ● | ◐ |
+| Referrers and traffic sources | · | · | ● | ● | · |
+| Core Web Vitals and page load time | · | ● | · | · | ◐ |
+| Custom events | · | · | ● | ● | ◐ |
+| Funnels | · | · | ● | ● | ● |
+| Retention and returning users | · | · | ● | · | · |
+| Session replay | · | · | ● | · | ● |
+| Heatmaps | · | · | ● | · | ● |
+| Feature flags, experiments, surveys | · | · | ● | · | · |
+| Error tracking | · | · | ● | · | · |
+| Search Console link | · | · | · | ● | · |
+| Google Ads link | · | · | · | ● | ◐ |
+| Raw data export or warehouse | · | · | ● | ● | ◐ |
+| AI-assisted insights | · | · | ● | · | ● |
+| Self-hosting or open source | · | · | ● | · | · |
+
+How to read the ◐ cells: Cloudflare HTTP analytics shows page views and visits on Pro, Business, and Enterprise plans; the free plan shows requests, bandwidth, and unique visitors. Clarity's page and session counts sit in its dashboard insights, its bot view is its AI Visibility bot-activity report, its custom events are custom tags and smart events, its performance data is a dashboard widget, its ads view is ad campaign insights, and its export is a data export API.
+
+### What it costs
+
+| Tool | Price | Limits worth knowing |
+| --- | --- | --- |
+| Cloudflare HTTP analytics | Included with the zone | Every plan can see at least the last 30 days; longer depends on plan |
+| Cloudflare Web Analytics | Free | Counts page views and visits, not people |
+| PostHog | Free monthly tier per product, then usage-based | Per its README, the first 1 million events, 5,000 recordings, 1 million flag requests, and 100,000 exceptions each month are free on Cloud; open source under an MIT license apart from its `ee` directory |
+| Google Analytics 4 | Free standard properties | Standard properties have a daily BigQuery export limit of 1 million events |
+| Microsoft Clarity | Free, stated as free forever | Not for sites that target users under 18 |
+
+### Where each one earns its place
+
+- **Cloudflare HTTP analytics** tells you whether the site is up, how much traffic hits it, and who is crawling it.
+- **Cloudflare Web Analytics** tells you whether pages are fast and where visitors come from, with the least overhead.
+- **PostHog** tells you what people do and what to ship next: events, funnels, retention, flags, experiments, and replay in one product.
+- **Google Analytics 4** is strongest where your question is marketing: attribution, Google Ads, and what search queries lead to your pages through Search Console.
+- **Microsoft Clarity** tells you why people struggle: recordings and heatmaps, free, with the consent requirements described above.
+
+### What each capability costs in consent
+
+This table is our reading of the rules in the next section, not something any vendor states. Treat it as a starting point for a conversation with counsel.
+
+| Capability | Usually needs a device identifier? | Usual consent position in the EU and UK |
+| --- | --- | --- |
+| Request logs, HTTP analytics | No | No banner; covered in the privacy notice |
+| Page views and referrers by cookieless beacon | No | No banner for storage reasons |
+| Core Web Vitals, page load time | No | No banner for storage reasons |
+| Named custom events without a persistent ID | No | Generally no banner |
+| Funnels, retention, returning users | Yes with cookies; a server-side hash is a judgment call | Banner with cookies; confirm for hash-based identity |
+| Session replay and heatmaps | Usually yes | Banner, plus masking of sensitive fields |
+| Feature flags and experiments | Yes if assignment is persisted | Banner unless strictly necessary |
+| Autocapture of clicks and forms | Depends on tool | Safer behind consent; can capture typed text |
+| Ad conversion and remarketing links | Yes, often third-party | Banner, plus honoring opt-out signals such as GPC |
+| Logged-in user identification | Yes | Consent or another legal basis |
 
 ## Why the numbers disagree
 
