@@ -82,6 +82,27 @@ const perspectiveSchema = z.object({
   tags: z.array(z.string()),
 })
 
+// Guides are researched, practical write-ups for people building products:
+// what a tool or practice does, what it costs, and what to do. Unlike
+// Perspectives (opinion), a guide cites its sources and carries a `reviewed`
+// date, because the facts it states (vendor behavior, regulation) change.
+const guideSchema = z.object({
+  title: z.string(),
+  subtitle: z.string().optional(),
+  description: z.string(),
+  date: z.string(),
+  // Date the facts were last checked against the cited sources.
+  reviewed: z.string(),
+  author: z.string().default('ProductBuildersHQ'),
+  authorRole: z.string().optional(),
+  references: z.array(z.object({
+    label: z.string(),
+    url: z.string(),
+  })).optional(),
+  frameworks: z.array(z.string()).optional(),
+  tags: z.array(z.string()),
+})
+
 const frameworks = defineCollection({
   loader: glob({ base: './src/content/frameworks', pattern: '**/*.md' }),
   schema: frameworkSchema,
@@ -97,9 +118,14 @@ const signals = defineCollection({
   schema: signalSchema,
 })
 
+const guides = defineCollection({
+  loader: glob({ base: './src/content/guides', pattern: '**/*.md' }),
+  schema: guideSchema,
+})
+
 const perspectives = defineCollection({
   loader: glob({ base: './src/content/perspectives', pattern: '**/*.md' }),
   schema: perspectiveSchema,
 })
 
-export const collections = { frameworks, caseStudies, signals, perspectives }
+export const collections = { frameworks, caseStudies, signals, perspectives, guides }

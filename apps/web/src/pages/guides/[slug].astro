@@ -1,0 +1,92 @@
+---
+import { getCollection, render } from 'astro:content'
+import BaseLayout from '../../layouts/BaseLayout.astro'
+
+export async function getStaticPaths() {
+  const guides = await getCollection('guides')
+  return guides.map((entry) => ({ params: { slug: entry.id }, props: { entry } }))
+}
+
+const { entry } = Astro.props
+const { Content, headings } = await render(entry)
+
+const allFrameworks = await getCollection('frameworks')
+const relatedFrameworks = (entry.data.frameworks ?? [])
+  .map((id) => allFrameworks.find((framework) => framework.id === id))
+  .filter((framework) => framework !== undefined)
+---
+
+<BaseLayout title={entry.data.title} description={entry.data.description}>
+  <div class="py-8 md:py-12">
+    <div class="max-w-6xl mx-auto px-5 md:px-8">
+      <a href="/guides" class="no-print inline-flex items-center text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline mb-6">
+        <svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
+        </svg>
+        Back to Guides
+      </a>
+
+      <div class="mb-8">
+        <div class="flex flex-wrap items-center gap-3 mb-4">
+          <span class="text-sm font-medium px-3 py-1 bg-[var(--color-primary)]/10 text-[var(--color-primary)] rounded-full">Guide</span>
+        </div>
+        <h1 class="text-3xl md:text-4xl font-bold mb-2">{entry.data.title}</h1>
+        {entry.data.subtitle && <p class="text-xl text-[var(--color-primary)] mb-5">{entry.data.subtitle}</p>}
+        <p class="text-sm text-[var(--color-text-subtle)]">
+          {entry.data.author}{entry.data.authorRole ? ` — ${entry.data.authorRole}` : ''} &middot; Published {entry.data.date} &middot; Facts last checked {entry.data.reviewed}
+        </p>
+      </div>
+
+      <div class="flex flex-wrap gap-2 mb-8">
+        {entry.data.tags.map((tag) => (
+          <span class="text-sm px-3 py-1 bg-[var(--color-bg-secondary)] text-[var(--color-text-muted)] rounded-full">{tag}</span>
+        ))}
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-10">
+        <aside class="hidden lg:block">
+          <div class="sticky top-24 border-l border-[var(--color-border-light)] pl-4">
+            {headings.filter((heading) => heading.depth === 2).length > 0 && (
+              <>
+                <div class="text-xs font-semibold uppercase tracking-wide text-[var(--color-text-subtle)] mb-3">Contents</div>
+                <nav class="space-y-2">
+                  {headings.filter((heading) => heading.depth === 2).map((heading) => (
+                    <a href={`#${heading.slug}`} class="block text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline">{heading.text}</a>
+                  ))}
+                </nav>
+              </>
+            )}
+            {relatedFrameworks.length > 0 && (
+              <div class="mt-8">
+                <div class="text-xs font-semibold uppercase tracking-wide text-[var(--color-text-subtle)] mb-3">Related Frameworks</div>
+                <nav class="space-y-2">
+                  {relatedFrameworks.map((framework) => (
+                    <a href={`/frameworks/${framework.id}`} class="block text-sm text-[var(--color-primary)] hover:underline no-underline">{framework.data.title}</a>
+                  ))}
+                </nav>
+              </div>
+            )}
+          </div>
+        </aside>
+        <div class="min-w-0">
+          <article class="article-content">
+            <Content />
+          </article>
+
+          {entry.data.references && entry.data.references.length > 0 && (
+            <section class="mt-12 pt-8 border-t border-[var(--color-border-light)]">
+              <h2 class="text-sm font-semibold uppercase tracking-wide text-[var(--color-text-subtle)] mb-4">Sources</h2>
+              <ol class="space-y-2 list-decimal pl-5">
+                {entry.data.references.map((ref) => (
+                  <li class="text-sm">
+                    <a href={ref.url} target="_blank" rel="noopener noreferrer" class="text-[var(--color-primary)] hover:underline no-underline">{ref.label}</a>
+                  </li>
+                ))}
+              </ol>
+            </section>
+          )}
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

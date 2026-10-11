@@ -473,6 +473,12 @@
       "label": "Resources",
       "items": [
         {
+          "id": "guides",
+          "label": "Guides",
+          "href": "/guides",
+          "description": "Researched how-tos for product builders"
+        },
+        {
           "id": "perspectives",
           "label": "Perspectives",
           "href": "/perspectives",

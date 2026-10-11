@@ -1,0 +1,38 @@
+---
+import { getCollection } from 'astro:content'
+import BaseLayout from '../../layouts/BaseLayout.astro'
+
+const guides = (await getCollection('guides')).sort((a, b) => b.data.date.localeCompare(a.data.date))
+---
+
+<BaseLayout title="Guides" description="Researched, practical guides for product builders: what a tool or practice does, what it costs you, and what to do. Every guide cites its sources and says when it was last checked.">
+  <div class="py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-5 md:px-8">
+      <div class="mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Guides</h1>
+        <p class="text-xl text-[var(--color-text-muted)] max-w-3xl">
+          Practical research for people who build and ship products. Each guide says what something does,
+          what it costs you, and what we would do, with its sources listed and the date its facts were last
+          checked. For our own opinions, see
+          <a href="/perspectives" class="text-[var(--color-primary)] hover:underline font-medium">Perspectives</a>.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 gap-8">
+        {guides.map((g) => (
+          <a href={`/guides/${g.id}`} class="group block p-8 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-xl no-underline hover:border-[var(--color-primary)] hover:shadow-lg transition-all">
+            <div class="flex flex-wrap items-center gap-3 mb-3">
+              <span class="text-sm font-medium px-3 py-1 bg-[var(--color-primary)]/10 text-[var(--color-primary)] rounded-full">Guide</span>
+              <span class="text-sm text-[var(--color-text-subtle)]">Reviewed {g.data.reviewed}</span>
+            </div>
+            <h2 class="text-2xl font-bold mb-2 text-[var(--color-text)] group-hover:text-[var(--color-primary)]">{g.data.title}</h2>
+            {g.data.subtitle && <p class="text-base text-[var(--color-text-muted)] mb-4">{g.data.subtitle}</p>}
+            <p class="text-sm text-[var(--color-text-muted)]">{g.data.description}</p>
+            <div class="mt-6 flex flex-wrap gap-2">
+              {g.data.tags.map((tag) => <span class="text-xs px-2 py-1 bg-[var(--color-bg-secondary)] text-[var(--color-text-muted)] rounded">{tag}</span>)}
+            </div>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</BaseLayout>
