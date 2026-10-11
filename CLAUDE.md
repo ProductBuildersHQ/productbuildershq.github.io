@@ -89,6 +89,7 @@ The site deploys via **GitHub Actions**, not by committing build output:
 | `apps/web/src/content.config.ts` | Content-collection schemas (Zod) for frameworks and case studies |
 | `apps/web/src/content/frameworks/*.md` | Framework articles (markdown + frontmatter) |
 | `apps/web/src/content/case-studies/*.md` | Case-study articles (markdown + frontmatter) |
+| `apps/web/src/content/guides/*.md` | Guides: researched, practical how-to write-ups for builders (sourced, with a `reviewed` date) |
 | `apps/web/src/pages/` | Routes, incl. dynamic `frameworks/[slug].astro` and `case-studies/[slug].astro` |
 | `apps/web/src/layouts/BaseLayout.astro` | Shared page shell (nav, footer, `<head>`) |
 | `apps/web/src/config/nav-config.json` | Navigation config with three megamenus (`megaMenus[]`: Frameworks, SDD Workflows, From the Field) plus Products/Resources dropdowns (mirrored to `public/nav-config.json`; consumed by the shared `wt-navbar` web component on this site AND the MkDocs sub-sites) |
@@ -107,6 +108,13 @@ Frameworks and case studies are markdown files with frontmatter validated by
 `version`, `date`, `levels`, `tags`, and an optional `pdfUrl`. Case studies add
 `company`, `level`, optional `industry`, `sources[]`, `metrics`, `summary`, and
 `comingSoon`.
+
+Guides (`/guides`) are researched, practical write-ups: what a tool or practice
+does, what it costs, and what to do. Unlike Perspectives (first-person opinion),
+a guide lists its `references[]` (rendered as numbered Sources) and carries a
+required `reviewed` date, because the vendor behavior and regulation it states
+change. State only facts you can trace to a listed source, attribute vendor
+claims to the vendor, and keep legal topics to a "not legal advice" summary.
 
 Each entry in `metrics[]` has `value`, `label`, `detail`, an optional
 `source`/`sourceIndex` (a 1-based index into the top-level `sources[]` array,
