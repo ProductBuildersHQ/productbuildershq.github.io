@@ -160,27 +160,27 @@ A dashboard that looks harmless can sit on top of a script that stores a persist
 
 Consent is only half the decision. The other half is what you get for it. This matrix lists capabilities as each vendor's documentation names them.
 
-**Legend:** ● offered. ◐ offered in a limited form. · not found in the sources we checked, which does not prove it is absent.
+**Legend:** ● offered. ◐ offered in a limited form. ○ not found in the sources we checked, which does not prove it is absent.
 
 | Capability | Cloudflare HTTP | Cloudflare Web Analytics | PostHog | Google Analytics 4 | Microsoft Clarity |
 | --- | --- | --- | --- | --- | --- |
-| Traffic volume, bandwidth, cache | ● | · | · | · | · |
-| Bot and crawler visibility | ● | · | · | · | ◐ |
+| Traffic volume, bandwidth, cache | ● | ○ | ○ | ○ | ○ |
+| Bot and crawler visibility | ● | ○ | ○ | ○ | ◐ |
 | Page views and visits | ◐ | ● | ● | ● | ◐ |
-| Referrers and traffic sources | · | · | ● | ● | · |
-| Core Web Vitals and page load time | · | ● | · | · | ◐ |
-| Custom events | · | · | ● | ● | ◐ |
-| Funnels | · | · | ● | ● | ● |
-| Retention and returning users | · | · | ● | · | · |
-| Session replay | · | · | ● | · | ● |
-| Heatmaps | · | · | ● | · | ● |
-| Feature flags, experiments, surveys | · | · | ● | · | · |
-| Error tracking | · | · | ● | · | · |
-| Search Console link | · | · | · | ● | · |
-| Google Ads link | · | · | · | ● | ◐ |
-| Raw data export or warehouse | · | · | ● | ● | ◐ |
-| AI-assisted insights | · | · | ● | · | ● |
-| Self-hosting or open source | · | · | ● | · | · |
+| Referrers and traffic sources | ○ | ○ | ● | ● | ○ |
+| Core Web Vitals and page load time | ○ | ● | ○ | ○ | ◐ |
+| Custom events | ○ | ○ | ● | ● | ◐ |
+| Funnels | ○ | ○ | ● | ● | ● |
+| Retention and returning users | ○ | ○ | ● | ○ | ○ |
+| Session replay | ○ | ○ | ● | ○ | ● |
+| Heatmaps | ○ | ○ | ● | ○ | ● |
+| Feature flags, experiments, surveys | ○ | ○ | ● | ○ | ○ |
+| Error tracking | ○ | ○ | ● | ○ | ○ |
+| Search Console link | ○ | ○ | ○ | ● | ○ |
+| Google Ads link | ○ | ○ | ○ | ● | ◐ |
+| Raw data export or warehouse | ○ | ○ | ● | ● | ◐ |
+| AI-assisted insights | ○ | ○ | ● | ○ | ● |
+| Self-hosting or open source | ○ | ○ | ● | ○ | ○ |
 
 How to read the ◐ cells: Cloudflare HTTP analytics shows page views and visits on Pro, Business, and Enterprise plans; the free plan shows requests, bandwidth, and unique visitors. Clarity's page and session counts sit in its dashboard insights, its bot view is its AI Visibility bot-activity report, its custom events are custom tags and smart events, its performance data is a dashboard widget, its ads view is ad campaign insights, and its export is a data export API.
 
