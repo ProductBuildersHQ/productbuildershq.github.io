@@ -1,0 +1,150 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import spec from '../data/pricing.json'
+
+// Prices are shown only when this is true. While the offer is being worked out
+// the paid plans say "Contact us"; the spec keeps the proposed prices either way.
+const SHOW_PRICES = false
+// Where "Contact us" goes. The About page lists how to reach us.
+const CONTACT_URL = '/about#contact'
+
+interface Limit { limit: string; max?: number; unlimited?: boolean }
+interface Price { interval: 'month' | 'year'; amountCents: number }
+interface Plan {
+  id: string
+  name: string
+  tier: string
+  selfServe: boolean
+  trialDays?: number
+  prices?: Price[]
+  features?: { feature: string; level?: string }[]
+  limits?: Limit[]
+}
+
+// Who each plan is for. This is page copy, not part of the offer.
+const audience: Record<string, string> = {
+  free: 'A founder trying it on one or two products',
+  builder: 'A solo founder running several products',
+  team: 'A small team sharing the view',
+  enterprise: 'A company with its own needs',
+}
+
+const rank = (tier: string) => spec.tiers.find((t) => t.id === tier)?.rank ?? 0
+const plans = [...(spec.plans as Plan[])].sort((a, b) => rank(a.tier) - rank(b.tier))
+
+const money = (cents: number) =>
+  `$${(cents / 100).toLocaleString('en-US', { minimumFractionDigits: cents % 100 ? 2 : 0 })}`
+
+function price(p: Plan): { main: string; sub?: string; contact: boolean } {
+  const free = !p.prices?.length && p.selfServe
+  if (free) return { main: 'Free', sub: 'Permanent, not a trial', contact: false }
+  if (!p.selfServe || !SHOW_PRICES) return { main: 'Contact us', contact: true }
+  const month = p.prices?.find((x) => x.interval === 'month')
+  const year = p.prices?.find((x) => x.interval === 'year')
+  return {
+    main: month ? `${money(month.amountCents)} / month` : 'Contact us',
+    sub: [year && `${money(year.amountCents)} / year`, p.trialDays && `${p.trialDays}-day trial, no card`]
+      .filter(Boolean)
+      .join(' · '),
+    contact: !month,
+  }
+}
+
+// Numbers on the arranged plan are ceilings, not promises.
+function limitText(p: Plan, id: string): string {
+  const l = p.limits?.find((x) => x.limit === id)
+  if (!l) return '—'
+  if (l.unlimited) return p.selfServe ? 'Unlimited' : 'Arranged'
+  const n = (l.max ?? 0).toLocaleString('en-US')
+  return p.selfServe ? n : `Up to ${n}`
+}
+
+function seatsText(p: Plan): string {
+  const e = spec.entitlements.find((x) => x.tier === p.tier && x.application === 'portfolio')
+  if (!e) return '—'
+  if ('unlimitedSeats' in e && e.unlimitedSeats) return 'Arranged'
+  return String((e as { seats?: number }).seats ?? '—')
+}
+
+const refresh = (p: Plan) => {
+  const level = p.features?.find((f) => f.feature === 'refresh')?.level
+  return level ? level[0].toUpperCase() + level.slice(1) : '—'
+}
+
+const products = spec.applications.map((a) => a.name).join(', ')
+
+const rows: { label: string; cell: (p: Plan) => string }[] = [
+  { label: 'Members', cell: seatsText },
+  ...spec.limits.map((l) => ({ label: l.name, cell: (p: Plan) => limitText(p, l.id) })),
+  { label: 'Measurement refresh', cell: refresh },
+  { label: 'Products', cell: () => products },
+  { label: 'Connected services', cell: () => 'All' },
+]
+---
+
+<BaseLayout
+  title="Pricing"
+  description="Plans for the ProductBuildersHQ suite: start free, and see your whole product portfolio in one place."
+>
+  <div class="py-16 md:py-24">
+    <div class="max-w-6xl mx-auto px-5 md:px-8">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Pricing</h1>
+      <p class="text-xl text-[var(--color-text-muted)] mb-4 max-w-3xl">
+        Start free, with the whole suite working on your first products. The limits are the
+        difference between plans; every plan includes every connected service and the revenue view.
+      </p>
+      {!SHOW_PRICES && (
+        <p class="text-[var(--color-text-muted)] mb-10 max-w-3xl">
+          We are not charging yet. Tell us what you would need from a paid plan and we will shape
+          the plans around it.
+          <a href={CONTACT_URL} class="text-[var(--color-primary)] hover:underline">Contact us</a>.
+        </p>
+      )}
+
+      <div class="overflow-x-auto">
+        <table class="w-full min-w-[44rem] text-sm border-collapse text-left">
+          <thead>
+            <tr>
+              <th class="w-48 pb-4"></th>
+              {plans.map((p) => {
+                const pr = price(p)
+                return (
+                  <th class="align-top pb-4 pr-4 font-normal">
+                    <div class="text-xl font-bold text-[var(--color-text)]">{p.name}</div>
+                    <div class="text-[var(--color-text-muted)] mt-1 min-h-[2.5rem]">{audience[p.id]}</div>
+                    <div class="mt-3 text-lg font-semibold text-[var(--color-text)]">
+                      {pr.contact ? (
+                        <a href={CONTACT_URL} class="text-[var(--color-primary)] hover:underline">{pr.main}</a>
+                      ) : (
+                        pr.main
+                      )}
+                    </div>
+                    <div class="text-[var(--color-text-muted)] text-xs min-h-[1rem]">{pr.sub}</div>
+                  </th>
+                )
+              })}
+            </tr>
+          </thead>
+          <tbody>
+            {rows.map((r) => (
+              <tr class="border-t border-[var(--color-border-light)]">
+                <th scope="row" class="py-3 pr-4 font-medium text-[var(--color-text)]">{r.label}</th>
+                {plans.map((p) => (
+                  <td class="py-3 pr-4 text-[var(--color-text-muted)]">{r.cell(p)}</td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      <h2 class="text-2xl font-bold mt-14 mb-4">How plans work</h2>
+      <ul class="list-disc pl-6 space-y-2 text-[var(--color-text-muted)] max-w-3xl">
+        <li>Free is permanent. It is not a trial.</li>
+        <li>Moving to a smaller plan never deletes your data. Measuring covers your first pages, and adding more is paused until you are within the limit.</li>
+        <li>Your own data is never behind a paywall: viewing what is measured stays available on every plan, and exporting it is free.</li>
+        <li>The plans and numbers here are a proposal we are validating with real use.</li>
+      </ul>
+    </div>
+  </div>
+</BaseLayout>

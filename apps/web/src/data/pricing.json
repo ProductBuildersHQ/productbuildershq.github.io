@@ -1,0 +1,283 @@
+{
+  "formatVersion": "1",
+  "app": "pbhq",
+  "currency": "usd",
+  "defaultPlan": "free",
+  "applications": [
+    {
+      "id": "portfolio",
+      "name": "Portfolio"
+    },
+    {
+      "id": "build",
+      "name": "Build"
+    },
+    {
+      "id": "agents",
+      "name": "Agents"
+    }
+  ],
+  "tiers": [
+    {
+      "id": "free",
+      "name": "Free",
+      "rank": 1
+    },
+    {
+      "id": "builder",
+      "name": "Builder",
+      "rank": 2
+    },
+    {
+      "id": "team",
+      "name": "Team",
+      "rank": 3
+    },
+    {
+      "id": "enterprise",
+      "name": "Enterprise",
+      "rank": 4
+    }
+  ],
+  "features": [
+    {
+      "id": "refresh",
+      "name": "Measurement refresh",
+      "levels": [
+        "daily",
+        "hourly"
+      ]
+    }
+  ],
+  "limits": [
+    {
+      "id": "sites",
+      "name": "Sites",
+      "unit": "site",
+      "period": "none"
+    },
+    {
+      "id": "pages",
+      "name": "Pages measured, all sites",
+      "unit": "page",
+      "period": "none"
+    },
+    {
+      "id": "pages_per_site",
+      "name": "Pages measured, per site",
+      "unit": "page",
+      "period": "none"
+    },
+    {
+      "id": "measurements_per_day",
+      "name": "Measurements per day",
+      "unit": "measurement",
+      "period": "day"
+    }
+  ],
+  "plans": [
+    {
+      "id": "free",
+      "name": "Free",
+      "tier": "free",
+      "selfServe": true,
+      "features": [
+        {
+          "feature": "refresh",
+          "level": "daily"
+        }
+      ],
+      "limits": [
+        {
+          "limit": "sites",
+          "max": 2
+        },
+        {
+          "limit": "pages",
+          "max": 25
+        },
+        {
+          "limit": "pages_per_site",
+          "max": 10
+        },
+        {
+          "limit": "measurements_per_day",
+          "max": 200
+        }
+      ]
+    },
+    {
+      "id": "builder",
+      "name": "Builder",
+      "tier": "builder",
+      "selfServe": true,
+      "trialDays": 14,
+      "prices": [
+        {
+          "interval": "month",
+          "amountCents": 1900
+        },
+        {
+          "interval": "year",
+          "amountCents": 19000
+        }
+      ],
+      "features": [
+        {
+          "feature": "refresh",
+          "level": "hourly"
+        }
+      ],
+      "limits": [
+        {
+          "limit": "sites",
+          "max": 10
+        },
+        {
+          "limit": "pages",
+          "max": 100
+        },
+        {
+          "limit": "pages_per_site",
+          "max": 25
+        },
+        {
+          "limit": "measurements_per_day",
+          "max": 1000
+        }
+      ]
+    },
+    {
+      "id": "team",
+      "name": "Team",
+      "tier": "team",
+      "selfServe": true,
+      "prices": [
+        {
+          "interval": "month",
+          "amountCents": 5900
+        },
+        {
+          "interval": "year",
+          "amountCents": 59000
+        }
+      ],
+      "features": [
+        {
+          "feature": "refresh",
+          "level": "hourly"
+        }
+      ],
+      "limits": [
+        {
+          "limit": "sites",
+          "max": 25
+        },
+        {
+          "limit": "pages",
+          "max": 250
+        },
+        {
+          "limit": "pages_per_site",
+          "max": 50
+        },
+        {
+          "limit": "measurements_per_day",
+          "max": 3000
+        }
+      ]
+    },
+    {
+      "id": "enterprise",
+      "name": "Enterprise",
+      "tier": "enterprise",
+      "selfServe": false,
+      "features": [
+        {
+          "feature": "refresh",
+          "level": "hourly"
+        }
+      ],
+      "limits": [
+        {
+          "limit": "sites",
+          "unlimited": true
+        },
+        {
+          "limit": "pages",
+          "max": 500
+        },
+        {
+          "limit": "pages_per_site",
+          "max": 100
+        },
+        {
+          "limit": "measurements_per_day",
+          "max": 5000
+        }
+      ]
+    }
+  ],
+  "entitlements": [
+    {
+      "tier": "free",
+      "application": "portfolio",
+      "seats": 1
+    },
+    {
+      "tier": "free",
+      "application": "build",
+      "seats": 1
+    },
+    {
+      "tier": "free",
+      "application": "agents",
+      "seats": 1
+    },
+    {
+      "tier": "builder",
+      "application": "portfolio",
+      "seats": 1
+    },
+    {
+      "tier": "builder",
+      "application": "build",
+      "seats": 1
+    },
+    {
+      "tier": "builder",
+      "application": "agents",
+      "seats": 1
+    },
+    {
+      "tier": "team",
+      "application": "portfolio",
+      "seats": 5
+    },
+    {
+      "tier": "team",
+      "application": "build",
+      "seats": 5
+    },
+    {
+      "tier": "team",
+      "application": "agents",
+      "seats": 5
+    },
+    {
+      "tier": "enterprise",
+      "application": "portfolio",
+      "unlimitedSeats": true
+    },
+    {
+      "tier": "enterprise",
+      "application": "build",
+      "unlimitedSeats": true
+    },
+    {
+      "tier": "enterprise",
+      "application": "agents",
+      "unlimitedSeats": true
+    }
+  ]
+}
