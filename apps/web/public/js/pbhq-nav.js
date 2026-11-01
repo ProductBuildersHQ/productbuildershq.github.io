@@ -137,7 +137,8 @@
       baseUrl: BASE_URL,
       links: [
         { id: 'frameworks', label: 'Frameworks', href: '/frameworks' },
-        { id: 'case-studies', label: 'Case Studies', href: '/case-studies' }
+        { id: 'case-studies', label: 'Case Studies', href: '/case-studies' },
+        { id: 'tools', label: 'Tools', href: '/tools' }
       ],
       dropdowns: [
         {

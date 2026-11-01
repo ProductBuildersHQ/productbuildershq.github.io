@@ -4,7 +4,13 @@
     "href": "/"
   },
   "baseUrl": "https://productbuildershq.com",
-  "links": [],
+  "links": [
+    {
+      "id": "tools",
+      "label": "Tools",
+      "href": "/tools"
+    }
+  ],
   "megaMenus": [
     {
       "id": "frameworks",
