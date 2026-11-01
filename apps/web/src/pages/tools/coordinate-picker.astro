@@ -1,0 +1,29 @@
+---
+import ToolShell from '../../components/ToolShell.astro'
+---
+
+<ToolShell
+  title="Coordinate Picker"
+  description="Pick coordinates from an image and generate clean SVG polygons for image maps and masks."
+  storageKey="coordinate-picker"
+  githubUrl="https://github.com/grokify/web-tools"
+  docsUrl="https://github.com/grokify/web-tools#coordinate-picker"
+>
+  <coordinate-picker id="tool" theme="light" num-shapes="4"></coordinate-picker>
+  <script is:inline src="/tools/coordinate-picker/coordinate-picker.min.js"></script>
+  
+  <style is:global>
+    coordinate-picker {
+      --cp-theme-bg-primary: var(--tool-bg);
+      --cp-theme-bg-secondary: var(--tool-bg-2);
+      --cp-theme-bg-tertiary: var(--tool-bg-3);
+      --cp-theme-border: var(--tool-border);
+      --cp-theme-text-primary: var(--tool-text);
+      --cp-theme-text-secondary: var(--tool-text-2);
+      --cp-theme-text-muted: var(--tool-text-muted);
+      --cp-theme-accent: var(--tool-accent);
+      --cp-theme-accent-hover: var(--tool-accent-hover);
+      --cp-theme-font-sans: Inter, system-ui, -apple-system, sans-serif;
+    }
+  </style>
+</ToolShell>

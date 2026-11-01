@@ -1,0 +1,119 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+
+interface Tool {
+  href: string
+  name: string
+  cta: string
+  description: string
+  useFor: string
+  features: string[]
+}
+
+const groups: { title: string; description: string; tools: Tool[] }[] = [
+  {
+    title: 'Write and specify',
+    description: 'For the specs and documents a product starts from.',
+    tools: [
+      {
+        href: '/tools/markdown-editor/',
+        name: 'Markdown Editor',
+        cta: 'Open Editor',
+        description:
+          'Write and preview Markdown with live rendering. Export to PDF or DOCX. Supports light and dark themes and autosaves your work.',
+        useFor: 'Drafting a PRD, TRD or README, then handing it off as a PDF or Word file.',
+        features: ['live_preview', 'pdf_export', 'docx_export', 'autosave'],
+      },
+      {
+        href: '/tools/dss-viewer/',
+        name: 'DSS Viewer',
+        cta: 'Open Viewer',
+        description:
+          'Visualize and edit Design System Spec JSON files. Browse colors, typography, components and theming contracts, then export the modified spec.',
+        useFor: 'Reviewing the design system an agent or designer hands you before you build on it.',
+        features: ['viewer', 'editor', 'drag_drop', 'json_export'],
+      },
+    ],
+  },
+  {
+    title: 'Build and debug',
+    description: 'Small utilities for the moments that come up while shipping.',
+    tools: [
+      {
+        href: '/tools/jwt-editor/',
+        name: 'JWT Editor',
+        cta: 'Open Editor',
+        description:
+          'Decode and inspect JSON Web Tokens. View the header, payload and signature with syntax highlighting, and check expiration and standard claims.',
+        useFor: 'Working out why a sign-in or API call is being rejected.',
+        features: ['decoder', 'validation', 'claims_view', 'autosave'],
+      },
+      {
+        href: '/tools/coordinate-picker/',
+        name: 'Coordinate Picker',
+        cta: 'Open Picker',
+        description:
+          'Pick coordinates from images to create SVG polygons. Upload an image, place pins and generate clean SVG for image maps and masks.',
+        useFor: 'Making clickable regions on a screenshot or diagram.',
+        features: ['image_upload', 'multi_shape', 'svg_export', 'zoom'],
+      },
+    ],
+  },
+]
+---
+
+<BaseLayout
+  title="Tools"
+  description="Free browser-based tools for product builders: a Markdown editor, JWT editor, design-system viewer and coordinate picker. Nothing to install."
+>
+  <div class="py-16 md:py-24">
+    <div class="max-w-6xl mx-auto px-5 md:px-8">
+      <p class="text-xs font-semibold tracking-[0.2em] uppercase text-[var(--color-primary)] mb-3">Builder Tools</p>
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Tools for product builders</h1>
+      <p class="text-xl text-[var(--color-text-muted)] mb-14 max-w-3xl">
+        Free utilities that run in your browser, for the small jobs between an idea and a shipped
+        product. Nothing to install.
+      </p>
+
+      {groups.map((group) => (
+        <section class="mb-14">
+          <h2 class="text-2xl font-bold mb-1">{group.title}</h2>
+          <p class="text-[var(--color-text-muted)] mb-6">{group.description}</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {group.tools.map((tool) => (
+              <a
+                href={tool.href}
+                class="group block p-6 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-xl no-underline hover:border-[var(--color-primary)] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200"
+              >
+                <h3 class="text-xl font-semibold mb-2 text-[var(--color-text)] group-hover:text-[var(--color-primary)]">{tool.name}</h3>
+                <p class="text-sm text-[var(--color-text-muted)] mb-3">{tool.description}</p>
+                <p class="text-sm text-[var(--color-text)] mb-4">
+                  <span class="font-medium text-[var(--color-primary)]">Use it for: </span>{tool.useFor}
+                </p>
+                <div class="flex flex-wrap gap-2 mb-4">
+                  {tool.features.map((f) => (
+                    <span class="text-xs px-2 py-1 bg-[var(--color-bg-secondary)] text-[var(--color-text-muted)] rounded font-mono">{f}</span>
+                  ))}
+                </div>
+                <span class="text-sm font-medium text-[var(--color-primary)]">{tool.cta} &rarr;</span>
+              </a>
+            ))}
+          </div>
+        </section>
+      ))}
+
+      <div class="p-8 bg-[var(--color-bg-secondary)] border border-[var(--color-border-light)] rounded-xl">
+        <h2 class="text-2xl font-bold mb-3">About these tools</h2>
+        <p class="text-[var(--color-text-muted)] max-w-3xl mb-3">
+          The tools are browser-based and run on your machine. What you work on is saved to your
+          browser's local storage, not to a ProductBuildersHQ account.
+        </p>
+        <p class="text-[var(--color-text-muted)] max-w-3xl">
+          They are open source. The Markdown Editor's PDF and DOCX export loads its export
+          libraries from a public CDN.
+          <a href="https://github.com/grokify/web-tools" class="text-[var(--color-primary)] hover:underline" target="_blank" rel="noopener noreferrer">Source on GitHub</a>.
+        </p>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

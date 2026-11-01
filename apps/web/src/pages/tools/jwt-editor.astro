@@ -1,0 +1,29 @@
+---
+import ToolShell from '../../components/ToolShell.astro'
+---
+
+<ToolShell
+  title="JWT Editor"
+  description="Decode and inspect JSON Web Tokens in your browser: header, payload, signature, expiry and standard claims."
+  storageKey="jwt-editor"
+  githubUrl="https://github.com/grokify/jwt-editor"
+  docsUrl="https://github.com/grokify/jwt-editor#readme"
+>
+  <jwt-editor id="tool" theme="light" autosave></jwt-editor>
+  <script is:inline src="/tools/jwt-editor/jwt-editor.min.js"></script>
+  
+  <style is:global>
+    jwt-editor {
+      --jwt-theme-bg-primary: var(--tool-bg);
+      --jwt-theme-bg-secondary: var(--tool-bg-2);
+      --jwt-theme-bg-tertiary: var(--tool-bg-3);
+      --jwt-theme-border: var(--tool-border);
+      --jwt-theme-text-primary: var(--tool-text);
+      --jwt-theme-text-secondary: var(--tool-text-2);
+      --jwt-theme-text-muted: var(--tool-text-muted);
+      --jwt-theme-accent: var(--tool-accent);
+      --jwt-theme-accent-hover: var(--tool-accent-hover);
+      --jwt-theme-font-sans: Inter, system-ui, -apple-system, sans-serif;
+    }
+  </style>
+</ToolShell>

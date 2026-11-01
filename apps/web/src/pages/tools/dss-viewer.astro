@@ -1,0 +1,27 @@
+---
+import ToolShell from '../../components/ToolShell.astro'
+---
+
+<ToolShell
+  height="min"
+  title="DSS Viewer"
+  description="View and edit Design System Spec JSON files: colors, typography, components and theming contracts."
+  storageKey="dss-viewer"
+  githubUrl="https://github.com/plexusone/design-system-spec"
+  docsUrl="https://plexusone.dev/design-system-spec/"
+>
+  <dss-viewer id="tool" theme="light" mode="viewer"></dss-viewer>
+  <script is:inline src="/tools/dss-viewer/dss-ui.min.js"></script>
+  
+  <style is:global>
+    dss-viewer {
+      --dss-bg-primary: var(--tool-bg);
+      --dss-bg-secondary: var(--tool-bg-2);
+      --dss-bg-tertiary: var(--tool-bg-3);
+      --dss-border: var(--tool-border);
+      --dss-text-primary: var(--tool-text);
+      --dss-text-secondary: var(--tool-text-2);
+      --dss-text-muted: var(--tool-text-muted);
+    }
+  </style>
+</ToolShell>

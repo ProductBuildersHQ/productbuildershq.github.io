@@ -1,0 +1,52 @@
+---
+import ToolShell from '../../components/ToolShell.astro'
+---
+
+<ToolShell
+  title="Markdown Editor"
+  description="Write and preview Markdown with live rendering, and export to PDF or DOCX."
+  storageKey="markdown-editor"
+  githubUrl="https://github.com/grokify/markdown-editor"
+  docsUrl="https://github.com/grokify/markdown-editor#readme"
+>
+  <markdown-editor id="tool" theme="light" autosave></markdown-editor>
+  <!-- PDF and DOCX export libraries -->
+  <script is:inline src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.2/html2pdf.bundle.min.js"></script>
+  <script is:inline src="https://unpkg.com/docx@9.0.2/build/index.umd.js"></script>
+  <script is:inline src="/tools/markdown-editor/markdown-editor.min.js"></script>
+  <script is:inline>
+    document.getElementById('tool').value = `# Welcome to Markdown Editor
+  
+  Write a PRD, a TRD or a README and preview it as you type.
+  
+  ## Features
+  
+  - **Live preview** - see the Markdown rendered as you type
+  - **Export** - to PDF or DOCX
+  - **Autosave** - your content stays in this browser
+  
+  | Feature | Status |
+  |---------|--------|
+  | Live preview | Ready |
+  | PDF export | Ready |
+  | DOCX export | Ready |
+  
+  > Start writing your Markdown above.
+  `
+  </script>
+  
+  <style is:global>
+    markdown-editor {
+      --mde-theme-bg-primary: var(--tool-bg);
+      --mde-theme-bg-secondary: var(--tool-bg-2);
+      --mde-theme-bg-tertiary: var(--tool-bg-3);
+      --mde-theme-border: var(--tool-border);
+      --mde-theme-text-primary: var(--tool-text);
+      --mde-theme-text-secondary: var(--tool-text-2);
+      --mde-theme-text-muted: var(--tool-text-muted);
+      --mde-theme-accent: var(--tool-accent);
+      --mde-theme-accent-hover: var(--tool-accent-hover);
+      --mde-theme-font-sans: Inter, system-ui, -apple-system, sans-serif;
+    }
+  </style>
+</ToolShell>
