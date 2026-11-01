@@ -453,6 +453,32 @@ const pillars = [
     </section>
   )}
 
+  <section class="py-16 md:py-24 bg-[var(--color-bg-secondary)]">
+    <div class="max-w-7xl mx-auto px-5 md:px-8">
+      <div class="flex items-end justify-between mb-10">
+        <div>
+          <p class="text-xs font-semibold tracking-[0.2em] uppercase text-[var(--color-primary)] mb-3">Builder Tools</p>
+          <h2 class="text-3xl md:text-4xl font-bold mb-2">Free tools for product builders</h2>
+          <p class="text-[var(--color-text-muted)] text-lg">Browser-based utilities for the jobs between an idea and a shipped product</p>
+        </div>
+        <a href="/tools" class="hidden sm:inline-flex text-[var(--color-primary)] hover:underline no-underline text-sm font-medium">All tools &rarr;</a>
+      </div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        {[
+          { href: '/tools/markdown-editor/', name: 'Markdown Editor', text: 'Draft specs with live preview; export to PDF or DOCX.' },
+          { href: '/tools/jwt-editor/', name: 'JWT Editor', text: 'Decode tokens and check expiry and claims.' },
+          { href: '/tools/dss-viewer/', name: 'DSS Viewer', text: 'Explore and edit Design System Spec files.' },
+          { href: '/tools/coordinate-picker/', name: 'Coordinate Picker', text: 'Turn clicks on an image into SVG polygons.' },
+        ].map((tool) => (
+          <a href={tool.href} class="group block p-6 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-xl no-underline hover:border-[var(--color-primary)] hover:shadow-lg hover:-translate-y-0.5 transition-all duration-200">
+            <h3 class="text-lg font-semibold mb-2 text-[var(--color-text)] group-hover:text-[var(--color-primary)]">{tool.name}</h3>
+            <p class="text-sm text-[var(--color-text-muted)]">{tool.text}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
   <section class="py-16 md:py-24">
     <div class="max-w-5xl mx-auto px-5 md:px-8">
       <div class="relative overflow-hidden rounded-3xl bg-[var(--color-frame-bg)] text-white text-center px-6 py-16 md:px-16 md:py-20">
