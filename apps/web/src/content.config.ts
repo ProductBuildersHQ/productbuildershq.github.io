@@ -93,6 +93,8 @@ const guideSchema = z.object({
   date: z.string(),
   // Date the facts were last checked against the cited sources.
   reviewed: z.string(),
+  // A draft renders in the dev server and is left out of production builds.
+  draft: z.boolean().default(false),
   author: z.string().default('ProductBuildersHQ'),
   authorRole: z.string().optional(),
   references: z.array(z.object({

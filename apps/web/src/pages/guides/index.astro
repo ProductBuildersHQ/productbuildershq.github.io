@@ -2,7 +2,9 @@
 import { getCollection } from 'astro:content'
 import BaseLayout from '../../layouts/BaseLayout.astro'
 
-const guides = (await getCollection('guides')).sort((a, b) => b.data.date.localeCompare(a.data.date))
+const guides = (await getCollection('guides'))
+  .filter((g) => !(import.meta.env.PROD && g.data.draft))
+  .sort((a, b) => b.data.date.localeCompare(a.data.date))
 ---
 
 <BaseLayout title="Guides" description="Researched, practical guides for product builders: what a tool or practice does, what it costs you, and what to do. Every guide cites its sources and says when it was last checked.">
