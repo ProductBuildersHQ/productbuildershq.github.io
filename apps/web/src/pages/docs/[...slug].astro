@@ -1,0 +1,21 @@
+---
+// /docs/ and every page below it. The index is generated only when there is a
+// page to list (a draft counts in development, not in a production build), so
+// a build with no published docs adds nothing to the site or its sitemap.
+import { getCollection } from 'astro:content'
+import DocsHome from '../../components/DocsHome.astro'
+import DocsPage from '../../components/DocsPage.astro'
+
+export async function getStaticPaths() {
+  const docs = (await getCollection('docs')).filter((d) => !(import.meta.env.PROD && d.data.draft))
+  const paths: { params: { slug: string | undefined }; props: { entry?: (typeof docs)[number] } }[] = docs.map(
+    (entry) => ({ params: { slug: entry.id }, props: { entry } }),
+  )
+  if (docs.length > 0) paths.push({ params: { slug: undefined }, props: {} })
+  return paths
+}
+
+const { entry } = Astro.props
+---
+
+{entry ? <DocsPage entry={entry} /> : <DocsHome />}
