@@ -1,0 +1,18 @@
+{
+  "groups": [
+    { "id": "apps", "label": "Apps", "description": "Software people sign in to and use" },
+    { "id": "content", "label": "Content and research", "description": "Reference, research and publishing sites" },
+    { "id": "open-source", "label": "Open source and standards", "description": "Developer resources and open specifications" }
+  ],
+  "sites": [
+    { "id": "pbhq", "group": "apps", "name": "ProductBuildersHQ", "url": "https://productbuildershq.com/", "category": "SaaS", "description": "Frameworks, specs and tools for building products with AI, from first spec to production.", "image": "/images/showcase/pbhq.webp" },
+    { "id": "academyos", "group": "apps", "name": "AcademyOS", "url": "https://academyos.io/", "category": "SaaS", "description": "An AI-native course platform: narrated slides, quizzes and certificates, published in your own academy.", "image": "/images/showcase/academyos.webp" },
+    { "id": "adeptquest", "group": "apps", "name": "AdeptQuest", "url": "https://adept.quest/", "category": "Learning game", "description": "A fantasy adventure in the browser where answering questions powers your magic in arena battles.", "image": "/images/showcase/adeptquest.webp" },
+    { "id": "impactchiefs", "group": "content", "name": "ImpactChiefs", "url": "https://impactchiefs.com/", "category": "Leadership", "description": "What leaders in business, sport, government and the arts have said about leading, with original sources.", "image": "/images/showcase/impactchiefs.webp" },
+    { "id": "expertglossary", "group": "content", "name": "ExpertGlossary", "url": "https://www.expertglossary.com/", "category": "Reference", "description": "Definitions from government agencies, universities, standards bodies and vendors, each credited to its source.", "image": "/images/showcase/expertglossary.webp" },
+    { "id": "aisecuritypoint", "group": "content", "name": "AISecurityPoint", "url": "https://aisecuritypoint.com/", "category": "AI security research", "description": "Incident intelligence and deep dives on how AI systems fail, classified against OWASP and MITRE ATLAS.", "image": "/images/showcase/aisecuritypoint.webp" },
+    { "id": "privatemintnews", "group": "content", "name": "PrivateMintNews", "url": "https://privatemintnews.com/", "category": "Research publishing", "description": "A research catalogue of tokens, medals, so-called dollars and private patterns.", "image": "/images/showcase/privatemintnews.webp" },
+    { "id": "plexusone", "group": "open-source", "name": "PlexusOne", "url": "https://plexusone.dev/", "category": "Open source", "description": "Our sister open-source brand: Go AI agents, a multi-tenant SaaS backbone and release automation.", "image": "/images/showcase/plexusone.webp" },
+    { "id": "aistandards", "group": "open-source", "name": "AIStandards.io", "url": "https://aistandards.io/", "category": "Standards", "description": "A guide to the protocols that let AI agents authenticate, communicate and operate across systems.", "image": "/images/showcase/aistandards.webp" }
+  ]
+}
