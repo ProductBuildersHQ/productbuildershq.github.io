@@ -3,7 +3,7 @@ title: 'Web Analytics for Product Builders'
 subtitle: 'What Cloudflare, PostHog, Google Analytics, and Microsoft Clarity each measure, what they store, and whether you need a consent banner'
 description: 'A researched comparison of Cloudflare HTTP analytics, Cloudflare Web Analytics, PostHog, Google Analytics 4, and Microsoft Clarity: the data each provides, what each stores on a visitor’s device, what that means for consent banners and privacy notices, and a launch sequence that avoids a banner at first.'
 date: '2026-10-10'
-reviewed: '2026-10-10'
+reviewed: '2026-10-25'
 author: 'ProductBuildersHQ'
 authorRole: 'Research notes from building ImpactChiefs.com'
 references:
@@ -57,6 +57,12 @@ references:
     url: 'https://www.cnil.fr/en/sheet-ndeg16-use-analytics-your-websites-and-applications'
   - label: 'EUR-Lex — Directive 2002/58/EC (ePrivacy), as amended'
     url: 'https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02002L0058-20091219'
+  - label: 'EDPB — Guidelines 2/2023 on the technical scope of Article 5(3) of the ePrivacy Directive'
+    url: 'https://www.edpb.europa.eu/documents/guideline/guidelines-22023-on-technical-scope-of-art-53-of-eprivacy-directive_en'
+  - label: 'ICO — Guidance on the use of storage and access technologies'
+    url: 'https://ico.org.uk/for-organisations/direct-marketing-and-privacy-and-electronic-communications/guidance-on-the-use-of-storage-and-access-technologies/'
+  - label: 'legislation.gov.uk — Data (Use and Access) Act 2025, section 112'
+    url: 'https://www.legislation.gov.uk/ukpga/2025/18/section/112'
   - label: 'Global Privacy Control'
     url: 'https://globalprivacycontrol.org/'
 tags:
@@ -75,7 +81,7 @@ It is research, not legal advice. Where a statement comes from a vendor's own do
 ## The short version
 
 - **Launch with Cloudflare** if your site is on Cloudflare: HTTP analytics (server side) plus Web Analytics (a small browser beacon). Neither stores anything on the visitor's device for analytics, which is the thing the banner question turns on.
-- **Add PostHog next** for product questions (which feature gets used, where people drop off), in its cookieless mode so it still needs no banner.
+- **Add PostHog next** for product questions (which feature gets used, where people drop off), in its cookieless mode so it stores nothing on the device.
 - **Treat Google Analytics 4 and Microsoft Clarity as consent-gated tools.** Both set cookies, and Microsoft now enforces consent signals for visitors from the EEA, UK, and Switzerland.
 - **Whatever you run, publish a privacy notice that matches it.** A notice is always required. A banner is only required when you store or read things on the visitor's device, or process their data in ways that need consent.
 
@@ -83,7 +89,7 @@ It is research, not legal advice. Where a statement comes from a vendor's own do
 | --- | --- | --- | --- |
 | Cloudflare HTTP analytics | Cloudflare's edge, from requests | Nothing | No |
 | Cloudflare Web Analytics | A small script in the page | Nothing for analytics, per Cloudflare | Not for device storage |
-| PostHog, `cookieless_mode: 'always'` | Script plus PostHog servers | Nothing, per PostHog | Generally no; confirm for your regions |
+| PostHog, `cookieless_mode: 'always'` | Script plus PostHog servers | Nothing, per PostHog | Often not, with a notice and an opt-out; see [the banner page](/docs/guides/cookie-notices-and-banners) |
 | PostHog, default settings | Script plus PostHog servers | A cookie and `localStorage` | Yes, per PostHog's own guidance |
 | Google Analytics 4 | Script plus Google servers | `_ga` and `_ga_<container-id>` cookies | Yes in the EEA and UK |
 | Microsoft Clarity | Script plus Microsoft servers | `_clck`, `_clsk` first-party; several third-party cookies | Yes for EEA, UK, Switzerland |
@@ -299,7 +305,7 @@ Two practical points from the sources above:
 
 1. **Day one: Cloudflare HTTP analytics and Web Analytics only.** No cookies, no storage, no banner. Publish a privacy notice that says exactly that.
 2. **Define events before choosing tools.** Write a short list of named events (for example `quote_copied`, `clip_played`, `topic_filtered`) and one `track(name, props)` function. Every provider then sits behind that one function, and you can add or remove a provider without touching page code.
-3. **Add PostHog in cookieless mode.** `cookieless_mode: 'always'`, autocapture off, session recording off, `person_profiles` left at `identified_only`, IP capture disabled. Route events through your own domain with a reverse proxy. Update the privacy notice first.
+3. **Add PostHog in cookieless mode.** `cookieless_mode: 'always'`, autocapture off, session recording off, `person_profiles: 'never'`, in an EU project, with a notice and an opt-out. [Setting Up PostHog for a Launch](/guides/posthog-for-a-launch) has the configuration. Route events through your own domain with a reverse proxy. Update the privacy notice first.
 4. **Only then consider a banner.** If you want recordings, heatmaps, or Google's ecosystem, add a consent mechanism and gate GA4 and Clarity behind it. If most of your audience is in one region, it can be reasonable to show the banner only where the law expects it, but you still disclose everywhere.
 5. **Compare for a fixed window.** Run the extra tools for a few weeks, note how the numbers differ from the Cloudflare baseline, and keep only what changed a decision.
 
@@ -310,5 +316,5 @@ We are applying this sequence to [ImpactChiefs.com](https://impactchiefs.com), a
 ## What this guide does not settle
 
 - **Counts of how many visitors use blockers.** We found no source we trusted for a number, so we give none. Measure your own site against HTTP analytics.
-- **Whether cookieless PostHog is exempt in every country.** It stores nothing on the device, but processing and IP handling still fall under data-protection law. Check with counsel for the regions you serve.
+- **Whether cookieless PostHog is exempt in every country.** It stores nothing on the device, but the EDPB reads the device-access rule to cover a script that makes the browser send information, and processing and IP handling still fall under data-protection law. France and the UK have analytics exemptions with conditions; elsewhere in the EU, none is written down. See [Do you need a cookie banner?](/docs/guides/cookie-notices-and-banners), and check with counsel for the regions you serve.
 - **Vendor changes.** Clarity's consent requirements changed in late 2025, and PostHog's persistence and cookieless options are still evolving. Check each vendor's documentation before relying on this page; the "Facts last checked" date above is the last time we did.
