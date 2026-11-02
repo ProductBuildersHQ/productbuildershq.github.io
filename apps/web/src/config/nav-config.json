@@ -4,14 +4,64 @@
     "href": "/"
   },
   "baseUrl": "https://productbuildershq.com",
-  "links": [
-    {
-      "id": "tools",
-      "label": "Tools",
-      "href": "/tools"
-    }
-  ],
+  "links": [],
   "megaMenus": [
+    {
+      "id": "products",
+      "label": "Products",
+      "maxFeaturedPerCategory": 6,
+      "categories": [
+        {
+          "id": "products",
+          "label": "Products",
+          "description": "What builders build with",
+          "order": 1
+        },
+        {
+          "id": "tools-showcase",
+          "label": "Tools & Showcase",
+          "description": "Free tools, and what we build with them",
+          "order": 2
+        }
+      ],
+      "items": [
+        {
+          "id": "visionstudio",
+          "categoryId": "products",
+          "label": "VisionStudio",
+          "tagline": "Spec authoring & evaluation desktop app",
+          "href": "/products/visionstudio"
+        },
+        {
+          "id": "visionspec",
+          "categoryId": "products",
+          "label": "VisionSpec",
+          "tagline": "Multi-domain specification orchestration",
+          "href": "/products/visionspec"
+        },
+        {
+          "id": "scale",
+          "categoryId": "products",
+          "label": "SCALE",
+          "tagline": "Standards, Consumption, Automation, Leverage, Effectiveness",
+          "href": "/products/scale"
+        },
+        {
+          "id": "tools",
+          "categoryId": "tools-showcase",
+          "label": "Tools",
+          "tagline": "Free browser tools for builders",
+          "href": "/tools"
+        },
+        {
+          "id": "showcase",
+          "categoryId": "tools-showcase",
+          "label": "Showcase",
+          "tagline": "Live sites built with ProductBuildersHQ",
+          "href": "/showcase"
+        }
+      ]
+    },
     {
       "id": "frameworks",
       "label": "Frameworks",
@@ -353,8 +403,8 @@
       "footerText": "Generated from visionspec"
     },
     {
-      "id": "from-the-field",
-      "label": "From the Field",
+      "id": "resources",
+      "label": "Resources",
       "maxFeaturedPerCategory": 6,
       "categories": [
         {
@@ -370,6 +420,13 @@
           "description": "What practitioners say — claims, mapped to the frameworks",
           "order": 2,
           "href": "/signals"
+        },
+        {
+          "id": "writing",
+          "label": "Guides & Writing",
+          "description": "How-tos, essays, papers and the talk",
+          "order": 3,
+          "href": "/guides"
         }
       ],
       "items": [
@@ -442,6 +499,34 @@
           "label": "Steve Yegge",
           "tagline": "The developer is a PM; the system compiles ideas",
           "href": "/signals/steve-yegge-gas-town"
+        },
+        {
+          "id": "guides",
+          "categoryId": "writing",
+          "label": "Guides",
+          "tagline": "Researched how-tos for product builders",
+          "href": "/guides"
+        },
+        {
+          "id": "perspectives",
+          "categoryId": "writing",
+          "label": "Perspectives",
+          "tagline": "First-person essays from the founder",
+          "href": "/perspectives"
+        },
+        {
+          "id": "papers",
+          "categoryId": "writing",
+          "label": "Papers",
+          "tagline": "Framework & case-study PDFs",
+          "href": "/papers"
+        },
+        {
+          "id": "presentation",
+          "categoryId": "writing",
+          "label": "What is a ProductBuilder?",
+          "tagline": "The talk, as a deck",
+          "href": "/presentation"
         }
       ],
       "footerLinks": [
@@ -463,74 +548,6 @@
       ]
     }
   ],
-  "dropdowns": [
-    {
-      "id": "products",
-      "label": "Products",
-      "items": [
-        {
-          "id": "visionstudio",
-          "label": "VisionStudio",
-          "href": "/products/visionstudio",
-          "description": "Spec authoring & evaluation desktop app"
-        },
-        {
-          "id": "visionspec",
-          "label": "VisionSpec",
-          "href": "/products/visionspec",
-          "description": "Multi-domain specification orchestration"
-        },
-        {
-          "id": "scale",
-          "label": "SCALE",
-          "href": "/products/scale",
-          "description": "Standards, Consumption, Automation, Leverage, Effectiveness"
-        },
-        {
-          "id": "showcase",
-          "label": "Showcase",
-          "href": "/showcase",
-          "description": "Live sites built with ProductBuildersHQ"
-        }
-      ]
-    },
-    {
-      "id": "resources",
-      "label": "Resources",
-      "items": [
-        {
-          "id": "guides",
-          "label": "Guides",
-          "href": "/guides",
-          "description": "Researched how-tos for product builders"
-        },
-        {
-          "id": "perspectives",
-          "label": "Perspectives",
-          "href": "/perspectives",
-          "description": "First-person essays from the founder"
-        },
-        {
-          "id": "papers",
-          "label": "Papers",
-          "href": "/papers",
-          "description": "Framework & case-study PDFs"
-        },
-        {
-          "id": "presentation",
-          "label": "What is a ProductBuilder?",
-          "href": "/presentation",
-          "description": "The talk, as a deck"
-        },
-        {
-          "id": "about",
-          "label": "About",
-          "href": "/about",
-          "description": "Origin, IP portfolio, and contact"
-        }
-      ]
-    }
-  ],
   "actions": [
     {
       "id": "github",
@@ -538,6 +555,16 @@
       "href": "https://github.com/ProductBuildersHQ",
       "icon": "github",
       "external": true
+    },
+    {
+      "id": "waitlist",
+      "label": "Join the waitlist",
+      "href": "https://auth.productbuildershq.com/signup/waitlist"
+    },
+    {
+      "id": "signin",
+      "label": "Sign in",
+      "href": "https://app.productbuildershq.com/"
     }
   ]
 }
