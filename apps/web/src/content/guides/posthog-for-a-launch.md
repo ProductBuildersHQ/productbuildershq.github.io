@@ -4,7 +4,6 @@ subtitle: 'Choosing a region, running it without cookies, measuring signed-in us
 description: 'A researched setup guide for PostHog on its free plan: US or EU region and what "EU" actually promises, what the free plan allows, cookieless tracking and what it costs you, server-side events for signed-in users, and PostHog Support for a team that is not online to answer.'
 date: '2026-10-25'
 reviewed: '2026-10-25'
-draft: true
 author: 'ProductBuildersHQ'
 authorRole: 'Research notes from setting up PostHog for our own products'
 references:
@@ -54,7 +53,7 @@ PostHog's free plan is enough to launch a product with a working funnel, and its
 
 It is research, not legal advice. Every statement about PostHog comes from its own pages, listed at the end. Where those pages disagree with each other, we say so.
 
-For what each analytics tool stores on a visitor's device and when you need a banner, see [Do you need a cookie banner?](/docs/guides/cookie-notices-and-banners). For what GDPR asks of you in general, see [What GDPR asks of a product builder](/docs/guides/gdpr-for-product-builders).
+For what each analytics tool stores on a visitor's device and when you need a banner, see [Do you need a cookie banner?](/docs/guides/cookie-notices-and-banners).
 
 ## The short version
 

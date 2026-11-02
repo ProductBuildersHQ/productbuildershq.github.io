@@ -5,7 +5,6 @@ section: 'guides'
 order: 40
 status: 'available'
 reviewed: '2026-10-25'
-draft: true
 references:
   - label: 'EUR-Lex: Directive 2002/58/EC (ePrivacy), consolidated'
     url: 'https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:02002L0058-20091219'
@@ -19,6 +18,14 @@ references:
     url: 'https://ico.org.uk/for-organisations/direct-marketing-and-privacy-and-electronic-communications/guidance-on-the-use-of-storage-and-access-technologies/'
   - label: 'legislation.gov.uk: Data (Use and Access) Act 2025'
     url: 'https://www.legislation.gov.uk/ukpga/2025/18/contents'
+  - label: 'legislation.gov.uk: Data (Use and Access) Act 2025, section 112 (storing information in terminal equipment)'
+    url: 'https://www.legislation.gov.uk/ukpga/2025/18/section/112'
+  - label: 'legislation.gov.uk: The Data (Use and Access) Act 2025 (Commencement No. 6 and Transitional and Saving Provisions) Regulations 2026, regulation 2'
+    url: 'https://www.legislation.gov.uk/uksi/2026/82/regulation/2/made'
+  - label: 'EUR-Lex: Digital Omnibus proposal, COM(2025) 837'
+    url: 'https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52025PC0837'
+  - label: 'European Parliament Legislative Observatory: procedure 2025/0360(COD), Digital Omnibus'
+    url: 'https://oeil.europarl.europa.eu/oeil/en/procedure-file?reference=2025/0360(COD)'
   - label: 'Cloudflare: Cloudflare cookies'
     url: 'https://developers.cloudflare.com/fundamentals/get-started/cloudflare-cookies/'
   - label: 'Cloudflare: Privacy-first Web Analytics (blog)'
@@ -43,7 +50,7 @@ references:
 
 Every site that measures its visitors needs a **privacy notice**. Some also need a **consent banner**. The two come from different laws, and mixing them up is how sites end up with a banner that does nothing, or without one when they need it.
 
-This page is research, not legal advice. For what each tool measures and how they compare, see [Web Analytics for Product Builders](/guides/web-analytics-for-product-builders). For the rest of the GDPR, see [What GDPR asks of a product builder](/docs/guides/gdpr-for-product-builders).
+This page is research, not legal advice. For what each tool measures and how they compare, see [Web Analytics for Product Builders](/guides/web-analytics-for-product-builders).
 
 ## The short version
 
@@ -74,8 +81,8 @@ National regulators fill that gap differently:
   - trackers last no more than 13 months.
 
   The CNIL warns that vendors who reuse the data for their own purposes fall outside the exemption.
-- **The UK.** The Data (Use and Access) Act 2025 added exceptions to PECR's consent rule, including one for statistical purposes: measuring how a service is used in order to improve it. Commentators report it in force from February 2026. The ICO's [storage and access guidance](https://ico.org.uk/for-organisations/direct-marketing-and-privacy-and-electronic-communications/guidance-on-the-use-of-storage-and-access-technologies/) says you must still tell people clearly and give them a simple way to object.
-- **A possible EU change.** In November 2025 the European Commission proposed moving the cookie rule into the GDPR, with a consent exemption for a provider's own audience measurement. Member states are still amending the text, and it is not law. Today's rules apply until it is adopted.
+- **The UK.** The Data (Use and Access) Act 2025 added exceptions to PECR's consent rule, including one for statistical purposes: measuring how a service is used in order to improve it. [Section 112](https://www.legislation.gov.uk/ukpga/2025/18/section/112), which makes that change, came into force on 5 February 2026, under [regulation 2 of the commencement regulations](https://www.legislation.gov.uk/uksi/2026/82/regulation/2/made). The ICO's [storage and access guidance](https://ico.org.uk/for-organisations/direct-marketing-and-privacy-and-electronic-communications/guidance-on-the-use-of-storage-and-access-technologies/) says you must still tell people clearly and give them a simple way to object.
+- **A possible EU change.** On 19 November 2025 the European Commission proposed its [Digital Omnibus](https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52025PC0837), which would move the cookie rule into the GDPR, with a consent exemption for a provider's own audience measurement. The text is still being negotiated, per the Parliament's [procedure file](https://oeil.europarl.europa.eu/oeil/en/procedure-file?reference=2025/0360(COD)), and it is not law. Today's rules apply until it is adopted.
 
 What that means in practice: a first-party, cookieless, aggregate analytics setup is the low-risk choice. It fits the French and UK exemptions when you give notice and an opt-out. In the rest of the EU it rests on the same reasoning, but no rule says so outright. If most of your audience is in one EU country, check that country's regulator.
 
