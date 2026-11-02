@@ -145,6 +145,7 @@ The two-loop model is the organizational architecture; the rest of the ProductBu
 | The Product Loop's definition machinery | [Definition workflows](/sdd/#definition) — Working Backwards, Big Tech, PBHQ Lite |
 | The Builder Loop's execution machinery | [Execution workflows](/sdd/#execution) — AI-DLC, Spec-Kit, OpenSpec, Kiro |
 | The Product Baseline handoff contract | [PDLC](https://github.com/ProductBuildersHQ/pdlc) |
+| The Product Loop's causal hypothesis, from problem to impact | [Impact Model](/frameworks/impact-model) |
 | The Product Loop's outcome instruments | [AI-Native PM Metrics](/frameworks/ai-native-pm-metrics) |
 
 The model itself is machine-readable: both loops — stations, actors, gates, seams, and their mappings to workflows and integrations — are defined as data in [visionspec](https://github.com/ProductBuildersHQ/visionspec) (`loop.schema.json`), alongside the AI-DLC single-loop system as a reference. The diagram above is rendered from that data, and [VisionStudio](/products/visionstudio) consumes the same definitions.

@@ -5,13 +5,15 @@ import TwoLoopDiagram from '../../components/TwoLoopDiagram.astro'
 import catalog from '../../data/sdd-catalog.json'
 
 // Semantic order: the operating model first (the architecture the rest operate
-// within), then the person (PBMM), then the process (ASDM), then the rest.
+// within), then the person (PBMM), then the process (ASDM), then the product,
+// the artifact, and the outcome, then the rest.
 const FEATURED = [
   'product-loop-builder-loop',
   'product-builder-maturity-model',
   'software-delivery-autonomy',
   'five-ps',
   'app-reality-ladder',
+  'impact-model',
 ]
 const rank = (id: string) => {
   const index = FEATURED.indexOf(id)
