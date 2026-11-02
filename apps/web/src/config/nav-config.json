@@ -15,7 +15,7 @@
     {
       "id": "frameworks",
       "label": "Frameworks",
-      "maxFeaturedPerCategory": 6,
+      "maxFeaturedPerCategory": 7,
       "categories": [
         {
           "id": "foundations",
@@ -83,6 +83,13 @@
           "href": "/frameworks/app-reality-ladder"
         },
         {
+          "id": "impact-model",
+          "categoryId": "foundations",
+          "label": "Impact Model",
+          "tagline": "The outcome: Problem to Impact",
+          "href": "/frameworks/impact-model"
+        },
+        {
           "id": "lever",
           "categoryId": "capability",
           "label": "LEVER / REVEL",
@@ -111,6 +118,13 @@
           "label": "AI-Native PM Metrics",
           "tagline": "Outcome measures for the Product Loop",
           "href": "/frameworks/ai-native-pm-metrics"
+        },
+        {
+          "id": "outcome-and-strategy-frameworks",
+          "categoryId": "practice",
+          "label": "Outcome & Strategy Frameworks",
+          "tagline": "ToC, logic models, OKRs, V2MOM compared",
+          "href": "/frameworks/outcome-and-strategy-frameworks"
         },
         {
           "id": "dora-space",
