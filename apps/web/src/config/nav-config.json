@@ -353,8 +353,8 @@
       "footerText": "Generated from visionspec"
     },
     {
-      "id": "from-the-field",
-      "label": "From the Field",
+      "id": "resources",
+      "label": "Resources",
       "maxFeaturedPerCategory": 6,
       "categories": [
         {
@@ -370,6 +370,13 @@
           "description": "What practitioners say — claims, mapped to the frameworks",
           "order": 2,
           "href": "/signals"
+        },
+        {
+          "id": "writing",
+          "label": "Guides & Writing",
+          "description": "How-tos, essays, papers and the talk",
+          "order": 3,
+          "href": "/guides"
         }
       ],
       "items": [
@@ -442,6 +449,34 @@
           "label": "Steve Yegge",
           "tagline": "The developer is a PM; the system compiles ideas",
           "href": "/signals/steve-yegge-gas-town"
+        },
+        {
+          "id": "guides",
+          "categoryId": "writing",
+          "label": "Guides",
+          "tagline": "Researched how-tos for product builders",
+          "href": "/guides"
+        },
+        {
+          "id": "perspectives",
+          "categoryId": "writing",
+          "label": "Perspectives",
+          "tagline": "First-person essays from the founder",
+          "href": "/perspectives"
+        },
+        {
+          "id": "papers",
+          "categoryId": "writing",
+          "label": "Papers",
+          "tagline": "Framework & case-study PDFs",
+          "href": "/papers"
+        },
+        {
+          "id": "presentation",
+          "categoryId": "writing",
+          "label": "What is a ProductBuilder?",
+          "tagline": "The talk, as a deck",
+          "href": "/presentation"
         }
       ],
       "footerLinks": [
@@ -491,42 +526,6 @@
           "label": "Showcase",
           "href": "/showcase",
           "description": "Live sites built with ProductBuildersHQ"
-        }
-      ]
-    },
-    {
-      "id": "resources",
-      "label": "Resources",
-      "items": [
-        {
-          "id": "guides",
-          "label": "Guides",
-          "href": "/guides",
-          "description": "Researched how-tos for product builders"
-        },
-        {
-          "id": "perspectives",
-          "label": "Perspectives",
-          "href": "/perspectives",
-          "description": "First-person essays from the founder"
-        },
-        {
-          "id": "papers",
-          "label": "Papers",
-          "href": "/papers",
-          "description": "Framework & case-study PDFs"
-        },
-        {
-          "id": "presentation",
-          "label": "What is a ProductBuilder?",
-          "href": "/presentation",
-          "description": "The talk, as a deck"
-        },
-        {
-          "id": "about",
-          "label": "About",
-          "href": "/about",
-          "description": "Origin, IP portfolio, and contact"
         }
       ]
     }
