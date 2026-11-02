@@ -4,14 +4,64 @@
     "href": "/"
   },
   "baseUrl": "https://productbuildershq.com",
-  "links": [
-    {
-      "id": "tools",
-      "label": "Tools",
-      "href": "/tools"
-    }
-  ],
+  "links": [],
   "megaMenus": [
+    {
+      "id": "products",
+      "label": "Products",
+      "maxFeaturedPerCategory": 6,
+      "categories": [
+        {
+          "id": "products",
+          "label": "Products",
+          "description": "What builders build with",
+          "order": 1
+        },
+        {
+          "id": "tools-showcase",
+          "label": "Tools & Showcase",
+          "description": "Free tools, and what we build with them",
+          "order": 2
+        }
+      ],
+      "items": [
+        {
+          "id": "visionstudio",
+          "categoryId": "products",
+          "label": "VisionStudio",
+          "tagline": "Spec authoring & evaluation desktop app",
+          "href": "/products/visionstudio"
+        },
+        {
+          "id": "visionspec",
+          "categoryId": "products",
+          "label": "VisionSpec",
+          "tagline": "Multi-domain specification orchestration",
+          "href": "/products/visionspec"
+        },
+        {
+          "id": "scale",
+          "categoryId": "products",
+          "label": "SCALE",
+          "tagline": "Standards, Consumption, Automation, Leverage, Effectiveness",
+          "href": "/products/scale"
+        },
+        {
+          "id": "tools",
+          "categoryId": "tools-showcase",
+          "label": "Tools",
+          "tagline": "Free browser tools for builders",
+          "href": "/tools"
+        },
+        {
+          "id": "showcase",
+          "categoryId": "tools-showcase",
+          "label": "Showcase",
+          "tagline": "Live sites built with ProductBuildersHQ",
+          "href": "/showcase"
+        }
+      ]
+    },
     {
       "id": "frameworks",
       "label": "Frameworks",
@@ -494,38 +544,6 @@
           "id": "all-signals",
           "label": "All Signals",
           "href": "/signals"
-        }
-      ]
-    }
-  ],
-  "dropdowns": [
-    {
-      "id": "products",
-      "label": "Products",
-      "items": [
-        {
-          "id": "visionstudio",
-          "label": "VisionStudio",
-          "href": "/products/visionstudio",
-          "description": "Spec authoring & evaluation desktop app"
-        },
-        {
-          "id": "visionspec",
-          "label": "VisionSpec",
-          "href": "/products/visionspec",
-          "description": "Multi-domain specification orchestration"
-        },
-        {
-          "id": "scale",
-          "label": "SCALE",
-          "href": "/products/scale",
-          "description": "Standards, Consumption, Automation, Leverage, Effectiveness"
-        },
-        {
-          "id": "showcase",
-          "label": "Showcase",
-          "href": "/showcase",
-          "description": "Live sites built with ProductBuildersHQ"
         }
       ]
     }
