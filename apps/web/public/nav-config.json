@@ -485,6 +485,12 @@
           "label": "SCALE",
           "href": "/products/scale",
           "description": "Standards, Consumption, Automation, Leverage, Effectiveness"
+        },
+        {
+          "id": "showcase",
+          "label": "Showcase",
+          "href": "/showcase",
+          "description": "Live sites built with ProductBuildersHQ"
         }
       ]
     },

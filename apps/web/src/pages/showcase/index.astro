@@ -1,0 +1,86 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import showcase from '../../data/showcase.json'
+
+const BUILD_APP = 'ProductBuildersHQ Build'
+const PORTFOLIO_APP = 'ProductBuildersHQ Portfolio'
+// Flip to true once each site's Cloudflare zone is connected in Portfolio.
+const PORTFOLIO_CONNECTED = false
+
+const groups = showcase.groups.map((group) => ({
+  ...group,
+  sites: showcase.sites.filter((site) => site.group === group.id),
+}))
+
+const host = (url: string) => new URL(url).hostname.replace(/^www\./, '')
+---
+
+<BaseLayout
+  title="Built with ProductBuildersHQ"
+  description="Live apps, content sites and open-source resources being built with ProductBuildersHQ Build and run behind Cloudflare."
+>
+  <div class="py-16 md:py-24">
+    <div class="max-w-7xl mx-auto px-5 md:px-8">
+      <header class="mb-12">
+        <p class="text-sm font-semibold uppercase tracking-wider text-[var(--color-primary)] mb-3">Showcase</p>
+        <h1 class="text-4xl md:text-5xl font-bold mb-4">Built with ProductBuildersHQ</h1>
+        <p class="text-xl text-[var(--color-text-muted)] max-w-3xl">
+          Products and sites we build and run ourselves. Every one is live and being built with {BUILD_APP}. {PORTFOLIO_CONNECTED ? `Each runs behind Cloudflare and is monitored and operated with ${PORTFOLIO_APP}.` : `Each runs behind Cloudflare and is being connected to ${PORTFOLIO_APP} for monitoring and operations.`}
+        </p>
+        <ul class="mt-6 flex flex-wrap gap-2 text-sm">
+          <li class="px-3 py-1 rounded-full bg-[var(--color-primary)]/10 text-[var(--color-primary-dark)] font-medium">Live</li>
+          <li class="px-3 py-1 rounded-full bg-[var(--color-primary)]/10 text-[var(--color-primary-dark)] font-medium">Being built with {BUILD_APP}</li>
+          <li class="px-3 py-1 rounded-full bg-[var(--color-primary)]/10 text-[var(--color-primary-dark)] font-medium">{PORTFOLIO_CONNECTED ? `Monitored with ${PORTFOLIO_APP} + Cloudflare` : 'Behind Cloudflare'}</li>
+        </ul>
+      </header>
+
+      {groups.map((group) => (
+        <section class="mb-14" aria-labelledby={`group-${group.id}`}>
+          <div class="mb-6">
+            <h2 id={`group-${group.id}`} class="text-2xl font-bold">{group.label}</h2>
+            <p class="text-[var(--color-text-muted)]">{group.description}</p>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {group.sites.map((site) => (
+              <a
+                href={site.url}
+                target="_blank"
+                rel="noopener"
+                class="group flex flex-col bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-xl overflow-hidden no-underline hover:border-[var(--color-primary)] hover:shadow-lg transition-all"
+              >
+                <div class="aspect-[16/10] overflow-hidden border-b border-[var(--color-border-light)] bg-[var(--color-bg-elevated)]">
+                  <img
+                    src={site.image}
+                    alt={`${site.name} homepage`}
+                    width="960"
+                    height="600"
+                    loading="lazy"
+                    decoding="async"
+                    class="w-full h-full object-cover object-top group-hover:scale-[1.02] transition-transform duration-300"
+                  />
+                </div>
+                <div class="flex flex-col flex-1 p-5">
+                  <div class="flex items-center justify-between gap-3 mb-2">
+                    <h3 class="text-lg font-bold text-[var(--color-text)] group-hover:text-[var(--color-primary)]">{site.name}</h3>
+                    <span class="flex items-center gap-1.5 text-xs font-medium text-[var(--color-primary)]">
+                      <span class="w-2 h-2 rounded-full bg-[var(--color-primary-light)]" aria-hidden="true"></span>Live
+                    </span>
+                  </div>
+                  <p class="text-xs uppercase tracking-wide text-[var(--color-text-subtle)] mb-2">{site.category}</p>
+                  <p class="text-sm text-[var(--color-text-muted)] flex-1">{site.description}</p>
+                  <p class="mt-4 text-sm font-medium text-[var(--color-primary)]">
+                    {host(site.url)} <span aria-hidden="true">&#8599;</span>
+                  </p>
+                </div>
+              </a>
+            ))}
+          </div>
+        </section>
+      ))}
+
+      <p class="text-sm text-[var(--color-text-subtle)] max-w-3xl">
+        Screenshots show each homepage as captured; the sites change faster than these images do. Traffic and growth figures will be added once they have been reviewed.
+      </p>
+    </div>
+  </div>
+</BaseLayout>
