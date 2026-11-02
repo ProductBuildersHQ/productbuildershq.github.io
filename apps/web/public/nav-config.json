@@ -538,6 +538,16 @@
       "href": "https://github.com/ProductBuildersHQ",
       "icon": "github",
       "external": true
+    },
+    {
+      "id": "waitlist",
+      "label": "Join the waitlist",
+      "href": "https://auth.productbuildershq.com/signup/waitlist"
+    },
+    {
+      "id": "signin",
+      "label": "Sign in",
+      "href": "https://app.productbuildershq.com/"
     }
   ]
 }
