@@ -93,6 +93,8 @@ const guideSchema = z.object({
   date: z.string(),
   // Date the facts were last checked against the cited sources.
   reviewed: z.string(),
+  // A draft renders in the dev server and is left out of production builds.
+  draft: z.boolean().default(false),
   author: z.string().default('ProductBuildersHQ'),
   authorRole: z.string().optional(),
   references: z.array(z.object({
@@ -101,6 +103,28 @@ const guideSchema = z.object({
   })).optional(),
   frameworks: z.array(z.string()).optional(),
   tags: z.array(z.string()),
+})
+
+// Docs are product documentation for PBHQ: how to connect a service, what data
+// comes back, what you will not get, and how to read it. Unlike a Guide (a
+// researched write-up of someone else's tool), a doc describes PBHQ's own
+// behavior, so it carries a `status` and is grouped into a `section`.
+const docSchema = z.object({
+  title: z.string(),
+  description: z.string(),
+  section: z.enum(['getting-started', 'guides', 'integrations', 'concepts', 'reference', 'help']),
+  // Position within its section; lower comes first.
+  order: z.number().default(100),
+  // available = in the product now; in-development = being built; planned = intended.
+  status: z.enum(['available', 'in-development', 'planned']).default('available'),
+  // Date the facts were last checked against the product and cited sources.
+  reviewed: z.string(),
+  // A draft renders in the dev server and is left out of production builds.
+  draft: z.boolean().default(false),
+  references: z.array(z.object({
+    label: z.string(),
+    url: z.string(),
+  })).optional(),
 })
 
 const frameworks = defineCollection({
@@ -123,9 +147,14 @@ const guides = defineCollection({
   schema: guideSchema,
 })
 
+const docs = defineCollection({
+  loader: glob({ base: './src/content/docs', pattern: '**/*.md' }),
+  schema: docSchema,
+})
+
 const perspectives = defineCollection({
   loader: glob({ base: './src/content/perspectives', pattern: '**/*.md' }),
   schema: perspectiveSchema,
 })
 
-export const collections = { frameworks, caseStudies, signals, perspectives, guides }
+export const collections = { frameworks, caseStudies, signals, perspectives, guides, docs }

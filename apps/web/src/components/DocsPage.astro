@@ -1,0 +1,110 @@
+---
+import { getCollection, render } from 'astro:content'
+import BaseLayout from '../layouts/BaseLayout.astro'
+import { docSections, statusClasses, statusLabels } from '../lib/docs'
+
+const visible = async () =>
+  (await getCollection('docs')).filter((d) => !(import.meta.env.PROD && d.data.draft))
+
+interface Props {
+  entry: Awaited<ReturnType<typeof getCollection<'docs'>>>[number]
+}
+
+const { entry } = Astro.props
+const { Content, headings } = await render(entry)
+
+const all = await visible()
+const groups = docSections
+  .map((section) => ({
+    ...section,
+    pages: all
+      .filter((d) => d.data.section === section.id)
+      .sort((a, b) => a.data.order - b.data.order || a.data.title.localeCompare(b.data.title)),
+  }))
+  .filter((g) => g.pages.length > 0)
+const section = docSections.find((s) => s.id === entry.data.section)
+---
+
+<BaseLayout title={`${entry.data.title} | Documentation`} description={entry.data.description}>
+  <div class="py-8 md:py-12">
+    <div class="max-w-6xl mx-auto px-5 md:px-8">
+      <a href="/docs" class="no-print inline-flex items-center text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline mb-6">
+        <svg class="w-4 h-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
+        </svg>
+        Documentation
+      </a>
+
+      <div class="grid grid-cols-1 lg:grid-cols-[240px_1fr_200px] gap-10">
+        <aside class="hidden lg:block">
+          <nav class="sticky top-24 space-y-6" aria-label="Documentation">
+            {groups.map((group) => (
+              <div>
+                <div class="text-xs font-semibold uppercase tracking-wide text-[var(--color-text-subtle)] mb-2">{group.title}</div>
+                <ul class="space-y-1">
+                  {group.pages.map((page) => (
+                    <li>
+                      <a
+                        href={`/docs/${page.id}`}
+                        aria-current={page.id === entry.id ? 'page' : undefined}
+                        class:list={[
+                          'block text-sm no-underline',
+                          page.id === entry.id
+                            ? 'font-semibold text-[var(--color-primary)]'
+                            : 'text-[var(--color-text-muted)] hover:text-[var(--color-primary)]',
+                        ]}
+                      >{page.data.title}</a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </nav>
+        </aside>
+
+        <div class="min-w-0">
+          <div class="mb-6">
+            <div class="flex flex-wrap items-center gap-2 mb-3">
+              <span class="text-sm text-[var(--color-text-subtle)]">{section?.title}</span>
+              <span class={`text-xs px-2 py-0.5 rounded-full ${statusClasses(entry.data.status)}`}>{statusLabels[entry.data.status]}</span>
+              {entry.data.draft && <span class="text-xs px-2 py-0.5 rounded-full bg-red-100 text-red-800">Draft: not published</span>}
+            </div>
+            <h1 class="text-3xl md:text-4xl font-bold mb-3">{entry.data.title}</h1>
+            <p class="text-lg text-[var(--color-text-muted)] mb-3">{entry.data.description}</p>
+            <p class="text-sm text-[var(--color-text-subtle)]">Facts last checked {entry.data.reviewed}</p>
+          </div>
+
+          <article class="article-content">
+            <Content />
+          </article>
+
+          {entry.data.references && entry.data.references.length > 0 && (
+            <section class="mt-12 pt-8 border-t border-[var(--color-border-light)]">
+              <h2 class="text-sm font-semibold uppercase tracking-wide text-[var(--color-text-subtle)] mb-4">Sources</h2>
+              <ol class="space-y-2 list-decimal pl-5">
+                {entry.data.references.map((ref) => (
+                  <li class="text-sm">
+                    <a href={ref.url} target="_blank" rel="noopener noreferrer" class="text-[var(--color-primary)] hover:underline no-underline">{ref.label}</a>
+                  </li>
+                ))}
+              </ol>
+            </section>
+          )}
+        </div>
+
+        <aside class="hidden lg:block">
+          {headings.filter((h) => h.depth === 2).length > 0 && (
+            <div class="sticky top-24 border-l border-[var(--color-border-light)] pl-4">
+              <div class="text-xs font-semibold uppercase tracking-wide text-[var(--color-text-subtle)] mb-3">On this page</div>
+              <nav class="space-y-2">
+                {headings.filter((h) => h.depth === 2).map((h) => (
+                  <a href={`#${h.slug}`} class="block text-sm text-[var(--color-text-muted)] hover:text-[var(--color-primary)] no-underline">{h.text}</a>
+                ))}
+              </nav>
+            </div>
+          )}
+        </aside>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
