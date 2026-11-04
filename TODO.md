@@ -4,6 +4,23 @@ Open items from the 2026-08 working sessions (homepage restructure, Signals,
 SDD catalog, shared megamenu nav). Larger themes graduate to `ROADMAP.md`;
 this file tracks the concrete follow-ups.
 
+## ProductBuildersHQ app pages
+
+- [ ] **Screenshots for `/products/portfolio`, `/build` and `/agents`.**
+  Captured from the production app (about 1440px wide, PNG), with site
+  names and other identifying details blurred, and checked for emails,
+  tokens and private items. Wanted: the Portfolio overview, one Portfolio
+  site's traffic and security, a Build roadmap or board view, an Agents
+  mission or activity view, and optionally the Cloudflare connect screen.
+  Convert to `.webp` under `apps/web/public/images/products/` and add each
+  as a `tour` entry in `apps/web/src/data/app.json`; the pages show the
+  "A look inside" section only once a tour has entries. Each image needs a
+  reviewed exact-path publication-scan exception before pushing.
+- [ ] **Integration readings.** Only Cloudflare shows data in Portfolio.
+  When a service's readings ship, move it to `available` in
+  `apps/web/src/data/integrations.json` and update its "What you see" line;
+  never give dates for planned readings.
+
 ## Sub-site deployments & link swaps
 
 - [ ] Deploy the `lever` repo MkDocs site to GitHub Pages so it serves at

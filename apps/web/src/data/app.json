@@ -1,0 +1,52 @@
+{
+  "name": "ProductBuildersHQ",
+  "signInUrl": "https://app.productbuildershq.com/",
+  "waitlistUrl": "https://auth.productbuildershq.com/signup/waitlist",
+  "summary": "Three apps behind one sign-in: plan what you build, run the agents that help build it, and see how your products are doing.",
+  "apps": [
+    {
+      "id": "portfolio",
+      "name": "Portfolio",
+      "url": "https://portfolio.productbuildershq.com/",
+      "question": "How are my products doing?",
+      "summary": "Every site you run, in one place: traffic, visitors, errors and security, read from the services you already use.",
+      "capabilities": [
+        { "title": "All your sites at a glance", "text": "An overview of every site with its headline numbers and totals across the portfolio." },
+        { "title": "Traffic and security per site", "text": "Requests, unique visitors, the mix of status codes and security events from Cloudflare, over the number of days you choose." },
+        { "title": "Drill down", "text": "Break a site down by country, top pages, errors and security events." },
+        { "title": "Add a site in one step", "text": "Connect Cloudflare with a read-only token. Portfolio lists the zones it can read, and you create a site from one." },
+        { "title": "Built to keep going", "text": "If one source fails, it shows its own error and the rest of the site still loads." }
+      ],
+      "next": "Cloudflare today. Google Search Console, PostHog, Better Stack, Stripe and GitHub can already be connected; Portfolio reads them next.",
+      "tour": []
+    },
+    {
+      "id": "build",
+      "name": "Build",
+      "url": "https://app.productbuildershq.com/",
+      "question": "What are we building, and how far along is it?",
+      "summary": "Programs, initiatives, specs and roadmaps for your organization, online. VisionStudio is the local app; Build is the hosted one.",
+      "capabilities": [
+        { "title": "Programs and initiatives", "text": "Group work into programs, each made of initiatives with their own specs." },
+        { "title": "Roadmap items in phases", "text": "Every initiative's roadmap items, with stable IDs and status, grouped into phases." },
+        { "title": "Three views of the same work", "text": "See the same roadmap items as a roadmap, a board or a release view." },
+        { "title": "Shared with your organization", "text": "Everyone in the organization works from the same plan, behind one sign-in." }
+      ],
+      "tour": []
+    },
+    {
+      "id": "agents",
+      "name": "Agents",
+      "url": "https://agents.productbuildershq.com/",
+      "question": "What are our AI agents doing, and what may they do?",
+      "summary": "The AI agents that work for your organization: who they are, what they are working on, and what they did.",
+      "capabilities": [
+        { "title": "An identity for each agent", "text": "Each agent works as itself, not with a person's credentials." },
+        { "title": "Missions", "text": "An agent works on a mission that says what it is for and what it may access." },
+        { "title": "Approvals", "text": "Steps that need a person's approval wait for one." },
+        { "title": "Activity", "text": "A record of what each agent did on each mission." }
+      ],
+      "tour": []
+    }
+  ]
+}

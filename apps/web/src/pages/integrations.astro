@@ -1,0 +1,66 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import suite from '../data/app.json'
+import data from '../data/integrations.json'
+
+type Status = keyof typeof data.statuses
+const services = data.services as { id: string; name: string; status: Status; shows: string; credential: string }[]
+const available = services.filter((s) => s.status === 'available')
+const next = services.filter((s) => s.status !== 'available')
+---
+
+<BaseLayout
+  title="Integrations"
+  description="The services ProductBuildersHQ Portfolio connects to: Cloudflare today, with Google Search Console, PostHog, Better Stack, Stripe and GitHub next. Read-only access throughout."
+>
+  <div class="py-16 md:py-24">
+    <div class="max-w-5xl mx-auto px-5 md:px-8">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Integrations</h1>
+      <p class="text-xl text-[var(--color-text-muted)] max-w-3xl mb-6">
+        <a href="/products/portfolio" class="text-[var(--color-primary)] hover:underline">Portfolio</a>
+        reads how your products are doing from the services you already run. You connect each one
+        once, for your organization.
+      </p>
+      <ul class="space-y-2 text-[var(--color-text-muted)] max-w-3xl mb-14">
+        <li><strong class="text-[var(--color-text)]">Read-only.</strong> Every connection uses a read-only token or key. {suite.name} reads; it never changes your settings.</li>
+        <li><strong class="text-[var(--color-text)]">Guided setup.</strong> Each service shows the steps to create its token, with the permissions it needs.</li>
+        <li><strong class="text-[var(--color-text)]">Credentials stay sealed.</strong> Tokens are stored sealed, outside the apps; Portfolio reads through them without holding them.</li>
+      </ul>
+
+      <h2 class="text-2xl font-bold mb-2">Available</h2>
+      <p class="text-[var(--color-text-muted)] mb-6">{data.statuses.available.description}</p>
+      <div class="grid grid-cols-1 gap-6 mb-14">
+        {available.map((s) => (
+          <div class="p-6 bg-[var(--color-bg-card)] border-2 border-[var(--color-primary)] rounded-xl">
+            <div class="flex flex-wrap items-center gap-3 mb-3">
+              <h3 class="text-xl font-bold">{s.name}</h3>
+              <span class="text-xs font-medium px-2 py-1 bg-[var(--color-primary)] text-white rounded">{data.statuses[s.status].label}</span>
+            </div>
+            <p class="text-[var(--color-text-muted)] mb-2"><strong class="text-[var(--color-text)]">What you see:</strong> {s.shows}</p>
+            <p class="text-[var(--color-text-muted)] m-0"><strong class="text-[var(--color-text)]">What you connect:</strong> {s.credential}</p>
+          </div>
+        ))}
+      </div>
+
+      <h2 class="text-2xl font-bold mb-2">Next</h2>
+      <p class="text-[var(--color-text-muted)] mb-6">{data.statuses.connect.description}</p>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        {next.map((s) => (
+          <div class="p-6 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-xl">
+            <div class="flex flex-wrap items-center gap-3 mb-3">
+              <h3 class="text-lg font-bold">{s.name}</h3>
+              <span class="text-xs font-medium px-2 py-1 bg-[var(--color-bg-elevated)] text-[var(--color-text-muted)] rounded">{data.statuses[s.status].label}</span>
+            </div>
+            <p class="text-sm text-[var(--color-text-muted)] mb-2"><strong class="text-[var(--color-text)]">What it will add:</strong> {s.shows}</p>
+            <p class="text-sm text-[var(--color-text-muted)] m-0"><strong class="text-[var(--color-text)]">What you connect:</strong> {s.credential}</p>
+          </div>
+        ))}
+      </div>
+
+      <div class="flex flex-col sm:flex-row gap-4 mt-14">
+        <a href={suite.signInUrl} class="inline-flex items-center justify-center px-6 py-3 bg-[var(--color-primary-dark)] text-white font-medium rounded-lg no-underline hover:bg-[var(--color-primary)] transition-colors">Sign in</a>
+        <a href={suite.waitlistUrl} class="inline-flex items-center justify-center px-6 py-3 bg-[var(--color-accent)] text-[var(--color-primary-dark)] font-medium rounded-lg no-underline hover:bg-[var(--color-accent-light)] transition-colors">Join the waitlist</a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

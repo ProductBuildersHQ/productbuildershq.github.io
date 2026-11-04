@@ -1,0 +1,50 @@
+{
+  "statuses": {
+    "available": { "label": "Available", "description": "Connect it and Portfolio shows its readings." },
+    "connect": { "label": "Connect now, readings next", "description": "You can connect it today. Portfolio does not show its readings yet." }
+  },
+  "services": [
+    {
+      "id": "cloudflare",
+      "name": "Cloudflare",
+      "status": "available",
+      "shows": "Traffic, unique visitors, status codes and security events for each site, with drill-downs by country, page, error and event.",
+      "credential": "A read-only API token, from a prefilled form. Portfolio lists the zones it can read and reminds you to rotate it every 90 days."
+    },
+    {
+      "id": "google-search-console",
+      "name": "Google Search Console",
+      "status": "connect",
+      "shows": "How people find your sites through Google search.",
+      "credential": "A service account key with read-only access, set up step by step."
+    },
+    {
+      "id": "posthog",
+      "name": "PostHog",
+      "status": "connect",
+      "shows": "How people use your product, from your own product analytics. US and EU cloud.",
+      "credential": "A PostHog personal API key."
+    },
+    {
+      "id": "betterstack",
+      "name": "Better Stack",
+      "status": "connect",
+      "shows": "Whether your sites are up.",
+      "credential": "A Better Stack team API token."
+    },
+    {
+      "id": "stripe",
+      "name": "Stripe",
+      "status": "connect",
+      "shows": "Whether your products are earning.",
+      "credential": "A restricted, read-only Stripe key."
+    },
+    {
+      "id": "github",
+      "name": "GitHub",
+      "status": "connect",
+      "shows": "The state of the repositories behind each product.",
+      "credential": "A fine-grained personal access token with read-only repository access, set up step by step."
+    }
+  ]
+}
