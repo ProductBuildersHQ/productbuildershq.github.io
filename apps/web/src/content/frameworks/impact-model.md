@@ -1,7 +1,7 @@
 ---
 title: "The Impact Model"
-subtitle: "One Causal Model of Why a Product Should Work — Drawn as a Problem Tree, Theory of Change, Logic Model, OKRs, or V2MOM"
-description: "Every product bet rests on a claim that what you build will change something people do. The Impact Model writes that claim down once, as a causal model with its assumptions, evidence, and measures, and draws the problem tree, theory of change, logic model, logframe, OKRs, V2MOM, and DMAIC from it."
+subtitle: "One Causal Model of Why Your Work Should Produce Results — Drawn as a Problem Tree, Theory of Change, Logic Model, OKRs, or V2MOM"
+description: "Every goal rests on a claim that what you do will change something. The Impact Model writes that claim down once, as a causal model with its assumptions, evidence, and measures, and draws the problem tree, theory of change, logic model, logframe, OKRs, V2MOM, and DMAIC from it."
 version: "v1.0"
 date: "November 2026"
 provenance: "original"
@@ -62,6 +62,18 @@ The Impact Model's central idea is that the familiar planning and evaluation for
 | **DMAIC** | Which metric are we improving, from what baseline to what target, and is the gain holding? | Improvement efforts on an existing metric |
 
 None of these is derived from another. A logic model shows the sequence from inputs to outputs, and rarely why each step holds. A theory of change shows why, and says less about what is delivered. OKRs keep only what a team commits to for a quarter. Drawn by hand, each is a separate document that drifts from the others the week after the planning offsite. Drawn from one model, they cannot disagree. The [comparison of outcome and strategy frameworks](/frameworks/outcome-and-strategy-frameworks) covers each method on its own terms.
+
+None of these methods belongs to a sector, and neither does the model. A startup, a product team inside a company, and a nonprofit program all set goals, choose a strategy, and have to show results. The methods grew up in different places, OKRs at Intel and theories of change in program evaluation, but each is a tool for goals, strategy, and results wherever they are set.
+
+## The Graph Behind Your OKRs and V2MOM
+
+Most teams already write OKRs or a V2MOM. Both are lists. An objective's key results, and a V2MOM's methods and measures, imply that one thing leads to another, but neither says how. Cascaded OKRs imply a tree of causes and never state it, which is how a team can hit every key result while the number the company cares about stays flat.
+
+The impact model is the graph that connects them. Its structure is as specific as a logic model's: each piece of work, the output it produces, and the outcome it should move. Each link carries its reason, as a theory of change describes it. In that graph:
+
+- a **key result** is an indicator on an outcome, so it traces to the outcome it measures and on to the impact that outcome serves;
+- a **V2MOM method** is a pathway, with its interventions as the work, a **measure** is an indicator, and an **obstacle** is a risk or an assumption not yet tested;
+- every step says why it should lead to the next, so when a number does not move, the graph shows which link to question.
 
 ## A Worked Example
 

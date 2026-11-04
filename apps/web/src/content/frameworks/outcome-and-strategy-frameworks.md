@@ -1,16 +1,16 @@
 ---
 title: "Outcome and Strategy Frameworks Compared"
 subtitle: "Theory of Change, Logic Models, Logframes, Outcome Mapping, Problem Trees, OKRs, V2MOM, and DMAIC — What Each Answers and When to Use It"
-description: "Product teams know OKRs and opportunity solution trees; program and policy teams know theories of change, logic models, and logframes. They are answering related questions about the same thing: why the work should produce the result. A field guide to eight methods, what each is for, what each leaves out, and where each fits in the Product Loop."
+description: "OKRs, V2MOM, DMAIC, theories of change, logic models, logframes, outcome maps, and problem trees grew up in different places, but none belongs to a sector: each is a tool for goals, strategy, and results. A field guide to eight methods, what each is for, what each leaves out, and where each fits in the Product Loop."
 version: "v1.0"
 date: "November 2026"
 provenance: "industry"
 tags: ["theory-of-change", "logic-model", "logframe", "outcome-mapping", "problem-tree", "okrs", "v2mom", "dmaic", "outcomes", "strategy"]
 ---
 
-Two professions have spent decades on the same question from opposite ends. Product teams ask *will this feature move the metric?* and answer with OKRs, North Star metrics, and opportunity solution trees. Program and policy teams — foundations, public agencies, development organizations — ask *will this program change people's lives?* and answer with theories of change, logic models, and logframes.
+Every goal raises the same question: *will what we do produce the result we want?* The methods for answering it grew up in different places. OKRs came from Intel, V2MOM from Salesforce, DMAIC from Six Sigma. Theories of change and logic models came from program evaluation, problem trees and logframes from development planning. So they arrived with different vocabularies, and they are rarely compared.
 
-The vocabularies barely overlap, and the methods are rarely compared. They should be. Each is a partial answer to one question: **why should what we do lead to the result we want, and how will we know if it did?** Each answers part of it well and leaves the rest out. Knowing which part is the difference between a planning document that guides work and one that decorates a slide.
+None of them belongs to a sector. A startup, a product team inside a company, and a nonprofit program all set goals, choose a strategy, and have to show results, and each method serves all three. Each is also a partial answer to one question: **why should what we do lead to the result we want, and how will we know if it did?** Each answers part of it well and leaves the rest out. Knowing which part is the difference between a planning document that guides work and one that decorates a slide.
 
 This guide covers eight methods, compares them, and places each in the [Product Loop](/frameworks/product-loop-builder-loop). The ProductBuildersHQ [Impact Model](/frameworks/impact-model) holds what they all need, so that each can be drawn from one source instead of maintained by hand.
 
@@ -39,7 +39,7 @@ The core problem sits in the middle. Its causes grow below it as roots — immed
 
 **It leaves out** what will be done about it, and how anyone would know it worked. A problem tree is analysis, not a plan.
 
-**Product equivalent:** the opportunity side of an opportunity solution tree, and the "problem" section of a good PRD.
+**In product terms:** the opportunity side of an opportunity solution tree, and the "problem" section of a good PRD.
 
 ### Theory of Change
 
@@ -51,7 +51,7 @@ Start at the long-term goal and work backwards: what must be true just before it
 
 **It leaves out** much detail about delivery — what is built, by whom, by when. Its common failure is the opposite of a logic model's: a compelling diagram of preconditions with no indicators, so nothing can ever disconfirm it.
 
-**Product equivalent:** a hypothesis document with its chain spelled out — *if we ship X, users will do Y, which will produce Z, because…*
+**In product terms:** a hypothesis document with its chain spelled out — *if we ship X, users will do Y, which will produce Z, because…*
 
 ### Logic Model
 
@@ -63,7 +63,7 @@ A left-to-right sequence: **inputs** (resources), **activities** (what is done),
 
 **It leaves out** *why*. A logic model shows that activities lead to outcomes, rarely why they should, and almost never what must hold for them to. As Isabel Vogel's review of theory of change practice puts it, a logic model without its context is closer to a logframe than to a theory of change.
 
-**Product equivalent:** a roadmap with a results column — work items on the left, expected metric movement on the right.
+**In product terms:** a roadmap with a results column — work items on the left, expected metric movement on the right.
 
 ### Logframe
 
@@ -75,7 +75,7 @@ A matrix. The rows are levels — goal, purpose or outcome, outputs, activities.
 
 **It leaves out** the shape of the causal story. Its rigid levels force a branching theory into a single column, and teams often fill in the assumptions column last and least.
 
-**Product equivalent:** a statement of work with acceptance criteria and measurement plan.
+**In product terms:** a statement of work with acceptance criteria and measurement plan.
 
 ### Outcome Mapping
 
@@ -87,7 +87,7 @@ Outcome mapping focuses on changes in the behavior of **boundary partners** — 
 
 **It leaves out** the end-to-end view; it deliberately stops claiming at the edge of influence.
 
-**Product equivalent:** adoption work that depends on partners or a platform ecosystem, where a team can drive integrations but not the market's response to them.
+**In product terms:** adoption work that depends on partners or a platform ecosystem, where a team can drive integrations but not the market's response to them.
 
 ### OKRs
 
@@ -119,9 +119,9 @@ Five phases: **Define** the problem and the metric, **Measure** the baseline, **
 
 **It leaves out** the strategic question of whether this metric is the one that matters. DMAIC assumes the metric is right and optimizes it.
 
-## Two Product-Native Methods
+## Two Methods From Product Discovery
 
-Product teams will reach for two methods that are not on the list above. Both map cleanly.
+Two more methods, from product discovery and growth, are not on the list above. Both map cleanly.
 
 **The opportunity solution tree**, from Teresa Torres's *Continuous Discovery Habits* (2021), starts from a desired outcome, branches into opportunities (customer needs and pain points), and then into solutions and the experiments that test them. It is a problem tree turned upside down and joined to a theory of change: the opportunities are the causes, and the solution-to-outcome links are causal claims.
 
