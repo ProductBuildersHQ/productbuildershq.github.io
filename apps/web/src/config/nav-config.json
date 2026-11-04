@@ -12,24 +12,66 @@
       "maxFeaturedPerCategory": 6,
       "categories": [
         {
+          "id": "app",
+          "label": "ProductBuildersHQ app",
+          "description": "One sign-in, three apps",
+          "order": 1,
+          "href": "/products"
+        },
+        {
           "id": "products",
-          "label": "Products",
-          "description": "What builders build with",
-          "order": 1
+          "label": "Local & open source",
+          "description": "What builders build with, on their own machine",
+          "order": 2
         },
         {
           "id": "tools-showcase",
           "label": "Tools & Showcase",
           "description": "Free tools, and what we build with them",
-          "order": 2
+          "order": 3
         }
       ],
       "items": [
         {
+          "id": "portfolio",
+          "categoryId": "app",
+          "label": "Portfolio",
+          "tagline": "How are my products doing?",
+          "href": "/products/portfolio"
+        },
+        {
+          "id": "build",
+          "categoryId": "app",
+          "label": "Build",
+          "tagline": "Programs, specs and roadmaps, online",
+          "href": "/products/build"
+        },
+        {
+          "id": "agents",
+          "categoryId": "app",
+          "label": "Agents",
+          "tagline": "The AI agents that work for you",
+          "href": "/products/agents"
+        },
+        {
+          "id": "integrations",
+          "categoryId": "app",
+          "label": "Integrations",
+          "tagline": "Cloudflare today, more next",
+          "href": "/integrations"
+        },
+        {
+          "id": "pricing",
+          "categoryId": "app",
+          "label": "Pricing",
+          "tagline": "Start free",
+          "href": "/pricing"
+        },
+        {
           "id": "visionstudio",
           "categoryId": "products",
           "label": "VisionStudio",
-          "tagline": "Spec authoring & evaluation desktop app",
+          "tagline": "The local app for specs and roadmaps",
           "href": "/products/visionstudio"
         },
         {
@@ -554,6 +596,31 @@
       "label": "Products",
       "items": [
         {
+          "id": "portfolio",
+          "label": "Portfolio",
+          "href": "/products/portfolio"
+        },
+        {
+          "id": "build",
+          "label": "Build",
+          "href": "/products/build"
+        },
+        {
+          "id": "agents",
+          "label": "Agents",
+          "href": "/products/agents"
+        },
+        {
+          "id": "integrations",
+          "label": "Integrations",
+          "href": "/integrations"
+        },
+        {
+          "id": "pricing",
+          "label": "Pricing",
+          "href": "/pricing"
+        },
+        {
           "id": "visionstudio",
           "label": "VisionStudio",
           "href": "/products/visionstudio"
@@ -577,6 +644,11 @@
           "id": "showcase",
           "label": "Showcase",
           "href": "/showcase"
+        },
+        {
+          "id": "all-products",
+          "label": "All products",
+          "href": "/products"
         }
       ]
     },
