@@ -1,0 +1,94 @@
+---
+// One page of the ProductBuildersHQ app: Portfolio, Build or Agents.
+// The words come from data/app.json, which states only what runs today.
+import BaseLayout from '../layouts/BaseLayout.astro'
+import suite from '../data/app.json'
+
+interface Props {
+  id: 'portfolio' | 'build' | 'agents'
+}
+
+const { id } = Astro.props
+const app = suite.apps.find((a) => a.id === id)
+if (!app) throw new Error(`unknown app: ${id}`)
+const others = suite.apps.filter((a) => a.id !== id)
+
+interface TourStop {
+  image: string
+  width: number
+  height: number
+  alt: string
+  title: string
+  description: string
+}
+const tour = app.tour as TourStop[]
+---
+
+<BaseLayout title={app.name} description={`${suite.name} ${app.name}: ${app.summary}`}>
+  <div class="py-16 md:py-24">
+    <div class="max-w-4xl mx-auto px-5 md:px-8">
+      <a href="/products" class="text-sm text-[var(--color-text-muted)] no-underline hover:text-[var(--color-primary)]">&larr; {suite.name} app</a>
+      <div class="mt-6 flex flex-wrap gap-2">
+        <span class="text-xs font-medium px-2 py-1 bg-[var(--color-primary)]/10 text-[var(--color-primary)] rounded">{suite.name} app</span>
+        <span class="text-xs font-medium px-2 py-1 bg-[var(--color-accent)] text-[var(--color-primary-dark)] rounded">Invite-only</span>
+      </div>
+      <h1 class="text-4xl md:text-5xl font-bold mt-4 mb-3">{app.name}</h1>
+      <p class="text-lg font-medium text-[var(--color-primary)] mb-6">&ldquo;{app.question}&rdquo;</p>
+      <p class="text-xl text-[var(--color-text-muted)] mb-8">{app.summary}</p>
+
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href={app.url} class="inline-flex items-center justify-center px-6 py-3 bg-[var(--color-primary-dark)] text-white font-medium rounded-lg no-underline hover:bg-[var(--color-primary)] transition-colors">Sign in to {app.name}</a>
+        <a href={suite.waitlistUrl} class="inline-flex items-center justify-center px-6 py-3 bg-[var(--color-accent)] text-[var(--color-primary-dark)] font-medium rounded-lg no-underline hover:bg-[var(--color-accent-light)] transition-colors">Join the waitlist</a>
+      </div>
+      <p class="text-sm text-[var(--color-text-subtle)] mt-3">Sign-up is by invitation for now. Sign in with GitHub or Google.</p>
+
+      <h2 class="text-2xl font-bold mt-14 mb-4">What you can do today</h2>
+      <ul class="space-y-4 text-[var(--color-text-muted)]">
+        {app.capabilities.map((c) => (
+          <li><strong class="text-[var(--color-text)]">{c.title}:</strong> {c.text}</li>
+        ))}
+      </ul>
+      {'next' in app && app.next && (
+        <p class="mt-6 text-[var(--color-text-muted)]">
+          {app.next} See <a href="/integrations" class="text-[var(--color-primary)] hover:underline">Integrations</a>.
+        </p>
+      )}
+    </div>
+
+    {tour.length > 0 && (
+      <div class="max-w-6xl mx-auto px-5 md:px-8 mt-16">
+        <h2 class="text-2xl font-bold mb-10 max-w-4xl">A look inside</h2>
+        <div class="flex flex-col gap-16">
+          {tour.map((stop, index) => (
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+              <a href={stop.image} class:list={['block rounded-2xl overflow-hidden border border-[var(--color-border)] shadow-xl hover:border-[var(--color-primary)] transition-colors', index % 2 === 1 && 'md:order-2']}>
+                <img src={stop.image} alt={stop.alt} width={stop.width} height={stop.height} loading="lazy" class="w-full h-auto block" />
+              </a>
+              <div class:list={[index % 2 === 1 && 'md:order-1']}>
+                <h3 class="text-xl font-semibold mb-3 text-[var(--color-text)]">{stop.title}</h3>
+                <p class="text-[var(--color-text-muted)] leading-relaxed m-0">{stop.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <div class="max-w-4xl mx-auto px-5 md:px-8 mt-16">
+      <h2 class="text-2xl font-bold mb-4">One sign-in, three apps</h2>
+      <p class="text-[var(--color-text-muted)] mb-6">{suite.summary}</p>
+      <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        {others.map((o) => (
+          <a href={`/products/${o.id}`} class="block p-5 bg-[var(--color-bg-card)] border border-[var(--color-border)] rounded-xl no-underline hover:border-[var(--color-primary)] transition-colors">
+            <div class="font-bold text-[var(--color-text)]">{o.name}</div>
+            <div class="text-sm text-[var(--color-text-muted)] mt-1">{o.question}</div>
+          </a>
+        ))}
+      </div>
+      <p class="mt-6 text-[var(--color-text-muted)]">
+        <a href="/pricing" class="text-[var(--color-primary)] hover:underline">Pricing</a> ·
+        <a href="/integrations" class="text-[var(--color-primary)] hover:underline">Integrations</a>
+      </p>
+    </div>
+  </div>
+</BaseLayout>
