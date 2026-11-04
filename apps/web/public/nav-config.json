@@ -548,6 +548,144 @@
       ]
     }
   ],
+  "mobileSections": [
+    {
+      "id": "products",
+      "label": "Products",
+      "items": [
+        {
+          "id": "visionstudio",
+          "label": "VisionStudio",
+          "href": "/products/visionstudio"
+        },
+        {
+          "id": "visionspec",
+          "label": "VisionSpec",
+          "href": "/products/visionspec"
+        },
+        {
+          "id": "scale",
+          "label": "SCALE",
+          "href": "/products/scale"
+        },
+        {
+          "id": "tools",
+          "label": "Tools",
+          "href": "/tools"
+        },
+        {
+          "id": "showcase",
+          "label": "Showcase",
+          "href": "/showcase"
+        }
+      ]
+    },
+    {
+      "id": "frameworks",
+      "label": "Frameworks",
+      "items": [
+        {
+          "id": "all-frameworks",
+          "label": "All frameworks",
+          "href": "/frameworks"
+        },
+        {
+          "id": "philosophy",
+          "label": "4P Philosophy",
+          "href": "/philosophy"
+        }
+      ]
+    },
+    {
+      "id": "sdd",
+      "label": "SDD Workflows",
+      "items": [
+        {
+          "id": "sdd-definition",
+          "label": "Definition Workflows",
+          "href": "/sdd/#definition"
+        },
+        {
+          "id": "sdd-execution",
+          "label": "Execution Workflows",
+          "href": "/sdd/#execution"
+        },
+        {
+          "id": "sdd-specs",
+          "label": "Definition Specs",
+          "href": "/sdd/#specs"
+        }
+      ]
+    },
+    {
+      "id": "resources",
+      "label": "Resources",
+      "items": [
+        {
+          "id": "case-studies",
+          "label": "Case Studies",
+          "href": "/case-studies"
+        },
+        {
+          "id": "signals",
+          "label": "Signals",
+          "href": "/signals"
+        },
+        {
+          "id": "timeline",
+          "label": "Timeline: Case Studies + Signals",
+          "href": "/from-the-field"
+        },
+        {
+          "id": "guides",
+          "label": "Guides",
+          "href": "/guides"
+        },
+        {
+          "id": "perspectives",
+          "label": "Perspectives",
+          "href": "/perspectives"
+        },
+        {
+          "id": "papers",
+          "label": "Papers",
+          "href": "/papers"
+        },
+        {
+          "id": "presentation",
+          "label": "What is a ProductBuilder?",
+          "href": "/presentation"
+        },
+        {
+          "id": "about",
+          "label": "About",
+          "href": "/about"
+        }
+      ]
+    },
+    {
+      "id": "actions",
+      "items": [
+        {
+          "id": "github",
+          "label": "GitHub",
+          "href": "https://github.com/ProductBuildersHQ",
+          "icon": "github",
+          "external": true
+        },
+        {
+          "id": "waitlist",
+          "label": "Join the waitlist",
+          "href": "https://auth.productbuildershq.com/signup/waitlist"
+        },
+        {
+          "id": "signin",
+          "label": "Sign in",
+          "href": "https://app.productbuildershq.com/"
+        }
+      ]
+    }
+  ],
   "actions": [
     {
       "id": "github",
