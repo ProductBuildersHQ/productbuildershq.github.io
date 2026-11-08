@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+---
+
+<BaseLayout title="Privacy" description="What this website collects about visitors, and how to stop it.">
+  <div class="py-16 md:py-24">
+    <div class="max-w-3xl mx-auto px-5 md:px-8">
+      <h1 class="text-4xl md:text-5xl font-bold mb-8">Privacy</h1>
+      <p class="text-[var(--color-text-muted)] mb-4">
+        This notice covers this website, productbuildershq.com. It has no accounts, no forms and no advertising.
+      </p>
+      <h2 class="text-2xl font-bold mt-10 mb-4">Analytics</h2>
+      <p class="text-[var(--color-text-muted)] mb-4">
+        We count page views with PostHog, in its EU cloud. It runs in a cookieless mode: it sets no cookies and
+        stores nothing in your browser. From your IP address and browser details it computes an identifier that
+        changes every day, so a visit is counted once per day; the address itself is not kept. We see totals such
+        as page views, the pages read and the sites that sent visitors, not who you are, and it does not follow
+        you across other sites.
+      </p>
+      <p class="text-[var(--color-text-muted)] mb-4">
+        If your browser sends Do Not Track or Global Privacy Control, the analytics do not load at all.
+      </p>
+      <h2 class="text-2xl font-bold mt-10 mb-4">Cookies and storage</h2>
+      <p class="text-[var(--color-text-muted)] mb-4">This website sets no cookies and stores nothing in your browser.</p>
+      <h2 class="text-2xl font-bold mt-10 mb-4">Hosting</h2>
+      <p class="text-[var(--color-text-muted)] mb-4">
+        Like any website, the servers that deliver these pages briefly process standard request information, such
+        as your IP address and browser type, to deliver and protect the site.
+      </p>
+    </div>
+  </div>
+</BaseLayout>
