@@ -133,19 +133,23 @@ The shift from Level 3 to Level 4 requires rethinking several assumptions:
 
 ### The Skill of Calibrated Prompting
 
-One of the underappreciated requirements of Level 4 is developing intuition for AI interaction. Joe Magherimov, who led AWS's Project Mantle, describes this as finding the "maximally supportable request":
+One of the underappreciated requirements of Level 4 is developing intuition for AI interaction. Joe Magerramov, a VP and Distinguished Engineer at AWS who works on Project Mantle, describes this as "finding the maximum supportable request from the model":
 
-> "One of the intuitions you build up... is that you build up that intuition of what is that maximally supportable [request]. Ask for too much and the model is likely to fail—it might run out of the context window or do weird stuff. Ask for too little and you're not getting quite the speed-ups because you still have to be constantly in the loop."
+> "you ask too much and the model is likely to fail. It might run out of context window" … "ask it for too little and, well, you're not getting quite the speed ups"
+
+Ask for too little, and you're still constantly in the loop.
 
 This calibration is not static. It varies by model, project, and domain. The only way to develop this intuition is practice—which means Level 4 requires investment in team skill development, not just tooling.
 
-Ambiguity is another enemy of productivity. When multiple approaches could solve a problem, effective Level 4 practitioners brainstorm with the model before implementation. Magherimov describes starting with "here's the problem I have, list solutions" to eliminate dead ends before committing to an approach.
+Ambiguity is another enemy of productivity. When multiple approaches could solve a problem, effective Level 4 practitioners brainstorm with the model before implementation. Magerramov describes starting with "here's the problem I have … list solutions" to eliminate dead ends before committing to an approach.
 
 ### Context Window Discipline
 
-Level 4 also introduces new technical practices around context management. Magherimov describes clearing the context window between every request, using files as persistent memory for multi-step work:
+Level 4 also introduces new technical practices around context management. Magerramov describes clearing the context window between every request, using files as persistent memory for multi-step work:
 
-> "I would start with a file that describes a high-level approach. Then we break it down. I would start a prompt with: okay, here's our design we agreed on, we're now on step two out of seven, and here's what we're going to do in this step."
+He starts with "a file that describes a high level approach," breaks the work down, and opens each prompt along the lines of:
+
+> "here's the design we agreed on. We're now on step two out of seven"
 
 When a step completes, the code is committed, the context is cleared, and the next session begins fresh with the durable spec file reloaded. This mirrors how humans naturally decompose large problems into manageable pieces—but makes the practice explicit and systematic.
 
@@ -171,25 +175,27 @@ Level 5 breaks this constraint.
 
 ### AWS Project Mantle: Overnight Autonomous Coding
 
-[Project Mantle](/case-studies/aws-project-mantle) offers one of the most detailed public accounts of Level 5 development. In January 2026, Joe Magherimov—VP and Distinguished Engineer at AWS—described how a team of approximately nine senior engineers built a new inference engine for Amazon Bedrock using AI-first development, claiming 10x commit velocity.
+[Project Mantle](/case-studies/aws-project-mantle) offers one of the most detailed public accounts of Level 5 development. In January 2026, Joe Magerramov—VP and Distinguished Engineer at AWS—described how a small team of senior engineers built a new inference engine for Amazon Bedrock using AI-first development, reporting roughly 10x the commits.
 
-The team composition matters: one Distinguished Engineer plus eight Principal Engineers, all from EC2 with decades of collective experience. This was not junior developers experimenting with AI. This was senior engineers deliberately restructuring how they work.
+The team composition matters: Amazon employees on Reddit describe it as one Distinguished Engineer plus eight Principal Engineers from EC2. This was not junior developers experimenting with AI. This was senior engineers deliberately restructuring how they work.
 
-**The overnight pattern.** Magherimov describes queuing prompts before sleep and checking results in the morning:
+**The overnight pattern.** Magerramov describes giving a model something to do overnight and checking results in the morning:
 
-> "The thing that probably took me most by surprise is that asynchronous nature of software development. All of a sudden, I don't actually need to be present or even paying attention for 80% to 90% of the cycle of making a software change."
+> "the thing that probably took me most by surprise is that asynchronous nature of software development."
+
+All of a sudden, he says, "I don't actually need to be present or even, like, paying attention" for most of the cycle of making a software change, which he put at 80% to 90% of it.
 
 This represents the defining shift of Level 5: **extended autonomous sessions**. AI agents execute for eight or more hours without human guidance. The human checkpoint comes after the autonomous session completes, not during it.
 
 **Human accountability remains.** Critically, Mantle maintained human responsibility for all code:
 
-> "At the end of the day, any line of code committed into the repository has a human name attached to it. A human is ultimately responsible for the quality of the code."
+> "At the end of the day, any line of code committed into the repository has a human name attached to it."
+
+A human is ultimately responsible for the quality of the code.
 
 This distinguishes Level 5 from Level 6. Agents execute autonomously, but humans still review everything before merge. The workflow is "fire, then review" rather than "review each step."
 
-**The magnification effect.** Magherimov's colleague offered a key insight:
-
-> "AI-assisted development is gonna magnify well-functioning teams much more than it magnifies not-so-well-functioning teams."
+**The magnification effect.** Magerramov passed on a colleague's insight: AI-driven development is going to magnify well-functioning teams much more than it magnifies not-so-well-functioning teams.
 
 Teams with strong fundamentals—clear communication, fast feedback loops, solid testing—see those advantages amplified. Teams with dysfunction see that amplified too. Level 5 does not fix broken processes; it accelerates whatever exists.
 
@@ -219,7 +225,7 @@ Level 5 organizations exhibit several common patterns:
 
 ### The Quality Challenge at Velocity
 
-Level 5 velocity creates new quality challenges. Magherimov observed:
+Level 5 velocity creates new quality challenges. Magerramov observed:
 
 > "Even if the rate of bugs was lower than what would have been with a human, they still happen. And when you write a lot more code, you're gonna have a lot more bugs."
 
@@ -227,7 +233,7 @@ More critically, bugs at this velocity impact the entire team. A buggy check-in 
 
 This is why Mantle allocated approximately 25% of team effort to improving development practices rather than feature work. They worked with build system teams to speed up feedback loops—minutes instead of twenty to thirty minutes for builds and integration tests.
 
-As Magherimov acknowledges, none of this is new—the industry has been paying attention to testing and verification for years. But at these rates of change, these practices become even more critical. Without a way to curtail chaos, it explodes.
+As Magerramov acknowledges, none of this is new—the industry has been paying attention to testing and verification for years. But at these rates of change, these practices become even more critical. Without a way to curtail chaos, it explodes.
 
 ### The Level 5 Constraint
 
@@ -566,7 +572,7 @@ The factory is coming online. The question is not whether to engage with it, but
 
 ## References
 
-- Magherimov, Joe. "Amazon Bedrock Mantle and Developing at the Speed of AI." *AWS Podcast*. Episode 753. AWS. January 2026. podcasts.apple.com/us/podcast/753-amazon-bedrock-mantle-and-developing-at-the-speed-of-ai/id1122785133
+- Magerramov, Joe. "Amazon Bedrock Mantle and Developing at the Speed of AI." *AWS Podcast*. Episode 753. AWS. January 2026. podcasts.apple.com/us/podcast/753-amazon-bedrock-mantle-and-developing-at-the-speed-of-ai/id1122785133
 - AWS. "AI-Driven Development Life Cycle." Amazon Web Services. January 2026. aws.amazon.com/blogs/devops/ai-driven-development-life-cycle
 - StrongDM. Software Factory. factory.strongdm.ai
 - Willison, Simon. "The Software Factory." *Simon Willison's Weblog*. February 2026. simonwillison.net/2026/Feb/7/software-factory
